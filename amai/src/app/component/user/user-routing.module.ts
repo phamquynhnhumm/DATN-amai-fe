@@ -12,7 +12,7 @@ import {LayoutComponent} from "./layout/layout.component";
 
 const routes: Routes = [
   {path: "sinup", component: SinupComponent},
- {path: "", component: LayoutComponent},
+ {path: "home", component: LayoutComponent},
  {path: "home", component: HomeComponent},
   {path: "menu", component: MenuComponent},
   {path: "info", component: InfoComponent},

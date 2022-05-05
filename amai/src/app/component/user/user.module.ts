@@ -32,7 +32,10 @@ import { InfoComponent } from './info/info.component';
     InfoComponent
   ],
   exports: [
-    LayoutComponent
+    LayoutComponent,
+    NavbarComponent,
+    FooterComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
