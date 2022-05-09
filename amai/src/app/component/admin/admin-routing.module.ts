@@ -5,7 +5,7 @@ import {ListProductComponent} from "./product/list-product/list-product.componen
 import {CreateProductComponent} from "./product/create-product/create-product.component";
 
 const routes: Routes = [
-  {path: "", component: LayoutsComponent},
+  {path: "admin", component: LayoutsComponent},
   {path: "listsp", component: ListProductComponent},
   {path: "createsp", component: CreateProductComponent},
 ];
