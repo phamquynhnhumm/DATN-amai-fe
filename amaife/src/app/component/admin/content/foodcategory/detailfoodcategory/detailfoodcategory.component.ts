@@ -17,4 +17,7 @@ export class DetailfoodcategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deletefoodcategory() {
+
+  }
 }
