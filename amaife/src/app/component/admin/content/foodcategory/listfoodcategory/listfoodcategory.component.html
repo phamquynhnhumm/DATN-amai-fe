@@ -5,7 +5,7 @@
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
-     <h4><strong>Danh sách danh mục món</strong></h4>
+        <h4><strong>Danh sách danh mục món</strong></h4>
       </c-card-header>
       <c-card-body>
         <table datatable [dtOptions]="dtOptions" class="row-border hover">
@@ -21,88 +21,121 @@
             <td>1</td>
             <td>Foo</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <!--              <button mat-button (click)="openEditFoodCategory(foodcategory)" class="btn btn-warning">Sửa</button>-->
+              <!--              <button mat-button (click)="openDeleteFoodCategory(foodcategory)" class="btn btn-danger">Xóa</button>-->
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
           <tr>
             <td>2</td>
             <td>Someone</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>3</td>
             <td>Iamout</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>4</td>
             <td>Yoda</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>5</td>
             <td>Patrick</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>6</td>
             <td>Barack</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>7</td>
             <td>François</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>8</td>
             <td>Michel</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>9</td>
             <td>Chuck</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>10</td>
             <td>Simon</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
             </td>
           </tr>
           <tr>
             <td>11</td>
             <td>Louis</td>
             <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
           <tr>
@@ -119,4 +152,3 @@
     </c-card>
   </c-col>
 </c-row>
-

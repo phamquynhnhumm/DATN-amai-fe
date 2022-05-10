@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./createfoodcategory.component.scss']
 })
 export class CreatefoodcategoryComponent implements OnInit {
+  colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
 
   constructor() { }
 

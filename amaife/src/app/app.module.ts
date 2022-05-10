@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {AdminModule} from "./component/admin/admin.module";
 import {UserModule} from "./component/user/user.module";
 import {DataTablesModule} from "angular-datatables";
+import {MatDialogModule} from "@angular/material/dialog";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {DataTablesModule} from "angular-datatables";
     UserModule,
     GridModule,
     SidebarModule,
-    DataTablesModule
+    DataTablesModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

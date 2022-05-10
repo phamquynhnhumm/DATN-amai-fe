@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {FoodCategory} from "../../../../../model/food/FoodCategory";
 
 @Component({
   selector: 'app-editfoodcategory',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editfoodcategory.component.scss']
 })
 export class EditfoodcategoryComponent implements OnInit {
+  foodcategory!: FoodCategory;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
   }
 
+  ngOnInit(): void {
+    this.foodcategory = this.data;
+  }
+
+  editfoodcategory() {
+
+  }
 }
