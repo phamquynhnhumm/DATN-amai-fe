@@ -31,8 +31,8 @@ export class ListfoodcategoryComponent implements OnInit {
 
   openEditFoodCategory(foodcategory: FoodCategory) {
     const dialogRef = this.dialog.open(EditfoodcategoryComponent, {
-      width: '500px',
-      height: '215px',
+      width: '300px',
+      height: '250px',
       data: data
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -42,8 +42,8 @@ export class ListfoodcategoryComponent implements OnInit {
 
   openDeleteFoodCategory(foodcategory: FoodCategory) {
     const dialogRef = this.dialog.open(DelatefoodcategoryComponent, {
-      width: '500px',
-      height: '215px',
+      width: '450px',
+      height: '250px',
       data: data
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -53,7 +53,7 @@ export class ListfoodcategoryComponent implements OnInit {
   openDetailFoodCategory(foodcategory: FoodCategory) {
     const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
       width: '500px',
-      height: '215px',
+      height: '600px',
       data: data
     });
     dialogRef.afterClosed().subscribe(() => {

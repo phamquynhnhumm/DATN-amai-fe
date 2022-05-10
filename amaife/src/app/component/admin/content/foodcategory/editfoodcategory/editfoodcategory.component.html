@@ -1,1 +1,15 @@
-<p>Xin chòa hjsjkagddddddddddddddddddddddhjsjkagddddddddddddddddddddddhjsjkagddddddddddddddddddddddhjsjkagddddddddddddddddddddddhjsjkagdddddddddddddddddddddd</p>
+<h1 mat-dialog-title>Chỉnh sửa danh mục</h1><hr>
+<div mat-dialog-content>
+  <form cForm class="row g-3">
+    <c-col [md]="6">
+      <label cLabel for="inputEmail4">Tên danh mục</label>
+      <input cFormControl id="inputEmail4" type="email" />
+    </c-col>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="editfoodcategory()">Hủy</button>
+  <button  class="btn btn-danger" mat-button [mat-dialog-close]="data.animal" >Cập nhật</button>
+</div>
+
+

@@ -25,6 +25,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { DelatefoodcategoryComponent } from './content/foodcategory/delatefoodcategory/delatefoodcategory.component';
 import { ListfoodComponent } from './content/food/listfood/listfood.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -58,7 +59,9 @@ import { ListfoodComponent } from './content/food/listfood/listfood.component';
     CardModule,
     FormsModule,
     DataTablesModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDialogModule
   ]
 })
 export class AdminModule {
