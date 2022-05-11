@@ -1,25 +1,26 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <!--    <app-docs-callout href="forms/form-control" name="Form Control"></app-docs-callout>-->
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header>
-        <h4><strong>Danh sách danh mục món</strong></h4>
+      <c-card-header style="background: #435d7d;color: white" ><br>
+        <h1><strong style="margin: 0 auto;">Danh sách danh mục món</strong></h1>
       </c-card-header>
       <c-card-body>
         <table datatable [dtOptions]="dtOptions" class="row-border hover">
           <thead>
           <tr>
-            <th>ID</th>
             <th>Tên danh mục</th>
+            <th>Người thêm</th>
+            <th>Ngày thêm</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>1</td>
-            <td>Foo</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <!--              <button mat-button (click)="openEditFoodCategory(foodcategory)" class="btn btn-warning">Sửa</button>-->
               <!--              <button mat-button (click)="openDeleteFoodCategory(foodcategory)" class="btn btn-danger">Xóa</button>-->
@@ -30,9 +31,21 @@
             </td>
           </tr>
           <tr>
-            <td><a (click)="openDetailFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                   data-toggle="modal"><p>danh mục 1</p></a></td>
-            <td>Someone</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
+            <td>
+              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            </td>
+          </tr>
+          <tr>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
+
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -42,9 +55,10 @@
             </td>
           </tr>
           <tr>
-            <td><a (click)="openDetailFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                   data-toggle="modal"><p>danh mục 1</p></a></td>
-            <td>Iamout</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
+
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -54,9 +68,10 @@
             </td>
           </tr>
           <tr>
-            <td><a (click)="openDetailFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                   data-toggle="modal"><p>danh mục 1</p></a></td>
-            <td>Yoda</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
+
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -66,9 +81,9 @@
             </td>
           </tr>
           <tr>
-            <td><a (click)="openDetailFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                   data-toggle="modal"><p>danh mục 1</p></a></td>
-            <td>Patrick</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -78,8 +93,9 @@
             </td>
           </tr>
           <tr>
-            <td>6</td>
-            <td>Barack</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -89,8 +105,9 @@
             </td>
           </tr>
           <tr>
-            <td>7</td>
-            <td>François</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -100,8 +117,9 @@
             </td>
           </tr>
           <tr>
-            <td>8</td>
-            <td>Michel</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -111,8 +129,9 @@
             </td>
           </tr>
           <tr>
-            <td>9</td>
-            <td>Chuck</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -122,33 +141,14 @@
             </td>
           </tr>
           <tr>
-            <td>10</td>
-            <td>Simon</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 978</td>
+            <td>Quỳnh Như</td>
+            <td>04/05/2022</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
               <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
                  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td><a (click)="openDetailFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                        data-toggle="modal"><p>danh mục 1</p></a></td>
-            <td>Louis</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>Zelda</td>
-            <td>
-              <button type="button" class="btn btn-warning">Sửa</button>
-              <button type="button" class="btn btn-danger">Xóa</button>
             </td>
           </tr>
           </tbody>

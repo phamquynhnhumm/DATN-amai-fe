@@ -52,8 +52,8 @@ export class ListfoodcategoryComponent implements OnInit {
   }
   openDetailFoodCategory(foodcategory: FoodCategory) {
     const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
-      width: '300px',
-      height: '200px',
+      width: '400px',
+      height: '400px',
       data: data
     });
     dialogRef.afterClosed().subscribe(() => {
