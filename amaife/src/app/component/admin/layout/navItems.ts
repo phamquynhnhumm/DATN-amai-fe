@@ -5,7 +5,7 @@ export const navItems: INavData[] = [
   {
     name: 'TIỆM TRÀ SỮA AMAI',
     url: '/dashboard',
-    iconComponent: { name: cilSettings },
+    iconComponent: {name: cilSettings},
     badge: {
       color: 'info',
       text: '5sao'
@@ -18,7 +18,7 @@ export const navItems: INavData[] = [
   {
     name: 'BÁN HÀNG',
     url: '/base',
-    iconComponent: { name: 'cil-puzzle' },
+    iconComponent: {name: 'cil-puzzle'},
     children: [
       {
         name: 'Đơn hàng',
@@ -29,7 +29,7 @@ export const navItems: INavData[] = [
   {
     name: 'ĐỐI TÁC',
     url: '/buttons',
-    iconComponent: { name: 'cil-cursor' },
+    iconComponent: {name: 'cil-cursor'},
     children: [
       {
         name: 'Khách hàng',
@@ -44,29 +44,21 @@ export const navItems: INavData[] = [
   {
     name: 'MÓN',
     url: '/forms',
-    iconComponent: { name: 'cil-notes' },
+    iconComponent: {name: 'cil-notes'},
     children: [
       {
         name: 'Danh mục món',
         url: '/foodcategory'
       },
       {
-        name: 'Thêm danh mục món',
-        url: '/createfoodcategory'
-      },
-      {
         name: 'Món',
         url: '/food'
-      },
-      {
-        name: 'Thêm món',
-        url: '/createfood'
       }
     ]
   },
   {
     name: 'QUẢN LÝ KHO',
-    iconComponent: { name: 'cil-star' },
+    iconComponent: {name: 'cil-star'},
     url: '/icons',
     children: [
       {
@@ -90,7 +82,7 @@ export const navItems: INavData[] = [
   {
     name: 'THỐNG KÊ',
     url: '/notifications',
-    iconComponent: { name: 'cil-bell' },
+    iconComponent: {name: 'cil-bell'},
     children: [
       {
         name: 'Thống kê đơn hàng',
@@ -112,6 +104,25 @@ export const navItems: INavData[] = [
       {
         name: 'Thống kê thu chi',
         url: '/notifications/toasts'
+      }
+    ]
+  },
+  {
+    name: 'THÙNG RÁC',
+    url: '/deleteall',
+    iconComponent: {name: 'cil-bell'},
+    children: [
+      {
+        name: 'Danh mục món - Món',
+        url: '/notifications/alerts',
+      },
+      {
+        name: 'Khách hàng - Nhà cung cấp',
+        url: '/notifications/badges'
+      },
+      {
+        name: 'Đơn hàng - Nguyên liệu',
+        url: '/notifications/modal'
       }
     ]
   },

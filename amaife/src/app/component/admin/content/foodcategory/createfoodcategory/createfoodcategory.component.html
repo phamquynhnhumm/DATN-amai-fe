@@ -2,20 +2,20 @@
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
-      <h3> <strong>Thêm mới danh mục món</strong></h3>
+        <h3> <strong>Thêm mới danh mục món</strong></h3>
       </c-card-header>
       <c-card-body>
-        <form cForm class="row g-3">
+        <form cForm class="row g-3" [formGroup]="formFoodCategory" (ngSubmit)="onSubmit()">
           <c-col [md]="6">
-            <label cLabel for="inputEmail4">Tên danh mục</label>
-            <input cFormControl id="inputEmail4" />
+            <label cLabel >Tên danh mục</label>
+            <input cFormControl type="text"  class="form-control"  formControlName="name">
           </c-col>
           <c-col [md]="6">
 
           </c-col>
           <c-col [xs]="12">
-            <button type="submit" class="btn btn-primary mb-2" (click)="createfoodcategory(foodcategory)">Thêm </button>
-            <button type="button" class="btn btn-dark mb-2">Hủy</button>
+            <button routerLink="/foodcategory" type="button" class="btn btn-dark mb-2">Hủy</button>
+            <button type="submit" class="btn btn-primary mb-2">Thêm </button>
           </c-col>
         </form>
 

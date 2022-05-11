@@ -51,14 +51,17 @@ export class ListfoodcategoryComponent implements OnInit {
 
 
   openEditFoodCategory(foodcategory: FoodCategory) {
-    const dialogRef = this.dialog.open(EditfoodcategoryComponent, {
-      width: '300px',
-      height: '400px',
-      data: data
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
+    this.foodcategoryService.findByIdFoodCategory(foodcategory.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(EditfoodcategoryComponent, {
+          width: '300px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      })
   }
 
   openDeleteFoodCategory(foodcategory: FoodCategory) {
@@ -101,4 +104,6 @@ export class ListfoodcategoryComponent implements OnInit {
     //   }
     // );
   }
+
+
 }

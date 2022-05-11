@@ -48,22 +48,23 @@
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
+            <td>ID</td>
             <th>Tên danh mục</th>
             <th>Người thêm</th>
             <th>Ngày thêm</th>
-            <th>Trạng thái</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
           <tbody *ngIf="foodCategoryList != null">
+
           <tr class="even pointer"
               *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:10 ,currentPage : p}">
             <td>{{foodcategory.id}}</td>
             <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
             <td>{{foodcategory.createdBy}}</td>
             <td>{{foodcategory.createAt}}</td>
-            <td *ngIf="foodcategory.isDeleted">Đã xóa</td>
-            <td *ngIf="!foodcategory.isDeleted">Tồn Tại</td>
+<!--            <td *ngIf="foodcategory.isDeleted">Đã xóa</td>-->
+<!--            <td *ngIf="!foodcategory.isDeleted">Tồn Tại</td>-->
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

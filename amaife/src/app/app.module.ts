@@ -15,6 +15,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     GridModule,
     SidebarModule,
     DataTablesModule,
+    RouterModule,
     MatDialogModule,
     MatSnackBarModule,
     NgxPaginationModule,

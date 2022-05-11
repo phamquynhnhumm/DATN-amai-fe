@@ -38,7 +38,16 @@ export class FoodService {
   findByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORY + "/" + id);
   }
+
+  updateFoodCategory(foodCategory: Object): Observable<FoodCategory> {
+    return this.httpClient.put<FoodCategory>(this.URL_FOODCATEGORY ,foodCategory);
+  }
+
   deleteByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_DELETE + "/" + id);
+  }
+
+  createFoodCategory(foodCategory: Object): Observable<FoodCategory> {
+    return this.httpClient.post<FoodCategory>(this.URL_FOODCATEGORY, foodCategory);
   }
 }
