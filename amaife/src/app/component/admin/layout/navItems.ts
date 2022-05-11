@@ -3,7 +3,7 @@ import {cilSettings} from "@coreui/icons";
 
 export const navItems: INavData[] = [
   {
-    name: 'Tiệm Trà Sữa AMAI',
+    name: 'TIỆM TRÀ SỮA AMAI',
     url: '/dashboard',
     iconComponent: { name: cilSettings },
     badge: {

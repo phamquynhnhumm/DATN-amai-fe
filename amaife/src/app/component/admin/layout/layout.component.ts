@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {navItems} from "./navItems";
 
 @Component({
@@ -8,10 +8,11 @@ import {navItems} from "./navItems";
 })
 export class LayoutComponent {
   public navItems = navItems;
-
   public perfectScrollbarConfig = {
     suppressScrollX: true,
   };
-  constructor() { }
+
+  constructor() {
+  }
 
 }
