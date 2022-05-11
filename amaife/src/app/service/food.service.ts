@@ -12,6 +12,7 @@ export class FoodService {
   readonly URL_FOOD = "http://localhost:8080/api/food";
   readonly URL_FOODCATEGORY = "http://localhost:8080/api/foodcategory";
   readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/foodcategory/delete";
+  readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/foodcategory/undelete";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -45,6 +46,10 @@ export class FoodService {
 
   deleteByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_DELETE + "/" + id);
+  }
+
+  undeleteByIdFoodCategory(id: number): Observable<FoodCategory> {
+    return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_UNDELETE + "/" + id);
   }
 
   createFoodCategory(foodCategory: Object): Observable<FoodCategory> {

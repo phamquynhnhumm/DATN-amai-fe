@@ -1,0 +1,124 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="6">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-10">
+            <h1><strong style="margin: 0 auto;">DANH SÁCH DANH MỤC ĐÃ BỊ XÓA</strong></h1>
+          </div>
+        </c-row>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm..."
+                       #search>
+                <span class="input-group-btn">
+                            <button class="btn btn-default text-danger text" type="button"
+                                    (click)="searchFoodCategory(search.value)">Tìm kiếm!</button>
+                        </span>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên danh mục</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="foodCategoryList != null">
+
+          <tr class="even pointer"
+              *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{foodcategory.id}}</td>
+            <td>{{foodcategory.name}}</td>
+            <td>
+              <a (click)="openUnDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Hoàn tác</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+      <!--        Pagination-->
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+<!--  <c-col xs="6">-->
+<!--    <c-card class="mb-4">-->
+<!--      <c-card-header style="background: #435d7d;color: white"><br>-->
+<!--        <c-row>-->
+<!--          <div class="col-sm-10">-->
+<!--            <h1><strong style="margin: 0 auto;">DANH SÁCH MÓN ĂN ĐÃ BỊ XÓA</strong></h1>-->
+<!--          </div>-->
+<!--        </c-row>-->
+<!--      </c-card-header>-->
+<!--      <c-card-body>-->
+<!--        <div class="title_right">-->
+<!--          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">-->
+<!--            <form [formGroup]="searchForm">-->
+<!--              <div class="input-group">-->
+<!--                <input type="search" class="form-control rounded" formControlName="search"-->
+<!--                       placeholder="Tìm kiếm món..."-->
+<!--                       #search>-->
+<!--                <span class="input-group-btn">-->
+<!--                            <button class="btn btn-default text-danger text" type="button"-->
+<!--                                    (click)="searchFoodCategory(search.value)">Tìm kiếm!</button>-->
+<!--                        </span>-->
+<!--              </div>-->
+<!--              <small class="form-text text-muted text-danger"-->
+<!--                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100-->
+<!--                ký tự!</small>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--          <br>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <table datatable [dtOptions]="dtOptions" class="row-border hover">&ndash;&gt;-->
+<!--        <table class="table table-striped able-bordered jambo_table bulk_action">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <td>ID</td>-->
+<!--            <th>Tên món</th>-->
+<!--            <th>Hoàn tác</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody *ngIf="foodList != null">-->
+
+<!--          <tr class="even pointer"-->
+<!--              *ngFor="let food of foodList | paginate :{itemsPerPage:5 ,currentPage : pfood}">-->
+<!--            <td>{{food.id}}</td>-->
+<!--            <td>{{food.name}}</td>-->
+<!--            <td>-->
+<!--              <a (click)="openUnDeleteFood(food)" style=" color: #F44336;" class="delete"-->
+<!--                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="bordered">&#xE872;</i>Hoàn tác</a>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </c-card-body>-->
+<!--      &lt;!&ndash;        Pagination&ndash;&gt;-->
+<!--      <pagination-controls class="text-right text" (pageChange)="pfood = $event"-->
+<!--                           previousLabel="Trước"-->
+<!--                           nextLabel="Sau"-->
+<!--                           [autoHide]="true">-->
+<!--      </pagination-controls>-->
+<!--    </c-card>-->
+<!--  </c-col>-->
+</c-row>

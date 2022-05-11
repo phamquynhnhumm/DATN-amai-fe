@@ -114,15 +114,15 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Danh mục món - Món',
-        url: '/notifications/alerts',
+        url: '/deletefoodandcategory',
       },
       {
         name: 'Khách hàng - Nhà cung cấp',
-        url: '/notifications/badges'
+        url: '/deletecustomersupplier'
       },
       {
         name: 'Đơn hàng - Nguyên liệu',
-        url: '/notifications/modal'
+        url: '/deleteordermateri'
       }
     ]
   },

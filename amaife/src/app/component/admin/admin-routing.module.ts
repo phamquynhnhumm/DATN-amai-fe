@@ -5,11 +5,13 @@ import {ListfoodcategoryComponent} from "./content/foodcategory/listfoodcategory
 import {EditfoodcategoryComponent} from "./content/foodcategory/editfoodcategory/editfoodcategory.component";
 import {CreatefoodcategoryComponent} from "./content/foodcategory/createfoodcategory/createfoodcategory.component";
 import {ListfoodComponent} from "./content/food/listfood/listfood.component";
+import {DeletefoodandcategoryComponent} from "./content/bin/deletefoodandcategory/deletefoodandcategory.component";
 
 const routes: Routes = [
   {path: "foodcategory", component: ListfoodcategoryComponent},
   {path: "createfoodcategory", component: CreatefoodcategoryComponent},
   {path: "food", component: ListfoodComponent},
+  {path: "deletefoodandcategory", component: DeletefoodandcategoryComponent},
 ];
 
 @NgModule({

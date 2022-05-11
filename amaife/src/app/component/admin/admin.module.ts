@@ -28,6 +28,9 @@ import {ListfoodComponent} from './content/food/listfood/listfood.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {NgxPaginationModule} from "ngx-pagination";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { DeletefoodandcategoryComponent } from './content/bin/deletefoodandcategory/deletefoodandcategory.component';
+import { UndofoodandcategoryComponent } from './content/bin/undofoodandcategory/undofoodandcategory.component';
+import { UndofoodComponent } from './content/bin/undofood/undofood.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     DetailfoodcategoryComponent,
     EditfoodcategoryComponent,
     DelatefoodcategoryComponent,
-    ListfoodComponent
+    ListfoodComponent,
+    DeletefoodandcategoryComponent,
+    UndofoodandcategoryComponent,
+    UndofoodComponent
   ],
   exports: [
     LayoutComponent,
