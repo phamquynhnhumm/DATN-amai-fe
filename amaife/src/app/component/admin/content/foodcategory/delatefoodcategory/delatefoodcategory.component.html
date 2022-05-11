@@ -1,9 +1,10 @@
-<h1 mat-dialog-title>Xóa Danh Mục</h1><hr>
+<h1 mat-dialog-title><strong>Xóa Danh Mục</strong></h1>
+<hr>
 <div mat-dialog-content>
-  <h3>Bạn có chắc chắn muốn xóa  Danh mục 1 không?</h3>
-  <h4 style="color: #FFC107">  Hành động này không thể hoàn tác</h4>
+  <h3><strong>Bạn có chắc chắn muốn xóa {{foodcategory.name}} không?</strong></h3>
+  <h4 style="color: #FFC107"> Nếu xóa danh mục và sản phẩm liên quan sẽ không tồn tại trên trang người dùng</h4>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="deletefoodcategory()">Hủy</button>
-  <button  class="btn btn-danger" mat-button [mat-dialog-close]="data.animal" >Xóa</button>
+  <button mat-dialog-close class="btn btn-light">Hủy</button>
+  <button mat-button (click)="deletefoodcategory()" class="btn btn-danger">Xóa</button>
 </div>

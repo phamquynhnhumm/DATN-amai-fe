@@ -3,147 +3,57 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header style="background: #435d7d;color: white" ><br>
-        <h1><strong style="margin: 0 auto;">Danh sách danh mục món</strong></h1>
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-10">
+            <h1><strong style="margin: 0 auto;">DANH SÁCH DANH MỤC MÓN</strong></h1>
+          </div>
+          <div class="col-sm-2">
+            <a routerLink="/createfoodcategory" class="btn btn-success" data-toggle="modal">
+              <span style="color: white">Thêm mới danh mục</span></a>
+          </div>
+        </c-row>
       </c-card-header>
       <c-card-body>
-        <table datatable [dtOptions]="dtOptions" class="row-border hover">
-          <thead>
+        <div class="title_right">
+          <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm tên danh mục..."
+                       #search>
+                <span class="input-group-btn">
+                            <button class="btn btn-default text-danger text" type="button"
+                                    (click)="searchFoodCategory(search.value)">Tìm kiếm!</button>
+                        </span>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
+            <th>ID</th>
             <th>Tên danh mục</th>
             <th>Người thêm</th>
             <th>Ngày thêm</th>
+            <th>Trạng thái</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <!--              <button mat-button (click)="openEditFoodCategory(foodcategory)" class="btn btn-warning">Sửa</button>-->
-              <!--              <button mat-button (click)="openDeleteFoodCategory(foodcategory)" class="btn btn-danger">Xóa</button>-->
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 1</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
-            <td>
-              <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
-                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a (click)="openDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
-                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-            </td>
-          </tr>
-          <tr>
-            <td (click)="openDetailFoodCategory(foodcategory)">danh mục 978</td>
-            <td>Quỳnh Như</td>
-            <td>04/05/2022</td>
+          <tbody *ngIf="foodCategoryList != null">
+          <tr class="even pointer"
+              *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:10 ,currentPage : p}">
+            <td>{{foodcategory.id}}</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
+            <td>{{foodcategory.createdBy}}</td>
+            <td>{{foodcategory.createAt}}</td>
+            <td *ngIf="foodcategory.isDeleted">Đã xóa</td>
+            <td *ngIf="!foodcategory.isDeleted">Tồn Tại</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -154,6 +64,12 @@
           </tbody>
         </table>
       </c-card-body>
+      <!--        Pagination-->
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
     </c-card>
   </c-col>
 </c-row>

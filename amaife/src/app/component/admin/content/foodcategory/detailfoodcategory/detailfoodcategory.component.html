@@ -4,23 +4,28 @@
 <div class="form-group row">
   <label class="col-sm-5 col-form-label"> <strong>Tên danh mục </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">Danh mục ok2</p>
+    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.name}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Trạng thái tồn tại</strong></label>
+  <div class="col-sm-7">
+    <p *ngIf="foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Đã xóa</p>
+    <p *ngIf="!foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Tồn tài</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Người thêm </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">Quỳnh như</p>
+    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createdBy}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Ngày Thêm</strong> </label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">Quỳnh 95/03/2022</p>
+    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createAt}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Người cập nhật </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">Thanh thủy</p>
+    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updatedBy}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Ngày cập nhật</strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">04/04/202</p>
+    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updateAt}}</p>
   </div>
   <div class="col-sm-3 align-text-bottom">
     <button mat-button (click)="deletefoodcategory()">Thoát</button>

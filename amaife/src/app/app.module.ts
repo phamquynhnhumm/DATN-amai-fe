@@ -13,6 +13,8 @@ import {UserModule} from "./component/user/user.module";
 import {DataTablesModule} from "angular-datatables";
 import {MatDialogModule} from "@angular/material/dialog";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarModule,
     DataTablesModule,
     MatDialogModule,
+    MatSnackBarModule,
+    NgxPaginationModule,
     BrowserAnimationsModule
   ],
   providers: [],

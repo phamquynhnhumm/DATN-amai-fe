@@ -11,6 +11,7 @@ export class FoodService {
 
   readonly URL_FOOD = "http://localhost:8080/api/food";
   readonly URL_FOODCATEGORY = "http://localhost:8080/api/foodcategory";
+  readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/foodcategory/delete";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -36,5 +37,8 @@ export class FoodService {
 
   findByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORY + "/" + id);
+  }
+  deleteByIdFoodCategory(id: number): Observable<FoodCategory> {
+    return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_DELETE + "/" + id);
   }
 }

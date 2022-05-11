@@ -13,6 +13,8 @@ export class EditfoodcategoryComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
+              private snackBar: MatSnackBar
+
   ) {
   }
 
@@ -21,6 +23,9 @@ export class EditfoodcategoryComponent implements OnInit {
   }
 
   editfoodcategory() {
-
+    this.dialogRef.close();
+    this.snackBar.open("Hủy chỉnh sửa danh mục thành công", "OK", {
+      duration: 4000
+    })
   }
 }

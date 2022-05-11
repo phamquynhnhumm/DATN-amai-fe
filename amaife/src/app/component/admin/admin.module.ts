@@ -19,13 +19,15 @@ import {CreatefoodcategoryComponent} from './content/foodcategory/createfoodcate
 import {DetailfoodcategoryComponent} from './content/foodcategory/detailfoodcategory/detailfoodcategory.component';
 import {EditfoodcategoryComponent} from './content/foodcategory/editfoodcategory/editfoodcategory.component';
 import {IconModule} from "@coreui/icons-angular";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DataTablesModule} from "angular-datatables";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import { DelatefoodcategoryComponent } from './content/foodcategory/delatefoodcategory/delatefoodcategory.component';
-import { ListfoodComponent } from './content/food/listfood/listfood.component';
+import {DelatefoodcategoryComponent} from './content/foodcategory/delatefoodcategory/delatefoodcategory.component';
+import {ListfoodComponent} from './content/food/listfood/listfood.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -61,7 +63,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     DataTablesModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    MatSnackBarModule
   ]
 })
 export class AdminModule {
