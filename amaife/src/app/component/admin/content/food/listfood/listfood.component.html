@@ -49,7 +49,8 @@
           <tr class="even pointer"
               *ngFor="let food of foodList | paginate :{itemsPerPage:10 ,currentPage : p}">
             <td (click)="openDetailFoodCategory(food)">{{food.name}}</td>
-            <td>{{food.status}}</td>
+            <td *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Hết món</td>
+            <td *ngIf="food.status == eStatusFood.INSTOCK.valueOf() ">Còn món</td>
             <td>{{food.createAt}}</td>
             <td>{{food.price}}</td>
             <td>{{food.unit}}</td>

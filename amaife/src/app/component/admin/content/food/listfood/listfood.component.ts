@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodService} from "../../../../../service/food.service";
 import {ActivatedRoute} from "@angular/router";
@@ -10,6 +10,7 @@ import {data} from "jquery";
 import {DelatefoodcategoryComponent} from "../../foodcategory/delatefoodcategory/delatefoodcategory.component";
 import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
 import {Food} from "../../../../../model/food/Food";
+import {EStatusFood} from "../../../../../model/food/EStatusFood";
 
 @Component({
   selector: 'app-listfood',
@@ -18,8 +19,9 @@ import {Food} from "../../../../../model/food/Food";
 })
 export class ListfoodComponent implements OnInit {
 
-  foodList!: Array<Food> ;
+  foodList!: Array<Food>;
   p: number | any;
+  eStatusFood = EStatusFood;
 
   constructor(
     private foodService: FoodService,

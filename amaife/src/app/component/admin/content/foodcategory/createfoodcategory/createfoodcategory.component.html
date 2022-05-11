@@ -5,7 +5,6 @@
       <h3> <strong>Thêm mới danh mục món</strong></h3>
       </c-card-header>
       <c-card-body>
-
         <form cForm class="row g-3">
           <c-col [md]="6">
             <label cLabel for="inputEmail4">Tên danh mục</label>
@@ -15,7 +14,7 @@
 
           </c-col>
           <c-col [xs]="12">
-            <button type="submit" class="btn btn-primary mb-2">Thêm </button>
+            <button type="submit" class="btn btn-primary mb-2" (click)="createfoodcategory(foodcategory)">Thêm </button>
             <button type="button" class="btn btn-dark mb-2">Hủy</button>
           </c-col>
         </form>

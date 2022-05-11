@@ -80,7 +80,7 @@ export class ListfoodcategoryComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
           width: '400px',
-          height: '400px',
+          height: '450px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

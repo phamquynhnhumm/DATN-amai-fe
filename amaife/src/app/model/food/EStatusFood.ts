@@ -1,11 +1,11 @@
-export  enum EStatusFood{
+export enum EStatusFood{
   /**
    * Còn món
    */
-  INSTOCK,
+  INSTOCK='INSTOCK',
 
   /**
    * Đã hết món
    */
-  OUTSTOCK
+  OUTSTOCK ='OUTSTOCK'
 }
