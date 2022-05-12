@@ -11,7 +11,6 @@ import {FoodCategory} from "../../../../../model/food/FoodCategory";
 })
 export class UndofoodandcategoryComponent implements OnInit {
   foodcategory!: FoodCategory;
-
   constructor(private dialogRef: MatDialogRef<UndofoodandcategoryComponent>,
               private foodcategoryService: FoodService,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,9 +22,10 @@ export class UndofoodandcategoryComponent implements OnInit {
   }
 
   undofoodcategory() {
-    this.foodcategoryService.findAllFoodCategoryIsdelete(true).subscribe(() => {
+    this.foodcategory.isDeleted = false;
+    this.foodcategoryService.undeleteByIdFoodCategory(this.foodcategory.id, this.foodcategory).subscribe(() => {
       this.dialogRef.close();
-      this.snackBar.open("Hoàn tác danh mục món thành công !!! ", "OK", {
+      this.snackBar.open("Hoàn tác danh mục thành công !!! ", "OK", {
         duration: 4000
       })
     })

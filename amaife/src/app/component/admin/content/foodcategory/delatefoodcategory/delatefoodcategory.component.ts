@@ -21,10 +21,7 @@ export class DelatefoodcategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.foodcategory = this.data;
-    console.log(this.foodcategory);
   }
-
-  private errors: any;
 
   deletefoodcategory() {
     this.foodcategoryService.deleteByIdFoodCategory(this.foodcategory.id).subscribe(() => {
@@ -32,14 +29,6 @@ export class DelatefoodcategoryComponent implements OnInit {
       this.snackBar.open("Xoá danh mục món thành công !!! ", "OK", {
         duration: 4000
       })
-      // }, error => {
-      //   this.errors = error
-      // });
-      // if (!this.errors) {
-      //   this.dialogRef.close();
-      //   this.snackBar.open("Xoá thất bại ! ", "Hủy", {
-      //     duration: 4000
     })
-    // }
   }
 }

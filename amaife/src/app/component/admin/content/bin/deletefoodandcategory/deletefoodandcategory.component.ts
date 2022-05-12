@@ -10,6 +10,7 @@ import {DelatefoodcategoryComponent} from "../../foodcategory/delatefoodcategory
 import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
 import {UndofoodandcategoryComponent} from "../undofoodandcategory/undofoodandcategory.component";
 import {Food} from "../../../../../model/food/Food";
+import {cilLoopCircular, cilSettings} from "@coreui/icons";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -22,6 +23,8 @@ export class DeletefoodandcategoryComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
   pfood: number | any;
+  icons = { cilSettings,cilLoopCircular};
+
 
   constructor(
     private foodandcategoryService: FoodService,
@@ -46,6 +49,8 @@ export class DeletefoodandcategoryComponent implements OnInit {
         console.log(this.foodCategoryList)
       }
     );
+
+    //Danh sách  món đã bị xóa
     this.foodandcategoryService.findAllFood().subscribe(
       datafood => {
         this.pfood = 1;
@@ -78,7 +83,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(UndofoodandcategoryComponent, {
           width: '450px',
-          height: '300px',
+          height: '150px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
@@ -101,4 +106,18 @@ export class DeletefoodandcategoryComponent implements OnInit {
   }
 
 
+  openDetailFoodCategory(foodcategory: FoodCategory) {
+    this.foodandcategoryService.findByIdFoodCategory(foodcategory.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
+          width: '400px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
 }
