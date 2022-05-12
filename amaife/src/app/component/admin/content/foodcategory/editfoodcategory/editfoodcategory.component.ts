@@ -45,11 +45,18 @@ export class EditfoodcategoryComponent implements OnInit {
     })
   }
 
-
   onSubmit() {
+    /**
+     * Trách trường hợp isDelete null
+     */
+    if (this.formFoodCategory.value.isDeleted) {
+      this.formFoodCategory.value.isDeleted = true;
+    } else {
+      this.formFoodCategory.value.isDeleted = false;
+    }
     this.foodcategory.name = this.formFoodCategory.value.name;
-    this.foodcategory.isDeleted = this.formFoodCategory.value.isDeleted;
     if (!this.bolen) {
+      this.foodcategory.isDeleted = this.formFoodCategory.value.isDeleted;
       this.foodcategoryService.updateFoodCategory(this.foodcategory).subscribe(data => {
           this.dialogRef.close();
           this.snackBar.open("Cập nhật danh mục thành công", "OK", {
