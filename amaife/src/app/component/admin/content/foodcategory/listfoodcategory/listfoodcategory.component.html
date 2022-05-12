@@ -19,13 +19,12 @@
           <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-left top_search">
             <form [formGroup]="searchForm">
               <div class="input-group">
-                <input type="search" class="form-control rounded" formControlName="search"
+                <input type="search" class="form-control rounded mr-4" formControlName="search"
                        placeholder="Tìm kiếm..."
                        #search>
-                <span class="input-group-btn">
-                            <button class="btn btn-default text-danger text" type="button"
-                                    (click)="searchFoodCategory(search.value)">Tìm kiếm danh mục!</button>
-                        </span>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchFoodCategory(search.value)"> Tìm kiếm
+                </button>
               </div>
               <small class="form-text text-muted text-danger"
                      *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
@@ -33,16 +32,6 @@
             </form>
           </div>
           <br>
-          <!--          <p><i>Chọn thuộc tính tìm kiếm</i></p>-->
-          <!--          <div class="form-check form-check-inline">-->
-          <!--            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">-->
-          <!--            <label class="form-check-label" for="inlineCheckbox1">Tên danh mục</label>-->
-          <!--          </div>-->
-          <!--            <div class="form-check form-check-inline">-->
-          <!--              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">-->
-          <!--              <label class="form-check-label" for="inlineCheckbox2">Trạng thái</label>-->
-          <!--          </div>-->
-
         </div>
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">

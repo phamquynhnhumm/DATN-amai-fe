@@ -29,8 +29,8 @@ export class EditfoodcategoryComponent implements OnInit {
     this.foodcategory = this.data;
     this.formFoodCategory = new FormGroup(
       {
-        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(6)]),
-        isDeleted: new FormControl(this.data.isDeleted, [Validators.required, Validators.minLength(6)]),
+        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+        isDeleted: new FormControl(this.data.isDeleted),
       }
     )
   }
@@ -54,16 +54,20 @@ export class EditfoodcategoryComponent implements OnInit {
     } else {
       this.formFoodCategory.value.isDeleted = false;
     }
-    this.foodcategory.name = this.formFoodCategory.value.name;
-    if (!this.bolen) {
-      this.foodcategory.isDeleted = this.formFoodCategory.value.isDeleted;
-      this.foodcategoryService.updateFoodCategory(this.foodcategory).subscribe(data => {
-          this.dialogRef.close();
-          this.snackBar.open("Cập nhật danh mục thành công", "OK", {
-            duration: 4000
-          })
-        }
-      )
+    if (this.formFoodCategory.valid) {
+      this.foodcategory.name = this.formFoodCategory.value.name;
+      if (!this.bolen) {
+        this.foodcategory.isDeleted = this.formFoodCategory.value.isDeleted;
+        this.foodcategoryService.updateFoodCategory(this.foodcategory).subscribe(data => {
+            this.dialogRef.close();
+            this.snackBar.open("Cập nhật danh mục thành công", "OK", {
+              duration: 4000
+            })
+          }
+        )
+      }
+    } else {
+      this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
     }
   }
 }

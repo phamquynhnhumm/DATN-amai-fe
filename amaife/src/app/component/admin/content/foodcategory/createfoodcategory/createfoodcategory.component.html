@@ -16,18 +16,17 @@
           <c-col [md]="7">
             <input cFormControl type="text" class="form-control" formControlName="name" placeholder="Nhập tên danh mục">
             <small class="text-danger col-sm-10"
+                   *ngIf="formFoodCategory.get('name')?.hasError('minlength') && formFoodCategory.get('name')?.touched">
+              <p>Tên danh mục phải lớn hơn 2 ký tự</p>
+            </small>
+            <small class="text-danger col-sm-10"
                    *ngIf="formFoodCategory.get('name')?.hasError('required') && formFoodCategory.get('name')?.touched">
               <p>Tên danh mục không được để trống</p>
             </small>
             <small class="text-danger col-sm-10"
-                   *ngIf="formFoodCategory.get('name')?.hasError('min') && formFoodCategory.get('name')?.touched">
-              <p>Tên danh mục phải lớn hơn 1 ký tự</p>
-            </small>
-            <small class="text-danger col-sm-10"
-                   *ngIf="formFoodCategory.get('name')?.hasError('max') && formFoodCategory.get('name')?.touched">
+                   *ngIf="formFoodCategory.get('name')?.hasError('maxlength') && formFoodCategory.get('name')?.touched">
               <p>Tên danh mục phải nhỏ hơn 255 ký tự</p></small>
           </c-col>
-
           <c-col [md]="2">
           </c-col>
           <c-col [xs]="12" style="text-align:center">

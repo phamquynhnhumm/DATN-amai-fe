@@ -1,6 +1,6 @@
-<h1 mat-dialog-title><strong>Chi Tiết Danh Mục</strong></h1>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Danh Mục</strong>
+</h1></div>
 <hr>
-
 <div class="form-group row">
   <label class="col-sm-5 col-form-label"> <strong>Tên danh mục </strong></label>
   <div class="col-sm-7">
@@ -27,7 +27,11 @@
   <div class="col-sm-7">
     <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updateAt}}</p>
   </div>
-  <div class="col-sm-3 align-text-bottom">
-    <button mat-button (click)="deletefoodcategory()">Thoát</button>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button mat-button (click)="deletefoodcategory()">Thoát</button>
+    </div>
+    <div class="col-sm-5"></div>
   </div>
 </div>

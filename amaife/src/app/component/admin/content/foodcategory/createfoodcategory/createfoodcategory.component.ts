@@ -25,12 +25,11 @@ export class CreatefoodcategoryComponent implements OnInit {
 
   formFoodCategory = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)])
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
     }
   )
 
   onSubmit() {
-    console.log(this.formFoodCategory.valid)
     if (this.formFoodCategory.valid) {
       this.foodcategoryservice.createFoodCategory(this.formFoodCategory.value).subscribe(
         (data) => {
