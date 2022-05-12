@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FoodService} from "../../../../../service/food.service";
-import {Food} from "../../../../../model/food/Food";
 import {Router} from "@angular/router";
 
 @Component({
@@ -26,17 +25,21 @@ export class CreatefoodcategoryComponent implements OnInit {
 
   formFoodCategory = new FormGroup(
     {
-      name: new FormControl('', Validators.required)
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)])
     }
   )
 
   onSubmit() {
-    this.foodcategoryservice.createFoodCategory(this.formFoodCategory.value).subscribe(
-      (data) => {
-        console.log(data)
-        console.log(this.formFoodCategory.value)
-        this.route.navigateByUrl("/foodcategory").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
-      }
-    )
+    console.log(this.formFoodCategory.valid)
+    if (this.formFoodCategory.valid) {
+      this.foodcategoryservice.createFoodCategory(this.formFoodCategory.value).subscribe(
+        (data) => {
+          console.log(this.formFoodCategory.value)
+          this.route.navigateByUrl("/foodcategory").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
+        }
+      )
+    } else {
+      this.snackBar.open("Thêm mới thấy bại !")._dismissAfter(3000);
+    }
   }
 }
