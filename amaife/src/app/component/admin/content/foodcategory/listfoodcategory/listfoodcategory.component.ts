@@ -36,11 +36,10 @@ export class ListfoodcategoryComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this.foodcategoryService.findAllFoodCategory().subscribe(
+    this.foodcategoryService.findAllFoodCategoryIsdelete(false).subscribe(
       data => {
         this.p = 1;
          this.foodCategoryList = data;
-        console.log(this.foodCategoryList)
       }
     )
   }

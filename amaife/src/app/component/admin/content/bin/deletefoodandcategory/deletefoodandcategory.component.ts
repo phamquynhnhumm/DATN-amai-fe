@@ -38,7 +38,8 @@ export class DeletefoodandcategoryComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this.foodandcategoryService.findAllFoodCategory().subscribe(
+    //Danh sách danh mục đã bị xóa
+    this.foodandcategoryService.findAllFoodCategoryIsdelete(true).subscribe(
       data => {
         this.p = 1;
         this.foodCategoryList = data;

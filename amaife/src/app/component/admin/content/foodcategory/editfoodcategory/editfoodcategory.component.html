@@ -1,12 +1,11 @@
 <h1 mat-dialog-title><strong>Chỉnh sửa danh mục</strong></h1>
 <hr>
 <div mat-dialog-content>
-  <form [formGroup]="formFoodCategory" (ngSubmit)="save()" cForm class="row g-3">
+  <form [formGroup]="formFoodCategory" (ngSubmit)="onSubmit()" cForm class="row g-3">
     <c-col [md]="12">
       <label cLabel>Tên danh mục</label>
-      <p>{{foodcategory.name}}</p>
-      <input type="text" id="name" name="name" formControlName="name" class="form-control">
-      <input cFormControl name="name"  formControlName="name"/>
+      <p><strong>Test tên danh muuc </strong>{{foodcategory.name}}</p>
+      <input cFormControl type="text" class="form-control" formControlName="name">
     </c-col>
     <br>
     <c-col [md]="12">
@@ -15,11 +14,11 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Xóa danh mục</label>
       </div>
     </c-col>
+    <c-col [md]="12">
+      <button  mat-button (click)="cencal()">Thoát</button>
+      <button type="submit" class="btn btn-danger">Lưu</button>
+    </c-col>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="cencal()">Thoát</button>
-  <button type="submit" class="btn btn-danger">Lưu</button>
 </div>
 
 

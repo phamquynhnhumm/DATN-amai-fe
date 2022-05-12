@@ -24,7 +24,7 @@
                        #search>
                 <span class="input-group-btn">
                             <button class="btn btn-default text-danger text" type="button"
-                                    (click)="searchFoodCategory(search.value)">Tìm kiếm!</button>
+                                    (click)="searchFoodCategory(search.value)">Tìm kiếm danh mục!</button>
                         </span>
               </div>
               <small class="form-text text-muted text-danger"
@@ -33,21 +33,20 @@
             </form>
           </div>
           <br>
-          <p><i>Chọn thuộc tính tìm kiếm</i></p>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Tên danh mục</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Trạng thái</label>
-          </div>
+          <!--          <p><i>Chọn thuộc tính tìm kiếm</i></p>-->
+          <!--          <div class="form-check form-check-inline">-->
+          <!--            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">-->
+          <!--            <label class="form-check-label" for="inlineCheckbox1">Tên danh mục</label>-->
+          <!--          </div>-->
+          <!--            <div class="form-check form-check-inline">-->
+          <!--              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">-->
+          <!--              <label class="form-check-label" for="inlineCheckbox2">Trạng thái</label>-->
+          <!--          </div>-->
 
         </div>
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
-            <td>ID</td>
             <th>Tên danh mục</th>
             <th>Tài khoản thêm</th>
             <th>Thời gian thêm</th>
@@ -57,12 +56,9 @@
           <tbody *ngIf="foodCategoryList != null">
           <tr class="even pointer"
               *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:10 ,currentPage : p}">
-            <td>{{foodcategory.id}}</td>
             <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
             <td>{{foodcategory.createdBy}}</td>
             <td>{{foodcategory.createAt}}</td>
-            <!--            <td *ngIf="foodcategory.isDeleted">Đã xóa</td>-->
-            <!--            <td *ngIf="!foodcategory.isDeleted">Tồn Tại</td>-->
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -70,8 +66,8 @@
                  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
+          <!--          nếu không tìm thấy dữ liệu trên data-->
           </tbody>
-
           <tbody *ngIf="foodCategoryList == null">
           <tr>
             <td colspan="5" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>

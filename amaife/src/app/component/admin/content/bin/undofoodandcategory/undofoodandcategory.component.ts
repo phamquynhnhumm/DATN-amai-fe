@@ -23,7 +23,7 @@ export class UndofoodandcategoryComponent implements OnInit {
   }
 
   undofoodcategory() {
-    this.foodcategoryService.undeleteByIdFoodCategory(this.foodcategory.id).subscribe(() => {
+    this.foodcategoryService.findAllFoodCategoryIsdelete(true).subscribe(() => {
       this.dialogRef.close();
       this.snackBar.open("Hoàn tác danh mục món thành công !!! ", "OK", {
         duration: 4000

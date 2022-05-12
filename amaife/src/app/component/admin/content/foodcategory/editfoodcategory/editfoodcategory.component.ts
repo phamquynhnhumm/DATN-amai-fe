@@ -14,43 +14,49 @@ import {Router} from "@angular/router";
 export class EditfoodcategoryComponent implements OnInit {
   foodcategory!: FoodCategory;
 
-  constructor(private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private snackBar: MatSnackBar,
-              private foodcategoryService: FoodService,
-              private route: Router,
-              private fb: FormBuilder
-  ) {
+  constructor(
+    private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackBar: MatSnackBar,
+    private foodcategoryService: FoodService,
+    private route: Router,
+    private fb: FormBuilder) {
   }
+
   formFoodCategory!: FormGroup;
 
-
-
   ngOnInit(): void {
-
-    this.formFoodCategory =  this.fb.group(
+    this.foodcategory = this.data;
+    console.log(this.foodcategory)
+    this.formFoodCategory = new FormGroup(
       {
-        name:  ['', Validators.required],
-        isDeleted: ['', Validators.required],
+        name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        isDeleted: new FormControl('', [Validators.required, Validators.minLength(6)]),
       }
     )
-    this.formFoodCategory = this.data;
-
   }
 
-  save() {
-    this.foodcategory.name = this.formFoodCategory.value.name;
-    this.foodcategory.isDeleted = false;
-    this.foodcategoryService.updateFoodCategory(this.foodcategory);
-    this.snackBar.open("Cập nhật thành cồn", "OK", {
-      duration: 4000
-    })
-  }
+  bolen: boolean = false;
 
   cencal() {
+    this.bolen = true;
     this.dialogRef.close();
     this.snackBar.open("Hủy cập nhật danh mục", "OK", {
       duration: 4000
     })
+  }
+
+  onSubmit() {
+    this.foodcategory.name = this.formFoodCategory.value.name;
+    this.foodcategory.isDeleted = false;
+    if (!this.bolen) {
+      this.foodcategoryService.updateFoodCategory(this.foodcategory).subscribe(data => {
+          this.dialogRef.close();
+          this.snackBar.open("Cập nhật danh mục thành công", "OK", {
+            duration: 4000
+          })
+        }
+      )
+    }
   }
 }

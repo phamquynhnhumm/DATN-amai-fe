@@ -9,10 +9,18 @@ import {FoodCategory} from "../model/food/FoodCategory";
 })
 export class FoodService {
 
+  /**
+   * URL Món
+   */
   readonly URL_FOOD = "http://localhost:8080/api/food";
+  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/foodcategory/all";
+
+  /**
+   * URL danh mục
+   */
   readonly URL_FOODCATEGORY = "http://localhost:8080/api/foodcategory";
   readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/foodcategory/delete";
-  readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/foodcategory/undelete";
+  readonly URL_FOODCATEGOR_FINFDISDELETE = "http://localhost:8080/api/foodcategory/all";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -23,6 +31,10 @@ export class FoodService {
 
   findAllFood(): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD);
+  }
+
+  findAllFoodIsdelete(isdelete: boolean): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOODCATEGOR_FINFDISDELETE + "/" + isdelete);
   }
 
   findByIdFood(id: number): Observable<Food> {
@@ -36,21 +48,25 @@ export class FoodService {
     return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY);
   }
 
+  findAllFoodCategoryIsdelete(isdelete: boolean): Observable<Array<FoodCategory>> {
+    return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGOR_FINFDISDELETE + "/" + isdelete);
+  }
+
   findByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORY + "/" + id);
   }
 
   updateFoodCategory(foodCategory: Object): Observable<FoodCategory> {
-    return this.httpClient.put<FoodCategory>(this.URL_FOODCATEGORY ,foodCategory);
+    return this.httpClient.put<FoodCategory>(this.URL_FOODCATEGORY, foodCategory);
   }
 
   deleteByIdFoodCategory(id: number): Observable<FoodCategory> {
     return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_DELETE + "/" + id);
   }
 
-  undeleteByIdFoodCategory(id: number): Observable<FoodCategory> {
-    return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_UNDELETE + "/" + id);
-  }
+  // undeleteByIdFoodCategory(id: number): Observable<FoodCategory> {
+  //   return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_UNDELETE + "/" + id);
+  // }
 
   createFoodCategory(foodCategory: Object): Observable<FoodCategory> {
     return this.httpClient.post<FoodCategory>(this.URL_FOODCATEGORY, foodCategory);
