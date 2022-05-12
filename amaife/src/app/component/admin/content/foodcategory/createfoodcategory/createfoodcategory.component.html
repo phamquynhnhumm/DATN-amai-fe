@@ -1,25 +1,33 @@
 <c-row ngPreserveWhitespaces>
-  <c-col xs="12">
+  <c-col xs="3">
+  </c-col>
+  <c-col xs="6">
     <c-card class="mb-4">
-      <c-card-header>
-        <h3> <strong>Thêm mới danh mục món</strong></h3>
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong>Thêm mới danh mục món</strong></h1>
       </c-card-header>
       <c-card-body>
         <form cForm class="row g-3" [formGroup]="formFoodCategory" (ngSubmit)="onSubmit()">
-          <c-col [md]="6">
-            <label cLabel >Tên danh mục</label>
-            <input cFormControl type="text"  class="form-control"  formControlName="name">
+          <c-col [md]="1">
           </c-col>
-          <c-col [md]="6">
+          <c-col [md]="3">
+            <label cLabel class="form-control"> <strong>Tên danh mục</strong></label>
+          </c-col>
+          <c-col [md]="7">
+            <input cFormControl type="text" class="form-control" formControlName="name" placeholder="Nhập tên danh mục">
 
           </c-col>
-          <c-col [xs]="12">
+          <c-col [md]="2">
+          </c-col>
+          <c-col [xs]="12" style="text-align:center">
             <button routerLink="/foodcategory" type="button" class="btn btn-dark mb-2">Hủy</button>
-            <button type="submit" class="btn btn-primary mb-2">Thêm </button>
+            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
           </c-col>
         </form>
 
       </c-card-body>
     </c-card>
+  </c-col>
+  <c-col xs="2">
   </c-col>
 </c-row>

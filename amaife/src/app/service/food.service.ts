@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Food} from "../model/food/Food";
 import {Observable} from "rxjs";
 import {FoodCategory} from "../model/food/FoodCategory";
@@ -19,6 +19,7 @@ export class FoodService {
    * URL danh mục
    */
   readonly URL_FOODCATEGORY = "http://localhost:8080/api/foodcategory";
+  readonly URL_FOODCATEGORY_SEARCH = "http://localhost:8080/api/foodcategory/search";
   readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/foodcategory/delete";
   readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/foodcategory/undelete";
   readonly URL_FOODCATEGOR_FINFDISDELETE = "http://localhost:8080/api/foodcategory/all";
@@ -49,6 +50,10 @@ export class FoodService {
     return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY);
   }
 
+  searchNameandisDeleteFoodCategory(isDelete: boolean, name: string ): Observable<Array<FoodCategory>> {
+    return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY_SEARCH,{params: new HttpParams().set('isDelete', isDelete).set('name', name)});
+  }
+
   findAllFoodCategoryIsdelete(isdelete: boolean): Observable<Array<FoodCategory>> {
     return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGOR_FINFDISDELETE + "/" + isdelete);
   }
@@ -65,7 +70,7 @@ export class FoodService {
     return this.httpClient.delete<FoodCategory>(this.URL_FOODCATEGORY_DELETE + "/" + id);
   }
 
-  undeleteByIdFoodCategory(id: number,foodCategory: Object): Observable<FoodCategory> {
+  undeleteByIdFoodCategory(id: number, foodCategory: Object): Observable<FoodCategory> {
     return this.httpClient.put<FoodCategory>(this.URL_FOODCATEGORY_UNDELETE + "/" + id, foodCategory);
   }
 
