@@ -54,7 +54,7 @@ export class ListfoodcategoryComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(EditfoodcategoryComponent, {
           width: '300px',
-          height: '300px',
+          height: '350px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

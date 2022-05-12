@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 })
 export class EditfoodcategoryComponent implements OnInit {
   foodcategory!: FoodCategory;
+  isdelete!: boolean;
 
   constructor(
     private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
@@ -30,7 +31,7 @@ export class EditfoodcategoryComponent implements OnInit {
     console.log(this.foodcategory)
     this.formFoodCategory = new FormGroup(
       {
-        name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(6)]),
         isDeleted: new FormControl('', [Validators.required, Validators.minLength(6)]),
       }
     )
@@ -46,7 +47,9 @@ export class EditfoodcategoryComponent implements OnInit {
     })
   }
 
+
   onSubmit() {
+    console.log(this.isdelete)
     this.foodcategory.name = this.formFoodCategory.value.name;
     this.foodcategory.isDeleted = false;
     if (!this.bolen) {
