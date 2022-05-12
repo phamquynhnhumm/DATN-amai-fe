@@ -13,7 +13,6 @@ import {Router} from "@angular/router";
 })
 export class EditfoodcategoryComponent implements OnInit {
   foodcategory!: FoodCategory;
-  isdelete!: boolean;
 
   constructor(
     private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
@@ -28,11 +27,10 @@ export class EditfoodcategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.foodcategory = this.data;
-    console.log(this.foodcategory)
     this.formFoodCategory = new FormGroup(
       {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(6)]),
-        isDeleted: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        isDeleted: new FormControl(this.data.isDeleted, [Validators.required, Validators.minLength(6)]),
       }
     )
   }
@@ -49,9 +47,8 @@ export class EditfoodcategoryComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.isdelete)
     this.foodcategory.name = this.formFoodCategory.value.name;
-    this.foodcategory.isDeleted = false;
+    this.foodcategory.isDeleted = this.formFoodCategory.value.isDeleted;
     if (!this.bolen) {
       this.foodcategoryService.updateFoodCategory(this.foodcategory).subscribe(data => {
           this.dialogRef.close();
