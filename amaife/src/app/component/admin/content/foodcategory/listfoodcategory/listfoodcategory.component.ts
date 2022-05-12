@@ -39,7 +39,7 @@ export class ListfoodcategoryComponent implements OnInit {
     this.foodcategoryService.findAllFoodCategoryIsdelete(false).subscribe(
       data => {
         this.p = 1;
-         this.foodCategoryList = data;
+        this.foodCategoryList = data;
       }
     )
   }
@@ -94,13 +94,14 @@ export class ListfoodcategoryComponent implements OnInit {
 
   searchFoodCategory(search: string) {
     console.log(search)
-    // this.bookingService.getBySearch(search).subscribe(
-    //   (data) => {
-    //     this.bookingList = data;
-    //   },
-    //   (error) => {
-    //     this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-    //   }
-    // );
+    this.foodcategoryService.searchNameandisDeleteFoodCategory(false, search).subscribe(
+      (data) => {
+        console.log(data)
+        this.foodCategoryList = data;
+      },
+      (error) => {
+        this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+      }
+    );
   }
 }
