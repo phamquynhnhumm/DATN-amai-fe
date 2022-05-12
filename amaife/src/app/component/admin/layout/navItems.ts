@@ -109,21 +109,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'THÙNG RÁC',
-    url: '/deleteall',
+    url: '/deletefoodandcategory',
     iconComponent: {name: 'cil-bell'},
-    children: [
-      {
-        name: 'Danh mục món - Món',
-        url: '/deletefoodandcategory',
-      },
-      {
-        name: 'Khách hàng - Nhà cung cấp',
-        url: '/deletecustomersupplier'
-      },
-      {
-        name: 'Đơn hàng - Nguyên liệu',
-        url: '/deleteordermateri'
-      }
-    ]
   },
 ];

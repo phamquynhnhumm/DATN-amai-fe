@@ -31,6 +31,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { DeletefoodandcategoryComponent } from './content/bin/deletefoodandcategory/deletefoodandcategory.component';
 import { UndofoodandcategoryComponent } from './content/bin/undofoodandcategory/undofoodandcategory.component';
 import { UndofoodComponent } from './content/bin/undofood/undofood.component';
+import { CreatefoodComponent } from './content/food/createfood/createfood.component';
+import { DetailfoodComponent } from './content/food/detailfood/detailfood.component';
+import { DeletefoodComponent } from './content/food/deletefood/deletefood.component';
+import { EditfoodComponent } from './content/food/editfood/editfood.component';
 
 
 @NgModule({
@@ -46,7 +50,11 @@ import { UndofoodComponent } from './content/bin/undofood/undofood.component';
     ListfoodComponent,
     DeletefoodandcategoryComponent,
     UndofoodandcategoryComponent,
-    UndofoodComponent
+    UndofoodComponent,
+    CreatefoodComponent,
+    DetailfoodComponent,
+    DeletefoodComponent,
+    EditfoodComponent
   ],
   exports: [
     LayoutComponent,

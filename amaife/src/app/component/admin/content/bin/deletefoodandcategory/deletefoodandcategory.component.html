@@ -1,10 +1,4 @@
 <c-row ngPreserveWhitespaces>
-  <c-col xs="12">
-  </c-col>
-</c-row>
-
-
-<c-row ngPreserveWhitespaces>
   <c-col xs="1">
   </c-col>
   <c-col xs="4">
@@ -19,6 +13,7 @@
     <button type="button" class="btn btn-secondary" (click)="nameDeleteOrder()">Đơn hàng đã xóa</button>
     <br><br>
     <button type="button" class="btn btn-secondary" (click)="nameDeleteMaterial()">Nguyên liệu đã xóa</button>
+    <img src="assets/bin1.png" style="width: 80%">
   </c-col>
   <!--  bảng các danh mục món đã xóa-->
   <c-col xs="6" *ngIf="namedDelete == 'foodcategory'">
@@ -45,7 +40,6 @@
           </div>
           <br>
         </div>
-        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead>
           <tr>
@@ -122,7 +116,6 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="2">
-    <img src="assets/bin1.png">
+  <c-col xs="1">
   </c-col>
 </c-row>

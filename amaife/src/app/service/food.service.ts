@@ -13,7 +13,9 @@ export class FoodService {
    * URL Món
    */
   readonly URL_FOOD = "http://localhost:8080/api/food";
-  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/foodcategory/all";
+  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/food/all";
+  readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/food/undelete";
+  readonly URL_FOOD_DELETE = "http://localhost:8080/api/food/delete";
 
   /**
    * URL danh mục
@@ -36,11 +38,19 @@ export class FoodService {
   }
 
   findAllFoodIsdelete(isdelete: boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOODCATEGOR_FINFDISDELETE + "/" + isdelete);
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdelete);
   }
 
   findByIdFood(id: number): Observable<Food> {
     return this.httpClient.get<Food>(this.URL_FOOD + "/" + id);
+  }
+
+  undeleteByIdFood(id: number, food: Object): Observable<Food> {
+    return this.httpClient.put<Food>(this.URL_FOOD_UNDELETE + "/" + id, food);
+  }
+
+  deleteByIdFood(id: number): Observable<Food> {
+    return this.httpClient.delete<Food>(this.URL_FOOD_DELETE + "/" + id);
   }
 
   /**
@@ -50,8 +60,8 @@ export class FoodService {
     return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY);
   }
 
-  searchNameandisDeleteFoodCategory(isDelete: boolean, name: string ): Observable<Array<FoodCategory>> {
-    return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY_SEARCH,{params: new HttpParams().set('isDelete', isDelete).set('name', name)});
+  searchNameandisDeleteFoodCategory(isDelete: boolean, name: string): Observable<Array<FoodCategory>> {
+    return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGORY_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name)});
   }
 
   findAllFoodCategoryIsdelete(isdelete: boolean): Observable<Array<FoodCategory>> {
