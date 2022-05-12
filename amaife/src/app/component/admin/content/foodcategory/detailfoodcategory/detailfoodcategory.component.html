@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Chi Tiết Danh Mục</h1>
+<h1 mat-dialog-title><strong>Chi Tiết Danh Mục</strong></h1>
 <hr>
 
 <div class="form-group row">
@@ -11,19 +11,19 @@
     <p *ngIf="foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Đã xóa</p>
     <p *ngIf="!foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Tồn tài</p>
   </div>
-  <label class="col-sm-5 col-form-label"><strong>Người thêm </strong></label>
+  <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
   <div class="col-sm-7">
     <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createdBy}}</p>
   </div>
-  <label class="col-sm-5 col-form-label"><strong>Ngày Thêm</strong> </label>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
   <div class="col-sm-7">
     <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createAt}}</p>
   </div>
-  <label class="col-sm-5 col-form-label"><strong>Người cập nhật </strong></label>
+  <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
   <div class="col-sm-7">
     <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updatedBy}}</p>
   </div>
-  <label class="col-sm-5 col-form-label"><strong>Ngày cập nhật</strong></label>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
   <div class="col-sm-7">
     <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updateAt}}</p>
   </div>

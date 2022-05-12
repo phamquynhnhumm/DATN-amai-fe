@@ -39,7 +39,7 @@ export class ListfoodcategoryComponent implements OnInit {
     this.foodcategoryService.findAllFoodCategory().subscribe(
       data => {
         this.p = 1;
-        this.foodCategoryList = data;
+         this.foodCategoryList = data;
         console.log(this.foodCategoryList)
       }
     )
@@ -104,6 +104,4 @@ export class ListfoodcategoryComponent implements OnInit {
     //   }
     // );
   }
-
-
 }
