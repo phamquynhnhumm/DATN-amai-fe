@@ -93,18 +93,18 @@ export class DeletefoodandcategoryComponent implements OnInit {
   }
 
 
-  searchFoodCategory(search: string) {
+  searchunFoodCategory(search: string) {
     console.log(search)
-    // this.bookingService.getBySearch(search).subscribe(
-    //   (data) => {
-    //     this.bookingList = data;
-    //   },
-    //   (error) => {
-    //     this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-    //   }
-    // );
+    this.foodandcategoryService.searchNameandisDeleteFoodCategory(true, search).subscribe(
+      (data) => {
+        console.log(data)
+        this.foodCategoryList = data;
+      },
+      (error) => {
+        this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+      }
+    );
   }
-
 
   openDetailFoodCategory(foodcategory: FoodCategory) {
     this.foodandcategoryService.findByIdFoodCategory(foodcategory.id).subscribe(
