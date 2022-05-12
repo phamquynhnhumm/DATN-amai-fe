@@ -18,12 +18,12 @@ import {cilLoopCircular, cilSettings} from "@coreui/icons";
   styleUrls: ['./deletefoodandcategory.component.scss']
 })
 export class DeletefoodandcategoryComponent implements OnInit {
-
+  namedDelete !: string;
   foodCategoryList!: Array<FoodCategory>;
   foodList!: Array<Food>;
   p: number | any;
   pfood: number | any;
-  icons = { cilSettings,cilLoopCircular};
+  icons = {cilSettings, cilLoopCircular};
 
 
   constructor(
@@ -38,6 +38,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   foodcategory!: FoodCategory;
 
   ngOnInit(): void {
+    this.namedDelete = "foodcategory";
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
@@ -119,5 +120,32 @@ export class DeletefoodandcategoryComponent implements OnInit {
         });
       }
     )
+  }
+  nameDeleteFoodCategory() {
+    this.namedDelete = "foodcategory";
+  }
+
+  nameDeleteMaterial() {
+    this.namedDelete = "material";
+  }
+
+  nameDeleteFood() {
+    this.namedDelete = "food";
+
+  }
+
+  nameDeleteCustomer() {
+    this.namedDelete = "customer";
+
+  }
+
+  nameDeleteSupplier() {
+    this.namedDelete = "supplier";
+
+  }
+
+  nameDeleteOrder() {
+    this.namedDelete = "order";
+
   }
 }
