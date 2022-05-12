@@ -20,7 +20,7 @@
     <br><br>
     <button type="button" class="btn btn-secondary" (click)="nameDeleteMaterial()">Nguyên liệu đã xóa</button>
   </c-col>
-<!--  bảng các danh mục món đã xóa-->
+  <!--  bảng các danh mục món đã xóa-->
   <c-col xs="6" *ngIf="namedDelete == 'foodcategory'">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
@@ -34,10 +34,9 @@
                 <input type="search" class="form-control rounded" formControlName="search"
                        placeholder="Tìm kiếm ..."
                        #search>
-                <span class="input-group-btn">
-                            <button class="btn btn-default text-danger text" type="button"
-                                    (click)="searchunFoodCategory(search.value)">Tìm kiếm!</button>
-                        </span>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchunFoodCategory(search.value)"> Tìm kiếm
+                </button>
               </div>
               <small class="form-text text-muted text-danger"
                      *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
@@ -72,7 +71,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-<!--  bảng các món đã xóa-->
+  <!--  bảng các món đã xóa-->
   <c-col xs="6" *ngIf="namedDelete == 'food'">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
@@ -86,10 +85,9 @@
                 <input type="search" class="form-control rounded" formControlName="search"
                        placeholder="Tìm kiếm ..."
                        #search>
-                <span class="input-group-btn">
-                            <button class="btn btn-default text-danger text" type="button"
-                                    (click)="searchunFoodCategory(search.value)">Tìm kiếm!</button>
-                        </span>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchunFoodCategory(search.value)"> Tìm kiếm
+                </button>
               </div>
               <small class="form-text text-muted text-danger"
                      *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
