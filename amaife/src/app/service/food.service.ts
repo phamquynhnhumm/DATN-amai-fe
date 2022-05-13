@@ -49,6 +49,10 @@ export class FoodService {
     return this.httpClient.put<Food>(this.URL_FOOD_UNDELETE + "/" + id, food);
   }
 
+  updateFood(food: Object): Observable<FoodCategory> {
+    return this.httpClient.put<FoodCategory>(this.URL_FOOD, food);
+  }
+
   deleteByIdFood(id: number): Observable<Food> {
     return this.httpClient.delete<Food>(this.URL_FOOD_DELETE + "/" + id);
   }
