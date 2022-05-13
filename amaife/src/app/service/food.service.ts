@@ -57,6 +57,10 @@ export class FoodService {
     return this.httpClient.delete<Food>(this.URL_FOOD_DELETE + "/" + id);
   }
 
+  createFood(food: Object): Observable<Food> {
+    return this.httpClient.post<Food>(this.URL_FOOD, food);
+  }
+
   /**
    * CRUD Danh Mục Món
    */

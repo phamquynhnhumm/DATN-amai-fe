@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {FoodService} from "../../../../../service/food.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Food} from "../../../../../model/food/Food";
+import {FoodCategory} from "../../../../../model/food/FoodCategory";
+import {EStatusFood} from "../../../../../model/food/EStatusFood";
 
 @Component({
   selector: 'app-createfood',
@@ -12,29 +14,48 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CreatefoodComponent implements OnInit {
   colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
-  foodcategory!: FoodCategory;
+  food!: Food;
+  foodcategory !: Array<FoodCategory>;
+  statusfood = EStatusFood;
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
-              private foodcategoryservice: FoodService,
+              private foodService: FoodService,
               private snack: MatSnackBar) {
   }
 
   ngOnInit(): void {
+    console.log(this.statusfood["INSTOCK"])
+    this.foodService.findAllFoodCategoryIsdelete(false).subscribe(
+      data => {
+        this.foodcategory = data;
+      }
+    )
   }
 
-  formFoodCategory = new FormGroup(
+  formFood = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+      price: new FormControl('', [Validators.required, Validators.min(0)]),
+      describe: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]),
+      quanity: new FormControl('', [Validators.required, Validators.min(0)]),
+      status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      foodCategory: new FormGroup({
+          id: new FormControl()
+        }
+      ),
+      orderDetailList: new FormArray([]),
+      image: new FormControl('', Validators.required),
     }
   )
 
   onSubmit() {
-    if (this.formFoodCategory.valid) {
-      this.foodcategoryservice.createFoodCategory(this.formFoodCategory.value).subscribe(
+    if (this.formFood.valid) {
+      this.foodService.createFood(this.formFood.value).subscribe(
         (data) => {
-          console.log(this.formFoodCategory.value)
-          this.route.navigateByUrl("/foodcategory").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
+          console.log(this.formFood.value)
+          this.route.navigateByUrl("/food").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
         }
       )
     } else {

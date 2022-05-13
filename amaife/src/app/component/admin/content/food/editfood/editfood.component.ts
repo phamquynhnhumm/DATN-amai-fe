@@ -28,8 +28,8 @@ export class EditfoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.food = this.data;
-    this.formFood = new FormGroup(
-      {
+       this.formFood = new FormGroup(
+         {
         name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
         price: new FormControl('', [Validators.required, Validators.min(0)]),

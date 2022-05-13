@@ -35,6 +35,7 @@ import { CreatefoodComponent } from './content/food/createfood/createfood.compon
 import { DetailfoodComponent } from './content/food/detailfood/detailfood.component';
 import { DeletefoodComponent } from './content/food/deletefood/deletefood.component';
 import { EditfoodComponent } from './content/food/editfood/editfood.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -60,28 +61,29 @@ import { EditfoodComponent } from './content/food/editfood/editfood.component';
     LayoutComponent,
     HeaderadminComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    GridModule,
-    SidebarModule,
-    NavModule,
-    DropdownModule,
-    AvatarModule,
-    BreadcrumbModule,
-    HeaderModule,
-    IconModule,
-    FormModule,
-    CardModule,
-    FormsModule,
-    DataTablesModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        GridModule,
+        SidebarModule,
+        NavModule,
+        DropdownModule,
+        AvatarModule,
+        BreadcrumbModule,
+        HeaderModule,
+        IconModule,
+        FormModule,
+        CardModule,
+        FormsModule,
+        DataTablesModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        MatSnackBarModule,
+        MatSelectModule
+    ]
 })
 export class AdminModule {
 }
