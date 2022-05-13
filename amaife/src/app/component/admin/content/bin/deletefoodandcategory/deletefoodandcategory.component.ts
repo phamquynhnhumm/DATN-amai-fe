@@ -11,6 +11,8 @@ import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory
 import {UndofoodandcategoryComponent} from "../undofoodandcategory/undofoodandcategory.component";
 import {Food} from "../../../../../model/food/Food";
 import {cilLoopCircular, cilSettings} from "@coreui/icons";
+import {UndofoodComponent} from "../undofood/undofood.component";
+import {DetailfoodComponent} from "../../food/detailfood/detailfood.component";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -52,7 +54,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
     );
 
     //Danh sách  món đã bị xóa
-    this.foodandcategoryService.findAllFood().subscribe(
+    this.foodandcategoryService.findAllFoodIsdelete(true).subscribe(
       datafood => {
         this.pfood = 1;
         this.foodList = datafood;
@@ -82,9 +84,9 @@ export class DeletefoodandcategoryComponent implements OnInit {
   openUnDeleteFood(food: Food) {
     this.foodandcategoryService.findByIdFood(food.id).subscribe(
       data => {
-        const dialogRef = this.dialog.open(UndofoodandcategoryComponent, {
+        const dialogRef = this.dialog.open(UndofoodComponent, {
           width: '450px',
-          height: '150px',
+          height: '300px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
@@ -121,6 +123,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
       }
     )
   }
+
   nameDeleteFoodCategory() {
     this.namedDelete = "foodcategory";
   }
@@ -147,5 +150,21 @@ export class DeletefoodandcategoryComponent implements OnInit {
   nameDeleteOrder() {
     this.namedDelete = "order";
 
+  }
+
+  openDetailFood(food: Food) {
+
+    this.foodandcategoryService.findByIdFood(food.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailfoodComponent, {
+          width: '800px',
+          height: '650px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 }

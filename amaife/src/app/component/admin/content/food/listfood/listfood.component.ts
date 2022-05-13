@@ -84,8 +84,8 @@ export class ListfoodComponent implements OnInit {
     this.foodService.findByIdFood(food.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(DetailfoodComponent, {
-          width: '400px',
-          height: '450px',
+          width: '800px',
+          height: '650px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
@@ -106,5 +106,20 @@ export class ListfoodComponent implements OnInit {
     //       this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
     //     }
     //   );
+  }
+
+  openFoodCategory(food: Food) {
+    this.foodService.findByIdFoodCategory(food.foodCategory.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
+          width: '400px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 }

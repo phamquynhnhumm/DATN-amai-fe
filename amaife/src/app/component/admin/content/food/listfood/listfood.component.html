@@ -9,7 +9,7 @@
             <h1><strong style="margin: 0 auto;">DANH SÁCH MÓN</strong></h1>
           </div>
           <div class="col-sm-2">
-            <a routerLink="/createfoodcategory" class="btn btn-success" data-toggle="modal">
+            <a routerLink="/createfood" class="btn btn-success" data-toggle="modal">
               <span style="color: white">Thêm mới món</span></a>
           </div>
         </c-row>
@@ -37,10 +37,12 @@
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
             <th>Tên món</th>
+            <th>Danh mục</th>
             <th>Trạng thái món</th>
             <!--            <th>Danh mục món</th>-->
             <th>Giá bán</th>
             <th>Đon vị tính</th>
+            <th>Hình ảnh</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
@@ -48,10 +50,12 @@
           <tr class="even pointer"
               *ngFor="let food of foodList | paginate :{itemsPerPage:10 ,currentPage : p}">
             <td (click)="openDetailFood(food)">{{food.name}}</td>
+            <td (click)="openFoodCategory(food)">{{food.foodCategory.name}}</td>
             <td *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Hết món</td>
             <td *ngIf="food.status == eStatusFood.INSTOCK.valueOf() ">Còn món</td>
-            <td>{{food.createdBy}}</td>
-            <td>{{food.createAt}}</td>
+            <td>{{food.price |currency:'VND'}} </td>
+            <td>{{food.unit}}</td>
+            <td><img src="{{food.image}}" style="width: 50px;height: 50px;"></td>
             <td>
               <a (click)="openEditFood(food)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -63,7 +67,7 @@
           </tbody>
           <tbody *ngIf="foodList == null">
           <tr>
-            <td colspan="5" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
           </tr>
           </tbody>
 

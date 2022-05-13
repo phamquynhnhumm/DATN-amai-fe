@@ -1,1 +1,64 @@
-<p>detailfood works!</p>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Món</strong>
+</h1></div>
+<hr>
+<div class="row">
+  <div class="col-sm-7">
+    <div class="form-group row">
+      <label class="col-sm-5 col-form-label"> <strong>Tên món </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext">{{food.name}}</p>
+      </div>
+      <label class="col-sm-5 col-form-label"> <strong>Đơn vị tính </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext">{{food.unit}}</p>
+      </div>
+
+      <label class="col-sm-5 col-form-label"> <strong>Giá bán {{food.price}}</strong></label>
+      <div class="col-sm-7">
+<!--        <p readonly class="form-control-plaintext">{{food.price | currency:'VND'}}</p>-->
+        <p readonly class="form-control-plaintext">{{food.price | currency:'VND'}}</p>
+      </div>
+
+      <label class="col-sm-5 col-form-label"> <strong>Số lượng ước tính </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext">số lượng tính theo số nguyên liệu còn ít nhất {{food.quanity}}</p>
+      </div>
+
+      <label class="col-sm-5 col-form-label"> <strong>Trạng thái món</strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Đã hết</p>
+        <p readonly class="form-control-plaintext" *ngIf="food.status == eStatusFood.INSTOCK.valueOf() ">Còn món</p>
+      </div>
+      <label class="col-sm-5 col-form-label"> <strong>Nguyên liệu pha chế </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" value="email@example.com">List ra danh sách nguyên liệu</p>
+      </div>
+      <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" value="email@example.com">{{food.createdBy}}</p>
+      </div>
+      <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" value="email@example.com">{{food.createAt}}</p>
+      </div>
+      <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" value="email@example.com">{{food.updatedBy}}</p>
+      </div>
+      <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
+      <div class="col-sm-7">
+        <p readonly class="form-control-plaintext" value="email@example.com">{{food.updateAt}}</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2">
+          <button mat-button (click)="deletefood()">Thoát</button>
+        </div>
+        <div class="col-sm-5"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5" style="text-align:center">
+    <img src="{{food.image}}" style="width: 100%;height: 70%;">
+  </div>
+</div>

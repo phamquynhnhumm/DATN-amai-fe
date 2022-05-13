@@ -1,5 +1,6 @@
 import {EStatusFood} from "./EStatusFood";
 import {OrderDetail} from "../order/OrderDetail";
+import {FoodCategory} from "./FoodCategory";
 
 export interface Food {
   id: number;
@@ -12,7 +13,9 @@ export interface Food {
   unit: string;
   price: number;
   describe: string;
+  image: string;
   quanity: number;
   status: EStatusFood;
+  foodCategory: FoodCategory;
   orderDetailList: Array<OrderDetail>;
 }

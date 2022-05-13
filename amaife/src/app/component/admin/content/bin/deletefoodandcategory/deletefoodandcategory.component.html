@@ -61,6 +61,12 @@
             </td>
           </tr>
           </tbody>
+          <tbody *ngIf="foodCategoryList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có danh mục món đã bị xóa </strong></td>
+          </tr>
+          </tbody>
+
         </table>
       </c-card-body>
     </c-card>
@@ -103,7 +109,7 @@
           <tr class="even pointer"
               *ngFor="let food of foodList | paginate :{itemsPerPage:5 ,currentPage : p}">
             <td>{{food.id}}</td>
-            <td (click)="openUnDeleteFood(food)">{{food.name}}</td>
+            <td (click)="openDetailFood(food)">{{food.name}}</td>
             <td>
               <a (click)="openUnDeleteFood(food)" style=" color: #F44336;" class="delete"
                  data-toggle="modal">
@@ -112,6 +118,12 @@
             </td>
           </tr>
           </tbody>
+          <tbody *ngIf="foodList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có món đã bị xóa</strong></td>
+          </tr>
+          </tbody>
+
         </table>
       </c-card-body>
     </c-card>
