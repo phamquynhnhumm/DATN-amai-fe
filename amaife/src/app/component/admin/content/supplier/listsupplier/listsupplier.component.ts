@@ -100,26 +100,7 @@ export class ListsupplierComponent implements OnInit {
 
   searchSupplier(search: string) {
     if (this.searchss == this.searchSubject[0]) {
-      console.log("tìm kiếm theo tên món")
-      this.supplierService.searcSupplier(false, search, "", "").subscribe(
-        (data) => {
-          console.log(data)
-          this.supplierList = data;
-        },
-        (error) => {
-          this.supplierService.findAllSupplierIsdelete(false).subscribe(
-            data => {
-              this.p = 1;
-              this.supplierList = data;
-            }
-          )
-          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-        }
-      );
-    }
-    if (this.searchss == this.searchSubject[1]) {
-      console.log("tìm danh mục ")
-      this.supplierService.searcSupplier(false, "", "", search).subscribe(
+      this.supplierService.searchSupplier(false, search, "", "", "").subscribe(
         (data) => {
           console.log(data)
           this.supplierList = data;
@@ -136,11 +117,51 @@ export class ListsupplierComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[2]) {
-      console.log("tìm kiếm theo đơn vị tính")
-      this.supplierService.searcSupplier(false, "", search, "").subscribe(
+      console.log(this.searchss)
+      console.log("tìm kiếm theo số điênh thoại")
+      this.supplierService.searchSupplier(false, "", "", search, "").subscribe(
         (data) => {
           console.log(data)
           this.supplierList = data;
+        },
+        (error) => {
+          this.supplierService.findAllSupplierIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.supplierList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[1]) {
+      console.log(this.searchss)
+      console.log("tìm kiếm theo Emaill")
+      this.supplierService.searchSupplier(false, "", search, "", "").subscribe(
+        (data) => {
+          console.log(data)
+          this.supplierList = data;
+        },
+        (error) => {
+          this.supplierService.findAllSupplierIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.supplierList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[3]) {
+      console.log(this.searchss)
+      console.log("tìm kiếm theo địa chỉ")
+      this.supplierService.searchSupplier(false, "", "", "", search).subscribe(
+        (data) => {
+          console.log(data)
+          this.supplierList = data;
+          console.log(data);
         },
         (error) => {
           this.supplierService.findAllSupplierIsdelete(false).subscribe(

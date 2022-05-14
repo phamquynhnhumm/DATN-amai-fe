@@ -23,7 +23,7 @@ export class ListfoodComponent implements OnInit {
   p: number | any;
   eStatusFood = EStatusFood;
   searchSubject = ['Tên món', 'Danh mục', 'Đơn vị tính'];
-  searchss: string ="Chọn thuộc tính";
+  searchss: string = "Chọn thuộc tính";
 
   constructor(
     private foodService: FoodService,
@@ -103,10 +103,8 @@ export class ListfoodComponent implements OnInit {
 
   searchFood(search: string) {
     if (this.searchss == this.searchSubject[0]) {
-      console.log("tìm kiếm theo tên món")
       this.foodService.searcFood(false, search, "", "").subscribe(
         (data) => {
-          console.log(data)
           this.foodList = data;
         },
         (error) => {
@@ -124,7 +122,6 @@ export class ListfoodComponent implements OnInit {
       console.log("tìm danh mục ")
       this.foodService.searcFood(false, "", "", search).subscribe(
         (data) => {
-          console.log(data)
           this.foodList = data;
         },
         (error) => {
@@ -140,9 +137,8 @@ export class ListfoodComponent implements OnInit {
     }
     if (this.searchss == this.searchSubject[2]) {
       console.log("tìm kiếm theo đơn vị tính")
-      this.foodService.searcFood(false, "",search, "").subscribe(
+      this.foodService.searcFood(false, "", search, "").subscribe(
         (data) => {
-          console.log(data)
           this.foodList = data;
         },
         (error) => {
@@ -172,5 +168,4 @@ export class ListfoodComponent implements OnInit {
       }
     )
   }
-
 }

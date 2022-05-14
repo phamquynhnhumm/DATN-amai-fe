@@ -56,7 +56,7 @@ export class SupplierService {
     return this.httpClient.post<Supplier>(this.URL_SUPPLIER, supplier);
   }
 
-  searcSupplier(isDelete: boolean, name: string, unit: string, foodCategoryName: string): Observable<Array<Supplier>> {
-    return this.httpClient.get<Array<Supplier>>(this.URL_SUPPLIER_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('foodCategoryName', foodCategoryName)});
+  searchSupplier(isDelete: boolean, name: string, email: string, phone: string, address: string): Observable<Array<Supplier>> {
+    return this.httpClient.get<Array<Supplier>>(this.URL_SUPPLIER_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('email', email).set('phone', phone).set('address', address)});
   }
 }
