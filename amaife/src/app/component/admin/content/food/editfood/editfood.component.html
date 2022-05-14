@@ -2,7 +2,7 @@
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
-        <h1><strong>THÊM MỚI MÓN</strong></h1>
+        <h1><strong>CHẬP NHẬT MÓN</strong></h1>
       </c-card-header>
       <c-card-body><br>
         <form cForm class="row g-3" [formGroup]="formFood" (ngSubmit)="onSubmit()">
@@ -25,7 +25,7 @@
             </c-col>
             <c-col [md]="9">
               <mat-select class="custom-select form-control" formControlName="foodCategory"
-                          placeholder="Chọn danh mục ">
+                          placeholder="{{food.foodCategory.name}}">
                 <mat-option *ngFor="let foodCategorys of foodcategory"
                             [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
               </mat-select>
@@ -38,10 +38,10 @@
           </c-row>
           <br><br><br>
           <c-row>
-            <c-col [md]="2">
+            <c-col [md]="3">
               <label class="col-sm-12 col-form-label"><strong>Đơn vị tính</strong></label>
             </c-col>
-            <c-col [md]="8">
+            <c-col [md]="9">
               <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('unit')?.hasError('required') && formFood.get('unit')?.touched">
@@ -50,10 +50,10 @@
           </c-row>
           <br><br><br>
           <c-row>
-            <c-col [md]="2">
+            <c-col [md]="3">
               <label class="col-sm-12 col-form-label"><strong>Giá bán</strong></label>
             </c-col>
-            <c-col [md]="8">
+            <c-col [md]="9">
               <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá bán">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('price')?.hasError('required') && formFood.get('price')?.touched">
@@ -63,10 +63,10 @@
           </c-row>
           <br><br><br>
           <c-row>
-            <c-col [md]="2">
+            <c-col [md]="3">
               <label class="col-sm-12 col-form-label"><strong>Số lượng</strong></label>
             </c-col>
-            <c-col [md]="8">
+            <c-col [md]="9">
               <input type="number" class="form-control" formControlName="quanity" placeholder="Nhập số lượng">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('quanity')?.hasError('required') && formFood.get('quanity')?.touched">
@@ -76,10 +76,10 @@
           </c-row>
           <br><br><br>
           <c-row>
-            <c-col [md]="2">
+            <c-col [md]="3">
               <label class="col-sm-12 col-form-label"><strong>Trạng thái món</strong></label>
             </c-col>
-            <c-col [md]="8">
+            <c-col [md]="9">
               <input class="form-check-input-inline" type="radio" value="INSTOCK" formControlName="status">
               <label class=" col-sm-3 col-form-label form-check-label-inline">Còn món</label>
               <input class="form-check-input-inline" type="radio" value="OUTSTOCK" formControlName="status">
@@ -95,17 +95,13 @@
             <c-col [md]="2">
               <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
             </c-col>
-            <c-col [md]="8">
+            <c-col [md]="9">
               <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
-                <p>Ảnh không được để trống</p>
-              </small>
             </c-col>
           </c-row>
           <br><br><br>
           <c-col [xs]="12" style="text-align:center">
-            <button routerLink="/food" type="button" class="btn btn-dark mb-2">Hủy</button>
+            <button (click)="cencal()" type="button" class="btn btn-dark mb-2">Hủy</button>
             <button type="submit" class="btn btn-primary mb-2">Thêm</button>
           </c-col>
         </form>
