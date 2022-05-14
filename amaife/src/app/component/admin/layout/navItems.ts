@@ -37,7 +37,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Nhà cung cấp',
-        url: '/buttons/button-groups'
+        url: '/supplier'
       }
     ]
   },

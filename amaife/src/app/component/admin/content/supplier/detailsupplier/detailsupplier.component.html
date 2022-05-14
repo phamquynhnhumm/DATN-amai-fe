@@ -1,0 +1,49 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Nhà Cung
+  Cấp</strong>
+</h1></div>
+<hr>
+<div class="form-group row">
+  <label class="col-sm-5 col-form-label"> <strong>Họ và tên</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.name}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"> <strong>Email</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.email}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"> <strong>Số điện thoại</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.phone}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"> <strong>Địa chỉ</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.address}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Số điện thoại</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.phone}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.createdBy}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.createAt}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.updatedBy}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext">{{supplier.updateAt}}</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button mat-button (click)="cencalSupplierDetail()">Thoát</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>

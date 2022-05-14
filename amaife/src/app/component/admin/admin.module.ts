@@ -36,6 +36,11 @@ import { DetailfoodComponent } from './content/food/detailfood/detailfood.compon
 import { DeletefoodComponent } from './content/food/deletefood/deletefood.component';
 import { EditfoodComponent } from './content/food/editfood/editfood.component';
 import {MatSelectModule} from "@angular/material/select";
+import { ListsupplierComponent } from './content/supplier/listsupplier/listsupplier.component';
+import { CreatesupplierComponent } from './content/supplier/createsupplier/createsupplier.component';
+import { EditsupplierComponent } from './content/supplier/editsupplier/editsupplier.component';
+import { DetailsupplierComponent } from './content/supplier/detailsupplier/detailsupplier.component';
+import { DeletesupplierComponent } from './content/supplier/deletesupplier/deletesupplier.component';
 
 
 @NgModule({
@@ -55,7 +60,12 @@ import {MatSelectModule} from "@angular/material/select";
     CreatefoodComponent,
     DetailfoodComponent,
     DeletefoodComponent,
-    EditfoodComponent
+    EditfoodComponent,
+    ListsupplierComponent,
+    CreatesupplierComponent,
+    EditsupplierComponent,
+    DetailsupplierComponent,
+    DeletesupplierComponent
   ],
   exports: [
     LayoutComponent,

@@ -8,6 +8,8 @@ import {ListfoodComponent} from "./content/food/listfood/listfood.component";
 import {DeletefoodandcategoryComponent} from "./content/bin/deletefoodandcategory/deletefoodandcategory.component";
 import {CreatefoodComponent} from "./content/food/createfood/createfood.component";
 import {EditfoodComponent} from "./content/food/editfood/editfood.component";
+import {ListsupplierComponent} from "./content/supplier/listsupplier/listsupplier.component";
+import {CreatesupplierComponent} from "./content/supplier/createsupplier/createsupplier.component";
 
 const routes: Routes = [
   /**
@@ -22,6 +24,12 @@ const routes: Routes = [
    */
   {path: "food", component: ListfoodComponent},
   {path: "createfood", component: CreatefoodComponent},
+
+  /**
+   * URL nhà cung cấp
+   */
+  {path: "supplier", component: ListsupplierComponent},
+  {path: "createsupplier", component: CreatesupplierComponent},
 ];
 
 @NgModule({
