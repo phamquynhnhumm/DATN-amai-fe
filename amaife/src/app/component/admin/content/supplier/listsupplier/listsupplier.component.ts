@@ -59,8 +59,8 @@ export class ListsupplierComponent implements OnInit {
     this.supplierService.findByIdSupplier(supplier.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(EditsupplierComponent, {
-          width: '800px',
-          height: '550px',
+          width: '500px',
+          height: '580px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

@@ -5,7 +5,6 @@ import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FoodService} from "../../../../../service/food.service";
 import {Router} from "@angular/router";
-import {Food} from "../../../../../model/food/Food";
 
 @Component({
   selector: 'app-editfoodcategory',
