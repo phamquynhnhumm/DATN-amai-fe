@@ -69,6 +69,12 @@
 
         </table>
       </c-card-body>
+
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
     </c-card>
   </c-col>
   <!--  bảng các món đã xóa-->
@@ -126,6 +132,12 @@
 
         </table>
       </c-card-body>
+
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
     </c-card>
   </c-col>
   <c-col xs="1">

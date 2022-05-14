@@ -59,7 +59,7 @@
           </thead>
           <tbody *ngIf="foodList != null">
           <tr class="even pointer"
-              *ngFor="let food of foodList | paginate :{itemsPerPage:10 ,currentPage : p}">
+              *ngFor="let food of foodList | paginate :{itemsPerPage:5,currentPage : p}">
             <td (click)="openDetailFood(food)">{{food.name}}</td>
             <td (click)="openFoodCategory(food)">{{food.foodCategory.name}}</td>
             <td *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Hết món</td>
