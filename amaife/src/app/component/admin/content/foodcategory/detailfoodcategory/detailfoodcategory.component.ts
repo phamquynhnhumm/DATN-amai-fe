@@ -50,7 +50,7 @@ export class DetailfoodcategoryComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(DetailfoodComponent, {
           width: '800px',
-          height: '650px',
+          height: '550px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

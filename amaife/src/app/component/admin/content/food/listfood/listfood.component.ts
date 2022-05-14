@@ -2,18 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodService} from "../../../../../service/food.service";
 import {ActivatedRoute} from "@angular/router";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {EditfoodcategoryComponent} from "../../foodcategory/editfoodcategory/editfoodcategory.component";
-import {data} from "jquery";
-import {DelatefoodcategoryComponent} from "../../foodcategory/delatefoodcategory/delatefoodcategory.component";
 import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
 import {Food} from "../../../../../model/food/Food";
 import {EStatusFood} from "../../../../../model/food/EStatusFood";
 import {EditfoodComponent} from "../editfood/editfood.component";
 import {DetailfoodComponent} from "../detailfood/detailfood.component";
 import {DeletefoodComponent} from "../deletefood/deletefood.component";
+import {MatOptionSelectionChange} from "@angular/material/core";
 
 @Component({
   selector: 'app-listfood',
@@ -24,7 +22,8 @@ export class ListfoodComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
   eStatusFood = EStatusFood;
-  searchSubject = ['Tên món', 'Danh mục', 'Trạng thái', 'Đơn vị tính'];
+  searchSubject = ['Tên món', 'Danh mục', 'Đơn vị tính'];
+  searchss: string ="Chọn thuộc tính";
 
   constructor(
     private foodService: FoodService,
@@ -48,6 +47,11 @@ export class ListfoodComponent implements OnInit {
         this.foodList = data;
       }
     )
+  }
+
+  onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
+    this.searchss = searchs;
+    console.log(this.searchss)
   }
 
   searchForm = this.fb.group({
@@ -97,17 +101,61 @@ export class ListfoodComponent implements OnInit {
     )
   }
 
-  searchFoodCategory(search: string) {
-    //   console.log(search)
-    //   this.foodService.searchNameandisDeleteFoodCategory(false, search).subscribe(
-    //     (data) => {
-    //       console.log(data)
-    //       this.foodList = data;
-    //     },
-    //     (error) => {
-    //       this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-    //     }
-    //   );
+  searchFood(search: string) {
+    if (this.searchss == this.searchSubject[0]) {
+      console.log("tìm kiếm theo tên món")
+      this.foodService.searcFood(false, search, "", "").subscribe(
+        (data) => {
+          console.log(data)
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[1]) {
+      console.log("tìm danh mục ")
+      this.foodService.searcFood(false, "", "", search).subscribe(
+        (data) => {
+          console.log(data)
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[2]) {
+      console.log("tìm kiếm theo đơn vị tính")
+      this.foodService.searcFood(false, "",search, "").subscribe(
+        (data) => {
+          console.log(data)
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
   }
 
   openFoodCategory(food: Food) {
@@ -124,4 +172,5 @@ export class ListfoodComponent implements OnInit {
       }
     )
   }
+
 }

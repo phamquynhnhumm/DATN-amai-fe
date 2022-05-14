@@ -167,4 +167,16 @@ export class DeletefoodandcategoryComponent implements OnInit {
       }
     )
   }
+
+  searchFood(value: string) {
+    this.foodandcategoryService.searcFood(true, value,"","").subscribe(
+      (data) => {
+        console.log(data)
+        this.foodList = data;
+      },
+      (error) => {
+        this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+      }
+    );
+  }
 }

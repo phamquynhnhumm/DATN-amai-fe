@@ -16,34 +16,34 @@
       </c-card-header>
       <c-card-body>
         <div class="title_right">
-            <form [formGroup]="searchForm">
-              <div class="dropdown  input-group">
-                <c-col [md]="2">
-                  <mat-select  class=" form-control"
-                              formControlName="foodCategory" placeholder="Thuộc tính tìm kiếm ">
-                    <mat-option *ngFor="let searchs of searchSubject"
-                                [value]="searchs">{{searchs.valueOf()}}</mat-option>
-                  </mat-select>
-                </c-col>
-                <c-col [md]="1">
-                </c-col>
-                <c-col [md]="2"><input type="search" class="form-control rounded mr-4" formControlName="search"
-                                       placeholder="Tìm kiếm..."
-                                       #search>
-                </c-col>
-                <c-col [md]="3">
-                  <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
-                          (click)="searchFoodCategory(search.value)"> Tìm kiếm
-                  </button>
-                </c-col>
-              </div>
-              <small class="form-text text-muted text-danger"
-                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
-                ký tự!</small>
-            </form>
-          </div>
-          <br>
-<!--        </div>-->
+          <form [formGroup]="searchForm">
+            <div class="dropdown  input-group">
+              <c-col [md]="2">
+                <mat-select class=" form-control"
+                            placeholder="{{searchss}} ">
+                  <mat-option *ngFor="let searchs of searchSubject"
+                              (onSelectionChange)="onCheckboxChangeFood($event,searchs)">{{searchs.valueOf()}}</mat-option>
+                </mat-select>
+              </c-col>
+              <c-col [md]="1">
+              </c-col>
+              <c-col [md]="2"><input type="search" class="form-control rounded mr-4" formControlName="search"
+                                     placeholder="Tìm kiếm..."
+                                     #search>
+              </c-col>
+              <c-col [md]="3">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchFood(search.value)"> Tìm kiếm
+                </button>
+              </c-col>
+            </div>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+              ký tự!</small>
+          </form>
+        </div>
+        <br>
+        <!--        </div>-->
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>

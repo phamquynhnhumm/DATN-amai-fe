@@ -18,6 +18,7 @@ export class FoodService {
   readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/food/undelete";
   readonly URL_FOOD_DELETE = "http://localhost:8080/api/food/delete";
   readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/food/findByFoodcategoryId";
+  readonly URL_FOOD_SEARCH = "http://localhost:8080/api/food/search";
 
   /**
    * URL danh mục
@@ -74,6 +75,10 @@ export class FoodService {
 
   createFood(food: Object): Observable<Food> {
     return this.httpClient.post<Food>(this.URL_FOOD, food);
+  }
+
+  searcFood(isDelete: boolean, name: string, unit: string,foodCategoryName: string ): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('foodCategoryName', foodCategoryName)});
   }
 
   /**
