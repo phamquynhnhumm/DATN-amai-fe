@@ -41,6 +41,10 @@ import { CreatesupplierComponent } from './content/supplier/createsupplier/creat
 import { EditsupplierComponent } from './content/supplier/editsupplier/editsupplier.component';
 import { DetailsupplierComponent } from './content/supplier/detailsupplier/detailsupplier.component';
 import { DeletesupplierComponent } from './content/supplier/deletesupplier/deletesupplier.component';
+import { UnsupplierComponent } from './content/bin/unsupplier/unsupplier.component';
+import { UnmaterialComponent } from './content/bin/unmaterial/unmaterial.component';
+import { UnoderComponent } from './content/bin/unoder/unoder.component';
+import { UnoderdetailComponent } from './content/bin/unoderdetail/unoderdetail.component';
 
 
 @NgModule({
@@ -65,7 +69,11 @@ import { DeletesupplierComponent } from './content/supplier/deletesupplier/delet
     CreatesupplierComponent,
     EditsupplierComponent,
     DetailsupplierComponent,
-    DeletesupplierComponent
+    DeletesupplierComponent,
+    UnsupplierComponent,
+    UnmaterialComponent,
+    UnoderComponent,
+    UnoderdetailComponent
   ],
   exports: [
     LayoutComponent,

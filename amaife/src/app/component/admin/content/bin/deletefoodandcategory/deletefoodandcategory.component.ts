@@ -13,6 +13,10 @@ import {Food} from "../../../../../model/food/Food";
 import {cilLoopCircular, cilSettings} from "@coreui/icons";
 import {UndofoodComponent} from "../undofood/undofood.component";
 import {DetailfoodComponent} from "../../food/detailfood/detailfood.component";
+import {SupplierService} from "../../../../../service/supplier.service";
+import {Supplier} from "../../../../../model/supplier/Supplier";
+import {UnsupplierComponent} from "../unsupplier/unsupplier.component";
+import {DetailsupplierComponent} from "../../supplier/detailsupplier/detailsupplier.component";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -23,6 +27,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   namedDelete !: string;
   foodCategoryList!: Array<FoodCategory>;
   foodList!: Array<Food>;
+  supplierList!: Array<Supplier>;
   p: number | any;
   pfood: number | any;
   icons = {cilSettings, cilLoopCircular};
@@ -30,6 +35,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
 
   constructor(
     private foodandcategoryService: FoodService,
+    private supplierService: SupplierService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private matSnackBar: MatSnackBar,
@@ -49,7 +55,6 @@ export class DeletefoodandcategoryComponent implements OnInit {
       data => {
         this.p = 1;
         this.foodCategoryList = data;
-        console.log(this.foodCategoryList)
       }
     );
 
@@ -58,9 +63,16 @@ export class DeletefoodandcategoryComponent implements OnInit {
       datafood => {
         this.pfood = 1;
         this.foodList = datafood;
-        console.log(this.foodList)
       }
-    )
+    );
+
+    //Danh sách nhà cung cấp đã bị xóa
+    this.supplierService.findAllSupplierIsdelete(true).subscribe(
+      datasupplier => {
+        this.pfood = 1;
+        this.supplierList = datasupplier;
+      }
+    );
   }
 
   searchForm = this.fb.group({
@@ -169,7 +181,49 @@ export class DeletefoodandcategoryComponent implements OnInit {
   }
 
   searchFood(value: string) {
-    this.foodandcategoryService.searcFood(true, value,"","").subscribe(
+    this.foodandcategoryService.searcFood(true, value, "", "").subscribe(
+      (data) => {
+        console.log(data)
+        this.foodList = data;
+      },
+      (error) => {
+        this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+      }
+    );
+  }
+
+  openDetailSupplier(supplier: Supplier) {
+    this.supplierService.findByIdSupplier(supplier.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailsupplierComponent, {
+          width: '550px',
+          height: '580px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
+
+  openUnDeleteSupplier(supplier: Supplier) {
+    this.supplierService.findByIdSupplier(supplier.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UnsupplierComponent, {
+          width: '450px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      })
+  }
+
+
+  searchSupplier(value: string) {
+    this.foodandcategoryService.searcFood(true, value, "", "").subscribe(
       (data) => {
         console.log(data)
         this.foodList = data;
