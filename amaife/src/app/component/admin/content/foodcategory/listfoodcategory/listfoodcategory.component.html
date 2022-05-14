@@ -37,7 +37,10 @@
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
             <th>ID</th>
-            <th>Tên danh mục</th>
+            <th>
+              <!--              <span ng-show="sortType == '{{foodCategory.name}}'" class="fa fa-caret-down"></span>-->
+              Tên danh mục
+            </th>
             <th>Người cập nhật</th>
             <th>Thời gian thêm</th>
             <th>Sửa / Xóa</th>
@@ -47,7 +50,7 @@
           <tr class="even pointer"
               *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:10 ,currentPage : p}">
             <td>{{foodcategory.id}}</td>
-            <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
+            <td  (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
             <td>{{foodcategory.createdBy}}</td>
             <td>{{foodcategory.createAt}}</td>
             <td>

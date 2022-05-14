@@ -24,6 +24,7 @@ export class ListfoodComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
   eStatusFood = EStatusFood;
+  searchSubject = ['Tên món', 'Danh mục', 'Trạng thái', 'Đơn vị tính'];
 
   constructor(
     private foodService: FoodService,
