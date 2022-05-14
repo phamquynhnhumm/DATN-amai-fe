@@ -5,8 +5,6 @@ import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {EditfoodcategoryComponent} from "../../foodcategory/editfoodcategory/editfoodcategory.component";
-import {DelatefoodcategoryComponent} from "../../foodcategory/delatefoodcategory/delatefoodcategory.component";
 import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
 import {UndofoodandcategoryComponent} from "../undofoodandcategory/undofoodandcategory.component";
 import {Food} from "../../../../../model/food/Food";
@@ -109,10 +107,8 @@ export class DeletefoodandcategoryComponent implements OnInit {
 
 
   searchunFoodCategory(search: string) {
-    console.log(search)
     this.foodandcategoryService.searchNameandisDeleteFoodCategory(true, search).subscribe(
       (data) => {
-        console.log(data)
         this.foodCategoryList = data;
       },
       (error) => {
@@ -183,7 +179,6 @@ export class DeletefoodandcategoryComponent implements OnInit {
   searchFood(value: string) {
     this.foodandcategoryService.searcFood(true, value, "", "").subscribe(
       (data) => {
-        console.log(data)
         this.foodList = data;
       },
       (error) => {
@@ -223,10 +218,9 @@ export class DeletefoodandcategoryComponent implements OnInit {
 
 
   searchSupplier(value: string) {
-    this.foodandcategoryService.searcFood(true, value, "", "").subscribe(
+    this.supplierService.searchSupplier(true, value, "", "", "").subscribe(
       (data) => {
-        console.log(data)
-        this.foodList = data;
+        this.supplierList = data;
       },
       (error) => {
         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
