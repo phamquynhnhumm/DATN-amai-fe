@@ -31,7 +31,7 @@
                             [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
               </mat-select>
               <small class="text-danger col-sm-10"
-                     *ngIf="formFood.get('foodcategory')?.hasError('required') && formFood.get('foodcategory')?.touched">
+                     *ngIf="formFood.get('foodCategory')?.hasError('required') && formFood.get('foodCategory')?.touched">
                 <p>Danh mục không được để trống</p>
               </small>
 
@@ -55,7 +55,7 @@
               <label class="col-sm-12 col-form-label"><strong>Giá bán</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="number" class="form-control" formControlName="name" placeholder="Nhập giá bán">
+              <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá bán">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('price')?.hasError('required') && formFood.get('price')?.touched">
                 <p>Tên món không được để trống</p>
@@ -68,7 +68,7 @@
               <label class="col-sm-12 col-form-label"><strong>Số lượng</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="number" class="form-control" formControlName="name" placeholder="Nhập số lượng">
+              <input type="number" class="form-control" formControlName="quanity" placeholder="Nhập số lượng">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('quanity')?.hasError('required') && formFood.get('quanity')?.touched">
                 <p>Số lượng không được để trống</p>
@@ -92,28 +92,28 @@
             </c-col>
           </c-row>
           <br><br><br>
-          <c-row>
-            <c-col [md]="2">
-              <label class="col-sm-12 col-form-label"><strong>Nguyên liệu</strong></label>
-            </c-col>
-            <c-col [md]="8">
-              <mat-select class="custom-select form-control" multiple  formControlName="foodCategory" placeholder="Chọn nguyên liệu ">
-                <mat-option *ngFor="let foodCategorys of foodcategory"
-                            [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
-              </mat-select>
-              <small class="text-danger col-sm-10"
-                     *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
-                <p>Trạng thái món không được để trống</p>
-              </small>
-            </c-col>
-          </c-row>
-          <br><br><br>
+<!--          <c-row>-->
+<!--            <c-col [md]="2">-->
+<!--              <label class="col-sm-12 col-form-label"><strong>Nguyên liệu</strong></label>-->
+<!--            </c-col>-->
+<!--            <c-col [md]="8">-->
+<!--              <mat-select class="custom-select form-control" multiple  formControlName="foodDetailList" placeholder="Chọn nguyên liệu ">-->
+<!--                <mat-option *ngFor="let fooddetails of fooddetail"-->
+<!--                            [value]="fooddetails">{{fooddetails.material.name}}</mat-option>-->
+<!--              </mat-select>-->
+<!--              <small class="text-danger col-sm-10"-->
+<!--                     *ngIf="formFood.get('foodDetailList')?.hasError('required') && formFood.get('foodDetailList')?.touched">-->
+<!--                <p>Trạng thái món không được để trống</p>-->
+<!--              </small>-->
+<!--            </c-col>-->
+<!--          </c-row>-->
+<!--          <br><br><br>-->
           <c-row>
             <c-col [md]="2">
               <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="file" class="form-control" formControlName="name" placeholder="Chọn ảnh">
+              <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
                 <p>Ảnh không được để trống</p>

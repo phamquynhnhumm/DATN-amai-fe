@@ -5,7 +5,6 @@ import {FoodService} from "../../../../../service/food.service";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
-import {EStatusFood} from "../../../../../model/food/EStatusFood";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
 
 @Component({
@@ -17,7 +16,7 @@ export class CreatefoodComponent implements OnInit {
   colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
   food!: Food;
   foodcategory !: Array<FoodCategory>;
-  fooddetail!: FoodDetail;
+  fooddetail!: Array<FoodDetail>;
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
@@ -31,6 +30,11 @@ export class CreatefoodComponent implements OnInit {
         this.foodcategory = data;
       }
     )
+    this.foodService.findAllFoodDetailIsdelete(false).subscribe(
+      datafoodDetail => {
+        this.fooddetail = datafoodDetail;
+      }
+    )
   }
 
   formFood = new FormGroup(
@@ -38,19 +42,17 @@ export class CreatefoodComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
       price: new FormControl('', [Validators.required, Validators.min(0)]),
-      describe: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]),
       quanity: new FormControl('', [Validators.required, Validators.min(0)]),
       status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      foodcategory: new FormGroup({
-          id: new FormControl()
-        }
-      ),
+      foodCategory: new FormControl('', Validators.required),
       orderDetailList: new FormArray([]),
+      foodDetailList: new FormArray([]),
       image: new FormControl('', Validators.required),
     }
   )
 
   onSubmit() {
+    console.log(this.formFood.value);
     if (this.formFood.valid) {
       this.foodService.createFood(this.formFood.value).subscribe(
         (data) => {

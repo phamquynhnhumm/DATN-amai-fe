@@ -4,28 +4,37 @@
 <div class="form-group row">
   <label class="col-sm-5 col-form-label"> <strong>Tên danh mục </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.name}}</p>
+    <p readonly class="form-control-plaintext" >{{foodcategory.name}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"> <strong>Danh sách món</strong></label>
+  <div class="col-sm-7">
+    <mat-select *ngIf="foods !=null " class="form-control-plaintext " placeholder="Danh sách món">
+      <mat-option (click)="openDetailFood(food)" *ngFor="let food of foods" >{{food.name}}</mat-option>
+    </mat-select>
+    <div *ngIf="foods ==null " class="form-control-plaintext">
+      <p>"Không tồn tại món"</p>
+    </div>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Trạng thái tồn tại</strong></label>
   <div class="col-sm-7">
-    <p *ngIf="foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Đã xóa</p>
-    <p *ngIf="!foodcategory.isDeleted" readonly class="form-control-plaintext" value="email@example.com">Tồn tài</p>
+    <p *ngIf="foodcategory.isDeleted" readonly class="form-control-plaintext" >Đã xóa</p>
+    <p *ngIf="!foodcategory.isDeleted" readonly class="form-control-plaintext">Tồn tài</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createdBy}}</p>
+    <p readonly class="form-control-plaintext" >{{foodcategory.createdBy}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.createAt}}</p>
+    <p readonly class="form-control-plaintext" >{{foodcategory.createAt}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updatedBy}}</p>
+    <p readonly class="form-control-plaintext" >{{foodcategory.updatedBy}}</p>
   </div>
   <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
   <div class="col-sm-7">
-    <p readonly class="form-control-plaintext" value="email@example.com">{{foodcategory.updateAt}}</p>
+    <p readonly class="form-control-plaintext" >{{foodcategory.updateAt}}</p>
   </div>
   <div class="row">
     <div class="col-sm-5"></div>

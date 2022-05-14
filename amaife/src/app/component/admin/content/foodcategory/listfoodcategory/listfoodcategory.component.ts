@@ -10,6 +10,7 @@ import {DelatefoodcategoryComponent} from "../delatefoodcategory/delatefoodcateg
 import {FoodService} from "../../../../../service/food.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Food} from "../../../../../model/food/Food";
 
 @Component({
   selector: 'app-listfoodcategory',
@@ -19,7 +20,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ListfoodcategoryComponent implements OnInit {
 
   foodCategoryList!: Array<FoodCategory>;
+  foodCategory!: FoodCategory;
   p: number | any;
+  foods!: Array<Food> | null;
+  iffoodcategory!: number;
 
   constructor(
     private foodcategoryService: FoodService,
@@ -41,7 +45,7 @@ export class ListfoodcategoryComponent implements OnInit {
         this.p = 1;
         this.foodCategoryList = data;
       }
-    )
+    );
   }
 
   searchForm = this.fb.group({
@@ -81,8 +85,8 @@ export class ListfoodcategoryComponent implements OnInit {
     this.foodcategoryService.findByIdFoodCategory(foodcategory.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
-          width: '400px',
-          height: '450px',
+          width: '500px',
+          height: '500px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
@@ -103,5 +107,18 @@ export class ListfoodcategoryComponent implements OnInit {
         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
       }
     );
+  }
+
+  selectFoodFindFoodCategory_Id(foodcategory: FoodCategory) {
+    console.log(foodcategory.id);
+    this.foodcategoryService.findAllFoodByFoodCategory_Id(foodcategory.id).subscribe(
+      data => {
+        this.foods = data;
+      },
+      error => {
+        this.foods = null;
+        // this.ngOnInit();
+      }
+    )
   }
 }

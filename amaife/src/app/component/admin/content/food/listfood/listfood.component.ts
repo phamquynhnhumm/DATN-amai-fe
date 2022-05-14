@@ -30,7 +30,8 @@ export class ListfoodComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private matSnackBar: MatSnackBar,
-    private dialog: MatDialog) {
+    private dialog: MatDialog
+  ) {
   }
 
   dtOptions: DataTables.Settings = {};
