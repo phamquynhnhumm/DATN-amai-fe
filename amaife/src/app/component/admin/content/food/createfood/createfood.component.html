@@ -26,7 +26,7 @@
               <label class="col-sm-12 col-form-label"><strong>Danh mục món</strong></label>
             </c-col>
             <c-col [md]="8">
-              <mat-select class="custom-select form-control" formControlName="foodCategory">
+              <mat-select class="custom-select form-control" formControlName="foodCategory" placeholder="Chọn danh mục ">
                 <mat-option *ngFor="let foodCategorys of foodcategory"
                             [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
               </mat-select>
@@ -46,8 +46,7 @@
               <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('unit')?.hasError('required') && formFood.get('unit')?.touched">
-                <p>Đơn vị không được để trống</p>
-              </small>
+                <p>Đơn vị không được để trống</p></small>
             </c-col>
           </c-row>
           <br><br><br>
@@ -82,15 +81,14 @@
               <label class="col-sm-12 col-form-label"><strong>Trạng thái món</strong></label>
             </c-col>
             <c-col [md]="8">
+              <input class="form-check-input-inline" type="radio" value="INSTOCK" formControlName="status">
+              <label class=" col-sm-3 col-form-label form-check-label-inline">Còn món</label>
+              <input class="form-check-input-inline" type="radio" value="OUTSTOCK" formControlName="status">
+              <label class=" col-sm-4 col-form-label ">Hết món</label>
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
                 <p>Trạng thái món không được để trống</p>
               </small>
-              <mat-select class="custom-select form-control" formControlName="status">
-                <mat-option *ngFor="let status in statusfood"
-                            [value]="status">{{status.name}}</mat-option>
-              </mat-select>
-
             </c-col>
           </c-row>
           <br><br><br>
@@ -99,7 +97,10 @@
               <label class="col-sm-12 col-form-label"><strong>Nguyên liệu</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="text" class="form-control" formControlName="name" placeholder="Chọn nguyên liệu món">
+              <mat-select class="custom-select form-control" multiple  formControlName="foodCategory" placeholder="Chọn nguyên liệu ">
+                <mat-option *ngFor="let foodCategorys of foodcategory"
+                            [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
+              </mat-select>
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
                 <p>Trạng thái món không được để trống</p>
@@ -112,10 +113,10 @@
               <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="text" class="form-control" formControlName="name" placeholder="Nhập trạng thái món">
+              <input type="file" class="form-control" formControlName="name" placeholder="Chọn ảnh">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
-                <p>Trạng thái món không được để trống</p>
+                <p>Ảnh không được để trống</p>
               </small>
             </c-col>
           </c-row>

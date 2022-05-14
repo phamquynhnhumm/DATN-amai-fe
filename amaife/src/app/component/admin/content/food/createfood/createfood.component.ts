@@ -6,6 +6,7 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {EStatusFood} from "../../../../../model/food/EStatusFood";
+import {FoodDetail} from "../../../../../model/food/FoodDetail";
 
 @Component({
   selector: 'app-createfood',
@@ -16,7 +17,7 @@ export class CreatefoodComponent implements OnInit {
   colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
   food!: Food;
   foodcategory !: Array<FoodCategory>;
-  statusfood = EStatusFood;
+  fooddetail!: FoodDetail;
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
@@ -25,7 +26,6 @@ export class CreatefoodComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.statusfood["INSTOCK"])
     this.foodService.findAllFoodCategoryIsdelete(false).subscribe(
       data => {
         this.foodcategory = data;
@@ -41,7 +41,7 @@ export class CreatefoodComponent implements OnInit {
       describe: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]),
       quanity: new FormControl('', [Validators.required, Validators.min(0)]),
       status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      foodCategory: new FormGroup({
+      foodcategory: new FormGroup({
           id: new FormControl()
         }
       ),
