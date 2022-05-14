@@ -1,51 +1,115 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chỉnh sửa món</strong>
-</h1></div>
-<hr>
-<div mat-dialog-content>
-  <form [formGroup]="formFood" (ngSubmit)="onSubmit()" cForm class="row g-3">
-    <c-col [md]="12">
-      <c-col [md]="6"><label cLabel>Tên danh mục {{food.name}}</label></c-col>
-      <c-col [md]="6"><input cFormControl type="text" class="form-control" name="name" formControlName="name"
-                             placeholder="Nhập tên danh mục">
-        <small class="text-danger col-sm-10"
-               *ngIf="formFood.get('name')?.hasError('required') && formFood.get('name')?.touched">
-          <p>Tên danh mục không được để trống</p>
-        </small>
-        <small class="text-danger col-sm-10"
-               *ngIf="formFood.get('name')?.hasError('minlength') && formFood.get('name')?.touched">
-          <p>Tên danh mục phải lớn hơn 2 ký tự</p>
-        </small>
-        <small class="text-danger col-sm-10"
-               *ngIf="formFood.get('name')?.hasError('maxlength') && formFood.get('name')?.touched">
-          <p>Tên danh mục phải nhỏ hơn 255 ký tự</p></small></c-col>
-    </c-col>
-    <c-col [md]="12">
-      <label cLabel>Tên danh mục {{food.name}}</label>
-      <input cFormControl type="text" class="form-control" name="name" formControlName="name"
-             placeholder="Nhập tên danh mục">
-      <small class="text-danger col-sm-10"
-             *ngIf="formFood.get('name')?.hasError('required') && formFood.get('name')?.touched">
-        <p>Tên danh mục không được để trống</p>
-      </small>
-      <small class="text-danger col-sm-10"
-             *ngIf="formFood.get('name')?.hasError('minlength') && formFood.get('name')?.touched">
-        <p>Tên danh mục phải lớn hơn 2 ký tự</p>
-      </small>
-      <small class="text-danger col-sm-10"
-             *ngIf="formFood.get('name')?.hasError('maxlength') && formFood.get('name')?.touched">
-        <p>Tên danh mục phải nhỏ hơn 255 ký tự</p></small>
-    </c-col>
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong>THÊM MỚI MÓN</strong></h1>
+      </c-card-header>
+      <c-card-body><br>
+        <form cForm class="row g-3" [formGroup]="formFood" (ngSubmit)="onSubmit()">
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Tên món</strong></label>
+            </c-col>
+            <c-col [md]="9">
+              <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên món">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('name')?.hasError('required') && formFood.get('name')?.touched">
+                <p>Tên món không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Danh mục món</strong></label>
+            </c-col>
+            <c-col [md]="9">
+              <mat-select class="custom-select form-control" formControlName="foodCategory"
+                          placeholder="Chọn danh mục ">
+                <mat-option *ngFor="let foodCategorys of foodcategory"
+                            [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
+              </mat-select>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('foodCategory')?.hasError('required') && formFood.get('foodCategory')?.touched">
+                <p>Danh mục không được để trống</p>
+              </small>
 
-    <br>
-    <c-col [md]="12">
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" ngModel formControlName="isDeleted" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Xóa món</label>
-      </div>
-    </c-col>
-    <c-col [md]="12">
-      <button mat-button (click)="cencal()">Thoát</button>
-      <button type="submit" class="btn btn-warning">Lưu</button>
-    </c-col>
-  </form>
-</div>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Đơn vị tính</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('unit')?.hasError('required') && formFood.get('unit')?.touched">
+                <p>Đơn vị không được để trống</p></small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Giá bán</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá bán">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('price')?.hasError('required') && formFood.get('price')?.touched">
+                <p>Tên món không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Số lượng</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="number" class="form-control" formControlName="quanity" placeholder="Nhập số lượng">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('quanity')?.hasError('required') && formFood.get('quanity')?.touched">
+                <p>Số lượng không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Trạng thái món</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input class="form-check-input-inline" type="radio" value="INSTOCK" formControlName="status">
+              <label class=" col-sm-3 col-form-label form-check-label-inline">Còn món</label>
+              <input class="form-check-input-inline" type="radio" value="OUTSTOCK" formControlName="status">
+              <label class=" col-sm-4 col-form-label ">Hết món</label>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
+                <p>Trạng thái món không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
+                <p>Ảnh không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-col [xs]="12" style="text-align:center">
+            <button routerLink="/food" type="button" class="btn btn-dark mb-2">Hủy</button>
+            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
+          </c-col>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

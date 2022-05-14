@@ -3,8 +3,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FoodService} from "../../../../../service/food.service";
 import {Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
+import {FoodCategory} from "../../../../../model/food/FoodCategory";
 
 @Component({
   selector: 'app-editfood',
@@ -14,7 +15,8 @@ import {Food} from "../../../../../model/food/Food";
 export class EditfoodComponent implements OnInit {
 
   food!: Food;
-
+  foodcategory !: Array<FoodCategory>;
+  formFood!: FormGroup;
   constructor(
     private dialogRef: MatDialogRef<EditfoodComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,22 +26,25 @@ export class EditfoodComponent implements OnInit {
     private fb: FormBuilder) {
   }
 
-  formFood!: FormGroup;
-
   ngOnInit(): void {
+
+    this.foodService.findAllFoodCategoryIsdelete(false).subscribe(
+      data => {
+        this.foodcategory = data;
+      }
+    )
     this.food = this.data;
-       this.formFood = new FormGroup(
-         {
-        name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-        unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+
+    this.formFood = new FormGroup(
+      {
+        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+        unit: new FormControl(this.data.unit, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
         price: new FormControl('', [Validators.required, Validators.min(0)]),
-        describe: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]),
         quanity: new FormControl('', [Validators.required, Validators.min(0)]),
         status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-        foodCategory: new FormGroup({
-            id: new FormControl()
-          }
-        ),
+        foodCategory: new FormControl('', Validators.required),
+        orderDetailList: new FormArray([]),
+        foodDetailList: new FormArray([]),
         image: new FormControl('', Validators.required),
       }
     )

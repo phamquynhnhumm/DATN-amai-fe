@@ -62,8 +62,8 @@ export class ListfoodComponent implements OnInit {
     this.foodService.findByIdFood(food.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(EditfoodComponent, {
-          width: '300px',
-          height: '350px',
+          width: '800px',
+          height: '550px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
