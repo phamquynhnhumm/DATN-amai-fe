@@ -35,7 +35,6 @@ export class EditmaterialComponent implements OnInit {
       }
     )
     this.material = this.data;
-
     this.formMaterial = new FormGroup(
       {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),

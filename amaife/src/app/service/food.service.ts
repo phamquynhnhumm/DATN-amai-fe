@@ -97,7 +97,7 @@ export class FoodService {
    * Tìm kiếm theo trạng thái của món và theo id của nguyên liệu để hiện thi cách món sử dùng 1 nguyên liệu
    */
   searchFoodfindMaterialID(isDelete: boolean, id: number): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('id', id)});
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH_MATERIALID, {params: new HttpParams().set('isDelete', isDelete).set('id', id)});
   }
 
   /**

@@ -27,8 +27,7 @@ export class DetailmaterialComponent implements OnInit {
               private supplierService: SupplierService,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private snackBar: MatSnackBar,
-              private dialog: MatDialog
-  ) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {

@@ -1,0 +1,89 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-9">
+            <h1><strong style="margin: 0 auto;">DANH SÁCH CHI TIẾT NGUYÊN LIỆU SỬ DÙNG PHA CHẾ</strong></h1>
+          </div>
+          <div class="col-sm-3">
+            <a routerLink="/createfood" class="btn btn-success" data-toggle="modal">
+              <span style="color: white">Thêm mới thành phần món</span></a>
+          </div>
+        </c-row>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <form [formGroup]="searchForm">
+            <div class="dropdown  input-group">
+              <c-col [md]="2">
+                <mat-select class=" form-control"
+                            placeholder="{{searchss}} ">
+                  <mat-option *ngFor="let searchs of searchSubject"
+                              (onSelectionChange)="onCheckboxChangeFood($event,searchs)">{{searchs.valueOf()}}</mat-option>
+                </mat-select>
+              </c-col>
+              <c-col [md]="1">
+              </c-col>
+              <c-col [md]="2"><input type="search" class="form-control rounded mr-4" formControlName="search"
+                                     placeholder="Tìm kiếm..."
+                                     #search>
+              </c-col>
+              <c-col [md]="3">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchFood(search.value)"> Tìm kiếm
+                </button>
+              </c-col>
+            </div>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+              ký tự!</small>
+          </form>
+        </div>
+        <br>
+        <!--        </div>-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead class="table table-striped able-bordered jambo_table bulk_action">
+          <tr>
+            <th>Mã thành phần</th>
+            <th>Tên món</th>
+            <th>Tên nguyên liệu</th>
+            <th>Khối lượng sử dụng</th>
+            <th>Sửa / Xóa</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="fooddetailList != null">
+          <tr class="even pointer"
+              *ngFor="let fooddetail of fooddetailList | paginate :{itemsPerPage:5,currentPage : p}">
+            <td>{{fooddetail.id}}</td>
+            <td (click)="openDetailFood(fooddetail)">{{fooddetail.food.name}}</td>
+            <td (click)="openDetailMaterial(fooddetail)">{{fooddetail.material.name}}</td>
+            <td>{{fooddetail.kg}}</td>
+            <td>
+              <a (click)="openEditFoodDetail(fooddetail)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteFoodDetail(fooddetail)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            </td>
+          </tr>
+          <!--          nếu không tìm thấy dữ liệu trên data-->
+          </tbody>
+          <tbody *ngIf="fooddetailList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+      <!--        Pagination-->
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+</c-row>
