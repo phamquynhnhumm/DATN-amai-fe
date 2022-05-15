@@ -1,1 +1,36 @@
-<p>detailfooddetail works!</p>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Nguyên Liệu Món</strong>
+</h1></div>
+<hr>
+<div class="form-group row">
+  <label class="col-sm-5 col-form-label"> <strong>Tên món</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" (click)="openfood(foodDetail)">{{foodDetail.food.name}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Tài nguyên liệu </strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" (click)="OpenMaterial(foodDetail)" >{{foodDetail.material.name}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Khối lượng sử dụng </strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" >{{foodDetail.kg}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" >{{foodDetail.createAt}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" >{{foodDetail.updatedBy}}</p>
+  </div>
+  <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
+  <div class="col-sm-7">
+    <p readonly class="form-control-plaintext" >{{foodDetail.updateAt}}</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button mat-button (click)="deletefoodDetail()">Thoát</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>
