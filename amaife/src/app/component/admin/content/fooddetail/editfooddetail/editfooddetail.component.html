@@ -1,1 +1,60 @@
-<p>editfooddetail works!</p>
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong>CẬP NHẬT THÀNH PHẦN MÓN</strong></h1>
+      </c-card-header>
+      <c-card-body><br>
+        <form cForm class="row g-3" [formGroup]="formFoodDetail" (ngSubmit)="onSubmit()">
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Chọn món</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <mat-select class="custom-select form-control" formControlName="food" placeholder="{{foodDetail.food.name}}">
+                <mat-option *ngFor="let food of foodList"
+                            [value]="food">{{food.name}}</mat-option>
+              </mat-select>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFoodDetail.get('food')?.hasError('required') && formFoodDetail.get('food')?.touched">
+                <p>Món không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Chọn nguyên liệu</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <mat-select class="custom-select form-control" formControlName="material" placeholder="{{foodDetail.material.name}}">
+                <mat-option *ngFor="let material of materialList"
+                            [value]="material">{{material.name}}</mat-option>
+              </mat-select>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFoodDetail.get('material')?.hasError('required') && formFoodDetail.get('material')?.touched">
+                <p>Nguyên liệu không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Khối lượng sử dụng</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="text" class="form-control" formControlName="kg" placeholder="Nhập khối lượng sử dụng">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFoodDetail.get('kg')?.hasError('required') && formFoodDetail.get('kg')?.touched">
+                <p>Khối lượng không được để trống</p></small>
+            </c-col>
+          </c-row>
+          <c-col [xs]="12" style="text-align:center">
+            <button mat-button (click)="cencal()">Thoát</button>
+            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
+          </c-col>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

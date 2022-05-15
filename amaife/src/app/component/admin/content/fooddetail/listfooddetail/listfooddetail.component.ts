@@ -40,12 +40,10 @@ export class ListfooddetailComponent implements OnInit {
   food!: Food;
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
     this.foodDetailService.findAllFoodDetailIsdelete(false).subscribe(
       data => {
         this.p = 1;
+        console.log(this.fooddetailList)
         this.fooddetailList = data;
       }
     )
@@ -147,7 +145,7 @@ export class ListfooddetailComponent implements OnInit {
     this.foodDetailService.findByIdFoodDetail(fooddetail.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(EditfooddetailComponent, {
-          width: '400px',
+          width: '800px',
           height: '450px',
           data: data
         });
@@ -163,7 +161,7 @@ export class ListfooddetailComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(DeletefooddetailComponent, {
           width: '400px',
-          height: '450px',
+          height: '350px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
