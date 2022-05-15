@@ -33,7 +33,7 @@
               </c-col>
               <c-col [md]="3">
                 <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
-                        (click)="searchFood(search.value)"> Tìm kiếm
+                        (click)="searchFoodDetail(search.value)"> Tìm kiếm
                 </button>
               </c-col>
             </div>
@@ -57,7 +57,7 @@
           <tbody *ngIf="fooddetailList != null">
           <tr class="even pointer"
               *ngFor="let fooddetail of fooddetailList | paginate :{itemsPerPage:5,currentPage : p}">
-            <td>{{fooddetail.id}}</td>
+            <td (click)="openDetailFoodDetail(fooddetail)"><a>Xem chi tiết</a></td>
             <td (click)="openDetailFood(fooddetail)">{{fooddetail.food.name}}</td>
             <td (click)="openDetailMaterial(fooddetail)">{{fooddetail.material.name}}</td>
             <td>{{fooddetail.kg}}</td>

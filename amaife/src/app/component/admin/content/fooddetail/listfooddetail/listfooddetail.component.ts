@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Food} from "../../../../../model/food/Food";
 import {EStatusFood} from "../../../../../model/food/EStatusFood";
 import {FoodService} from "../../../../../service/food.service";
@@ -7,12 +7,13 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {MatOptionSelectionChange} from "@angular/material/core";
-import {EditfoodComponent} from "../../food/editfood/editfood.component";
 import {DeletefoodComponent} from "../../food/deletefood/deletefood.component";
 import {DetailfoodComponent} from "../../food/detailfood/detailfood.component";
-import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
 import {DetailmaterialComponent} from "../../material/detailmaterial/detailmaterial.component";
+import {DetailfooddetailComponent} from "../detailfooddetail/detailfooddetail.component";
+import {DeletefooddetailComponent} from "../deletefooddetail/deletefooddetail.component";
+import {EditfooddetailComponent} from "../editfooddetail/editfooddetail.component";
 
 @Component({
   selector: 'app-listfooddetail',
@@ -23,7 +24,6 @@ export class ListfooddetailComponent implements OnInit {
 
   fooddetailList!: Array<FoodDetail>;
   p: number | any;
-  eStatusFood = EStatusFood;
   searchSubject = ['Tên món', 'Tên nguyên liệu'];
   searchss: string = "Chọn thuộc tính";
 
@@ -60,20 +60,6 @@ export class ListfooddetailComponent implements OnInit {
     search: ['', Validators.maxLength(100)],
   });
 
-  openEditFood(food: Food) {
-    this.foodDetailService.findByIdFood(food.id).subscribe(
-      data => {
-        const dialogRef = this.dialog.open(EditfoodComponent, {
-          width: '800px',
-          height: '550px',
-          data: data
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          this.ngOnInit();
-        });
-      })
-  }
-
   openDeleteFood(food: Food) {
     this.foodDetailService.findByIdFood(food.id).subscribe(
       data => {
@@ -103,10 +89,12 @@ export class ListfooddetailComponent implements OnInit {
     )
   }
 
-  searchFood(search: string) {
-    if (this.searchss == this.searchSubject[0]) {
-      this.foodDetailService.searchFoodDetailFoodandMaterial(false, false, false,search,'').subscribe(
+  searchFoodDetail(search: string) {
+    if (this.searchss == this.searchSubject[0]){
+      console.log("tìm kiếm theo tên món")
+      this.foodDetailService.searchFoodDetailFoodandMaterial(false, false, false, search, '').subscribe(
         (data) => {
+          console.log(data)
           this.fooddetailList = data;
         },
         (error) => {
@@ -120,55 +108,24 @@ export class ListfooddetailComponent implements OnInit {
         }
       );
     }
-    // if (this.searchss == this.searchSubject[1]) {
-    //   console.log("tìm danh mục ")
-    //   this.foodService.searcFood(false, "", "", search).subscribe(
-    //     (data) => {
-    //       this.fooddetailList = data;
-    //     },
-    //     (error) => {
-    //       this.foodService.findAllFoodIsdelete(false).subscribe(
-    //         data => {
-    //           this.p = 1;
-    //           this.fooddetailList = data;
-    //         }
-    //       )
-    //       this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-    //     }
-    //   );
-    // }
-    // if (this.searchss == this.searchSubject[2]) {
-    //   console.log("tìm kiếm theo đơn vị tính")
-    //   this.foodService.searcFood(false, "", search, "").subscribe(
-    //     (data) => {
-    //       this.fooddetailList = data;
-    //     },
-    //     (error) => {
-    //       this.foodService.findAllFoodIsdelete(false).subscribe(
-    //         data => {
-    //           this.p = 1;
-    //           this.fooddetailList = data;
-    //         }
-    //       )
-    //       this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-    //     }
-    //   );
-    // }
-  }
-
-  openFoodCategory(food: Food) {
-    this.foodDetailService.findByIdFoodCategory(food.foodCategory.id).subscribe(
-      data => {
-        const dialogRef = this.dialog.open(DetailfoodcategoryComponent, {
-          width: '400px',
-          height: '450px',
-          data: data
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          this.ngOnInit();
-        });
-      }
-    )
+    if (this.searchss == this.searchSubject[1]) {
+      console.log("tìm kiếm theo tên nguyên liệu")
+      this.foodDetailService.searchFoodDetailFoodandMaterial(false, false, false, "", search).subscribe(
+        (data) => {
+          console.log(data)
+          this.fooddetailList = data;
+        },
+        (error) => {
+          this.foodDetailService.findAllFoodDetailIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.fooddetailList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
   }
 
   openDetailMaterial(fooddetail: FoodDetail) {
@@ -187,10 +144,47 @@ export class ListfooddetailComponent implements OnInit {
   }
 
   openEditFoodDetail(fooddetail: FoodDetail) {
-
+    this.foodDetailService.findByIdFoodDetail(fooddetail.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(EditfooddetailComponent, {
+          width: '400px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 
   openDeleteFoodDetail(fooddetail: FoodDetail) {
+    this.foodDetailService.findByIdFoodDetail(fooddetail.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DeletefooddetailComponent, {
+          width: '400px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
 
+  openDetailFoodDetail(fooddetail: FoodDetail) {
+    this.foodDetailService.findByIdFoodDetail(fooddetail.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailfooddetailComponent, {
+          width: '400px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 }
