@@ -47,6 +47,7 @@
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
+            <th>ID</th>
             <th>Tên nguyên liệu</th>
             <th>Nhà cung cấp</th>
             <th>Giá nhập</th>
@@ -59,6 +60,7 @@
           <tbody *ngIf="materialList != null">
           <tr class="even pointer"
               *ngFor="let material of materialList | paginate :{itemsPerPage:5,currentPage : p}">
+            <td>{{material.id}}</td>
             <td (click)="openDetailMaterial(material)">{{material.name}}</td>
             <td (click)="openDetailSuppkier(material.supplierList)">{{material.supplierList.name}}</td>
             <td>{{material.price |currency:'VND'}} </td>

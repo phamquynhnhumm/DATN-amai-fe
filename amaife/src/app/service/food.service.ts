@@ -20,6 +20,7 @@ export class FoodService {
   readonly URL_FOOD_DELETE = "http://localhost:8080/api/food/delete";
   readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/food/findByFoodcategoryId";
   readonly URL_FOOD_SEARCH = "http://localhost:8080/api/food/search";
+  readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/food/searchfindBymaterial";
 
   /**
    * URL danh mục
@@ -90,6 +91,13 @@ export class FoodService {
 
   searcFood(isDelete: boolean, name: string, unit: string, foodCategoryName: string): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('foodCategoryName', foodCategoryName)});
+  }
+
+  /**
+   * Tìm kiếm theo trạng thái của món và theo id của nguyên liệu để hiện thi cách món sử dùng 1 nguyên liệu
+   */
+  searchFoodfindMaterialID(isDelete: boolean, id: number): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH_MATERIALID, {params: new HttpParams().set('isDelete', isDelete).set('id', id)});
   }
 
   /**

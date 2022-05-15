@@ -8,6 +8,7 @@ import {FoodDetail} from "../../../../../model/food/FoodDetail";
 import {Supplier} from "../../../../../model/supplier/Supplier";
 import {SupplierService} from "../../../../../service/supplier.service";
 import {DetailsupplierComponent} from "../../supplier/detailsupplier/detailsupplier.component";
+import {Food} from "../../../../../model/food/Food";
 
 @Component({
   selector: 'app-detailmaterial',
@@ -18,6 +19,7 @@ export class DetailmaterialComponent implements OnInit {
 
   material!: Material;
   fooddetails!: Array<FoodDetail> | any;
+  foods!: Array<Food> | any;
   foodnull!: boolean;
 
   constructor(private dialogRef: MatDialogRef<DetailmaterialComponent>,
@@ -31,14 +33,14 @@ export class DetailmaterialComponent implements OnInit {
 
   ngOnInit(): void {
     this.material = this.data;
-    // this.mterialService.findAllFoodByFoodCategory_Id(this.material.id).subscribe(
-    //   datas => {
-    //     this.fooddetails = datas;
-    //   },
-    //   error => {
-    //     this.foodnull = false;
-    //   }
-    // )
+    this.mterialService.searchFoodfindMaterialID(false, this.material.id).subscribe(
+      datas => {
+        this.foods = datas;
+      },
+      error => {
+        this.foodnull = false;
+      }
+    )
   }
 
   deleteMaterial() {
@@ -48,8 +50,8 @@ export class DetailmaterialComponent implements OnInit {
     })
   }
 
-  openDetailMaterial(material: Material) {
-    this.mterialService.findByIdMaterial(material.id).subscribe(
+  openDetailFood(food: Food) {
+    this.mterialService.findByIdFood(food.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(DetailfoodComponent, {
           width: '800px',
@@ -61,6 +63,7 @@ export class DetailmaterialComponent implements OnInit {
         });
       }
     )
+
   }
 
   openDetailSuppkier(supplierList: Supplier) {
