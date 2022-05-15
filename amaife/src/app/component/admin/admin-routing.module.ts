@@ -10,6 +10,8 @@ import {CreatefoodComponent} from "./content/food/createfood/createfood.componen
 import {EditfoodComponent} from "./content/food/editfood/editfood.component";
 import {ListsupplierComponent} from "./content/supplier/listsupplier/listsupplier.component";
 import {CreatesupplierComponent} from "./content/supplier/createsupplier/createsupplier.component";
+import {ListmaterialComponent} from "./content/material/listmaterial/listmaterial.component";
+import {CreartematerialComponent} from "./content/material/creartematerial/creartematerial.component";
 
 const routes: Routes = [
   /**
@@ -30,6 +32,12 @@ const routes: Routes = [
    */
   {path: "supplier", component: ListsupplierComponent},
   {path: "createsupplier", component: CreatesupplierComponent},
+
+  /**
+   * URL nguyên liệu
+   */
+  {path: "material", component:ListmaterialComponent},
+  {path:"creatematerial", component: CreartematerialComponent}
 ];
 
 @NgModule({

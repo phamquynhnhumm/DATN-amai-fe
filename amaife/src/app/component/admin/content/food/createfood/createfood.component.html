@@ -58,7 +58,7 @@
               <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá bán">
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('price')?.hasError('required') && formFood.get('price')?.touched">
-                <p>Tên món không được để trống</p>
+                <p>Giá bán không được để trống</p>
               </small>
             </c-col>
           </c-row>

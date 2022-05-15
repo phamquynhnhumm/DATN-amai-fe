@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodService} from "../../../../../service/food.service";
 import {ActivatedRoute} from "@angular/router";
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {DetailfoodcategoryComponent} from "../../foodcategory/detailfoodcategory/detailfoodcategory.component";
@@ -91,7 +90,7 @@ export class ListfoodComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(DetailfoodComponent, {
           width: '800px',
-          height: '650px',
+          height: '580px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

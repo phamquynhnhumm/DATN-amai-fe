@@ -71,7 +71,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Nguyên liệu',
-        url: '/icons/flags'
+        url: '/material'
       },
       {
         name: 'Nhập nguyên liệu',

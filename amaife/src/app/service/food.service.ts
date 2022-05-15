@@ -178,7 +178,7 @@ export class FoodService {
     return this.httpClient.get<Material>(this.URL_MATERIAL + "/" + id);
   }
 
-  findAllFoodBySupplier_Id(id: number): Observable<Array<Material>> {
+  findAllMaterialBySupplier_Id(id: number): Observable<Array<Material>> {
     return this.httpClient.get<Array<Material>>(this.URL_MATERIAL_FINDBYSUPPLIER_ID + "/" + id);
   }
 

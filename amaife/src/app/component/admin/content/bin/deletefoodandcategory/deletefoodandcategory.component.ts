@@ -15,6 +15,9 @@ import {SupplierService} from "../../../../../service/supplier.service";
 import {Supplier} from "../../../../../model/supplier/Supplier";
 import {UnsupplierComponent} from "../unsupplier/unsupplier.component";
 import {DetailsupplierComponent} from "../../supplier/detailsupplier/detailsupplier.component";
+import {Material} from "../../../../../model/food/Material";
+import {DetailmaterialComponent} from "../../material/detailmaterial/detailmaterial.component";
+import {UnmaterialComponent} from "../unmaterial/unmaterial.component";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -26,6 +29,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   foodCategoryList!: Array<FoodCategory>;
   foodList!: Array<Food>;
   supplierList!: Array<Supplier>;
+  materialList!: Array<Material>;
   p: number | any;
   pfood: number | any;
   icons = {cilSettings, cilLoopCircular};
@@ -69,6 +73,14 @@ export class DeletefoodandcategoryComponent implements OnInit {
       datasupplier => {
         this.pfood = 1;
         this.supplierList = datasupplier;
+      }
+    );
+
+    //Danh sách nguyên liệu đã bị xóa
+    this.foodandcategoryService.findAllMaterialIsdelete(true).subscribe(
+      datamaterial => {
+        this.pfood = 1;
+        this.materialList = datamaterial;
       }
     );
   }
@@ -221,6 +233,46 @@ export class DeletefoodandcategoryComponent implements OnInit {
     this.supplierService.searchSupplier(true, value, "", "", "").subscribe(
       (data) => {
         this.supplierList = data;
+      },
+      (error) => {
+        this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+      }
+    );
+  }
+
+  openUnDeleteMaterial(material: Material) {
+    this.foodandcategoryService.findByIdMaterial(material.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UnmaterialComponent, {
+          width: '450px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      })
+  }
+
+  openDetailMaterial(material: Material) {
+    this.foodandcategoryService.findByIdMaterial(material.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailmaterialComponent, {
+          width: '800px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
+
+  searchMaterial(value: string) {
+    this.foodandcategoryService.searcMaterial(true, value, "", "").subscribe(
+      (data) => {
+        this.materialList = data;
       },
       (error) => {
         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
