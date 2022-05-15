@@ -54,7 +54,6 @@ export class EditfoodComponent implements OnInit {
   cencal() {
     this.bolen = true;
     this.dialogRef.close();
-    console.log("đang hủy sao ko đc nhỉ")
     this.snackBar.open("Hủy cập nhật món", "OK", {
       duration: 4000
     })

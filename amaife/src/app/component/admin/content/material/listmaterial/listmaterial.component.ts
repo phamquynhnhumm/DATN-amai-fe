@@ -65,7 +65,7 @@ export class ListmaterialComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(EditmaterialComponent, {
           width: '800px',
-          height: '550px',
+          height: '600px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
