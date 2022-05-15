@@ -50,6 +50,11 @@ import { ListmaterialComponent } from './content/material/listmaterial/listmater
 import { EditmaterialComponent } from './content/material/editmaterial/editmaterial.component';
 import { DeletematerialComponent } from './content/material/deletematerial/deletematerial.component';
 import { DetailmaterialComponent } from './content/material/detailmaterial/detailmaterial.component';
+import { ListfooddetailComponent } from './content/fooddetail/listfooddetail/listfooddetail.component';
+import { CreatefooddetailComponent } from './content/fooddetail/createfooddetail/createfooddetail.component';
+import { EditfooddetailComponent } from './content/fooddetail/editfooddetail/editfooddetail.component';
+import { DeletefooddetailComponent } from './content/fooddetail/deletefooddetail/deletefooddetail.component';
+import { DetailfooddetailComponent } from './content/fooddetail/detailfooddetail/detailfooddetail.component';
 
 
 @NgModule({
@@ -83,7 +88,12 @@ import { DetailmaterialComponent } from './content/material/detailmaterial/detai
     ListmaterialComponent,
     EditmaterialComponent,
     DeletematerialComponent,
-    DetailmaterialComponent
+    DetailmaterialComponent,
+    ListfooddetailComponent,
+    CreatefooddetailComponent,
+    EditfooddetailComponent,
+    DeletefooddetailComponent,
+    DetailfooddetailComponent
   ],
   exports: [
     LayoutComponent,

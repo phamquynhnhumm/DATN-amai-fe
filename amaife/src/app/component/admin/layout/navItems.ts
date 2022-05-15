@@ -53,6 +53,10 @@ export const navItems: INavData[] = [
       {
         name: 'Món',
         url: '/food'
+      },
+      {
+        name: 'Nguyên liệu món',
+        url: '/fooddetail'
       }
     ]
   },

@@ -97,7 +97,7 @@ export class FoodService {
    * Tìm kiếm theo trạng thái của món và theo id của nguyên liệu để hiện thi cách món sử dùng 1 nguyên liệu
    */
   searchFoodfindMaterialID(isDelete: boolean, id: number): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH_MATERIALID, {params: new HttpParams().set('isDelete', isDelete).set('id', id)});
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('id', id)});
   }
 
   /**
@@ -142,8 +142,8 @@ export class FoodService {
     return this.httpClient.get<Array<FoodDetail>>(this.URL_FOODDETAIL);
   }
 
-  searchNameandisDeleteFoodDetail(isDelete: boolean, name: string): Observable<Array<FoodDetail>> {
-    return this.httpClient.get<Array<FoodDetail>>(this.URL_FOODDETAIL_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name)});
+  searchFoodDetailFoodandMaterial(isDeleteFoodDetail: boolean, isDeleteFood: boolean, isDeleteMaterial: boolean, nameFood: string, nameMaterial: string): Observable<Array<FoodDetail>> {
+    return this.httpClient.get<Array<FoodDetail>>(this.URL_FOODDETAIL_SEARCH, {params: new HttpParams().set('isDeleteFoodDetail', isDeleteFoodDetail).set('isDeleteFood', isDeleteFood).set('isDeleteMaterial', isDeleteMaterial).set('nameFood', nameFood).set('nameMaterial', nameMaterial)});
   }
 
   findAllFoodDetailIsdelete(isdelete: boolean): Observable<Array<FoodDetail>> {
