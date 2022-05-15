@@ -45,6 +45,11 @@ import { UnsupplierComponent } from './content/bin/unsupplier/unsupplier.compone
 import { UnmaterialComponent } from './content/bin/unmaterial/unmaterial.component';
 import { UnoderComponent } from './content/bin/unoder/unoder.component';
 import { UnoderdetailComponent } from './content/bin/unoderdetail/unoderdetail.component';
+import { CreartematerialComponent } from './content/material/creartematerial/creartematerial.component';
+import { ListmaterialComponent } from './content/material/listmaterial/listmaterial.component';
+import { EditmaterialComponent } from './content/material/editmaterial/editmaterial.component';
+import { DeletematerialComponent } from './content/material/deletematerial/deletematerial.component';
+import { DetailmaterialComponent } from './content/material/detailmaterial/detailmaterial.component';
 
 
 @NgModule({
@@ -73,7 +78,12 @@ import { UnoderdetailComponent } from './content/bin/unoderdetail/unoderdetail.c
     UnsupplierComponent,
     UnmaterialComponent,
     UnoderComponent,
-    UnoderdetailComponent
+    UnoderdetailComponent,
+    CreartematerialComponent,
+    ListmaterialComponent,
+    EditmaterialComponent,
+    DeletematerialComponent,
+    DetailmaterialComponent
   ],
   exports: [
     LayoutComponent,

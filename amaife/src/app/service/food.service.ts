@@ -4,6 +4,7 @@ import {Food} from "../model/food/Food";
 import {Observable} from "rxjs";
 import {FoodCategory} from "../model/food/FoodCategory";
 import {FoodDetail} from "../model/food/FoodDetail";
+import {Material} from "../model/food/Material";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,16 @@ export class FoodService {
   }
 
   /**
+   * URL Nhà cung
+   */
+  readonly URL_MATERIAL = "http://localhost:8080/api/material";
+  readonly URL_MATERIAL_FINFDISDELETE = "http://localhost:8080/api/material/all";
+  readonly URL_MATERIAL_UNDELETE = "http://localhost:8080/api/material/undelete";
+  readonly URL_MATERIAL_DELETE = "http://localhost:8080/api/material/delete";
+  readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "http://localhost:8080/api/material/findBySupplierId";
+  readonly URL_MATERIAL_SEARCH = "http://localhost:8080/api/material/search";
+
+  /**
    * CRUD Món
    */
 
@@ -77,7 +88,7 @@ export class FoodService {
     return this.httpClient.post<Food>(this.URL_FOOD, food);
   }
 
-  searcFood(isDelete: boolean, name: string, unit: string,foodCategoryName: string ): Observable<Array<Food>> {
+  searcFood(isDelete: boolean, name: string, unit: string, foodCategoryName: string): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('foodCategoryName', foodCategoryName)});
   }
 
@@ -149,5 +160,45 @@ export class FoodService {
 
   createFoodDetail(foodDetail: Object): Observable<FoodDetail> {
     return this.httpClient.post<FoodDetail>(this.URL_FOODDETAIL, foodDetail);
+  }
+
+  /**
+   * CRUD nguyên liệu
+   */
+
+  findAllMaterial(): Observable<Array<Material>> {
+    return this.httpClient.get<Array<Material>>(this.URL_MATERIAL);
+  }
+
+  findAllMaterialIsdelete(isdelete: boolean): Observable<Array<Material>> {
+    return this.httpClient.get<Array<Material>>(this.URL_MATERIAL_FINFDISDELETE + "/" + isdelete);
+  }
+
+  findByIdMaterial(id: number): Observable<Material> {
+    return this.httpClient.get<Material>(this.URL_MATERIAL + "/" + id);
+  }
+
+  findAllFoodBySupplier_Id(id: number): Observable<Array<Material>> {
+    return this.httpClient.get<Array<Material>>(this.URL_MATERIAL_FINDBYSUPPLIER_ID + "/" + id);
+  }
+
+  undeleteByIdMaterial(id: number, material: Object): Observable<Material> {
+    return this.httpClient.put<Material>(this.URL_MATERIAL_UNDELETE + "/" + id, material);
+  }
+
+  updateMaterial(material: Object): Observable<Material> {
+    return this.httpClient.put<Material>(this.URL_MATERIAL, material);
+  }
+
+  deleteByIdMaterial(id: number): Observable<Material> {
+    return this.httpClient.delete<Material>(this.URL_MATERIAL_DELETE + "/" + id);
+  }
+
+  createMaterial(material: Object): Observable<Material> {
+    return this.httpClient.post<Material>(this.URL_MATERIAL, material);
+  }
+
+  searcMaterial(isDelete: boolean, name: string, unit: string, supplierName: string): Observable<Array<Material>> {
+    return this.httpClient.get<Array<Material>>(this.URL_MATERIAL_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('supplierName', supplierName)});
   }
 }
