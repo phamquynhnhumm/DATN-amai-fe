@@ -43,16 +43,20 @@ export class CreatefooddetailComponent implements OnInit {
     {
       food: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       material: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
-      kg: new FormControl('', [Validators.required, Validators.min(0)])
+      kg: new FormControl('', [Validators.required])
     }
   )
 
   onSubmit() {
     console.log(this.formFoodDetail.value);
     if (this.formFoodDetail.valid) {
-      this.foodService.createFoodDetail(this.formFoodDetail.value).subscribe(
+      this.fooddetail.food = this.formFoodDetail.value.food;
+      this.fooddetail.material = this.formFoodDetail.value.material;
+      this.fooddetail.kg = this.formFoodDetail.value.kg;
+      console.log(this.fooddetail)
+      this.foodService.createFoodDetail(this.fooddetail).subscribe(
         (data) => {
-          console.log(this.formFoodDetail.value)
+          console.log(this.fooddetail)
           this.route.navigateByUrl("/fooddetail").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
         }
       )

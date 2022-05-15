@@ -57,7 +57,7 @@
           <tbody *ngIf="fooddetailList != null">
           <tr class="even pointer"
               *ngFor="let fooddetail of fooddetailList | paginate :{itemsPerPage:5,currentPage : p}">
-            <td (click)="openDetailFoodDetail(fooddetail)"><a>Xem chi tiết</a></td>
+            <td (click)="openDetailFoodDetail(fooddetail)"><a>Xem chi tiết {{fooddetail.id}}</a></td>
             <td (click)="openDetailFood(fooddetail)">{{fooddetail.food.name}}</td>
             <td (click)="openDetailMaterial(fooddetail)">{{fooddetail.material.name}}</td>
             <td>{{fooddetail.kg}}</td>

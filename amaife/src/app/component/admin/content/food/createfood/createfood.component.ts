@@ -52,11 +52,9 @@ export class CreatefoodComponent implements OnInit {
   )
 
   onSubmit() {
-    console.log(this.formFood.value);
     if (this.formFood.valid) {
       this.foodService.createFood(this.formFood.value).subscribe(
         (data) => {
-          console.log(this.formFood.value)
           this.route.navigateByUrl("/food").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
         }
       )

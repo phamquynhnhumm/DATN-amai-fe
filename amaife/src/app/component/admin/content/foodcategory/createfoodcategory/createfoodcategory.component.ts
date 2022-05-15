@@ -31,6 +31,7 @@ export class CreatefoodcategoryComponent implements OnInit {
 
   onSubmit() {
     if (this.formFoodCategory.valid) {
+      console.log(this.formFoodCategory.value)
       this.foodcategoryservice.createFoodCategory(this.formFoodCategory.value).subscribe(
         (data) => {
           console.log(this.formFoodCategory.value)

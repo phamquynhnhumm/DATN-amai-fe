@@ -25,15 +25,12 @@ export class EditfoodComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.foodService.findAllFoodCategoryIsdelete(false).subscribe(
       data => {
         this.foodcategory = data;
       }
     )
     this.food = this.data;
-    console.log(this.data)
-
     this.formFood = new FormGroup(
       {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),

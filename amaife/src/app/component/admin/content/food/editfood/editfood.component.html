@@ -24,16 +24,13 @@
               <label class="col-sm-12 col-form-label"><strong>Danh mục món</strong></label>
             </c-col>
             <c-col [md]="9">
-              <mat-select class="custom-select form-control" formControlName="foodCategory"
-                          placeholder="{{food.foodCategory.name}}">
-                <mat-option *ngFor="let foodCategorys of foodcategory"
-                            [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
+              <mat-select class="custom-select form-control" formControlName="foodCategory" placeholder="{{food.foodCategory.name}}">
+                <mat-option *ngFor="let foodCategorys of foodcategory" [value]="foodCategorys">{{foodCategorys.name}}</mat-option>
               </mat-select>
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('foodCategory')?.hasError('required') && formFood.get('foodCategory')?.touched">
                 <p>Danh mục không được để trống</p>
               </small>
-
             </c-col>
           </c-row>
           <br><br><br>
@@ -102,7 +99,7 @@
           <br><br><br>
           <c-col [xs]="12" style="text-align:center">
             <button (click)="cencal()" type="button" class="btn btn-dark mb-2">Hủy</button>
-            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
+            <button type="submit" class="btn btn-primary mb-2">Lưu</button>
           </c-col>
         </form>
       </c-card-body>

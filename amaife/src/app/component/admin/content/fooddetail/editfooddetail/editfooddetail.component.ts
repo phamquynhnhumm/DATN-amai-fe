@@ -34,18 +34,16 @@ export class EditfooddetailComponent implements OnInit {
       dataList => {
         this.foodList = dataList;
       }
-    );
-
+    )
     this.foodService.findAllMaterialIsdelete(false).subscribe(
       dataMaterial => {
         this.materialList = dataMaterial;
       }
-    );
-
+    )
     this.formFoodDetail = new FormGroup(
       {
-        food: new FormControl(this.data.foodList, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-        material: new FormControl(this.data.materialList, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+        food: new FormControl(this.data.food, Validators.required),
+        material: new FormControl(this.data.material, Validators.required),
         kg: new FormControl(this.data.kg, [Validators.required, Validators.min(0)])
       }
     )
@@ -62,15 +60,12 @@ export class EditfooddetailComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formFoodDetail.value)
     if (this.formFoodDetail.valid) {
       this.foodDetail.food = this.formFoodDetail.value.food;
       this.foodDetail.material = this.formFoodDetail.value.material;
       this.foodDetail.kg = this.formFoodDetail.value.kg;
-      console.log(this.foodDetail)
-
       if (!this.bolen) {
-        this.foodService.updateMaterial(this.foodDetail).subscribe(data => {
+        this.foodService.updateFoodDetail(this.foodDetail).subscribe(data => {
             this.dialogRef.close();
             this.snackBar.open("Cập nhật chi tiết thành công", "OK", {
               duration: 4000
