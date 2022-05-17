@@ -16,6 +16,6 @@ export interface Oder {
   qrcode: string;
   status: EStatusOrder;
   orderDetailList: Array<OrderDetail>;
-  meney: number;
+  money: number;
   quantity: number;
 }

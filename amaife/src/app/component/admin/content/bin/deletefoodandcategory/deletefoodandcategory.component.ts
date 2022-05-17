@@ -18,6 +18,10 @@ import {DetailsupplierComponent} from "../../supplier/detailsupplier/detailsuppl
 import {Material} from "../../../../../model/food/Material";
 import {DetailmaterialComponent} from "../../material/detailmaterial/detailmaterial.component";
 import {UnmaterialComponent} from "../unmaterial/unmaterial.component";
+import {OrderService} from "../../../../../service/order.service";
+import {Oder} from "../../../../../model/order/Oder";
+import {DetailorderComponent} from "../../order/detailorder/detailorder.component";
+import {UnoderComponent} from "../unoder/unoder.component";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -30,6 +34,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   foodList!: Array<Food>;
   supplierList!: Array<Supplier>;
   materialList!: Array<Material>;
+  oderList!: Array<Oder>;
   p: number | any;
   pfood: number | any;
   icons = {cilSettings, cilLoopCircular};
@@ -38,6 +43,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   constructor(
     private foodandcategoryService: FoodService,
     private supplierService: SupplierService,
+    private oderService: OrderService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private matSnackBar: MatSnackBar,
@@ -83,6 +89,13 @@ export class DeletefoodandcategoryComponent implements OnInit {
         this.materialList = datamaterial;
       }
     );
+    //danh sách đơn hàng đã bị xóa
+    this.oderService.findAllOrderlIsdelete(true).subscribe(
+      dataoder => {
+        this.pfood = 1;
+        this.oderList = dataoder;
+      }
+    )
   }
 
   searchForm = this.fb.group({
@@ -278,5 +291,39 @@ export class DeletefoodandcategoryComponent implements OnInit {
         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
       }
     );
+  }
+
+  openDetailOder(oder: Oder) {
+    this.oderService.findByIdOder(oder.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailorderComponent, {
+          width: '800px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+
+  }
+
+  openUnDeleteOder(oder: Oder) {
+    this.oderService.findByIdOder(oder.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UnoderComponent, {
+          width: '450px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      })
+  }
+
+  searchOder(value: string) {
+
   }
 }

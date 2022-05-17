@@ -1,0 +1,97 @@
+<c-row>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-9">
+            <h1><strong style="margin: 0 auto;">DANH SÁCH ĐƠN HÀNG</strong></h1>
+          </div>
+        </c-row>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <form [formGroup]="searchForm">
+            <div class="dropdown  input-group">
+              <c-col [md]="2">
+                <mat-select class=" form-control"
+                            placeholder="{{searchss}} ">
+                  <mat-option *ngFor="let searchs of searchSubject"
+                              (onSelectionChange)="onCheckboxChangeMaterial($event,searchs)">{{searchs.valueOf()}}</mat-option>
+                </mat-select>
+              </c-col>
+              <c-col [md]="1">
+              </c-col>
+              <c-col [md]="2"><input type="search" class="form-control rounded mr-4" formControlName="search"
+                                     placeholder="Tìm kiếm..."
+                                     #search>
+              </c-col>
+              <c-col [md]="3">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchMaterial(search.value)"> Tìm kiếm
+                </button>
+              </c-col>
+            </div>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+              ký tự!</small>
+          </form>
+        </div>
+        <br>
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead class="table table-striped able-bordered jambo_table bulk_action">
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Người nhận</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>Tài khoản đặt</th>
+            <th>Trạng thái món</th>
+            <th>Tổng tiền</th>
+            <th>Số lượng</th>
+            <th>Sửa / Xóa</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="orderList != null">
+          <tr class="even pointer"
+              *ngFor="let oder of orderList | paginate :{itemsPerPage:5,currentPage : p}">
+            <td>{{oder.id}}</td>
+            <td (click)="openDetailOrder(oder)">{{oder.fullName}}</td>
+            <!--            <td (click)="openDetailSuppkier(material.supplierList)">{{material.supplierList.name}}</td>-->
+            <td>{{oder.address}}</td>
+            <td>{{oder.phone}}</td>
+            <td>{{oder.account.userName}}</td>
+            <td *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf() ">Chờ xác nhận</td>
+            <td *ngIf="oder.status == eStatusOrder.CONFIRMED.valueOf() ">Đang chế biến</td>
+            <td *ngIf="oder.status == eStatusOrder.TRANSPORT.valueOf() ">Đang vận chuyển</td>
+            <td *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</td>
+            <td *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</td>
+            <td>{{oder.money |currency:'VND'}} </td>
+            <td>{{oder.quantity}}</td>
+            <td>
+              <a (click)="openEditOder(oder)" style="  color: #FFC107;" data-toggle="modal"><i
+                class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a (click)="openDeleteOder(oder)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            </td>
+          </tr>
+          <!--          nếu không tìm thấy dữ liệu trên data-->
+          </tbody>
+          <tbody *ngIf="orderList == null">
+          <tr>
+            <td colspan="9" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
+          </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+
+      <!--        Phân trang-->
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+</c-row>

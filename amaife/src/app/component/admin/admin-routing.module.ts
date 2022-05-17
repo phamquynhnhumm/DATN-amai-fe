@@ -14,6 +14,7 @@ import {ListmaterialComponent} from "./content/material/listmaterial/listmateria
 import {CreartematerialComponent} from "./content/material/creartematerial/creartematerial.component";
 import {ListfooddetailComponent} from "./content/fooddetail/listfooddetail/listfooddetail.component";
 import {CreatefooddetailComponent} from "./content/fooddetail/createfooddetail/createfooddetail.component";
+import {ListorderComponent} from "./content/order/listorder/listorder.component";
 
 const routes: Routes = [
   /**
@@ -45,7 +46,11 @@ const routes: Routes = [
    * URL nguyên liệu sử dùng món
    */
   {path: "fooddetail", component: ListfooddetailComponent},
-  {path: "createfooddetail", component: CreatefooddetailComponent}
+  {path: "createfooddetail", component: CreatefooddetailComponent},
+  /**
+   * URL đơn hàng
+   */
+  {path: "order", component: ListorderComponent}
 ];
 
 @NgModule({

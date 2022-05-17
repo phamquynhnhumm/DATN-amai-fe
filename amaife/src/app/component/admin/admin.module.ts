@@ -55,6 +55,10 @@ import { CreatefooddetailComponent } from './content/fooddetail/createfooddetail
 import { EditfooddetailComponent } from './content/fooddetail/editfooddetail/editfooddetail.component';
 import { DeletefooddetailComponent } from './content/fooddetail/deletefooddetail/deletefooddetail.component';
 import { DetailfooddetailComponent } from './content/fooddetail/detailfooddetail/detailfooddetail.component';
+import { ListorderComponent } from './content/order/listorder/listorder.component';
+import { UpdateorderComponent } from './content/order/updateorder/updateorder.component';
+import { DetailorderComponent } from './content/order/detailorder/detailorder.component';
+import { DeleteorderComponent } from './content/order/deleteorder/deleteorder.component';
 
 
 @NgModule({
@@ -93,7 +97,11 @@ import { DetailfooddetailComponent } from './content/fooddetail/detailfooddetail
     CreatefooddetailComponent,
     EditfooddetailComponent,
     DeletefooddetailComponent,
-    DetailfooddetailComponent
+    DetailfooddetailComponent,
+    ListorderComponent,
+    UpdateorderComponent,
+    DetailorderComponent,
+    DeleteorderComponent
   ],
   exports: [
     LayoutComponent,

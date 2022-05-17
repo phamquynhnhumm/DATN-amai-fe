@@ -22,7 +22,11 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Đơn hàng',
-        url: '/base/accordion'
+        url: '/order'
+      },
+      {
+        name: 'Chi Tiết Đơn hàng',
+        url: '/orderdetail'
       }
     ]
   },

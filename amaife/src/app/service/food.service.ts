@@ -44,7 +44,7 @@ export class FoodService {
   }
 
   /**
-   * URL Nhà cung
+   * URL nguyên liệu
    */
   readonly URL_MATERIAL = "http://localhost:8080/api/material";
   readonly URL_MATERIAL_FINFDISDELETE = "http://localhost:8080/api/material/all";
