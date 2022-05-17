@@ -58,7 +58,7 @@ export class OrderService {
     return this.httpClient.post<Oder>(this.URL_ORDER, order);
   }
 
-  searcOder(isDelete: boolean, name: string, unit: string, supplierName: string): Observable<Array<Oder>> {
-    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('unit', unit).set('supplierName', supplierName)});
+  searcOder(isDeleteOder: boolean, isDeleteAccount: boolean, fullName: string, userName: string, address: string, phone: string): Observable<Array<Oder>> {
+    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_SEARCH, {params: new HttpParams().set('isDeleteOder', isDeleteOder).set('isDeleteAccount', isDeleteAccount).set('fullName', fullName).set('userName', userName).set('address',address).set('phone',phone)});
   }
 }

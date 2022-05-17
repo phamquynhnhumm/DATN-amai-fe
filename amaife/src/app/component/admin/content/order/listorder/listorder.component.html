@@ -18,7 +18,7 @@
                 <mat-select class=" form-control"
                             placeholder="{{searchss}} ">
                   <mat-option *ngFor="let searchs of searchSubject"
-                              (onSelectionChange)="onCheckboxChangeMaterial($event,searchs)">{{searchs.valueOf()}}</mat-option>
+                              (onSelectionChange)="onCheckboxChangeOder($event,searchs)">{{searchs.valueOf()}}</mat-option>
                 </mat-select>
               </c-col>
               <c-col [md]="1">
@@ -29,7 +29,7 @@
               </c-col>
               <c-col [md]="3">
                 <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
-                        (click)="searchMaterial(search.value)"> Tìm kiếm
+                        (click)="searchOder(search.value)"> Tìm kiếm
                 </button>
               </c-col>
             </div>

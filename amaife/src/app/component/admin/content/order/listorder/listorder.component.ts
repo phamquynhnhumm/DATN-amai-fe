@@ -54,9 +54,8 @@ export class ListorderComponent implements OnInit {
     )
   }
 
-  onCheckboxChangeMaterial($event: MatOptionSelectionChange<string>, searchs: string) {
+  onCheckboxChangeOder($event: MatOptionSelectionChange<string>, searchs: string) {
     this.searchss = searchs;
-    console.log(this.searchss)
   }
 
   searchForm = this.fb.group({
@@ -106,9 +105,9 @@ export class ListorderComponent implements OnInit {
     )
   }
 
-  searchMaterial(search: string) {
+  searchOder(search: string) {
     if (this.searchss == this.searchSubject[0]) {
-      this.orderService.searcOder(false, search, "", "").subscribe(
+      this.orderService.searcOder(false, false, search, "", "", "").subscribe(
         (data) => {
           this.orderList = data;
         },
@@ -124,8 +123,7 @@ export class ListorderComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[1]) {
-      console.log("tìm danh mục ")
-      this.orderService.searcOder(false, "", "", search).subscribe(
+      this.orderService.searcOder(false, false, "", search, "", "").subscribe(
         (data) => {
           this.orderList = data;
         },
@@ -141,8 +139,7 @@ export class ListorderComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[2]) {
-      console.log("tìm kiếm theo đơn vị tính")
-      this.orderService.searcOder(false, "", search, "").subscribe(
+      this.orderService.searcOder(false, false, "", "", search, "").subscribe(
         (data) => {
           this.orderList = data;
         },
@@ -157,6 +154,23 @@ export class ListorderComponent implements OnInit {
         }
       );
     }
+    if (this.searchss == this.searchSubject[3]) {
+      this.orderService.searcOder(false, false, "", "", "", search).subscribe(
+        (data) => {
+          this.orderList = data;
+        },
+        (error) => {
+          this.orderService.findAllOrderlIsdelete(false).subscribe(
+            data => {
+              this.p = 1;
+              this.orderList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+
   }
 
   openDetailSuppkier(supplierList: Supplier) {
