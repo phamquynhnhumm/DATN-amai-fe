@@ -15,6 +15,7 @@ import {CreartematerialComponent} from "./content/material/creartematerial/crear
 import {ListfooddetailComponent} from "./content/fooddetail/listfooddetail/listfooddetail.component";
 import {CreatefooddetailComponent} from "./content/fooddetail/createfooddetail/createfooddetail.component";
 import {ListorderComponent} from "./content/order/listorder/listorder.component";
+import {LoginadminComponent} from "./content/loginadmin/loginadmin.component";
 
 const routes: Routes = [
   /**
@@ -50,7 +51,11 @@ const routes: Routes = [
   /**
    * URL đơn hàng
    */
-  {path: "order", component: ListorderComponent}
+  {path: "order", component: ListorderComponent},
+  /**
+   * lOGIN
+   */
+  {path: "loginadmin", component: LoginadminComponent}
 ];
 
 @NgModule({

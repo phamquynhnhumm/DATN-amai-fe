@@ -59,6 +59,7 @@ import { ListorderComponent } from './content/order/listorder/listorder.componen
 import { UpdateorderComponent } from './content/order/updateorder/updateorder.component';
 import { DetailorderComponent } from './content/order/detailorder/detailorder.component';
 import { DeleteorderComponent } from './content/order/deleteorder/deleteorder.component';
+import { LoginadminComponent } from './content/loginadmin/loginadmin.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { DeleteorderComponent } from './content/order/deleteorder/deleteorder.co
     ListorderComponent,
     UpdateorderComponent,
     DetailorderComponent,
-    DeleteorderComponent
+    DeleteorderComponent,
+    LoginadminComponent
   ],
   exports: [
     LayoutComponent,
