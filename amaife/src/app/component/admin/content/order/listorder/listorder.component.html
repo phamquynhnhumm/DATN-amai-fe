@@ -56,8 +56,8 @@
           <tbody *ngIf="orderList != null">
           <tr class="even pointer"
               *ngFor="let oder of orderList | paginate :{itemsPerPage:5,currentPage : p}">
-            <td>{{oder.id}}</td>
-            <td (click)="openDetailOrder(oder)">{{oder.fullName}}</td>
+            <td (click)="openDetailOrder(oder)">Chi tiết đơn hàng mã : {{oder.id}} </td>
+            <td>{{oder.fullName}}</td>
             <!--            <td (click)="openDetailSuppkier(material.supplierList)">{{material.supplierList.name}}</td>-->
             <td>{{oder.address}}</td>
             <td>{{oder.phone}}</td>

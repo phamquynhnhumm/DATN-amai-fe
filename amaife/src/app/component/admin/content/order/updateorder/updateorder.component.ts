@@ -4,6 +4,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import { FormControl, FormGroup, Validators} from "@angular/forms";
 import {Oder} from "../../../../../model/order/Oder";
 import {OrderService} from "../../../../../service/order.service";
+import {EStatusOrder} from "../../../../../model/order/EStatusOrder";
 
 @Component({
   selector: 'app-updateorder',
@@ -13,6 +14,30 @@ import {OrderService} from "../../../../../service/order.service";
 export class UpdateorderComponent implements OnInit {
 
   oder!: Oder;
+  // eStatusOrder = EStatusOrder;
+  //export enum EStatusOrder {
+  //   /**
+  //    * Đơn hàng đang chờ xác nhận
+  //    */
+  //   UNCONFIRMED = 'UNCONFIRMED',
+  //   /**
+  //    * Đã được xác nhận đang chuẩn bị món
+  //    */
+  //   CONFIRMED = 'CONFIRMED',
+  //   /**
+  //    * Đang vận chuyển
+  //    */
+  //   TRANSPORT = 'TRANSPORT',
+  //   /**
+  //    * Đã nhận món
+  //    */
+  //   RECEIVED = 'RECEIVED',
+  //
+  //   /**
+  //    * Đã hủy món
+  //    */
+  //   CANCEL = 'CANCEL'
+  eStatusOrder = ['UNCONFIRMED', 'CONFIRMED','TRANSPORT','RECEIVED','CANCEL']
 
   constructor(
     private dialogRef: MatDialogRef<UpdateorderComponent>,
@@ -53,6 +78,7 @@ export class UpdateorderComponent implements OnInit {
       this.formFoodOder.value.isDeleted = false;
     }
     if (this.formFoodOder.valid) {
+      console.log( this.formFoodOder.value)
       this.oder.status = this.formFoodOder.value.status;
       if (!this.bolen) {
         this.oder.isDeleted = this.formFoodOder.value.isDeleted;

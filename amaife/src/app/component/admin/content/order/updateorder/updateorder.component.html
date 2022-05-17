@@ -1,12 +1,20 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Cập nhật trạng thái đơn hàng</strong>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Cập nhật trạng thái đơn
+  hàng</strong>
 </h1></div>
 <hr>
 <div mat-dialog-content>
   <form [formGroup]="formFoodOder" (ngSubmit)="onSubmit()" cForm class="row g-3">
     <c-col [md]="12">
-      <label cLabel>Trạng thái đơn hàng {{oder.status}}</label>
-      <input cFormControl type="text" class="form-control" name="status" formControlName="status"
-             placeholder="Nhập trạng thái đơn hàng">
+      <label cLabel>Trạng thái đơn hàng {{oder.fullName}}</label>
+      <mat-select class="custom-select form-control" formControlName="status">
+        <mat-option *ngFor="let eStatus of eStatusOrder" [value]="eStatus">
+          <p readonly class="form-control-plaintext" *ngIf="eStatus == 'UNCONFIRMED' ">Chờ xác nhận</p>
+          <p readonly class="form-control-plaintext" *ngIf="eStatus == 'CONFIRMED'">Đang chế biến</p>
+          <p readonly class="form-control-plaintext" *ngIf=" eStatus== 'TRANSPORT'">Đang vận chuyển</p>
+          <p readonly class="form-control-plaintext" *ngIf="eStatus == 'RECEIVED'">Đã nhận</p>
+          <p readonly class="form-control-plaintext" *ngIf="eStatus == 'CANCEL'">Đã hủy</p>
+        </mat-option>
+      </mat-select>
       <small class="text-danger col-sm-10"
              *ngIf="formFoodOder.get('status')?.hasError('required') && formFoodOder.get('status')?.touched">
         <p>Trạng thái không được trể trống</p>
