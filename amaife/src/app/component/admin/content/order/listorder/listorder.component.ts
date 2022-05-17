@@ -25,7 +25,7 @@ export class ListorderComponent implements OnInit {
   orderList!: Array<Oder>;
   eStatusOrder = EStatusOrder;
   p: number | any;
-  searchSubject = ['Tên người nhận', 'Tên tài khoản', 'Trạng thái', 'Số lượng', 'Địa chỉ đặt', 'Số điện thoại'];
+  searchSubject = ['Tên người nhận', 'Tên tài khoản', 'Địa chỉ đặt', 'Số điện thoại'];
   searchss: string = "Chọn thuộc tính";
 
   constructor(
