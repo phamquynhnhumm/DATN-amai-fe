@@ -11,12 +11,12 @@ export class SupplierService {
   /**
    * URL nhà cung cấp
    */
-  readonly URL_SUPPLIER = "http://localhost:8080/api/supplier";
-  readonly URL_SUPPLIER_FINFDISDELETE = "http://localhost:8080/api/supplier/all";
-  readonly URL_SUPPLIER_UNDELETE = "http://localhost:8080/api/supplier/undelete";
-  readonly URL_SUPPLIER_DELETE = "http://localhost:8080/api/supplier/delete";
-  readonly URL_SUPPLIER_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/supplier/findByFoodcategoryId";
-  readonly URL_SUPPLIER_SEARCH = "http://localhost:8080/api/supplier/search";
+  readonly URL_SUPPLIER = "http://localhost:8080/api/admin/supplier";
+  readonly URL_SUPPLIER_FINFDISDELETE = "http://localhost:8080/api/admin/supplier/all";
+  readonly URL_SUPPLIER_UNDELETE = "http://localhost:8080/api/admin/supplier/undelete";
+  readonly URL_SUPPLIER_DELETE = "http://localhost:8080/api/admin/supplier/delete";
+  readonly URL_SUPPLIER_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/supplier/admin/findByFoodcategoryId";
+  readonly URL_SUPPLIER_SEARCH = "http://localhost:8080/api/admin/supplier/search";
 
   constructor(private httpClient: HttpClient) {
   }

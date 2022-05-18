@@ -11,12 +11,12 @@ export class OrderService {
   /**
    * URL đơn hànd
    */
-  readonly URL_ORDER = "http://localhost:8080/api/order";
-  readonly URL_ORDER_FINFDISDELETE = "http://localhost:8080/api/order/all";
-  readonly URL_ORDER_UNDELETE = "http://localhost:8080/api/order/undelete";
-  readonly URL_ORDER_DELETE = "http://localhost:8080/api/order/delete";
-  readonly URL_ORDER_FINDBYACOUNT_NAME = "http://localhost:8080/api/order/findBySupplierId";
-  readonly URL_ORDER_SEARCH = "http://localhost:8080/api/order/search";
+  readonly URL_ORDER = "http://localhost:8080/api/admin/order";
+  readonly URL_ORDER_FINFDISDELETE = "http://localhost:8080/api/admin/order/all";
+  readonly URL_ORDER_UNDELETE = "http://localhost:8080/api/admin/order/undelete";
+  readonly URL_ORDER_DELETE = "http://localhost:8080/api/admin/order/delete";
+  readonly URL_ORDER_FINDBYACOUNT_NAME = "http://localhost:8080/api/admin/order/findBySupplierId";
+  readonly URL_ORDER_SEARCH = "http://localhost:8080/api/admin/order/search";
 
 
   constructor(private httpClient: HttpClient) {

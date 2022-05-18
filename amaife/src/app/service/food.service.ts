@@ -28,20 +28,20 @@ export class FoodService {
   /**
    * URL danh mục
    */
-  readonly URL_FOODCATEGORY = "http://localhost:8080/api/foodcategory";
-  readonly URL_FOODCATEGORY_SEARCH = "http://localhost:8080/api/foodcategory/search";
-  readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/foodcategory/delete";
-  readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/foodcategory/undelete";
-  readonly URL_FOODCATEGOR_FINFDISDELETE = "http://localhost:8080/api/foodcategory/all";
+  readonly URL_FOODCATEGORY = "http://localhost:8080/api/admin/foodcategory";
+  readonly URL_FOODCATEGORY_SEARCH = "http://localhost:8080/api/admin/foodcategory/search";
+  readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/admin/foodcategory/delete";
+  readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/admin/foodcategory/undelete";
+  readonly URL_FOODCATEGOR_FINFDISDELETE = "http://localhost:8080/api/admin/foodcategory/all";
 
   /**
    *URL chi tiết món
    */
-  readonly URL_FOODDETAIL = "http://localhost:8080/api/fooddetail";
-  readonly URL_FOODDETAIL_SEARCH = "http://localhost:8080/api/fooddetail/search";
-  readonly URL_FOODDETAIL_DELETE = "http://localhost:8080/api/fooddetail/delete";
-  readonly URL_FOODDETAIL_UNDELETE = "http://localhost:8080/api/fooddetail/undelete";
-  readonly URL_FOODDETAIL_FINFDISDELETE = "http://localhost:8080/api/fooddetail/all";
+  readonly URL_FOODDETAIL = "http://localhost:8080/api/admin/fooddetail";
+  readonly URL_FOODDETAIL_SEARCH = "http://localhost:8080/api/admin/fooddetail/search";
+  readonly URL_FOODDETAIL_DELETE = "http://localhost:8080/api/admin/fooddetail/delete";
+  readonly URL_FOODDETAIL_UNDELETE = "http://localhost:8080/api/admin/fooddetail/undelete";
+  readonly URL_FOODDETAIL_FINFDISDELETE = "http://localhost:8080/api/admin/fooddetail/all";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -49,12 +49,12 @@ export class FoodService {
   /**
    * URL nguyên liệu
    */
-  readonly URL_MATERIAL = "http://localhost:8080/api/material";
-  readonly URL_MATERIAL_FINFDISDELETE = "http://localhost:8080/api/material/all";
-  readonly URL_MATERIAL_UNDELETE = "http://localhost:8080/api/material/undelete";
-  readonly URL_MATERIAL_DELETE = "http://localhost:8080/api/material/delete";
-  readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "http://localhost:8080/api/material/findBySupplierId";
-  readonly URL_MATERIAL_SEARCH = "http://localhost:8080/api/material/search";
+  readonly URL_MATERIAL = "http://localhost:8080/api/admin/material";
+  readonly URL_MATERIAL_FINFDISDELETE = "http://localhost:8080/api/admin/material/all";
+  readonly URL_MATERIAL_UNDELETE = "http://localhost:8080/api/admin/material/undelete";
+  readonly URL_MATERIAL_DELETE = "http://localhost:8080/api/admin/material/delete";
+  readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "http://localhost:8080/api/admin/material/findBySupplierId";
+  readonly URL_MATERIAL_SEARCH = "http://localhost:8080/api/admin/material/search";
 
   /**
    * CRUD Món
