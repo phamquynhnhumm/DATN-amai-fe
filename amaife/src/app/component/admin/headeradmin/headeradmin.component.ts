@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ClassToggleService, HeaderComponent} from "@coreui/angular";
-import {cilUser, cilSettings, cilMenu, cilEnvelopeOpen,cilBell} from '@coreui/icons';
+import {cilUser, cilSettings, cilMenu, cilEnvelopeOpen, cilBell} from '@coreui/icons';
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-headeradmin',
@@ -9,15 +10,30 @@ import {cilUser, cilSettings, cilMenu, cilEnvelopeOpen,cilBell} from '@coreui/ic
 })
 export class HeaderadminComponent extends HeaderComponent {
   @Input() sidebarId: string = "sidebar";
-  icons = { cilSettings, cilMenu,cilUser,cilEnvelopeOpen,cilBell };
+  icons = {cilSettings, cilMenu, cilUser, cilEnvelopeOpen, cilBell};
 
   public newMessages = new Array(4)
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
-  constructor(private classToggler: ClassToggleService) {
+
+  constructor(private authService: AuthService,
+              private classToggler: ClassToggleService) {
     super();
   }
+
   ngOnInit(): void {
+    // if (localStorage.getItem("token") !== null) {
+    //   console.log(this.authService.getUsername())
+    //   this.authService.assignSessionStorageWithLocalStorage();
+    // }
+  }
+
+  // public isLoggedIn() {
+  //   return this.authService.isLoggedIn();
+  // }
+
+  logout() {
+    this.authService.clear();
   }
 }
 

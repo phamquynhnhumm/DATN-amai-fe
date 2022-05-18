@@ -59,7 +59,7 @@
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
       <li>
-        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Tài khoản</h6>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Tài khoản </h6>
       </li>
       <li></li>
       <li>
@@ -69,7 +69,14 @@
         </a>
       </li>
       <li>
-        <a routerLink="/logout" cDropdownItem>
+<!--        <a *ngIf="! isLoggedIn()" [routerLink]="['/login']" class="button button&#45;&#45;tamaya"-->
+        <!--             data-text="Đăng nhập">-->
+        <!--        <svg class="me-2" [cIcon]="icons.cilSettings"></svg>-->
+        <!--        Đăng Nhập-->
+        <!--      </a>-->
+        <a [routerLink]="['/login']" class="button button--tamaya"
+           data-text="Đăng xuất"
+           (click)="logout()">
           <svg class="me-2" [cIcon]="icons.cilSettings"></svg>
           Đăng Xuất
         </a>

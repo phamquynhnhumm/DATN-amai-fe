@@ -31,36 +31,56 @@ const routes: Routes = [
   /**
    * URL món
    */
-  // {
-  //   path: "food",
-  //   component: ListfoodComponent,
-  //   canActivate: [AuthGuard],
-  //   data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
-  // },
+  {
+    path: "food",
+    component: ListfoodComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
   {path: "createfood", component: CreatefoodComponent},
-  {path: "food", component: ListfoodComponent},
+  {
+    path: "food", component: ListfoodComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
 
   /**
    * URL nhà cung cấp
    */
   {path: "supplier", component: ListsupplierComponent},
-  {path: "createsupplier", component: CreatesupplierComponent},
+  {
+    path: "createsupplier", component: CreatesupplierComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
 
   /**
    * URL nguyên liệu
    */
   {path: "material", component: ListmaterialComponent},
-  {path: "creatematerial", component: CreartematerialComponent},
+  {
+    path: "creatematerial", component: CreartematerialComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
 
   /**
    * URL nguyên liệu sử dùng món
    */
   {path: "fooddetail", component: ListfooddetailComponent},
-  {path: "createfooddetail", component: CreatefooddetailComponent},
+  {
+    path: "createfooddetail", component: CreatefooddetailComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
   /**
    * URL đơn hàng
    */
-  {path: "order", component: ListorderComponent},
+  {
+    path: "order", component: ListorderComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
   /**
    * lOGIN
    */

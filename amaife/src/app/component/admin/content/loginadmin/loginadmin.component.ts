@@ -38,8 +38,8 @@ export class LoginadminComponent implements OnInit {
 
 
   formLogin = new FormGroup({
-    userName: new FormControl("quynhnhu", Validators.required),
-    password: new FormControl("12345678", Validators.required)
+    userName: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   ngOnInit(): void {

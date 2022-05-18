@@ -31,7 +31,6 @@ export class AuthInterceptor implements HttpInterceptor {
         )
       );
     }
-
   }
 
   private static addToken(request: HttpRequest<any>, token: string | null) {
@@ -43,5 +42,4 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     );
   }
-
 }

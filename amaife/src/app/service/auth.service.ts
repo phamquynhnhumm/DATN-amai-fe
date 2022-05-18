@@ -14,7 +14,7 @@ export class AuthService {
     this.setRole(authoricationResponse.user.account.role);
     this.setFullName(authoricationResponse.user.fullName);
     this.setUsername(authoricationResponse.user.account.userName);
-    // this.setIdUser(authoricationResponse.user.id);
+    this.setIdUser(authoricationResponse.user.id);
   }
 
   public setLocalStorage(authoricationResponse: LoginResponse) {
@@ -22,7 +22,7 @@ export class AuthService {
     localStorage.setItem("role", authoricationResponse.user.account.role);
     localStorage.setItem("fullName", authoricationResponse.user.fullName);
     localStorage.setItem("userName", authoricationResponse.user.account.userName);
-    // localStorage.setItem("idUser", String(authoricationResponse.user.id));
+    localStorage.setItem("idUser", String(authoricationResponse.user.id));
   }
 
   public assignSessionStorageWithLocalStorage() {
