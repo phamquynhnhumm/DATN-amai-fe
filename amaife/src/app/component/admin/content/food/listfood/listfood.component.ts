@@ -44,6 +44,7 @@ export class ListfoodComponent implements OnInit {
       data => {
         this.p = 1;
         this.foodList = data;
+        console.log(this.foodList)
       }
     )
   }

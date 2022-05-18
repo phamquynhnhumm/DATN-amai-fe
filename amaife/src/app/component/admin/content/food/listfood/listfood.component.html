@@ -47,6 +47,7 @@
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
+            <th>Id</th>
             <th>Tên món</th>
             <th>Danh mục</th>
             <th>Trạng thái món</th>
@@ -60,6 +61,7 @@
           <tbody *ngIf="foodList != null">
           <tr class="even pointer"
               *ngFor="let food of foodList | paginate :{itemsPerPage:5,currentPage : p}">
+            <td>{{food.id}}</td>
             <td (click)="openDetailFood(food)">{{food.name}}</td>
             <td (click)="openFoodCategory(food)">{{food.foodCategory.name}}</td>
             <td *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Hết món</td>
