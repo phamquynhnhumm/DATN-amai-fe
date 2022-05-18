@@ -65,11 +65,11 @@ export class FoodService {
   }
 
   findAllFoodIsdelete(isdelete: boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdelete);
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdelete, {headers: this.requestHeader});
   }
 
   findByIdFood(id: number): Observable<Food> {
-    return this.httpClient.get<Food>(this.URL_FOOD + "/" + id);
+    return this.httpClient.get<Food>(this.URL_FOOD + "/" + id,{headers: this.requestHeader});
   }
 
   findAllFoodByFoodCategory_Id(id: number): Observable<Array<Food>> {

@@ -17,6 +17,7 @@ import {CreatefooddetailComponent} from "./content/fooddetail/createfooddetail/c
 import {ListorderComponent} from "./content/order/listorder/listorder.component";
 import {LoginadminComponent} from "./content/loginadmin/loginadmin.component";
 import {AuthGuard} from "../../guard/auth.guard";
+import {FormCheckComponent} from "@coreui/angular";
 
 const routes: Routes = [
   /**
@@ -29,13 +30,14 @@ const routes: Routes = [
   /**
    * URL món
    */
-  {
-    path: "food",
-    component: ListfoodComponent,
-    canActivate: [AuthGuard],
-    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
-  },
+  // {
+  //   path: "food",
+  //   component: ListfoodComponent,
+  //   canActivate: [AuthGuard],
+  //   data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  // },
   {path: "createfood", component: CreatefoodComponent},
+  {path: "food", component: ListfoodComponent},
 
   /**
    * URL nhà cung cấp
@@ -61,7 +63,8 @@ const routes: Routes = [
   /**
    * lOGIN
    */
-  {path: "loginadmin", component: LoginadminComponent}
+  {path: "login", component: LoginadminComponent},
+  {path: "forbidden", component: FormCheckComponent}
 ];
 
 @NgModule({

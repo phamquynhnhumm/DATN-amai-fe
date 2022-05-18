@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {LoginRequest} from "../model/login/LoginRequest";
 import {Observable} from "rxjs";
+import {TokenDTO} from "../model/login/TokenDTO";
 import {LoginResponse} from "../model/login/LoginResponse";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  API_LOGIN_ADMIN = "http://localhost:8080/api/login"
+  readonly API_LOGIN_ADMIN = "http://localhost:8080/api/login"
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
   );
@@ -22,8 +23,8 @@ export class LoginService {
    * Headers: requestHeader địa diện cho việc không phân quyền ai cũng có thể truy cập vào
    * @param loginRequest
    */
-  public login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN, loginRequest, {headers: this.requestHeader})
+  public login(loginRequest: LoginRequest): Observable<LoginRequest> {
+    return this.httpClient.post<LoginRequest>(this.API_LOGIN_ADMIN, loginRequest, {headers: this.requestHeader})
   }
 
   public roleMatch(allowedRole: string[]): boolean {
@@ -40,5 +41,13 @@ export class LoginService {
       }
     }
     return isMatch;
+  }
+
+  public loginWithFacebook(token: TokenDTO): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN + "/facebook", token, {headers: this.requestHeader})
+  }
+
+  public loginWithGoogle(token: TokenDTO): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN + "/google", token, {headers: this.requestHeader})
   }
 }

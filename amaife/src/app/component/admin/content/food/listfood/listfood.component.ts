@@ -40,10 +40,12 @@ export class ListfoodComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
+    console.log("đang list sp")
     this.foodService.findAllFoodIsdelete(false).subscribe(
       data => {
         this.p = 1;
         this.foodList = data;
+        console.log(this.foodList)
       }
     )
   }

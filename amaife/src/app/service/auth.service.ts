@@ -14,22 +14,22 @@ export class AuthService {
     this.setRole(authoricationResponse.user.account.role);
     this.setFullName(authoricationResponse.user.fullName);
     this.setUsername(authoricationResponse.user.account.userName);
-    this.setIdUser(authoricationResponse.user.id);
+    // this.setIdUser(authoricationResponse.user.id);
   }
 
   public setLocalStorage(authoricationResponse: LoginResponse) {
     localStorage.setItem("token", authoricationResponse.jwt);
     localStorage.setItem("role", authoricationResponse.user.account.role);
     localStorage.setItem("fullName", authoricationResponse.user.fullName);
-    localStorage.setItem("username", authoricationResponse.user.account.userName);
-    localStorage.setItem("idUser", String(authoricationResponse.user.id));
+    localStorage.setItem("userName", authoricationResponse.user.account.userName);
+    // localStorage.setItem("idUser", String(authoricationResponse.user.id));
   }
 
   public assignSessionStorageWithLocalStorage() {
     this.setToken(<string>localStorage.getItem('token'));
     this.setRole(<string>localStorage.getItem('role'));
     this.setFullName(<string>localStorage.getItem('fullName'));
-    this.setUsername(<string>localStorage.getItem('username'));
+    this.setUsername(<string>localStorage.getItem('userName'));
     // this.setIdUser(<string>localStorage.getItem("idUser"));
   }
 
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   public setUsername(username: string) {
-    sessionStorage.setItem("username", username);
+    sessionStorage.setItem("userName", username);
   }
 
   public getRole() {

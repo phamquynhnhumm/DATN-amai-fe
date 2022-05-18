@@ -65,6 +65,7 @@ import {LoginService} from "../../service/login.service";
 import {AuthInterceptor} from "../../guard/auth.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
+import { ForbiddenComponent } from './content/forbidden/forbidden.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} fro
     UpdateorderComponent,
     DetailorderComponent,
     DeleteorderComponent,
-    LoginadminComponent
+    LoginadminComponent,
+    ForbiddenComponent
   ],
   exports: [
     LayoutComponent,
@@ -163,7 +165,6 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} fro
     },
     LoginService
   ]
-
 })
 export class AdminModule {
 }
