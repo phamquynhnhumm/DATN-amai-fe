@@ -19,6 +19,7 @@ export class FoodService {
    */
   readonly URL_FOOD = "http://localhost:8080/api/admin/food";
   readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/admin/food/all";
+  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORY = "http://localhost:8080/api/admin/food/allFood";
   readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/admin/food/undelete";
   readonly URL_FOOD_DELETE = "http://localhost:8080/api/admin/food/delete";
   readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/admin/food/findByFoodcategoryId";
@@ -64,8 +65,11 @@ export class FoodService {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD);
   }
 
-  findAllFoodIsdelete(isdelete: boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdelete);
+  findAllFoodIsdeleteAndFoodCategory(isdeleteFood: boolean,idDeleteFoodCategory : boolean): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORY + "/" + isdeleteFood +"/" +idDeleteFoodCategory);
+  }
+  findAllFoodIsdelete(isdeleteFood: boolean): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdeleteFood);
   }
 
   findByIdFood(id: number): Observable<Food> {

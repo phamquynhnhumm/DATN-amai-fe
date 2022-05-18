@@ -40,7 +40,7 @@ export class ListfoodComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this.foodService.findAllFoodIsdelete(false).subscribe(
+    this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
       data => {
         this.p = 1;
         this.foodList = data;
@@ -107,7 +107,7 @@ export class ListfoodComponent implements OnInit {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdelete(false).subscribe(
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;
@@ -123,7 +123,7 @@ export class ListfoodComponent implements OnInit {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdelete(false).subscribe(
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;
@@ -139,7 +139,7 @@ export class ListfoodComponent implements OnInit {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdelete(false).subscribe(
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;

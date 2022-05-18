@@ -27,7 +27,7 @@ export class CreatefooddetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.foodService.findAllFoodIsdelete(false).subscribe(
+    this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
       data => {
         this.foodList = data;
       }

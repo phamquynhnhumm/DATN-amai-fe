@@ -30,7 +30,7 @@ export class EditfooddetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.foodDetail = this.data;
-    this.foodService.findAllFoodIsdelete(false).subscribe(
+    this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
       dataList => {
         this.foodList = dataList;
       }
