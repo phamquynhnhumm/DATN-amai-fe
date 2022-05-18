@@ -22,7 +22,7 @@ export class AuthService {
     localStorage.setItem("role", authoricationResponse.user.account.role);
     localStorage.setItem("fullName", authoricationResponse.user.fullName);
     localStorage.setItem("userName", authoricationResponse.user.account.userName);
-    localStorage.setItem("idUser", String(authoricationResponse.user.id));
+    localStorage.setItem("id", String(authoricationResponse.user.id));
   }
 
   public assignSessionStorageWithLocalStorage() {
@@ -63,12 +63,12 @@ export class AuthService {
     return sessionStorage.getItem("userName");
   }
 
-  public setIdUser(idUser: number) {
-    sessionStorage.setItem("idUser", String(idUser));
+  public setIdUser(id: number) {
+    sessionStorage.setItem("id", String(id));
   }
 
   public getIdUser() {
-    return sessionStorage.getItem("idUser");
+    return sessionStorage.getItem("id");
   }
 
   public clear() {

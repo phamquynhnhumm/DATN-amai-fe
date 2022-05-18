@@ -40,19 +40,16 @@ export class ListfoodComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    console.log("đang list sp")
     this.foodService.findAllFoodIsdelete(false).subscribe(
       data => {
         this.p = 1;
         this.foodList = data;
-        console.log(this.foodList)
       }
     )
   }
 
   onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
     this.searchss = searchs;
-    console.log(this.searchss)
   }
 
   searchForm = this.fb.group({
@@ -120,7 +117,6 @@ export class ListfoodComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[1]) {
-      console.log("tìm danh mục ")
       this.foodService.searcFood(false, "", "", search).subscribe(
         (data) => {
           this.foodList = data;
@@ -137,7 +133,6 @@ export class ListfoodComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[2]) {
-      console.log("tìm kiếm theo đơn vị tính")
       this.foodService.searcFood(false, "", search, "").subscribe(
         (data) => {
           this.foodList = data;

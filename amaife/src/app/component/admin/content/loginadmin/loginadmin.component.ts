@@ -47,20 +47,18 @@ export class LoginadminComponent implements OnInit {
       this.router.navigate(['/'])
     }
   }
-
   public setLoginComplete(loginResponse: LoginResponse) {
     if (this.rememberMe % 2 === 1) {
       this.authService.setLocalStorage(loginResponse);
     }
     this.authService.setSessionStorage(loginResponse);
     const role = loginResponse.user.account.role;
-    console.log(role)
     switch (role) {
       case "ROLE_MANAGEMENT":
         this.router.navigate(['/food']);
         break;
       case "ROLE_CUSTOMER":
-        this.router.navigate(['/test-employee']);
+        this.router.navigate(['/home']);
         break;
       case "ROLE_ADMIN":
         this.router.navigate(['/food']);
@@ -96,11 +94,9 @@ export class LoginadminComponent implements OnInit {
 
   login() {
     if (this.formLogin.valid) {
-      console.log(this.formLogin.value)
       this.loginService.login(this.formLogin.value).subscribe(
         (authoricationResponse) => {
-          console.log("Đăng nhâp thành công")
-          console.log(this.setLoginComplete(authoricationResponse))
+          this.authService.setLocalStorage(authoricationResponse);
           this.setLoginComplete(authoricationResponse)
         },
         (error) => {
