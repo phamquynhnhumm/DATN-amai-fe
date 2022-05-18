@@ -4,10 +4,10 @@ import {Users} from "./Users";
 
 export interface Account {
   userName : string;
-  createdBy: Date;
-  createAt: string;
-  updatedBy: Date;
-  updateAt: string;
+  createdBy: String;
+  createAt: Date;
+  updatedBy: String;
+  updateAt: Date;
   isDeleted: boolean;
   role: ERole;
   password: string;

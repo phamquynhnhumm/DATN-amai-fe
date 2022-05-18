@@ -4,10 +4,10 @@ import {OrderDetail} from "./OrderDetail";
 
 export interface Oder {
   id: number;
-  createdBy: Date;
-  createAt: string;
-  updatedBy: Date;
-  updateAt: string;
+  createdBy: Account;
+  createAt: Date;
+  updatedBy: Account;
+  updateAt: Date;
   isDeleted: boolean;
   account: Account;
   address: string;

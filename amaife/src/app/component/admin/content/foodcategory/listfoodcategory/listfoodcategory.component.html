@@ -46,7 +46,7 @@
           <tr class="even pointer"
               *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:5 ,currentPage : p}">
             <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
-            <td>{{foodcategory.createdBy}}</td>
+            <td>{{foodcategory.createdBy.userName}}</td>
             <td>{{foodcategory.createAt}}</td>
             <td>
               <a (click)="openEditFoodCategory(foodcategory)" style="  color: #FFC107;" data-toggle="modal"><i

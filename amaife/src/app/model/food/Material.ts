@@ -1,11 +1,12 @@
 import {Supplier} from "../supplier/Supplier";
+import {Account} from "../user/Account";
 
 export interface Material {
   id: number;
-  createdBy: Date;
-  createAt: string;
-  updatedBy: Date;
-  updateAt: string;
+  createdBy: Account;
+  createAt: Date;
+  updatedBy: Account;
+  updateAt: Date;
   isDeleted: boolean;
   supplierList: Supplier;
   unit: string;

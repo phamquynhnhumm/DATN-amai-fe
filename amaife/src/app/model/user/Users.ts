@@ -3,10 +3,10 @@ import {Account} from "./Account";
 
 export interface Users {
   id: number;
-  createdBy: Date;
-  createAt: string;
-  updatedBy: Date;
-  updateAt: string;
+  createdBy: Account;
+  createAt: Date;
+  updatedBy: Account;
+  updateAt: Date;
   isDeleted: boolean;
   fullName: string;
   birthday: Date;
