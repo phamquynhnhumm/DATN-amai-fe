@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Food} from "../model/food/Food";
 import {Observable} from "rxjs";
 import {FoodCategory} from "../model/food/FoodCategory";
@@ -11,16 +11,19 @@ import {Material} from "../model/food/Material";
 })
 export class FoodService {
 
+  requestHeader = new HttpHeaders(
+    {"No-Auth": "True"}
+  );
   /**
    * URL Món
    */
-  readonly URL_FOOD = "http://localhost:8080/api/food";
-  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/food/all";
-  readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/food/undelete";
-  readonly URL_FOOD_DELETE = "http://localhost:8080/api/food/delete";
-  readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/food/findByFoodcategoryId";
-  readonly URL_FOOD_SEARCH = "http://localhost:8080/api/food/search";
-  readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/food/searchfindBymaterial";
+  readonly URL_FOOD = "http://localhost:8080/api/admin/food";
+  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/admin/food/all";
+  readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/admin/food/undelete";
+  readonly URL_FOOD_DELETE = "http://localhost:8080/api/admin/food/delete";
+  readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/admin/food/findByFoodcategoryId";
+  readonly URL_FOOD_SEARCH = "http://localhost:8080/api/admin/food/search";
+  readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/admin/food/searchfindBymaterial";
 
   /**
    * URL danh mục

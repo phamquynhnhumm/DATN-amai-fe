@@ -16,6 +16,7 @@ import {ListfooddetailComponent} from "./content/fooddetail/listfooddetail/listf
 import {CreatefooddetailComponent} from "./content/fooddetail/createfooddetail/createfooddetail.component";
 import {ListorderComponent} from "./content/order/listorder/listorder.component";
 import {LoginadminComponent} from "./content/loginadmin/loginadmin.component";
+import {AuthGuard} from "../../guard/auth.guard";
 
 const routes: Routes = [
   /**
@@ -28,7 +29,12 @@ const routes: Routes = [
   /**
    * URL món
    */
-  {path: "food", component: ListfoodComponent},
+  {
+    path: "food",
+    component: ListfoodComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
   {path: "createfood", component: CreatefoodComponent},
 
   /**

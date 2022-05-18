@@ -1,4 +1,4 @@
 export interface AccountLoginDTO {
-    username: string;
+    userName: string;
     role: string
 }

@@ -60,6 +60,11 @@ import { UpdateorderComponent } from './content/order/updateorder/updateorder.co
 import { DetailorderComponent } from './content/order/detailorder/detailorder.component';
 import { DeleteorderComponent } from './content/order/deleteorder/deleteorder.component';
 import { LoginadminComponent } from './content/loginadmin/loginadmin.component';
+import {AuthGuard} from "../../guard/auth.guard";
+import {LoginService} from "../../service/login.service";
+import {AuthInterceptor} from "../../guard/auth.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 
 
 @NgModule({
@@ -131,7 +136,34 @@ import { LoginadminComponent } from './content/loginadmin/loginadmin.component';
         NgxPaginationModule,
         MatSnackBarModule,
         MatSelectModule
-    ]
+    ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1081742702049-mvi68nuauktdq43q10420bgj4b97df5o.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1819058964959430')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
+    AuthGuard, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    LoginService
+  ]
+
 })
 export class AdminModule {
 }

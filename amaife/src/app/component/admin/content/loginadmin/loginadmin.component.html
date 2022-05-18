@@ -1,33 +1,61 @@
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
-            <h1 class="mb-5" style="font-family: Georgia;font-weight: bolder">ĐĂNG NHẬP TRANG QUẢN TRỊ </h1>
-            <div class="form-outline mb-4">
-              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email"/>
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <h1 class="mb-5" style="font-family: Georgia;font-weight: bolder">ĐĂNG NHẬP TRANG QUẢN TRỊ </h1>
+              <div class="form-outline mb-4">
+                <input class="form-control form-control-lg" type="text" formControlName="userName" #elementUsername
+                       (change)="checkValidUsernameAuto(elementUsername.value)">
+                <div
+                  *ngIf="formLogin.get('userName')?.hasError('required') && (formLogin.get('userName')?.touched || isLoginValid) ; then thenUsername else elseUsername"></div>
+                <ng-template #thenUsername>
+                  <small style="color: red">Vui lòng điền tên đăng nhập</small>
+                </ng-template>
+                <ng-template #elseUsername>
+                  <small *ngIf="errorUsername ; else elseErrorUsername" style="color: red">{{errorUsername}}</small>
+                  <ng-template #elseErrorUsername><small style="color: white">.</small></ng-template>
+                </ng-template>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="password" class="form-control form-control-lg" formControlName="password" #elementPassword
+                       (change)="checkValidPassword(elementPassword.value)">
+                <div
+                  *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.touched || isLoginValid) ; then thenPassword else elsePassword"></div>
+                <ng-template #thenPassword>
+                  <small style="color: red">Vui lòng điền mật khẩu</small>
+                </ng-template>
+                <ng-template #elsePassword>
+                  <small *ngIf="errorPassword ; else elseErrorPassord" style="color: red">{{errorPassword}}</small>
+                  <ng-template #elseErrorPassord><small style="color: white">.</small></ng-template>
+                </ng-template>
+              </div>
+              <div class="custom-control custom-checkbox mb-4" style="text-align: left;">
+                <input class="cursor-pointer" type="checkbox" name="vehicle1" value="true" #element
+                       (click)="rememberMeLogin()">
+                <label class="cursor-pointer"  style="margin-left: 5px">Lưu đăng nhập</label>
+              </div>
+
+              <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue">Truy
+                cập
+              </button>
+              <hr class="my-4">
+              <button class="btn btn-lg   mb-2" style="background-color: #dd4b39;color:white;width: 70%"
+                      type="submit" (click)="loginWithFacebook()"><i class="fab fa-google me-2"></i> Google
+              </button>
+              <br>
+              <button class="btn btn-lg   mb-2" style="background-color: #435d7d;color:white;width: 70%"
+                      type="submit" (click)="loginWithGoogle()"><i class="fab fa-facebook-f me-2"></i>Facebook
+              </button>
+              <div style="text-align: center">
+                <p class="cursor-pointer forgot-password" (click)="forgotPassword()">Quên mật khẩu?</p>
+              </div>
             </div>
-            <div class="form-outline mb-4">
-              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Mật khẩu"/>
-            </div>
-            <div class="custom-control custom-checkbox mb-4" style="text-align: left;">
-              <input type="checkbox" disabled >
-              <label class="custom-control-label ">Quên mật khẩu</label>
-            </div>
-            <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue">Truy cập
-            </button>
-            <hr class="my-4">
-            <button class="btn btn-lg   mb-2" style="background-color: #dd4b39;color:white;width: 70%"
-                    type="submit"><i class="fab fa-google me-2"></i> Google
-            </button>
-            <br>
-            <button class="btn btn-lg   mb-2" style="background-color: #435d7d;color:white;width: 70%"
-                    type="submit"><i class="fab fa-facebook-f me-2"></i>Facebook
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </section>
