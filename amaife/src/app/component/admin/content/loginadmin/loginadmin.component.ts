@@ -95,40 +95,40 @@ export class LoginadminComponent implements OnInit {
   }
 
   login() {
-    // if (this.formLogin.valid) {
-    console.log(this.formLogin.value)
-    this.loginService.login(this.formLogin.value).subscribe(
-      (authoricationResponse) => {
-        console.log("Đăng nhâp thành công")
-        // console.log(this.setLoginComplete(authoricationResponse))
-        // this.setLoginComplete(authoricationResponse)
-      },
-      // (error) => {
-      //   this.isLoginValid = false;
-      //   switch (error.error.status) { // error.error.status = 404 or 400
-      //     case "Username not exists":
-      //       this.errorUsername = "Tài khoản hoặc mật khẩu sai";
-      //       this.errorPassword = "";
-      //       break;
-      //     case "Account locked":
-      //       this.errorUsername = "Tài khoản của bạn đã bị khóa";
-      //       this.errorPassword = "";
-      //       break;
-      //     // case "Wrong password":
-      //     //     this.errorPassword = "Mật khẩu sai";
-      //     //     this.errorUsername = "";
-      //     //     break;
-      //     default:
-      //       console.log(error)
-      //       this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
-      //         panelClass: ['mat-toolbar', 'mat-primary'],
-      //         duration: 5000
-      //       });
-      //   }
-      // }
-    )
-    // } else {
-    //   this.isLoginValid = true;
-    // }
+    if (this.formLogin.valid) {
+      console.log(this.formLogin.value)
+      this.loginService.login(this.formLogin.value).subscribe(
+        (authoricationResponse) => {
+          console.log("Đăng nhâp thành công")
+          console.log(this.setLoginComplete(authoricationResponse))
+          this.setLoginComplete(authoricationResponse)
+        },
+        (error) => {
+          this.isLoginValid = false;
+          switch (error.error.status) { // error.error.status = 404 or 400
+            case "Username not exists":
+              this.errorUsername = "Tài khoản hoặc mật khẩu sai";
+              this.errorPassword = "";
+              break;
+            case "Account locked":
+              this.errorUsername = "Tài khoản của bạn đã bị khóa";
+              this.errorPassword = "";
+              break;
+            // case "Wrong password":
+            //     this.errorPassword = "Mật khẩu sai";
+            //     this.errorUsername = "";
+            //     break;
+            default:
+              console.log(error)
+              this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
+                panelClass: ['mat-toolbar', 'mat-primary'],
+                duration: 5000
+              });
+          }
+        }
+      )
+    } else {
+      this.isLoginValid = true;
+    }
   }
 }

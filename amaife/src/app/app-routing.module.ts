@@ -8,8 +8,7 @@ import {
   EditfoodcategoryComponent
 } from "./component/admin/content/foodcategory/editfoodcategory/editfoodcategory.component";
 
-const routes: Routes = [
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

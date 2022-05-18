@@ -16,7 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {RouterModule} from "@angular/router";
-import {environment} from "../environments/environment.prod";
 
 @NgModule({
   declarations: [

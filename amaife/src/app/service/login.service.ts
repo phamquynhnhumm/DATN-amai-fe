@@ -23,8 +23,8 @@ export class LoginService {
    * Headers: requestHeader địa diện cho việc không phân quyền ai cũng có thể truy cập vào
    * @param loginRequest
    */
-  public login(loginRequest: LoginRequest): Observable<LoginRequest> {
-    return this.httpClient.post<LoginRequest>(this.API_LOGIN_ADMIN, loginRequest, {headers: this.requestHeader})
+  public login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN, loginRequest, {headers: this.requestHeader})
   }
 
   public roleMatch(allowedRole: string[]): boolean {
