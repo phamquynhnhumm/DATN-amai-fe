@@ -19,6 +19,9 @@ import {LoginadminComponent} from "./content/loginadmin/loginadmin.component";
 import {AuthGuard} from "../../guard/auth.guard";
 import {FormCheckComponent} from "@coreui/angular";
 import {ForbiddenComponent} from "./content/forbidden/forbidden.component";
+import {ListComponent} from "./content/account/list/list.component";
+import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
+import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 
 const routes: Routes = [
   /**
@@ -85,7 +88,10 @@ const routes: Routes = [
    * lOGIN
    */
   {path: "login", component: LoginadminComponent},
-  {path: "forbidden", component: ForbiddenComponent}
+  {path: "forbidden", component: ForbiddenComponent},
+  {path: "account", component: ListComponent},
+  {path: "newpassword", component: NewpasswordComponent},
+  {path: "editaccount", component: EditaccountComponent}
 ];
 
 @NgModule({

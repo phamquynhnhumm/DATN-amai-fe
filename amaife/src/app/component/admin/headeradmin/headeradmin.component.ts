@@ -10,7 +10,7 @@ import {AuthService} from "../../../service/auth.service";
 })
 export class HeaderadminComponent extends HeaderComponent {
   @Input() sidebarId: string = "sidebar";
-  icons = {cilSettings, cilMenu, cilUser, cilEnvelopeOpen, cilBell};
+  icons = {cilSettings, cilMenu, cilUser, cilEnvelopeOpen, cilBell,};
 
   public newMessages = new Array(4)
   public newTasks = new Array(5)

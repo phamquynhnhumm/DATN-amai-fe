@@ -41,21 +41,10 @@
 <!-- nguowif dungf -->
 <ng-template #userDropdown>
   <c-dropdown alignment="end" variant="nav-item">
-    <button
-      cButton
-      color=""
-      [caret]="false"
-      cDropdownToggle
-      class="py-0"
-    >
-      <c-avatar
-        cTextColor="primary"
-        shape="rounded-1"
-        size="md"
-        src="https://phunugioi.com/wp-content/uploads/2020/10/hinh-anh-avatar-de-thuong-cute.jpg"
-        status="success"
-      >
-      </c-avatar>
+    <button [caret]="false" cDropdownToggle class="py-0"
+            style="border: 0px solid black;border-color: snow;background-color: snow">
+      <c-avatar cTextColor="primary" style="border-radius: 50%;" size="md" src="/assets/logo.png"
+                status="success"></c-avatar>
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
       <li>
@@ -63,18 +52,21 @@
       </li>
       <li></li>
       <li>
-        <a routerLink="./" cDropdownItem>
+        <a routerLink="/account" cDropdownItem>
           <svg class="me-2" [cIcon]="icons.cilUser"></svg>
-          cập nhật
+          Tài Khoản
         </a>
       </li>
+      <li></li>
       <li>
-        <a *ngIf="! isLoggedIn()" [routerLink]="['/login']">
+        <a *ngIf="! isLoggedIn()" [routerLink]="['/login']" cDropdownItem>
           <svg class="me-2" [cIcon]="icons.cilSettings"></svg>
           Đăng Nhập
         </a>
         <a *ngIf="isLoggedIn()" [routerLink]="['/login']"
-           (click)="logout()">
+           (click)="logout()" cDropdownItem>
+          <i class="cid-account-logout"></i>
+
           <svg class="me-2" [cIcon]="icons.cilSettings"></svg>
           Đăng Xuất
         </a>

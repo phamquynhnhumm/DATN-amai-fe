@@ -14,5 +14,6 @@ export interface Users {
   phone: string;
   gender: EGender;
   image: string;
-  account: Account
+  account: Account;
+  address: string
 }

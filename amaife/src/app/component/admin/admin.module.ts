@@ -66,6 +66,10 @@ import {AuthInterceptor} from "../../guard/auth.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 import { ForbiddenComponent } from './content/forbidden/forbidden.component';
+import { ListComponent } from './content/account/list/list.component';
+import { NewpasswordComponent } from './content/account/newpassword/newpassword.component';
+import { DeleteaccountComponent } from './content/account/deleteaccount/deleteaccount.component';
+import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 
 
 @NgModule({
@@ -110,7 +114,11 @@ import { ForbiddenComponent } from './content/forbidden/forbidden.component';
     DetailorderComponent,
     DeleteorderComponent,
     LoginadminComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    ListComponent,
+    NewpasswordComponent,
+    DeleteaccountComponent,
+    EditaccountComponent
   ],
   exports: [
     LayoutComponent,

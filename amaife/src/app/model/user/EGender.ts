@@ -2,15 +2,15 @@ export enum EGender{
   /**
    * giới tính nam
    */
-  MALE,
+  MALE="MALE",
 
   /**
    * Hới tính nữ
    */
-  FEMALE,
+  FEMALE ="FEMALE",
 
   /**
    * Giới tính khác
    */
-  OTHER
+  OTHER="OTHER"
 }
