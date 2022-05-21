@@ -11,6 +11,9 @@ import { MenuuserComponent } from './content/menuuser/menuuser.component';
 import { OrderuserComponent } from './content/orderuser/orderuser.component';
 import { AccountuserComponent } from './content/accountuser/accountuser.component';
 import { AddressuserComponent } from './content/addressuser/addressuser.component';
+import { FoodyouComponent } from './content/foodyou/foodyou.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -23,15 +26,18 @@ import { AddressuserComponent } from './content/addressuser/addressuser.componen
         MenuuserComponent,
         OrderuserComponent,
         AccountuserComponent,
-        AddressuserComponent
+        AddressuserComponent,
+        FoodyouComponent
     ],
   exports: [
     NavUserComponent,
     FooterUserComponent
   ],
-    imports: [
-        CommonModule,
-        UserRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    NgxPaginationModule,
+    MatIconModule
+  ]
 })
 export class UserModule { }

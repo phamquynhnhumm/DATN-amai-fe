@@ -96,6 +96,8 @@ export class LoginadminComponent implements OnInit {
     if (this.formLogin.valid) {
       this.loginService.login(this.formLogin.value).subscribe(
         (authoricationResponse) => {
+          console.log("đăng ký thànhg công")
+          console.log(this.formLogin.value)
           this.authService.setLocalStorage(authoricationResponse);
           this.setLoginComplete(authoricationResponse)
         },

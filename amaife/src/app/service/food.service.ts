@@ -26,6 +26,8 @@ export class FoodService {
   readonly URL_FOOD_SEARCH = "http://localhost:8080/api/admin/food/search";
   readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/admin/food/searchfindBymaterial";
 
+  readonly URL_FOODUSER_FINFDISDELETE = "http://localhost:8080/api/food/all";
+
   /**
    * URL danh mục
    */
@@ -65,11 +67,16 @@ export class FoodService {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD);
   }
 
-  findAllFoodIsdeleteAndFoodCategory(isdeleteFood: boolean,idDeleteFoodCategory : boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORY + "/" + isdeleteFood +"/" +idDeleteFoodCategory);
+  findAllFoodIsdeleteAndFoodCategory(isdeleteFood: boolean, idDeleteFoodCategory: boolean): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORY + "/" + isdeleteFood + "/" + idDeleteFoodCategory);
   }
+
   findAllFoodIsdelete(isdeleteFood: boolean): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETE + "/" + isdeleteFood);
+  }
+
+  findAllFoodIsdelete_User(isdeleteFood: boolean): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_FINFDISDELETE + "/" + isdeleteFood);
   }
 
   findByIdFood(id: number): Observable<Food> {

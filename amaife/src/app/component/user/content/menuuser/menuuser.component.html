@@ -1,1 +1,90 @@
-<p>menuuser works!</p>
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2>Món</h2>
+          <mat-icon class="mat-icon-rtl-mirror" svgIcon="facebook"></mat-icon>
+
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a href="./index.html">Trang chủ</a>
+          <span>Cửa hàng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Section Begin -->
+<section class="shopmenu spanmenu">
+  <div class="container">
+    <div class="shop__optionmenu">
+      <div class="row">
+        <div class="col-lg-7 col-md-7">
+          <div class="shop__optionmenu__search">
+            <form action="#">
+              <select class="form-select-lg "
+                      style="border: none;font-size: 16px;font-family: inherit;line-height:44px;position:relative">
+                <option value="">Danh mục món</option>
+                <option value="">Tên món</option>
+                <option value="">Giá</option>
+              </select>
+              <input type="text" placeholder="Search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+          <div class="shop__optionmenu__right">
+            <select class="form-select-lg "
+                    style="border: none;background: #f5f5f5;font-family: Montserrat, sans-serif;display: inline-block">
+              <option value="">Sắp xếp</option>
+              <option value="">Theo tên</option>
+              <option value="">Theo danh mục</option>
+              <option value="">Theo giá</option>
+            </select>
+            <a href="#"><i class="fa fa-list"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="foodList != null">
+
+      <div class="col-lg-3 col-md-6 col-sm-6"
+           *ngFor="let foods of foodList | paginate :{itemsPerPage:8,currentPage : p}">
+        <div class="product__item">
+          <div class="product__item__pic ">
+            <img style="background: #e5e5e6" src="{{foods.image}}">
+            <div class="product__label">
+              <span>{{foods.name}}</span>
+            </div>
+          </div>
+          <div class="product__item__text">
+            <h6><a href="#">{{foods.foodCategory.name}}</a></h6>
+            <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
+            <div class="cart_add">
+              <a href="#">Thêm vào giỏ hàng</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+
+    </div>
+  </div>
+</section>
+<!-- Shop Section End -->
+
+<!-- Footer Section Begin -->
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
