@@ -15,6 +15,7 @@ import { FoodyouComponent } from './content/foodyou/foodyou.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {MatIconModule} from "@angular/material/icon";
 import { DetailfooduserComponent } from './content/detailfooduser/detailfooduser.component';
+import { ShopingcartComponent } from './content/shopingcart/shopingcart.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DetailfooduserComponent } from './content/detailfooduser/detailfooduser
         AccountuserComponent,
         AddressuserComponent,
         FoodyouComponent,
-        DetailfooduserComponent
+        DetailfooduserComponent,
+        ShopingcartComponent
     ],
   exports: [
     NavUserComponent,
