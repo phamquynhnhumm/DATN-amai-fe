@@ -2,12 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from "./layout/layout.component";
 import {ListfoodcategoryComponent} from "./content/foodcategory/listfoodcategory/listfoodcategory.component";
-import {EditfoodcategoryComponent} from "./content/foodcategory/editfoodcategory/editfoodcategory.component";
 import {CreatefoodcategoryComponent} from "./content/foodcategory/createfoodcategory/createfoodcategory.component";
 import {ListfoodComponent} from "./content/food/listfood/listfood.component";
 import {DeletefoodandcategoryComponent} from "./content/bin/deletefoodandcategory/deletefoodandcategory.component";
 import {CreatefoodComponent} from "./content/food/createfood/createfood.component";
-import {EditfoodComponent} from "./content/food/editfood/editfood.component";
 import {ListsupplierComponent} from "./content/supplier/listsupplier/listsupplier.component";
 import {CreatesupplierComponent} from "./content/supplier/createsupplier/createsupplier.component";
 import {ListmaterialComponent} from "./content/material/listmaterial/listmaterial.component";
@@ -17,13 +15,13 @@ import {CreatefooddetailComponent} from "./content/fooddetail/createfooddetail/c
 import {ListorderComponent} from "./content/order/listorder/listorder.component";
 import {LoginadminComponent} from "./content/loginadmin/loginadmin.component";
 import {AuthGuard} from "../../guard/auth.guard";
-import {FormCheckComponent} from "@coreui/angular";
 import {ForbiddenComponent} from "./content/forbidden/forbidden.component";
 import {ListComponent} from "./content/account/list/list.component";
 import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 
 const routes: Routes = [
+  {path:"admin",component:LayoutComponent},
   /**
    * URL danh mục món
    */
