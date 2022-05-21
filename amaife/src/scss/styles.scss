@@ -8,11 +8,6 @@ $enable-rtl: true;
 // Import styles with default layout.
 @import "../../node_modules/@coreui/coreui/scss/coreui";
 
-// Import Chart.js custom tooltips styles
-//@import "~@coreui/chartjs/scss/coreui-chartjs";
-
-// perfect scrollbar theming for use with [perfectScrollbar] directive
-//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
 @import "layout";
 
@@ -27,6 +22,8 @@ $enable-rtl: true;
 
 @import "shop";
 
-@import "nav_food.css";
+@import "nav_food";
 
 @import "footer";
+
+//@import "shop-details";

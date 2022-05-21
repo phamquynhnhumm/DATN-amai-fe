@@ -23,4 +23,15 @@ export class MenuuserComponent implements OnInit {
       }
     )
   }
+
+  detailFood(foods: Food) {
+    this.foodService.findByIdFoodUser(foods.id).subscribe(
+      datafoodDetail =>
+      {
+        // navigator("")
+      }
+    )
+    // navigator
+
+  }
 }
