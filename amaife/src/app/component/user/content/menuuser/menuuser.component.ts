@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FoodService} from "../../../../service/food.service";
 import {Food} from "../../../../model/food/Food";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menuuser',
@@ -11,7 +12,9 @@ export class MenuuserComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
 
-  constructor(private foodService: FoodService) {
+  constructor(private foodService: FoodService,
+              private router: Router,
+  ) {
   }
 
   ngOnInit(): void {
@@ -25,13 +28,10 @@ export class MenuuserComponent implements OnInit {
   }
 
   detailFood(foods: Food) {
-    this.foodService.findByIdFoodUser(foods.id).subscribe(
-      datafoodDetail =>
-      {
-        // navigator("")
-      }
-    )
-    // navigator
-
+    // this.foodService.findByIdFoodUser(foods.foodCategory.id).subscribe(
+    //   datafoodDetail => {
+        this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
+      // }
+    // )
   }
 }

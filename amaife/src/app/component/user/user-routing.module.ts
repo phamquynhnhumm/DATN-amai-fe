@@ -7,7 +7,7 @@ import {DetailfooduserComponent} from "./content/detailfooduser/detailfooduser.c
 const routes: Routes = [
   {path:"home",component:HomeuserComponent},
   {path:"menu",component:MenuuserComponent},
-  {path:"detailfood",component:DetailfooduserComponent}
+  {path:"detailfood/:id",component:DetailfooduserComponent}
 ];
 
 @NgModule({

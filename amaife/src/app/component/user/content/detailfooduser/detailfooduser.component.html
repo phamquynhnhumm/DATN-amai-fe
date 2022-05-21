@@ -20,19 +20,19 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="product__details__img">
-          <img class="big_img" src="assets/image/ts1.png" alt="">
+          <img class="big_img" src="{{food.image}}" alt="">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="product__details__text">
-          <div class="product__label">Bánh ngọt</div>
-          <h4>Bánh cocokie ngọt</h4>
-          <h5>đ35.000</h5>
+          <div class="product__label">{{food.foodCategory.name}}</div>
+          <h4>{{food.name}}</h4>
+          <h5>{{food.price | currency :'VND'}}</h5>
           <p> Trà có vị chát, sữa có vị ngọt, trà với sữa sẽ thành một thức uống tuyệt hảo cũng như anh với em sẽ trở
             thành một cặp đôi hoàn hảo.</p>
           <ul>
-            <li>Mã món: <span>17</span></li>
-            <li>Danh mục: <span>Trà sữa</span></li>
+            <li>Mã món: <span>{{food.id}}</span></li>
+            <li>Danh mục: <span>{{food.foodCategory.name}}</span></li>
           </ul>
           <div class="product__details__option">
             <div class="quantity">
