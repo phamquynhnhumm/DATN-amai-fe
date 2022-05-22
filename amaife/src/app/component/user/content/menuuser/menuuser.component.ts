@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FoodService} from "../../../../service/food.service";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {FormBuilder, Validators} from "@angular/forms";
+import {MatOptionSelectionChange} from "@angular/material/core";
 
 @Component({
   selector: 'app-menuuser',
@@ -11,9 +14,13 @@ import {Router} from "@angular/router";
 export class MenuuserComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
+  searchSubject = ['Tên món', 'Danh mục'];
+  searchss: string = "Chọn thuộc tính";
 
   constructor(private foodService: FoodService,
               private router: Router,
+              private matSnackBar: MatSnackBar,
+              private fb: FormBuilder,
   ) {
   }
 
@@ -27,11 +34,71 @@ export class MenuuserComponent implements OnInit {
     )
   }
 
+  searchForm = this.fb.group({
+    search: ['', Validators.maxLength(100)],
+  });
+
   detailFood(foods: Food) {
     // this.foodService.findByIdFoodUser(foods.foodCategory.id).subscribe(
     //   datafoodDetail => {
-        this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
-      // }
+    this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
+    // }
     // )
   }
+
+  onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
+    this.searchss = searchs;
+  }
+
+  searchFood(search: string) {
+    if (this.searchss == this.searchSubject[0]) {
+      this.foodService.searcFood(false, search, "", "").subscribe(
+        (data) => {
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[1]) {
+      this.foodService.searcFood(false, "", "", search).subscribe(
+        (data) => {
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[2]) {
+      this.foodService.searcFood(false, "", search, "").subscribe(
+        (data) => {
+          this.foodList = data;
+        },
+        (error) => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
+            data => {
+              this.p = 1;
+              this.foodList = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+  }
+
 }

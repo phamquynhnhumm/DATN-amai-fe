@@ -31,6 +31,7 @@ export class FoodService {
   readonly URL_FOODUSER_FINFDISDELETE = "http://localhost:8080/api/food/all";
   readonly URL_FOODUSER_IDCATEGORY = "http://localhost:8080/api/food/allFood";
   readonly URL_FOODUSER = "http://localhost:8080/api/food";
+  readonly URL_FOODUSER_SEARCH = "http://localhost:8080/api/food/search";
 
   /**
    * URL danh mục
@@ -231,11 +232,16 @@ export class FoodService {
   findAllFoodIsdelete_User(isdeleteFood: boolean): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_FINFDISDELETE + "/" + isdeleteFood);
   }
+
   findAllFoodUserIsdeleteAndFoodCategory(idFoodCategory: number): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_IDCATEGORY + "/" + idFoodCategory );
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_IDCATEGORY + "/" + idFoodCategory);
   }
+
   findByIdFoodUser(id: number): Observable<Food> {
     return this.httpClient.get<Food>(this.URL_FOODUSER + "/" + id);
   }
 
+  searcFoodUser(isDelete: boolean, name: string, foodCategoryName: string): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('foodCategoryName', foodCategoryName)});
+  }
 }

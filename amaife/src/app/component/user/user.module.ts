@@ -17,6 +17,9 @@ import {MatIconModule} from "@angular/material/icon";
 import { DetailfooduserComponent } from './content/detailfooduser/detailfooduser.component';
 import { ShopingcartComponent } from './content/shopingcart/shopingcart.component';
 import { ClassComponent } from './content/class/class.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
+import {GridModule} from "@coreui/angular";
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { ClassComponent } from './content/class/class.component';
     CommonModule,
     UserRoutingModule,
     NgxPaginationModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    GridModule
   ]
 })
 export class UserModule { }
