@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Food} from "../../../../model/food/Food";
 import {FoodService} from "../../../../service/food.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-detailfooduser',
@@ -14,33 +15,29 @@ export class DetailfooduserComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
   id!: number | null;
-  id_food: string | any;
+  loads: boolean = true;
 
   constructor(private foodService: FoodService,
+              private router: Router,
+              private location: Location,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    // let id = this.activatedRoute.snapshot.params['id'];
-    console.log("nhận idd xem được ko  nào")
-    console.log(this.activatedRoute.data)
-    this.activatedRoute.paramMap.subscribe(
-      paramap => {
-        this.id_food = paramap.get("id");
-        console.log(this.id_food)
-      });
-
-    this.foodService.findByIdFood(1).subscribe(
+    let id = this.activatedRoute.snapshot.params['id'];
+    this.foodService.findByIdFoodUser(id).subscribe(
       dataFoodDetail => {
         this.food = dataFoodDetail;
-        this.foodService.findAllFoodUserIsdeleteAndFoodCategory(1).subscribe(
+        this.foodService.findAllFoodUserIsdeleteAndFoodCategory(this.food.foodCategory.id).subscribe(
           datafood => {
             this.p = 1;
             this.foodList = datafood;
-            console.log(this.foodList)
           }
         )
       }
-    )
+    );
+  }
+  detailFood(foods: Food) {
+    location.replace("/detailfood/" + foods.id)
   }
 }

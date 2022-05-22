@@ -39,11 +39,7 @@ export class MenuuserComponent implements OnInit {
   });
 
   detailFood(foods: Food) {
-    // this.foodService.findByIdFoodUser(foods.foodCategory.id).subscribe(
-    //   datafoodDetail => {
-    this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
-    // }
-    // )
+    this.router.navigate(['/detailfood/' + foods.id]);
   }
 
   onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
