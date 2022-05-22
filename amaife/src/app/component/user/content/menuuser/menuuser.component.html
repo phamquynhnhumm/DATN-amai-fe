@@ -57,7 +57,7 @@
     <div class="row" *ngIf="foodList != null">
 
       <div class="col-lg-3 col-md-6 col-sm-6"
-           *ngFor="let foods of foodList | paginate :{itemsPerPage:8,currentPage : p}">
+           *ngFor="let foods of foodList | paginate :{itemsPerPage:12,currentPage : p}">
         <div class="product__item" (click)="detailFood(foods)">
           <div class="product__item__pic ">
             <img style="background: #e5e5e6" src="{{foods.image}}">

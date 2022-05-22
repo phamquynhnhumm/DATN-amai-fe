@@ -26,7 +26,7 @@
           <table>
             <thead>
             <tr>
-              <th>Sản phẩm</th>
+              <th colspan="2">Sản phẩm</th>
               <th>Số lượng</th>
               <th>Tổng tiền</th>
               <th></th>
@@ -36,8 +36,10 @@
             <tr>
               <td class="product__cart__item">
                 <div class="product__cart__item__pic">
-                  <img src="assets/image/ts1.png" width="30%" height="30%" alt="">
+                  <img src="assets/image/ts1.png" width="40%" height="40%" alt="">
                 </div>
+              </td>
+              <td class="product__cart__item">
                 <div class="product__cart__item__text">
                   <h6>Trà sữa chan đen</h6>
                   <h5>đ98.490</h5>
@@ -46,72 +48,14 @@
               <td class="quantity__item">
                 <div class="quantity">
                   <div class="pro-qty">
-                    <input type="text" value="1">
+                    <span class="dec qtybtn">-</span>
+                    <input type="text" value="2">
+                    <span class="inc qtybtn">+</span>
                   </div>
                 </div>
               </td>
               <td class="cart__price">$ 30.00</td>
-              <td class="cart__close"><span class="icon_close"></span></td>
-            </tr>
-            <tr>
-              <td class="product__cart__item">
-                <div class="product__cart__item__pic">
-                  <img src="img/shop/cart/cart-2.jpg" alt="">
-                </div>
-                <div class="product__cart__item__text">
-                  <h6>Diagonal Textured Cap</h6>
-                  <h5>$98.49</h5>
-                </div>
-              </td>
-              <td class="quantity__item">
-                <div class="quantity">
-                  <div class="pro-qty">
-                    <input type="text" value="1">
-                  </div>
-                </div>
-              </td>
-              <td class="cart__price">$ 32.50</td>
-              <td class="cart__close"><span class="icon_close"></span></td>
-            </tr>
-            <tr>
-              <td class="product__cart__item">
-                <div class="product__cart__item__pic">
-                  <img src="img/shop/cart/cart-3.jpg" alt="">
-                </div>
-                <div class="product__cart__item__text">
-                  <h6>Basic Flowing Scarf</h6>
-                  <h5>$98.49</h5>
-                </div>
-              </td>
-              <td class="quantity__item">
-                <div class="quantity">
-                  <div class="pro-qty">
-                    <input type="text" value="1">
-                  </div>
-                </div>
-              </td>
-              <td class="cart__price">$ 47.00</td>
-              <td class="cart__close"><span class="icon_close"></span></td>
-            </tr>
-            <tr>
-              <td class="product__cart__item">
-                <div class="product__cart__item__pic">
-                  <img src="img/shop/cart/cart-4.jpg" alt="">
-                </div>
-                <div class="product__cart__item__text">
-                  <h6>Basic Flowing Scarf</h6>
-                  <h5>$98.49</h5>
-                </div>
-              </td>
-              <td class="quantity__item">
-                <div class="quantity">
-                  <div class="pro-qty">
-                    <input type="text" value="1">
-                  </div>
-                </div>
-              </td>
-              <td class="cart__price">$ 30.00</td>
-              <td class="cart__close"><span class="icon_close"></span></td>
+              <td class="cart__close"><span class="icon_close">x</span></td>
             </tr>
             </tbody>
           </table>
@@ -119,12 +63,12 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="continue__btn">
-              <a href="#">Quay lại cửa hàng</a>
+              <a routerLink="/menu">Quay lại cửa hàng</a>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="continue__btn update__btn">
-              <a href="#"><i class="fa fa-spinner"></i> Cập nhật giỏ hàng</a>
+              <a routerLink="/menu"><i class="fa fa-spinner"></i> Cập nhật giỏ hàng</a>
             </div>
           </div>
         </div>
