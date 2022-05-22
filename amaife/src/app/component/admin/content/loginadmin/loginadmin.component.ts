@@ -47,6 +47,7 @@ export class LoginadminComponent implements OnInit {
       this.router.navigate(['/'])
     }
   }
+
   public setLoginComplete(loginResponse: LoginResponse) {
     if (this.rememberMe % 2 === 1) {
       this.authService.setLocalStorage(loginResponse);
@@ -55,13 +56,13 @@ export class LoginadminComponent implements OnInit {
     const role = loginResponse.user.account.role;
     switch (role) {
       case "ROLE_MANAGEMENT":
-        this.router.navigate(['/food']);
-        break;
-      case "ROLE_CUSTOMER":
         this.router.navigate(['/home']);
         break;
+      case "ROLE_CUSTOMER":
+        this.router.navigate(['/admin']);
+        break;
       case "ROLE_ADMIN":
-        this.router.navigate(['/food']);
+        this.router.navigate(['/admin']);
         break;
       default:
         this.router.navigate(['/forbidden'])
@@ -96,8 +97,9 @@ export class LoginadminComponent implements OnInit {
     if (this.formLogin.valid) {
       this.loginService.login(this.formLogin.value).subscribe(
         (authoricationResponse) => {
-          console.log("đăng ký thànhg công")
-          console.log(this.formLogin.value)
+          console.log(sessionStorage)
+          console.log(sessionStorage.key(2))
+          console.log(authoricationResponse)
           this.authService.setLocalStorage(authoricationResponse);
           this.setLoginComplete(authoricationResponse)
         },
@@ -112,10 +114,6 @@ export class LoginadminComponent implements OnInit {
               this.errorUsername = "Tài khoản của bạn đã bị khóa";
               this.errorPassword = "";
               break;
-            // case "Wrong password":
-            //     this.errorPassword = "Mật khẩu sai";
-            //     this.errorUsername = "";
-            //     break;
             default:
               console.log(error)
               this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {

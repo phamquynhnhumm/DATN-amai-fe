@@ -18,11 +18,11 @@ export class AuthService {
   }
 
   public setLocalStorage(authoricationResponse: LoginResponse) {
-    localStorage.setItem("token", authoricationResponse.jwt);
-    localStorage.setItem("role", authoricationResponse.user.account.role);
     localStorage.setItem("fullName", authoricationResponse.user.fullName);
-    localStorage.setItem("userName", authoricationResponse.user.account.userName);
     localStorage.setItem("id", String(authoricationResponse.user.id));
+    localStorage.setItem("role", authoricationResponse.user.account.role);
+    localStorage.setItem("token", authoricationResponse.jwt);
+    localStorage.setItem("userName", authoricationResponse.user.account.userName);
   }
 
   public assignSessionStorageWithLocalStorage() {

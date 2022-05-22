@@ -70,6 +70,7 @@ import { ListComponent } from './content/account/list/list.component';
 import { NewpasswordComponent } from './content/account/newpassword/newpassword.component';
 import { DeleteaccountComponent } from './content/account/deleteaccount/deleteaccount.component';
 import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
+import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
 
 
 @NgModule({
@@ -118,7 +119,8 @@ import { EditaccountComponent } from './content/account/editaccount/editaccount.
     ListComponent,
     NewpasswordComponent,
     DeleteaccountComponent,
-    EditaccountComponent
+    EditaccountComponent,
+    HomeadminComponent
   ],
   exports: [
     LayoutComponent,

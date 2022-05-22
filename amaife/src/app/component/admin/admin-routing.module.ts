@@ -21,7 +21,7 @@ import {NewpasswordComponent} from "./content/account/newpassword/newpassword.co
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 
 const routes: Routes = [
-  {path:"admin",component:LayoutComponent},
+  {path: "admin", component: LayoutComponent},
   /**
    * URL danh mục món
    */
@@ -87,7 +87,11 @@ const routes: Routes = [
    */
   {path: "login", component: LoginadminComponent},
   {path: "forbidden", component: ForbiddenComponent},
-  {path: "account", component: ListComponent},
+  {
+    path: "account", component: ListComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
   {path: "newpassword", component: NewpasswordComponent},
   {path: "editaccount", component: EditaccountComponent}
 ];
