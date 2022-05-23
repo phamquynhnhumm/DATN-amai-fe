@@ -12,7 +12,8 @@
                     <li>Việt</li>
                   </ul>
                 </li>
-                <li><a href="#">Đăng nhập</a></li>
+                <li><a *ngIf="! isLoggedIn()" [routerLink]="['/login']">Đăng nhập</a>
+                  <a *ngIf="isLoggedIn()" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
             <div class="header__logo">
@@ -39,11 +40,11 @@
       <div class="col-lg-12">
         <nav class="header__menu mobile-menu">
           <ul>
-            <li><a href="./index.html">Trang chủ</a></li>
+            <li><a routerLink="/home">Trang chủ</a></li>
             <li><a routerLink="/class">Dịch vụ</a></li>
             <li class="active"><a routerLink="/menu">Cửa hàng</a></li>
             <li><a href="./blog.html">Bài viết</a></li>
-            <li><a href="./contact.html">Liên hệ</a></li>
+            <li><a routerLink="/user">Tài Khoản</a></li>
           </ul>
         </nav>
       </div>

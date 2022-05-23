@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../../../service/auth.service";
 
 @Component({
   selector: 'app-nav-user',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-user.component.scss']
 })
 export class NavUserComponent implements OnInit {
+  userName!: string | null;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public authService: AuthService) {
   }
 
+  ngOnInit(): void {
+    if (localStorage.getItem("token") !== null) {
+      this.authService.assignSessionStorageWithLocalStorage();
+      this.userName = this.authService.getUsername();
+    }
+  }
+
+  public isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.clear();
+  }
 }

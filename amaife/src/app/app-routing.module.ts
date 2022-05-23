@@ -1,10 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeuserComponent} from "./component/user/content/homeuser/homeuser.component";
 
-const routes: Routes = [
-  {path:"",component:HomeuserComponent}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

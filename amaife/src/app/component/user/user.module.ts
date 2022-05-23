@@ -38,10 +38,11 @@ import {GridModule} from "@coreui/angular";
         ShopingcartComponent,
         ClassComponent
     ],
-  exports: [
-    NavUserComponent,
-    FooterUserComponent
-  ],
+    exports: [
+        NavUserComponent,
+        FooterUserComponent,
+        HomeuserComponent
+    ],
   imports: [
     CommonModule,
     UserRoutingModule,

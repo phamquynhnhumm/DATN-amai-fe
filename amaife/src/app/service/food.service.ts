@@ -230,7 +230,7 @@ export class FoodService {
    * @param isdeleteFood
    */
   findAllFoodIsdelete_User(isdeleteFood: boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_FINFDISDELETE + "/" + isdeleteFood);
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_FINFDISDELETE + "/" + isdeleteFood,{headers: this.requestHeader});
   }
 
   findAllFoodUserIsdeleteAndFoodCategory(idFoodCategory: number): Observable<Array<Food>> {

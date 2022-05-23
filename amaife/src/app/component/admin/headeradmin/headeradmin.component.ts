@@ -15,7 +15,9 @@ export class HeaderadminComponent extends HeaderComponent {
   public newMessages = new Array(4)
   userName!: string | null;
 
-  constructor(public authService: AuthService) {
+  constructor(
+    public authService: AuthService
+  ) {
     super();
   }
 
