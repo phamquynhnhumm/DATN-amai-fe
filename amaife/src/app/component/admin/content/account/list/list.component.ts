@@ -16,9 +16,10 @@ export class ListComponent implements OnInit {
   formUser !: FormGroup;
   idUser!: string | null;
 
-  constructor(public authService: AuthService,
-              private userService: UserService,
-              private snackBar: MatSnackBar
+  constructor(
+    public authService: AuthService,
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) {
   }
 

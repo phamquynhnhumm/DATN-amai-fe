@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ClassToggleService, HeaderComponent} from "@coreui/angular";
+import {Component, Input} from '@angular/core';
+import {HeaderComponent} from "@coreui/angular";
 import {cilUser, cilSettings, cilMenu, cilEnvelopeOpen, cilBell} from '@coreui/icons';
 import {AuthService} from "../../../service/auth.service";
 

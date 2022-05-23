@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {navItems} from "./component/admin/layout/navItems";
+import {AuthService} from "./service/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,9 @@ export class AppComponent {
   public perfectScrollbarConfig = {
     suppressScrollX: true,
   };
+
+  constructor(
+    public authService: AuthService,
+  ) {
+  }
 }

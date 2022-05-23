@@ -21,7 +21,7 @@ import {NewpasswordComponent} from "./content/account/newpassword/newpassword.co
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 
 const routes: Routes = [
-  {path: "admin", component: LayoutComponent},
+  // {path: "admin", component: LayoutComponent},
   /**
    * URL danh mục món
    */

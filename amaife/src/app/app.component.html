@@ -1,14 +1,16 @@
-<!--<app-nav-user></app-nav-user>-->
-<!--<router-outlet></router-outlet>-->
-<!--<app-footer-user></app-footer-user>-->
-
-
-
-<c-sidebar
-  #sidebar="cSidebar"
-  class="d-print-none sidebar sidebar-fixed"
-  id="sidebar"
-  visible
+<div *ngIf="authService.getRole() == 'ROLE_CUSTOMER'">
+  <app-nav-user></app-nav-user>
+  <router-outlet></router-outlet>
+  <app-footer-user></app-footer-user>
+</div>
+<div *ngIf="authService.getRole() == null">
+  <router-outlet></router-outlet>
+</div>
+<c-sidebar *ngIf="authService.getRole() == 'ROLE_ADMIN'"
+           #sidebar="cSidebar"
+           class="d-print-none sidebar sidebar-fixed"
+           id="sidebar"
+           visible
 >
   <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
   <c-sidebar-nav
@@ -25,7 +27,8 @@
 <!--main-->
 
 <!--main-->
-<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent"
+     *ngIf="authService.getRole() == 'ROLE_ADMIN'">
   <!--app-header-->
   <app-headeradmin class="mb-4 d-print-none headeradmin" position="sticky" sidebarId="sidebar"></app-headeradmin>
   <!--app-body-->
