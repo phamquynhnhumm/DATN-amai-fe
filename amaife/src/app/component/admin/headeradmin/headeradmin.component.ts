@@ -15,15 +15,16 @@ export class HeaderadminComponent extends HeaderComponent {
   public newMessages = new Array(4)
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
-  userName!: string |null;
+  userName!: string | null;
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private classToggler: ClassToggleService) {
     super();
   }
 
   ngOnInit(): void {
     if (localStorage.getItem("token") !== null) {
+      this.authService.assignSessionStorageWithLocalStorage();
       this.userName = this.authService.getUsername();
     }
   }
@@ -32,8 +33,7 @@ export class HeaderadminComponent extends HeaderComponent {
     return this.authService.isLoggedIn();
   }
 
-  logout() {
+  public logout() {
     this.authService.clear();
   }
 }
-

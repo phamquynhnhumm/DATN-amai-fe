@@ -19,7 +19,7 @@ export class AuthService {
 
   public setLocalStorage(authoricationResponse: LoginResponse) {
     localStorage.setItem("fullName", authoricationResponse.user.fullName);
-    localStorage.setItem("id", String(authoricationResponse.user.id));
+    localStorage.setItem("id", authoricationResponse.user.id);
     localStorage.setItem("role", authoricationResponse.user.account.role);
     localStorage.setItem("token", authoricationResponse.jwt);
     localStorage.setItem("userName", authoricationResponse.user.account.userName);
@@ -30,15 +30,17 @@ export class AuthService {
     this.setRole(<string>localStorage.getItem('role'));
     this.setFullName(<string>localStorage.getItem('fullName'));
     this.setUsername(<string>localStorage.getItem('userName'));
-    // this.setIdUser(<string>localStorage.getItem("idUser"));
+    this.setIdUser(<string>localStorage.getItem("id"));
   }
 
   public setRole(role: string) {
     sessionStorage.setItem("role", role);
   }
+
   public setToken(jwt: string) {
     sessionStorage.setItem("token", jwt);
   }
+
   public setFullName(fullName: string) {
     sessionStorage.setItem("fullName", fullName);
   }
@@ -63,8 +65,8 @@ export class AuthService {
     return sessionStorage.getItem("userName");
   }
 
-  public setIdUser(id: number) {
-    sessionStorage.setItem("id", String(id));
+  public setIdUser(id: string) {
+    sessionStorage.setItem("id", id);
   }
 
   public getIdUser() {

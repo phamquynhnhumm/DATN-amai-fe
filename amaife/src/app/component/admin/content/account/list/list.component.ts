@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   formUser !: FormGroup;
   idUser!: string | null;
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private userService: UserService,
   ) {
   }
@@ -41,27 +41,28 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = this.authService.getIdUser();
-    this.userService.findByIdUser('2').subscribe(
+    console.log(this.idUser)
+    // @ts-ignore
+    this.userService.findByIdUser(this.idUser).subscribe(
       dataUser => {
         console.log(dataUser)
         this.user = dataUser;
+        this.formUser = new FormGroup(
+          {
+            id: new FormControl(this.user.id, Validators.required),
+            isDeleted: new FormControl(this.user.isDeleted, Validators.required),
+            fullName: new FormControl(this.user.fullName, Validators.required),
+            birthday: new FormControl(this.user.birthday, Validators.required),
+            email: new FormControl(this.user.email, Validators.required),
+            phone: new FormControl(this.user.phone, Validators.required),
+            gender: new FormControl(this.user.gender, Validators.required),
+            image: new FormControl(this.user.image, Validators.required),
+            account: new FormControl(this.user.account, Validators.required),
+            address: new FormControl(this.user.address, Validators.required),
+          }
+        );
       }
     )
-    this.formUser = new FormGroup(
-      {
-        id: new FormControl(this.user.id, Validators.required),
-        isDeleted: new FormControl(this.user.isDeleted, Validators.required),
-        fullName: new FormControl(this.authService.getFullName(), Validators.required),
-        birthday: new FormControl(this.user.birthday, Validators.required),
-        email: new FormControl(this.user.email, Validators.required),
-        phone: new FormControl(this.user.phone, Validators.required),
-        gender: new FormControl(this.user.gender, Validators.required),
-        image: new FormControl(this.user.image, Validators.required),
-        account: new FormControl(this.user.account, Validators.required),
-        address: new FormControl(this.user.address, Validators.required),
-      }
-    )
-
   }
 
   updateUser() {

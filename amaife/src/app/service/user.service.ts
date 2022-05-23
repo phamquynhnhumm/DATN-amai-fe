@@ -12,7 +12,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  findByIdUser(id: string): Observable<Users> {
+  public findByIdUser(id: string): Observable<Users> {
     return this.httpClient.get<Users>(this.URL_USER + "/" + id);
   }
 }

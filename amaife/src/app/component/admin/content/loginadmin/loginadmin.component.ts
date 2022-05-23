@@ -97,9 +97,6 @@ export class LoginadminComponent implements OnInit {
     if (this.formLogin.valid) {
       this.loginService.login(this.formLogin.value).subscribe(
         (authoricationResponse) => {
-          console.log(sessionStorage)
-          console.log(sessionStorage.key(2))
-          console.log(authoricationResponse)
           this.authService.setLocalStorage(authoricationResponse);
           this.setLoginComplete(authoricationResponse)
         },
@@ -115,7 +112,6 @@ export class LoginadminComponent implements OnInit {
               this.errorPassword = "";
               break;
             default:
-              console.log(error)
               this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
                 panelClass: ['mat-toolbar', 'mat-primary'],
                 duration: 5000
