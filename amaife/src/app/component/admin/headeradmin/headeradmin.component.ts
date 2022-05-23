@@ -13,12 +13,9 @@ export class HeaderadminComponent extends HeaderComponent {
   icons = {cilSettings, cilMenu, cilUser, cilEnvelopeOpen, cilBell,};
 
   public newMessages = new Array(4)
-  public newTasks = new Array(5)
-  public newNotifications = new Array(5)
   userName!: string | null;
 
-  constructor(public authService: AuthService,
-              private classToggler: ClassToggleService) {
+  constructor(public authService: AuthService) {
     super();
   }
 

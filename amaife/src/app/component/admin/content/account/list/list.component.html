@@ -10,7 +10,7 @@
         <div class="card-header" style="background: #435d7d;color: white"><strong>Ảnh đại diện</strong></div>
         <div class="card-body text-center">
           <img class="img-account-profile rounded-circle mb-2" src="{{user.image}}" alt="">
-          <div class="small font-italic text-muted mb-4"><h2>Phạm Thị Quỳnh Như</h2></div>
+          <div class="small font-italic text-muted mb-4"><h2>{{user.fullName}} <br>Quyền:  {{user.account.role}}</h2></div>
           <button class="btn btn-outline-info" type="button">Chọn ảnh</button>
         </div>
       </div>
@@ -62,7 +62,7 @@
               <label class="small mb-1">Địa chỉ</label>
               <input class="form-control" formControlName="address">
             </div>
-            <button class="btn btn-outline-info" type="button">Lưu thay đổi</button>
+            <button type="ngSubmit" class="btn btn-outline-info" >Lưu thay đổi</button>
           </form>
         </div>
       </div>

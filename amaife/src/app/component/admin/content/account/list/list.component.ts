@@ -3,6 +3,7 @@ import {AuthService} from "../../../../../service/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../../service/user.service";
 import {Users} from "../../../../../model/user/Users";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-list',
@@ -17,6 +18,7 @@ export class ListComponent implements OnInit {
 
   constructor(public authService: AuthService,
               private userService: UserService,
+              private snackBar: MatSnackBar
   ) {
   }
 
@@ -66,6 +68,17 @@ export class ListComponent implements OnInit {
   }
 
   updateUser() {
+    if (this.formUser.valid) {
+      console.log(this.formUser.value);
+      this.user = this.formUser.value;
+      this.userService.updateUser(this.user).subscribe(
+        () => {
+          this.snackBar.open("Cập nhập tài khoản thành công", "OK", {
+            duration: 4000
+          })
+        }
+      )
+    }
 
   }
 }
