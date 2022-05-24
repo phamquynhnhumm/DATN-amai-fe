@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../../../service/auth.service";
 
 @Component({
@@ -8,6 +8,7 @@ import {AuthService} from "../../../../service/auth.service";
 })
 export class NavUserComponent implements OnInit {
   userName!: string | null;
+  @Output() navHome !: string;
 
   constructor(public authService: AuthService) {
   }
@@ -16,7 +17,8 @@ export class NavUserComponent implements OnInit {
     if (localStorage.getItem("token") !== null) {
       this.authService.assignSessionStorageWithLocalStorage();
       this.userName = this.authService.getUsername();
-    }
+    };
+    console.log(this.navHome);
   }
 
   public isLoggedIn() {

@@ -26,19 +26,21 @@
       <div class="col-lg-6">
         <div class="product__details__text">
           <div class="product__label">{{food.foodCategory.name}}</div>
-          <h4>{{food.name}}</h4>
+          <br>
+          <br>
+          <h1>{{food.name}}</h1>
           <h5>{{food.price | currency :'VND'}}</h5>
           <p> Trà có vị chát, sữa có vị ngọt, trà với sữa sẽ thành một thức uống tuyệt hảo cũng như anh với em sẽ trở
             thành một cặp đôi hoàn hảo.</p>
           <ul>
-            <li>Mã món: <span>{{food.id}}</span></li>
-            <li>Danh mục: <span>{{food.foodCategory.name}}</span></li>
+            <li>Mã món: {{food.id}}</li>
+            <li>Danh mục: {{food.foodCategory.name}}</li>
           </ul>
           <div class="product__details__option">
             <div class="quantity">
               <div class="pro-qty">
                 <span class="dec qtybtn">-</span>
-                <input type="text" value="2">
+                <input type="text" value="2" name="2">
                 <span class="inc qtybtn">+</span>
               </div>
             </div>

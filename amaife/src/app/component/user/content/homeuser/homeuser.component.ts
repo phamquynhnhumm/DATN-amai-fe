@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Food} from "../../../../model/food/Food";
 import {FoodService} from "../../../../service/food.service";
 import {Router} from "@angular/router";
@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./homeuser.component.scss']
 })
 export class HomeuserComponent implements OnInit {
+  @Input() navHome = "active";
 
   foodList!: Array<Food>;
   p: number | any;
@@ -25,7 +26,7 @@ export class HomeuserComponent implements OnInit {
         this.foodList = datafood;
         console.log(this.foodList)
       }
-    )
+    );
   }
 
   detailFood(foods: Food) {
