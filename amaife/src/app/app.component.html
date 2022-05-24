@@ -1,13 +1,11 @@
 <div *ngIf="authService.getRole() == 'ROLE_CUSTOMER'">
   <app-nav-user></app-nav-user>
-  <p>Quyền của bạn: {{authService.getRole()}}</p>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
 </div>
 
 <div *ngIf="authService.getRole() == null">
   <app-nav-user></app-nav-user>
-  <p>Quyền của bạn: {{authService.getRole()}}</p>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
 </div>

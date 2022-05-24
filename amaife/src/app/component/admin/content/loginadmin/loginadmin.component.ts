@@ -44,7 +44,9 @@ export class LoginadminComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.getToken() !== null) {
-      this.router.navigate(['/'])
+      this.router.navigate(['/']).then(
+        () => window.location.reload()
+      )
     }
   }
 

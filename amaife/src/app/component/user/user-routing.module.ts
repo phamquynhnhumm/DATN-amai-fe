@@ -8,6 +8,7 @@ import {ClassComponent} from "./content/class/class.component";
 import {AuthGuard} from "../../guard/auth.guard";
 import {AccountuserComponent} from "./content/accountuser/accountuser.component";
 import {AddressuserComponent} from "./content/addressuser/addressuser.component";
+import {ChangepassComponent} from "./content/changepass/changepass.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
@@ -24,7 +25,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
-  {path: "menu", component: MenuuserComponent},
+  {
+    path: "menu", component: MenuuserComponent, canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },
   {
     path: "shoping", component: ShopingcartComponent,
     canActivate: [AuthGuard],
@@ -35,7 +39,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
-  {path: "detailfood/:id", component: DetailfooduserComponent}
+  {path: "detailfood/:id", component: DetailfooduserComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },
+  {path: "changePass", component: ChangepassComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  }
 ];
 
 @NgModule({
