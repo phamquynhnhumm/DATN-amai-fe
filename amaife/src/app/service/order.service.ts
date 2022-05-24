@@ -8,7 +8,7 @@ import {Oder} from "../model/order/Oder";
 })
 export class OrderService {
   /**
-   * URL đơn hànd
+   * URL đơn hàng ADmin
    */
   readonly URL_ORDER = "http://localhost:8080/api/admin/order";
   readonly URL_ORDER_FINFDISDELETE = "http://localhost:8080/api/admin/order/all";
@@ -17,12 +17,17 @@ export class OrderService {
   readonly URL_ORDER_FINDBYACOUNT_NAME = "http://localhost:8080/api/admin/order/findBySupplierId";
   readonly URL_ORDER_SEARCH = "http://localhost:8080/api/admin/order/search";
 
+  /**
+   * URL đơn hàng cho khách hàng
+   */
+  readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
+
 
   constructor(private httpClient: HttpClient) {
   }
 
   /**
-   * CRUD đơn hàng
+   * CRUD đơn hàng ADMIN
    */
 
   findAllOder(): Observable<Array<Oder>> {
@@ -58,6 +63,13 @@ export class OrderService {
   }
 
   searcOder(isDeleteOder: boolean, isDeleteAccount: boolean, fullName: string, userName: string, address: string, phone: string): Observable<Array<Oder>> {
-    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_SEARCH, {params: new HttpParams().set('isDeleteOder', isDeleteOder).set('isDeleteAccount', isDeleteAccount).set('fullName', fullName).set('userName', userName).set('address',address).set('phone',phone)});
+    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_SEARCH, {params: new HttpParams().set('isDeleteOder', isDeleteOder).set('isDeleteAccount', isDeleteAccount).set('fullName', fullName).set('userName', userName).set('address', address).set('phone', phone)});
+  }
+
+  /**
+   * CRUD đơn hàng người dùng
+   */
+  findOderUser(userName: string): Observable<Array<Oder>> {
+    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_FINFDISDELETE_USER + "/" + userName);
   }
 }

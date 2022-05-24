@@ -26,19 +26,27 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 gedf-main">
+    <div class="col-lg-9 gedf-main" *ngIf="orderList != null ">
       <br>
-      <div class="container padding-bottom-3x mb-1">
+      <div class="container padding-bottom-3x mb-1"
+           *ngFor="let oder of orderList | paginate :{itemsPerPage:5,currentPage : p}">
+        <br>
         <div class="card mb-3">
           <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
             class="text-uppercase label-color-1" style="color: black">Lịch theo dõi đơn hàng - </span><span
-            class="text-medium" style="color:black;">34VB5540K83</span></div>
+            class="text-medium" style="color:black;"> Mã đơn hàng: {{oder.id}}</span></div>
           <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Người xác nhận:</span> Quỳnh như
+            <div class="w-100 text-center py-1 px-2"><span
+              class="text-medium">Người xác nhận:</span> {{oder.account.userName}}
             </div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Trạng thái:</span> Đang giao
+            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Trạng thái:
+              <i *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf() ">Chờ xác nhận</i>
+              <i *ngIf="oder.status == eStatusOrder.CONFIRMED.valueOf() ">Đang chế biến</i>
+              <i *ngIf="oder.status == eStatusOrder.TRANSPORT.valueOf() ">Đang vận chuyển</i>
+              <i *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</i>
+              <i *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</i></span>
             </div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Ngày đặt:</span> 28/09/2022
+            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Ngày đặt:</span> {{oder.createAt}}
             </div>
           </div>
           <div class="card-body">
@@ -60,12 +68,15 @@
                 </div>
                 <h4 class="step-title">Chờ lấy</h4>
               </div>
-              <div class="step completed">
-                <div class="step-icon-wrap">
-                  <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
+              <div class="step">
+                <div *ngIf="oder.status " class="completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
                   </div>
+                  <h4 class="step-title">Đang giao</h4>
                 </div>
-                <h4 class="step-title">Đang giao</h4>
+
               </div>
               <div class="step ">
                 <div class="step-icon-wrap">
@@ -75,11 +86,13 @@
                 <h4 class="step-title">Đã giao</h4>
               </div>
               <div class="step">
-                <div class="step-icon-wrap">
-                  <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
+                <div class="completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
+                    </div>
                   </div>
+                  <h4 class="step-title">Đã hủy</h4>
                 </div>
-                <h4 class="step-title">Đã hủy</h4>
               </div>
             </div>
           </div>
@@ -88,12 +101,29 @@
           class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center">
           <div class="custom-control custom-checkbox mr-3">
           </div>
-          <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm" href="orderDetails"
+          <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm"
+                                                  href="orderDetails"
                                                   data-toggle="modal" data-target="#orderDetails">Xem chi tiết đơn
             hàng</a></div>
         </div>
       </div>
+      <br>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+
+    </div>
+    <div class="col-lg-9 gedf-main" *ngIf="orderList == null">
+      <br><br> <br><br>
+      <div>
+        <p>Hiên tại bạn đang không có đơn hàng nào cả</p>
+      </div>
+      <br><br> <br><br><br><br> <br><br>
     </div>
   </div>
+</div>
+
 
 
