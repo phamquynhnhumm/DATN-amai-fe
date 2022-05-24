@@ -9,7 +9,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./homeuser.component.scss']
 })
 export class HomeuserComponent implements OnInit {
-  @Input() navHome = "active";
 
   foodList!: Array<Food>;
   p: number | any;

@@ -40,11 +40,16 @@
       <div class="col-lg-12">
         <nav class="header__menu mobile-menu">
           <ul>
-            <li class="{{navHome}}"><a style="text-decoration: none" routerLink="/home">Trang chủ</a></li>
-            <li><a style="text-decoration: none" routerLink="/class">Dịch vụ</a></li>
-            <li><a style="text-decoration: none" routerLink="/menu">Cửa hàng</a></li>
-            <li><a href="./blog.html" style="text-decoration: none">Bài viết</a></li>
-            <li><a routerLink="/user" style="text-decoration: none">Tài Khoản</a></li>
+            <li class="{{navHome}}"><a (click)="navHomeFunction()" style="text-decoration: none" routerLink="/home">Trang
+              chủ</a></li>
+            <li class="{{navService}}"><a style="text-decoration: none" (click)="navServiceFunction()"
+                                          routerLink="/class">Dịch vụ</a></li>
+            <li class="{{navFood}}"><a style="text-decoration: none" (click)="navFoodFunction()" routerLink="/menu">Cửa
+              hàng</a></li>
+            <li class="{{navConten}}"><a href="./blog.html" (click)="navContenFunction()" style="text-decoration: none">Bài
+              viết</a></li>
+            <li class="{{navAccount}}"><a routerLink="/user" (click)="navAccountFunction()"
+                                          style="text-decoration: none">Tài Khoản</a></li>
           </ul>
         </nav>
       </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../service/auth.service";
 
 @Component({
@@ -8,7 +8,11 @@ import {AuthService} from "../../../../service/auth.service";
 })
 export class NavUserComponent implements OnInit {
   userName!: string | null;
-  @Output() navHome !: string;
+  navHome !: string;
+  navFood !: string;
+  navService !: string;
+  navAccount !: string;
+  navConten !: string;
 
   constructor(public authService: AuthService) {
   }
@@ -17,7 +21,8 @@ export class NavUserComponent implements OnInit {
     if (localStorage.getItem("token") !== null) {
       this.authService.assignSessionStorageWithLocalStorage();
       this.userName = this.authService.getUsername();
-    };
+    }
+    ;
     console.log(this.navHome);
   }
 
@@ -27,5 +32,48 @@ export class NavUserComponent implements OnInit {
 
   logout() {
     this.authService.clear();
+  }
+
+  navHomeFunction() {
+    this.navHome = "active";
+    this.navFood = "";
+    this.navService = "";
+    this.navAccount = "";
+    this.navConten = "";
+  }
+
+  navFoodFunction() {
+    this.navFood = "active";
+    this.navHome = "";
+    this.navService = "";
+    this.navAccount = "";
+    this.navConten = "";
+
+  }
+
+  navServiceFunction() {
+    this.navService = "active";
+    this.navHome = "";
+    this.navFood = "";
+    this.navAccount = "";
+    this.navConten = "";
+
+  }
+
+  navAccountFunction() {
+    this.navAccount = "active";
+    this.navHome = "";
+    this.navFood = "";
+    this.navService = "";
+    this.navConten = "";
+
+  }
+
+  navContenFunction() {
+    this.navConten = "active";
+    this.navHome = "";
+    this.navFood = "";
+    this.navService = "";
+    this.navAccount = "";
   }
 }

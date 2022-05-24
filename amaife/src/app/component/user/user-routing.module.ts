@@ -12,6 +12,7 @@ import {ChangepassComponent} from "./content/changepass/changepass.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
+  {path: "", component: HomeuserComponent},
   {
     path: "user", component: AccountuserComponent,
     canActivate: [AuthGuard],

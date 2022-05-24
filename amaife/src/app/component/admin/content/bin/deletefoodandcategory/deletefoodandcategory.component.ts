@@ -172,7 +172,6 @@ export class DeletefoodandcategoryComponent implements OnInit {
 
   nameDeleteCustomer() {
     this.namedDelete = "customer";
-
   }
 
   nameDeleteSupplier() {
