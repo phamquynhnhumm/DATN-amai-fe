@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {GridModule} from "@coreui/angular";
 import { ChangepassComponent } from './content/changepass/changepass.component';
+import { OrderDetailUserComponent } from './content/order-detail-user/order-detail-user.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ChangepassComponent } from './content/changepass/changepass.component';
         DetailfooduserComponent,
         ShopingcartComponent,
         ClassComponent,
-        ChangepassComponent
+        ChangepassComponent,
+        OrderDetailUserComponent
     ],
     exports: [
         NavUserComponent,

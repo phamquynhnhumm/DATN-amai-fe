@@ -4,6 +4,9 @@ import {AuthService} from "../../../../service/auth.service";
 import {OrderService} from "../../../../service/order.service";
 import {Oder} from "../../../../model/order/Oder";
 import {EStatusOrder} from "../../../../model/order/EStatusOrder";
+import {DetailorderComponent} from "../../../admin/content/order/detailorder/detailorder.component";
+import {MatDialog} from "@angular/material/dialog";
+import {OrderDetailUserComponent} from "../order-detail-user/order-detail-user.component";
 
 @Component({
   selector: 'app-orderuser',
@@ -18,6 +21,7 @@ export class OrderuserComponent implements OnInit {
 
   constructor(public authService: AuthService,
               private orderService: OrderService,
+              private dialog: MatDialog
   ) {
   }
 
@@ -30,5 +34,22 @@ export class OrderuserComponent implements OnInit {
         this.orderList = dataorder;
       }
     );
+  }
+
+  openDetailOrder(oder: Oder) {
+    console.log(oder.id);
+    this.orderService.findByIdOderUser(oder.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(OrderDetailUserComponent, {
+          width: '800px',
+          height: '580px',
+          data: data
+        });
+        console.log("ddang xem chi tiet orrder")
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 }

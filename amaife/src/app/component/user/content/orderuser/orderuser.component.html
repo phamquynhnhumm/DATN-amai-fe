@@ -46,7 +46,7 @@
               <i *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</i>
               <i *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</i></span>
             </div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Ngày đặt:</span> {{oder.createAt}}
+            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Thời gian đặt:</span> {{oder.createAt}}
             </div>
           </div>
           <div class="card-body">
@@ -102,8 +102,8 @@
           <div class="custom-control custom-checkbox mr-3">
           </div>
           <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm"
-                                                  href="orderDetails"
-                                                  data-toggle="modal" data-target="#orderDetails">Xem chi tiết đơn
+                                                  data-toggle="modal" data-target="#orderDetails"
+                                                  (click)="openDetailOrder(oder)">Xem chi tiết đơn
             hàng</a></div>
         </div>
       </div>

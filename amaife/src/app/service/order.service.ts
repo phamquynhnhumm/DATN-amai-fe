@@ -21,6 +21,7 @@ export class OrderService {
    * URL đơn hàng cho khách hàng
    */
   readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
+  readonly URL_ORDERUSER = "http://localhost:8080/api/order";
 
 
   constructor(private httpClient: HttpClient) {
@@ -71,5 +72,9 @@ export class OrderService {
    */
   findOderUser(userName: string): Observable<Array<Oder>> {
     return this.httpClient.get<Array<Oder>>(this.URL_ORDER_FINFDISDELETE_USER + "/" + userName);
+  }
+
+  findByIdOderUser(id: number): Observable<Oder> {
+    return this.httpClient.get<Oder>(this.URL_ORDERUSER + "/" + id);
   }
 }
