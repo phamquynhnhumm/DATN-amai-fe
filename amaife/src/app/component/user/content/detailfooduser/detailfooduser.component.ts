@@ -20,7 +20,8 @@ export class DetailfooduserComponent implements OnInit {
   constructor(private foodService: FoodService,
               private router: Router,
               private location: Location,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {

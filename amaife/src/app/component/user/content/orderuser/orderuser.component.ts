@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../../../service/auth.service";
 
 @Component({
   selector: 'app-orderuser',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderuserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService
+  ) {
+  }
 
   ngOnInit(): void {
   }

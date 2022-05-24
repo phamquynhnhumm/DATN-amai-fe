@@ -9,6 +9,7 @@ import {AuthGuard} from "../../guard/auth.guard";
 import {AccountuserComponent} from "./content/accountuser/accountuser.component";
 import {AddressuserComponent} from "./content/addressuser/addressuser.component";
 import {ChangepassComponent} from "./content/changepass/changepass.component";
+import {OrderuserComponent} from "./content/orderuser/orderuser.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
@@ -27,6 +28,14 @@ const routes: Routes = [
     data: {role: ['ROLE_CUSTOMER']}
   },
   {
+    /**
+     * Nhập địa chỉ
+     */
+    path: "oder", component: OrderuserComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },
+  {
     path: "menu", component: MenuuserComponent, canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
@@ -40,11 +49,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
-  {path: "detailfood/:id", component: DetailfooduserComponent,
+  {
+    path: "detailfood/:id", component: DetailfooduserComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
-  {path: "changePass", component: ChangepassComponent,
+  {
+    path: "changePass", component: ChangepassComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   }
