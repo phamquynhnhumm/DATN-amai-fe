@@ -15,7 +15,6 @@
     </div>
   </div>
 </div>
-
 <section class="shopping-cart spad">
   <div class="container">
     <div class="row">
@@ -31,9 +30,7 @@
             <tr *ngFor="let cart of cartList | paginate :{itemsPerPage:10,currentPage : p}">
               <div *ngIf="cart.status == eStatusCart.INSGOPPING.valueOf()">
                 <td class="product__cart__item">
-                  <div class="product__cart__item__pic">
-                    <img src="{{cart.food.image}}" width="40%" height="40%" alt="">
-                  </div>
+                  <img src="{{cart.food.image}}" width="40%" height="40%" alt="">
                 </td>
                 <td class="product__cart__item">
                   <div class="product__cart__item__text">
@@ -66,18 +63,19 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="continue__btn update__btn">
-              <a style="text-decoration: none" routerLink="/menu"><i class="fa fa-spinner"></i> Cập nhật giỏ hàng</a>
+              <a style="text-decoration: none" routerLink="/shopping">Cập nhật giỏ hàng</a>
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
+        <br><br>
         <div class="cart__total">
           <h6>Tổng giỏ hàng</h6>
           <ul>
             <li>Tổng tiền <span>đ 169.50</span></li>
           </ul>
-          <a style="text-decoration: none" href="#" class="primary-btn">Tiến hành thanh toán</a>
+          <a style="text-decoration: none" href="#" class="primary-btn" (click)="paypal()">Tiến hành thanh toán</a>
         </div>
       </div>
     </div>

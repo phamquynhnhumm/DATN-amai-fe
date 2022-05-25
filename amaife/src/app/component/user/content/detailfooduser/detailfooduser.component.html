@@ -83,19 +83,19 @@
     </div>
     <div class="row" *ngIf="foodList != null">
       <div class="col-lg-3 col-md-6 col-sm-6"
-           *ngFor="let foods of foodList | paginate :{itemsPerPage:4,currentPage : p}">
-        <div class="product__item" (click)="detailFood(foods)">
+           *ngFor="let food of foodList | paginate :{itemsPerPage:4,currentPage : p}">
+        <div class="product__item" (click)="detailFood(food)">
           <div class="product__item__pic ">
-            <img style="background: #e5e5e6" src="{{foods.image}}">
+            <img style="background: #e5e5e6" src="{{food.image}}">
             <div class="product__label">
-              <span>{{foods.name}}</span>
+              <span>{{food.name}}</span>
             </div>
           </div>
           <div class="product__item__text">
-            <h6><a style="text-decoration: none" href=" #">{{foods.foodCategory.name}}</a></h6>
-            <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
+            <h6><a style="text-decoration: none" href=" #">{{food.foodCategory.name}}</a></h6>
+            <div class="product__item__price">{{food.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(food)">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>

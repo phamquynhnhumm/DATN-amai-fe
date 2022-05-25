@@ -3,8 +3,10 @@ import {FoodService} from "../../../../service/food.service";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatOptionSelectionChange} from "@angular/material/core";
+import {EStatusCart} from "../../../../model/order/EStatusCart";
+import {OrderService} from "../../../../service/order.service";
 
 @Component({
   selector: 'app-menuuser',
@@ -16,12 +18,17 @@ export class MenuuserComponent implements OnInit {
   p: number | any;
   searchSubject = ['Tên món', 'Danh mục'];
   searchss: string = "Chọn thuộc tính";
+  formCart!: FormGroup;
+  quatity: number = 1;
+  eStatusCart = EStatusCart;
+
 
   constructor(private foodService: FoodService,
               private router: Router,
               private matSnackBar: MatSnackBar,
               private fb: FormBuilder,
-  ) {
+              private createService: OrderService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -94,5 +101,22 @@ export class MenuuserComponent implements OnInit {
         }
       );
     }
+  }
+
+  createCartShoping(foods: Food) {
+    this.formCart = new FormGroup(
+      {
+        quantity: new FormControl(this.quatity, Validators.required),
+        status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
+        food: new FormControl(foods, Validators.required),
+        money: new FormControl(foods.price * this.quatity, Validators.required),
+      })
+    this.createService.createCartUser(this.formCart.value).subscribe(
+      (data) => {
+        this.router.navigateByUrl("/menu").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
+      },
+      error => {
+        this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+      })
   }
 }

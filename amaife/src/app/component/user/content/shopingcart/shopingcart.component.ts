@@ -60,4 +60,7 @@ export class ShopingcartComponent implements OnInit {
       }
     )
   }
+
+  paypal() {
+  }
 }

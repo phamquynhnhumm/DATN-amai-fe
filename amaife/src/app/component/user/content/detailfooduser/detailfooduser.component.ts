@@ -60,7 +60,7 @@ export class DetailfooduserComponent implements OnInit {
         quantity: new FormControl(this.quatity, Validators.required),
         status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
         food: new FormControl(food, Validators.required),
-        money: new FormControl(food.price * 2, Validators.required),
+        money: new FormControl(food.price * this.quatity, Validators.required),
       })
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {

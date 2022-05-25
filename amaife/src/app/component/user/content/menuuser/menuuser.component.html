@@ -67,7 +67,7 @@
             <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" href="#">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>
