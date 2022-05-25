@@ -3,6 +3,7 @@ import {Food} from "../../../../model/food/Food";
 import {FoodService} from "../../../../service/food.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
+import {OrderService} from "../../../../service/order.service";
 
 @Component({
   selector: 'app-detailfooduser',
@@ -19,6 +20,7 @@ export class DetailfooduserComponent implements OnInit {
 
   constructor(private foodService: FoodService,
               private router: Router,
+              private createService: OrderService,
               private location: Location,
               private activatedRoute: ActivatedRoute
   ) {
@@ -38,7 +40,13 @@ export class DetailfooduserComponent implements OnInit {
       }
     );
   }
+
   detailFood(foods: Food) {
     location.replace("/detailfood/" + foods.id)
+  }
+
+  createCartShoping(food: Food) {
+    this.createService;
+
   }
 }

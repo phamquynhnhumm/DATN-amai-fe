@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Oder} from "../model/order/Oder";
 import {OrderDetail} from "../model/order/OrderDetail";
+import {Cart} from "../model/order/Cart";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,11 @@ export class OrderService {
   readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
   readonly URL_ORDERUSER = "http://localhost:8080/api/order";
   readonly URL_ORDERDETAILUSER = "http://localhost:8080/api/order/detail";
+
+  /**
+   * URL giỏ hàng
+   */
+  readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
 
 
   constructor(private httpClient: HttpClient) {
@@ -90,5 +96,12 @@ export class OrderService {
 
   updateOderUser(order: Object): Observable<Oder> {
     return this.httpClient.put<Oder>(this.URL_ORDERUSER, order);
+  }
+
+  /**
+   * CRUD giỏ hàng
+   */
+  findCartUser( userName: string): Observable<Array<Cart>> {
+    return this.httpClient.get<Array<Cart>>(this.URL_CARTRUSER, {params: new HttpParams().set('userName', userName)});
   }
 }
