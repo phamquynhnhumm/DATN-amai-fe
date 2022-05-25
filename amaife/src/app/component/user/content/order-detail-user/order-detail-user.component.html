@@ -1,35 +1,44 @@
-<div style="background: #FFC107;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Đơn Hàng</strong>
-</h1></div>
-<hr>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="form-group row">
-      <label class="col-sm-5 col-form-label"> <strong>Tên người nhận </strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.fullName}}</p>
+<div class="row ">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="breadcrumb__text" style="text-align: center"><br>
+      <h2>Chi tiết đơn hàng </h2>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <br><br>
+    <div class="row">
+      <div class="col">
+        <div class="profile_lable"> Tên người nhận</div>
+        <input class="profile-input" value="{{oder.fullName}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Địa chỉ nhận</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.address}}</p>
+      <div class="col">
+        <div class="profile_lable"> Địa chỉ nhận</div>
+        <input class="profile-input" value="{{oder.address}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Số điện thoại</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.phone}}</p>
+      <div class="col">
+        <div class="profile_lable">Số điện thoại</div>
+        <input class="profile-input" value="{{oder.phone}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Tài khoản đặt món</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.account.userName}}</p>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="profile_lable"> Tài khoản đặt món</div>
+        <input class="profile-input" value="{{oder.account.userName}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Số lượng</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.quantity}}</p>
+      <div class="col">
+        <div class="profile_lable"> Số lượng</div>
+        <input class="profile-input" value="{{oder.quantity}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Tổng tiền </strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext">{{oder.money | currency:'VND'}}</p>
+      <div class="col">
+        <div class="profile_lable">Tổng tiền</div>
+        <input class="profile-input" value="{{oder.money}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Trạng thái đơn hàng</strong></label>
-      <div class="col-sm-7">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="profile_lable"> Trạng thái đơn hàng</div>
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf() ">Chờ xác
           nhận</p>
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CONFIRMED.valueOf() ">Đang chế
@@ -39,40 +48,29 @@
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</p>
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</p>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Chi tiết đơn hàng</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">List ra danh sách chi tiết đơn hàng</p>
+      <div class="col">
+        <div class="profile_lable"> Chi tiết đơn hàng</div>
+        <input class="profile-input" value="danh sách chi tiết món trong đơn hàng" readonly>
       </div>
-      <div class="row">
-        <div class="col-sm-5"></div>
-        <div class="col-sm-2">
-          <button mat-button (click)="cancel()">Thoát</button>
-        </div>
-        <div class="col-sm-5"></div>
+      <div class="col">
+        <div class="profile_lable"> Người cập nhật</div>
+        <input class="profile-input" value="{{oder.updatedBy.userName}}" readonly>
       </div>
     </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="form-group row">
-      <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">{{oder.createdBy.userName}}</p>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="profile_lable"> Thời gian đặt món</div>
+        <input class="profile-input" value="{{oder.createAt}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">{{oder.createAt}}</p>
+      <div class="col">
+        <div class="profile_lable">Thời gian cập nhật</div>
+        <input class="profile-input" value="{{oder.updateAt}}" readonly>
       </div>
-      <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">{{oder.updatedBy.userName}}</p>
-      </div>
-      <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
-      <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">{{oder.updateAt}}</p>
-      </div>
-      <div class="col-sm-12">
-        <img src="{{oder.qrcode}}" style="width: 60%;height: 70%;">
+      <div class="col">
+        <button class="btn  btn-outline-warning" (click)="cancel()">Thoát</button>
       </div>
     </div>
+    <br><br>
   </div>
 </div>

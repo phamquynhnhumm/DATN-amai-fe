@@ -17,11 +17,12 @@ import {MatIconModule} from "@angular/material/icon";
 import { DetailfooduserComponent } from './content/detailfooduser/detailfooduser.component';
 import { ShopingcartComponent } from './content/shopingcart/shopingcart.component';
 import { ClassComponent } from './content/class/class.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {GridModule} from "@coreui/angular";
 import { ChangepassComponent } from './content/changepass/changepass.component';
 import { OrderDetailUserComponent } from './content/order-detail-user/order-detail-user.component';
+import { HistoryOrderUserComponent } from './content/history-order-user/history-order-user.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { OrderDetailUserComponent } from './content/order-detail-user/order-deta
         ShopingcartComponent,
         ClassComponent,
         ChangepassComponent,
-        OrderDetailUserComponent
+        OrderDetailUserComponent,
+        HistoryOrderUserComponent
     ],
     exports: [
         NavUserComponent,
@@ -54,7 +56,8 @@ import { OrderDetailUserComponent } from './content/order-detail-user/order-deta
     MatIconModule,
     ReactiveFormsModule,
     MatSelectModule,
-    GridModule
+    GridModule,
+    FormsModule
   ]
 })
 export class UserModule { }

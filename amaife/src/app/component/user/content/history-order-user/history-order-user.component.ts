@@ -1,21 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../../../service/auth.service";
-import {OrderService} from "../../../../service/order.service";
 import {Oder} from "../../../../model/order/Oder";
 import {EStatusOrder} from "../../../../model/order/EStatusOrder";
+import {OrderDetail} from "../../../../model/order/OrderDetail";
+import {AuthService} from "../../../../service/auth.service";
+import {OrderService} from "../../../../service/order.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {OrderDetailUserComponent} from "../order-detail-user/order-detail-user.component";
-import {OrderDetail} from "../../../../model/order/OrderDetail";
-import {Food} from "../../../../model/food/Food";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-orderuser',
-  templateUrl: './orderuser.component.html',
-  styleUrls: ['./orderuser.component.scss']
+  selector: 'app-history-order-user',
+  templateUrl: './history-order-user.component.html',
+  styleUrls: ['./history-order-user.component.scss']
 })
-export class OrderuserComponent implements OnInit {
+export class HistoryOrderUserComponent implements OnInit {
   userName!: string | null;
   orderList !: Array<Oder>;
   order!: Oder;
@@ -25,7 +24,9 @@ export class OrderuserComponent implements OnInit {
   idOrder !: number;
 
   constructor(public authService: AuthService,
-              private orderService: OrderService, private router: Router, private snackBar: MatSnackBar,
+              private orderService: OrderService,
+              private router: Router,
+              private snackBar: MatSnackBar,
               private dialog: MatDialog
   ) {
   }
@@ -37,7 +38,6 @@ export class OrderuserComponent implements OnInit {
       dataorder => {
         this.p = 1;
         this.orderList = dataorder;
-        console.log(this.orderList)
       }
     );
     this.orderService.findOderDetailUser(4).subscribe(
@@ -72,10 +72,7 @@ export class OrderuserComponent implements OnInit {
     )
   }
 
-
-  detailFood(oderDetail
-               :
-               OrderDetail
+  detailFood(oderDetail: OrderDetail
   ) {
     this.router.navigate(['/detailfood/' + oderDetail.food.id]);
   }

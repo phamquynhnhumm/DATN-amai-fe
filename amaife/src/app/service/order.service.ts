@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Oder} from "../model/order/Oder";
+import {OrderDetail} from "../model/order/OrderDetail";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class OrderService {
    */
   readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
   readonly URL_ORDERUSER = "http://localhost:8080/api/order";
+  readonly URL_ORDERDETAILUSER = "http://localhost:8080/api/order/detail";
 
 
   constructor(private httpClient: HttpClient) {
@@ -72,6 +74,14 @@ export class OrderService {
    */
   findOderUser(userName: string): Observable<Array<Oder>> {
     return this.httpClient.get<Array<Oder>>(this.URL_ORDER_FINFDISDELETE_USER + "/" + userName);
+  }
+
+  /**
+   * danh sách chi tiết món tìm kiếm theo id order
+   * @param idOders
+   */
+  findOderDetailUser(idOders: number): Observable<Array<OrderDetail>> {
+    return this.httpClient.get<Array<OrderDetail>>(this.URL_ORDERDETAILUSER + "/" + idOders);
   }
 
   findByIdOderUser(id: number): Observable<Oder> {

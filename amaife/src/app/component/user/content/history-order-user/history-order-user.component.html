@@ -13,9 +13,10 @@
                         cá nhân</a></li>
                       <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-cog"></span> Đổi
                         mật khẩu</a></li>
-                      <li class="active"><a style="text-decoration: none" routerLink="/oder"><span
+                      <li><a style="text-decoration: none" routerLink="/oder"><span
                         class="fa fa-credit-card"></span> Đơn hàng</a></li>
-                      <li><a style="text-decoration: none" routerLink="/history"><span class="fa fa-envelope"></span>
+                      <li class="active"><a style="text-decoration: none" routerLink="/history"><span
+                        class="fa fa-envelope"></span>
                         Lịch sử đơn hàng</a></li>
                     </ul>
                   </nav>
@@ -26,12 +27,12 @@
         </div>
       </div>
     </div>
+    <br>
     <div class="col-lg-9 gedf-main" *ngIf="orderList != null ">
       <br>
       <div class="container padding-bottom-3x mb-1"
-           *ngFor="let oder of orderList | paginate :{itemsPerPage:10,currentPage : p}">
-        <br>
-        <div *ngIf="oder.status != eStatusOrder.CANCEL.valueOf() && oder.status != eStatusOrder.RECEIVED.valueOf()">
+           *ngFor="let oder of orderList | paginate :{itemsPerPage:2,currentPage : p}">
+        <div *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() || oder.status == eStatusOrder.RECEIVED.valueOf()">
           <div class="card mb-3">
             <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
               class="text-uppercase label-color-1" style="color: black">Lịch theo dõi đơn hàng - </span><span
@@ -61,72 +62,41 @@
                   </div>
                   <h4 class="step-title">Chờ xác nhận</h4>
                 </div>
-                <div
-                  *ngIf="oder.status ==eStatusOrder.CONFIRMED.valueOf() || oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
-                  class="step completed">
+                <div class="step completed">
                   <div class="step-icon-wrap">
-                    <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
+                    <div class="step-icon">
+                      <i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
                   </div>
                   <h4 class="step-title">Chờ lấy</h4>
                 </div>
-                <div
-                  *ngIf="oder.status !=eStatusOrder.CONFIRMED.valueOf() && oder.status ==eStatusOrder.TRANSPORT.valueOf() && oder.status ==eStatusOrder.RECEIVED.valueOf()"
-                  class="step">
-                  <div class="step-icon-wrap">
-                    <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                  <h4 class="step-title">Chờ lấy</h4>
-                </div>
-
-
-                <div *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
+                <div class="step completed">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <h4 class="step-title">Đang giao</h4>
+                  <h4 class="step-title">Đang nhận</h4>
                 </div>
-                <div *ngIf="oder.status !=eStatusOrder.TRANSPORT.valueOf()" class="step">
-                  <div class="step-icon-wrap">
-                    <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                  <h4 class="step-title">Đang giao</h4>
-                </div>
-                <!--                <div class="step completed">-->
-                <!--                  <div class="step-icon-wrap">-->
-                <!--                    <div class="step-icon">-->
-                <!--                      <i class="fa fa-cog" aria-hidden="true"></i>-->
-                <!--                    </div>-->
-                <!--                  </div>-->
-                <!--                  <h4 class="step-title">Chờ lấy</h4>-->
-                <!--                </div>-->
-                <!--                <div class="step">-->
-                <!--&lt;!&ndash;                  <div *ngIf="oder.status " class="completed">&ndash;&gt;-->
-                <!--                    <div class="step-icon-wrap">-->
-                <!--                      <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>-->
-                <!--                      </div>-->
-                <!--                    </div>-->
-                <!--                    <h4 class="step-title">Đang giao</h4>-->
-                <!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-                <!--                </div>-->
-                <div class="step ">
+                <div class="step completed">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
                     </div>
                   </div>
                   <h4 class="step-title">Đã giao</h4>
                 </div>
-                <div class="step">
-                  <div class="completed">
-                    <div class="step-icon-wrap">
-                      <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
-                      </div>
+                <div *ngIf="oder.status ==eStatusOrder.CANCEL.valueOf()" class="step completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
                     </div>
-                    <h4 class="step-title">Đã hủy</h4>
                   </div>
+                  <h4 class="step-title">Đã hủy</h4>
+                </div>
+                <div *ngIf="oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title">Đã hủy</h4>
                 </div>
               </div>
             </div>
@@ -137,7 +107,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="row"
-                       *ngFor="let oderDetail of orderDetailList | paginate :{itemsPerPage:5,currentPage : p}"
+                       *ngFor="let oderDetail of orderDetailList "
                        (click)="detailFood(oderDetail)">
                     <div class="col-md-1"><img src="{{oderDetail.food.image}}"
                                                class="media-object img-thumbnail"/></div>
@@ -170,19 +140,20 @@
                                                     (click)="openDetailOrder(oder)">Xem chi tiết đơn
               hàng</a></div>
           </div>
+          <br>
         </div>
-        <br>
-        <pagination-controls class="text-right text" (pageChange)="p = $event"
-                             previousLabel="Trước"
-                             nextLabel="Sau"
-                             [autoHide]="true">
-        </pagination-controls>
       </div>
+      <br>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
     </div>
     <div class="col-lg-9 gedf-main" *ngIf="orderList == null">
       <br><br> <br><br>
       <div>
-        <p>Hiên tại bạn đang không có đơn hàng nào cả</p>
+        <p>Bạn chưa có đơn hàng nào!</p>
       </div>
       <br><br> <br><br><br><br> <br><br>
       <br><br> <br><br><br><br> <br><br>
