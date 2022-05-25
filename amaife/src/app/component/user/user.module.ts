@@ -23,6 +23,7 @@ import {GridModule} from "@coreui/angular";
 import { ChangepassComponent } from './content/changepass/changepass.component';
 import { OrderDetailUserComponent } from './content/order-detail-user/order-detail-user.component';
 import { HistoryOrderUserComponent } from './content/history-order-user/history-order-user.component';
+import { DeleteCartComponent } from './content/delete-cart/delete-cart.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HistoryOrderUserComponent } from './content/history-order-user/history-
         ClassComponent,
         ChangepassComponent,
         OrderDetailUserComponent,
-        HistoryOrderUserComponent
+        HistoryOrderUserComponent,
+        DeleteCartComponent
     ],
     exports: [
         NavUserComponent,

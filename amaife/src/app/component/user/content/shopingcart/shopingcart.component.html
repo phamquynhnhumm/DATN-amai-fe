@@ -15,9 +15,7 @@
     </div>
   </div>
 </div>
-<!-- Breadcrumb End -->
 
-<!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
   <div class="container">
     <div class="row">
@@ -26,10 +24,7 @@
           <table>
             <thead>
             <tr>
-              <th colspan="2">Sản phẩm</th>
-              <th>Số lượng</th>
-              <th>Tổng tiền</th>
-              <th></th>
+              <th colspan="5">Sản phẩm</th>
             </tr>
             </thead>
             <tbody *ngIf="cartList !=  null">
@@ -49,15 +44,15 @@
                 <td class="quantity__item">
                   <div class="quantity">
                     <div class="pro-qty">
-                      <span class="dec qtybtn">-</span>
-                      <input type="text" value="{{cart.quantity}}">
-                      <span class="inc qtybtn">+</span>
+                      <span style="color:#000;" class="dec qtybtn" (click)="quatitytru()">-</span>
+                      <input style="color: black" type="text" value="{{cart.quantity}}">
+                      <span style="color:#000;" class="inc qtybtn" (click)="quatitycong()">+</span>
                     </div>
                   </div>
                 </td>
                 <td class="cart__price">{{cart.food.price * cart.quantity | currency: 'VND'}}
                 </td>
-                <td class="cart__close"><span class="icon_close">x</span></td>
+                <td class="cart__close"><span class="icon_close" (click)="deleteCart(cart)">x</span></td>
               </div>
             </tr>
             </tbody>

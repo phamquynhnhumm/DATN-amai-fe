@@ -1,0 +1,17 @@
+<div style="color: white;text-align:center"><h1 mat-dialog-title><strong>Xóa món khỏi giỏ
+  hàng</strong></h1></div>
+<hr>
+<div mat-dialog-content>
+  <h3><strong>Bạn có chắc chắn muốn xóa "{{cart.food.name}}" không?</strong></h3>
+  <h4 style="color: #FFC107"> Nếu xóa món sẽ không tồn tại trên giỏ hàng nữa</h4>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <button mat-dialog-close class="btn btn-light col-sm-9" (click)="cancal()">Hủy</button>
+  </div>
+  <div class="col-sm-1">
+    <button mat-button (click)="deleteCart()" class="btn btn-danger">
+      Xóa
+    </button>
+  </div>
+</div>
