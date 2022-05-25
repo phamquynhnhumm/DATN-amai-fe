@@ -63,8 +63,11 @@ export class OrderuserComponent implements OnInit {
   }
 
   openCancelOrder(oder: Oder) {
-    this.order.status = <EStatusOrder>'CANCEL';
-    this.orderService.updateOder(this.order).subscribe(data => {
+    console.log("sao ko ấn huyẻ đc nhỉ")
+    console.log(oder.status)
+    oder.status = <EStatusOrder>'CANCEL';
+    console.log(oder.status)
+    this.orderService.updateOderUser(oder).subscribe(data => {
         this.snackBar.open("Hủy đơn hàng thành công", "OK", {
           duration: 4000
         })

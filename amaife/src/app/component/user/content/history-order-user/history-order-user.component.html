@@ -31,7 +31,7 @@
     <div class="col-lg-9 gedf-main" *ngIf="orderList != null ">
       <br>
       <div class="container padding-bottom-3x mb-1"
-           *ngFor="let oder of orderList | paginate :{itemsPerPage:2,currentPage : p}">
+           *ngFor="let oder of orderList | paginate :{itemsPerPage:10,currentPage : p}">
         <div *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() || oder.status == eStatusOrder.RECEIVED.valueOf()">
           <div class="card mb-3">
             <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span

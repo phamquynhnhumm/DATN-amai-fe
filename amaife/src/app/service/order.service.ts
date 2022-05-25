@@ -87,4 +87,8 @@ export class OrderService {
   findByIdOderUser(id: number): Observable<Oder> {
     return this.httpClient.get<Oder>(this.URL_ORDERUSER + "/" + id);
   }
+
+  updateOderUser(order: Object): Observable<Oder> {
+    return this.httpClient.put<Oder>(this.URL_ORDERUSER, order);
+  }
 }
