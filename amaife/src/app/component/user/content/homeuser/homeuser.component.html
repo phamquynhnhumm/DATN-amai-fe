@@ -73,7 +73,6 @@
     <div class="shop__optionmenu">
     </div>
     <div class="row" *ngIf="foodList != null">
-
       <div class="col-lg-3 col-md-6 col-sm-6"
            *ngFor="let foods of foodList | paginate :{itemsPerPage:8,currentPage : p}">
         <div class="product__item" (click)="detailFood(foods)">
@@ -97,7 +96,6 @@
                            nextLabel="Sau"
                            [autoHide]="true">
       </pagination-controls>
-
     </div>
   </div>
 </section>
