@@ -37,7 +37,6 @@ export class OrderuserComponent implements OnInit {
       dataorder => {
         this.p = 1;
         this.orderList = dataorder;
-        console.log(this.orderList)
       }
     );
     this.orderService.findOderDetailUser(4).subscribe(
@@ -63,10 +62,7 @@ export class OrderuserComponent implements OnInit {
   }
 
   openCancelOrder(oder: Oder) {
-    console.log("sao ko ấn huyẻ đc nhỉ")
-    console.log(oder.status)
     oder.status = <EStatusOrder>'CANCEL';
-    console.log(oder.status)
     this.orderService.updateOderUser(oder).subscribe(data => {
         this.snackBar.open("Hủy đơn hàng thành công", "OK", {
           duration: 4000
@@ -76,9 +72,7 @@ export class OrderuserComponent implements OnInit {
   }
 
 
-  detailFood(oderDetail
-               :
-               OrderDetail
+  detailFood(oderDetail: OrderDetail
   ) {
     this.router.navigate(['/detailfood/' + oderDetail.food.id]);
   }

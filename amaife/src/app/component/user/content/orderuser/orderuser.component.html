@@ -70,20 +70,15 @@
                   </div>
                   <h4 class="step-title">Chờ lấy</h4>
                 </div>
-                <div
-                  *ngIf="oder.status !=eStatusOrder.CONFIRMED.valueOf() && oder.status ==eStatusOrder.TRANSPORT.valueOf() && oder.status ==eStatusOrder.RECEIVED.valueOf()"
-                  class="step">
+                <div *ngIf="oder.status !=eStatusOrder.CONFIRMED.valueOf() && oder.status ==eStatusOrder.TRANSPORT.valueOf() && oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
                   </div>
                   <h4 class="step-title">Chờ lấy</h4>
                 </div>
-
-
                 <div
-                  *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
-                  class="step completed">
+                  *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>
@@ -97,23 +92,6 @@
                   </div>
                   <h4 class="step-title">Đang giao</h4>
                 </div>
-                <!--                <div class="step completed">-->
-                <!--                  <div class="step-icon-wrap">-->
-                <!--                    <div class="step-icon">-->
-                <!--                      <i class="fa fa-cog" aria-hidden="true"></i>-->
-                <!--                    </div>-->
-                <!--                  </div>-->
-                <!--                  <h4 class="step-title">Chờ lấy</h4>-->
-                <!--                </div>-->
-                <!--                <div class="step">-->
-                <!--&lt;!&ndash;                  <div *ngIf="oder.status " class="completed">&ndash;&gt;-->
-                <!--                    <div class="step-icon-wrap">-->
-                <!--                      <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>-->
-                <!--                      </div>-->
-                <!--                    </div>-->
-                <!--                    <h4 class="step-title">Đang giao</h4>-->
-                <!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-                <!--                </div>-->
                 <div class="step ">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
@@ -170,7 +148,8 @@
             <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm"
                                                     data-toggle="modal" data-target="#orderDetails"
                                                     (click)="openDetailOrder(oder)">Xem chi tiết đơn
-              hàng</a></div>
+              hàng</a>
+            </div>
           </div>
         </div>
         <br>
