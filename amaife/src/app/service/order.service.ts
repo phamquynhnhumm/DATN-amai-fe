@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Oder} from "../model/order/Oder";
 import {OrderDetail} from "../model/order/OrderDetail";
 import {Cart} from "../model/order/Cart";
+import {Food} from "../model/food/Food";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,6 @@ export class OrderService {
    * URL giỏ hàng
    */
   readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
-
 
   constructor(private httpClient: HttpClient) {
   }
@@ -101,7 +101,11 @@ export class OrderService {
   /**
    * CRUD giỏ hàng
    */
-  findCartUser( userName: string): Observable<Array<Cart>> {
+  findCartUser(userName: string): Observable<Array<Cart>> {
     return this.httpClient.get<Array<Cart>>(this.URL_CARTRUSER, {params: new HttpParams().set('userName', userName)});
+  }
+
+  createCartUser(cart: Object): Observable<Cart> {
+    return this.httpClient.post<Cart>(this.URL_CARTRUSER, cart);
   }
 }

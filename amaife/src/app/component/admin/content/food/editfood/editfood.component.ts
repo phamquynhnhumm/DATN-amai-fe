@@ -69,7 +69,6 @@ export class EditfoodComponent implements OnInit {
       this.food.name = this.formFood.value.name;
       this.food.unit = this.formFood.value.unit;
       this.food.price = this.formFood.value.price;
-      this.food.quanity = this.formFood.value.quanity;
       this.food.status = this.formFood.value.status;
       this.food.foodCategory = this.formFood.value.foodCategory;
       this.food.foodDetailList = this.formFood.value.foodDetailList;

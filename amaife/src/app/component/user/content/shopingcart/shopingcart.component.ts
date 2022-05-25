@@ -14,6 +14,7 @@ export class ShopingcartComponent implements OnInit {
   cartList!: Array<Cart>
   p: number | any;
   eStatusCart = EStatusCart;
+
   constructor(public auth: AuthService,
               public cartService: OrderService) {
   }
@@ -28,5 +29,4 @@ export class ShopingcartComponent implements OnInit {
       }
     );
   }
-
 }

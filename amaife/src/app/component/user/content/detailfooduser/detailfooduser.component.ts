@@ -4,6 +4,10 @@ import {FoodService} from "../../../../service/food.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {OrderService} from "../../../../service/order.service";
+import {Cart} from "../../../../model/order/Cart";
+import {EStatusCart} from "../../../../model/order/EStatusCart";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-detailfooduser',
@@ -13,16 +17,21 @@ import {OrderService} from "../../../../service/order.service";
 export class DetailfooduserComponent implements OnInit {
 
   food !: Food;
+  cart !: Cart;
   foodList!: Array<Food>;
   p: number | any;
   id!: number | null;
   loads: boolean = true;
+  eStatusCart = EStatusCart;
+  formCart!: FormGroup;
+  quatity: number = 1;
 
   constructor(private foodService: FoodService,
               private router: Router,
               private createService: OrderService,
               private location: Location,
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private snackBar: MatSnackBar
   ) {
   }
 
@@ -46,7 +55,31 @@ export class DetailfooduserComponent implements OnInit {
   }
 
   createCartShoping(food: Food) {
-    this.createService;
+    this.formCart = new FormGroup(
+      {
+        quantity: new FormControl(this.quatity, Validators.required),
+        status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
+        food: new FormControl(food, Validators.required),
+        money: new FormControl(food.price * 2, Validators.required),
+      })
+    this.createService.createCartUser(this.formCart.value).subscribe(
+      (data) => {
+        this.router.navigateByUrl("/menu").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
+      },
+      error => {
+        this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+      })
+  }
 
+  quatitycong() {
+    if (this.quatity < 51) {
+      this.quatity = this.quatity + 1;
+    }
+  }
+
+  quatitytru() {
+    if (this.quatity > 1) {
+      this.quatity = this.quatity - 1;
+    }
   }
 }

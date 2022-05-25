@@ -28,7 +28,7 @@
           <div class="product__label">{{food.foodCategory.name}}</div>
           <br>
           <br>
-          <h1 class="text-uppercase">{{food.name}}</h1>
+          <h1 class="text-uppercase" (click)="createCartShoping(food)">{{food.name}}</h1>
           <h5>{{food.price | currency :'VND'}}</h5>
           <p> Trà có vị chát, sữa có vị ngọt, trà với sữa sẽ thành một thức uống tuyệt hảo cũng như anh với em sẽ trở
             thành một cặp đôi hoàn hảo.</p>
@@ -39,12 +39,13 @@
           <div class="product__details__option">
             <div class="quantity">
               <div class="pro-qty">
-                <span class="dec qtybtn">-</span>
-                <input type="text" value="2" name="2">
-                <span class="inc qtybtn">+</span>
+                <span style="color:#000;" class="dec qtybtn" (click)="quatitytru()">-</span>
+                <input style="color: black" type="text" value="{{quatity}}" [(ngModel)]="quatity">
+                <span style="color:#000;" class="inc qtybtn" (click)="quatitycong()">+</span>
               </div>
             </div>
-            <a (click)="createCartShoping(food)" style="text-decoration: none" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
+            <a style="text-decoration: none" class="btn primary-btn" (click)="createCartShoping(food)">THÊM VÀO GIỎ
+              HÀNG </a>
           </div>
         </div>
       </div>
@@ -60,11 +61,8 @@
           <div class="tab-pane active" id="tabs-1" role="tabpanel">
             <div class="row d-flex justify-content-center">
               <div class="col-lg-8">
-                <p>Bánh Dâu tây ngon tuyệt này là một món ăn đặc biệt với những khối dâu tây ngon ngọt và ngon. Được làm
-                  bằng những nguyên liệu tươi ngon nhất, một miếng sẽ đưa bạn đến mùa hè. Mỗi món quà được đựng trong
-                  một hộp quà trang nhã và đi kèm với một tấm thiệp chúc mừng bạn chọn mà bạn có thể cá nhân hóa trực
-                  tuyến! 2
-                  !</p>
+                <p>
+                  {{food.content}} !</p>
               </div>
             </div>
           </div>
@@ -97,7 +95,7 @@
             <h6><a style="text-decoration: none" href=" #">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" href=" #">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>

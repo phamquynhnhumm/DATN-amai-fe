@@ -20,8 +20,7 @@ export class CreatefoodComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
-              private foodService: FoodService,
-              private snack: MatSnackBar) {
+              private foodService: FoodService) {
   }
 
   ngOnInit(): void {
