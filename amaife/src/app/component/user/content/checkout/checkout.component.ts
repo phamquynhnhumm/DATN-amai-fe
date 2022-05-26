@@ -12,6 +12,7 @@ import {F} from "@angular/cdk/keycodes";
 import {Account} from "../../../../model/user/Account";
 import {EStatusOrder} from "../../../../model/order/EStatusOrder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
+import {Food} from "../../../../model/food/Food";
 
 @Component({
   selector: 'app-checkout',
@@ -29,6 +30,7 @@ export class CheckoutComponent implements OnInit {
   cartUpdate !: Cart;
   cart !: Cart;
   oder !: Oder;
+  newOder!: Oder;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -96,6 +98,8 @@ export class CheckoutComponent implements OnInit {
       food: new FormControl('', [Validators.required, Validators.min(0)]),
     }
   )
+  listOderDetail: OrderDetail[] = [];
+
 
   onSubmit() {
     this.formOrder.value.qrcode = " de tim sau";
@@ -109,41 +113,37 @@ export class CheckoutComponent implements OnInit {
         this.snackBar.open("Thêm mới đơn hàng thành công!")._dismissAfter(3000);
       }
     );
-    //Xóa các cart trong giỏ hàng
-    // for (let i = 0; i < this.cartList.length; i++) {
-    //   this.cart = this.cartList[i];
-    //   /**
-    //    * Xóa cart khỏi giỏ hàng
-    //    */
-    //   console.log(this.cart);
-    //   // this.cartService.cancelByIdCart(this.cart.id).subscribe();
-    //   /**
-    //    * Đồng thời thêm chi tiết đơn hàng;
-    //    */
-    // }
-  }
+    this.cartService.createOderUser(this.formOrder.value).subscribe(
+      (data) => {
+        this.newOder = data;
+        this.formOrderDEtail.value.orders = this.newOder;
+        this.formOrderDEtail.value.isDeleted = false;
+        for (let i = 0; i < this.cartList.length; i++) {
+          let detail: { quantity: number; food: Food } = {
+            quantity: this.cartList[i].quantity,
+            food: this.cartList[i].food,
+          };
+          this.listOderDetail.push(<OrderDetail>detail);
+        }
 
-  delteCartShopping() {
-    //   this.formOrder.value.qrcode = " de tim sau";
-    //   this.formOrder.value.status = "UNCONFIRMED";
-    //   this.formOrder.value.money = this.totalCart;
-    //   this.formOrder.value.quantity = this.totalQuantityCart;
-    //   this.formOrder.value.payments = "PAYPAL"
-    //   console.log(this.formOrder.value);
-    //   // this.cartService.createOderUser(this.oder);
-    //
-    //   //Xóa các cart trong giỏ hàng
-    //   for (let i = 0; i < this.cartList.length; i++) {
-    //     this.cart = this.cartList[i];
-    //     /**
-    //      * Xóa cart khỏi giỏ hàng
-    //      */
-    //     console.log(this.cart);
-    //     // this.cartService.cancelByIdCart(this.cart.id).subscribe();
-    //     /**
-    //      * Đồng thời thêm chi tiết đơn hàng;
-    //      */
-    //   }
-    // }
+        this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
+          (datatickte) => {
+            console.log("Thêm mới chi tiết món thành công");
+          }
+        )
+      }
+    );
+    // Xóa các cart trong giỏ hàng
+    for (let i = 0; i < this.cartList.length; i++) {
+      this.cart = this.cartList[i];
+      /**
+       * Xóa cart khỏi giỏ hàng
+       */
+      console.log(this.cart);
+      this.cartService.cancelByIdCart(this.cart.id).subscribe();
+      /**
+       * Đồng thời thêm chi tiết đơn hàng;
+       */
+    }
   }
 }
