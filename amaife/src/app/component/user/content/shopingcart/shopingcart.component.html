@@ -73,7 +73,7 @@
         <div class="cart__total">
           <h6>Tổng giỏ hàng</h6>
           <ul>
-            <li>Tổng tiền <span>đ 169.50</span></li>
+            <li>Tổng tiền <span>{{totalCart | currency :'VND'}}</span></li>
           </ul>
           <a style="text-decoration: none" href="#" class="primary-btn" (click)="paypal()">Tiến hành thanh toán</a>
         </div>

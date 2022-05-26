@@ -17,6 +17,7 @@ export class ShopingcartComponent implements OnInit {
   p: number | any;
   eStatusCart = EStatusCart;
   quatity: number = 1;
+  totalCart !: number;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -29,9 +30,14 @@ export class ShopingcartComponent implements OnInit {
       dataCart => {
         this.p = 1;
         this.cartList = dataCart;
-        console.log(this.cartList)
       }
     );
+    // @ts-ignore
+    this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+      data => {
+        this.totalCart = data;
+      }
+    )
   }
 
   quatitycong() {

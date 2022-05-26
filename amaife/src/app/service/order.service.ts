@@ -31,6 +31,7 @@ export class OrderService {
    * URL giỏ hàng
    */
   readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
+  readonly URL_CARTRUSER_TOTALMONEY = "http://localhost:8080/api/cart/totalMoney";
   readonly URL_CARTRUSER_DELETE = "http://localhost:8080/api/cart/delete";
 
   constructor(private httpClient: HttpClient) {
@@ -116,5 +117,9 @@ export class OrderService {
 
   findByIdCart(id: number): Observable<Cart> {
     return this.httpClient.get<Cart>(this.URL_CARTRUSER + "/" + id);
+  }
+
+  totalMoneyCart(userName: string, status: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName).set('status', status)});
   }
 }
