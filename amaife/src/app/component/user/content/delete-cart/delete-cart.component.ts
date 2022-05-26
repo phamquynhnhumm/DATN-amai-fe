@@ -25,7 +25,7 @@ export class DeleteCartComponent implements OnInit {
   }
 
   deleteCart() {
-    this.cartService.deleteByIdCart(this.cart.id).subscribe(() => {
+    this.cartService.cancelByIdCart(this.cart.id).subscribe(() => {
       this.dialogRef.close();
       this.snackBar.open("Xoá món khỏi giỏ hàng thành công !!! ", "OK", {
         duration: 4000

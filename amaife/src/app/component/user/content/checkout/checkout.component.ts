@@ -5,14 +5,11 @@ import {AuthService} from "../../../../service/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
-import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Oder} from "../../../../model/order/Oder";
-import {F} from "@angular/cdk/keycodes";
-import {Account} from "../../../../model/user/Account";
-import {EStatusOrder} from "../../../../model/order/EStatusOrder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-checkout',
@@ -31,9 +28,11 @@ export class CheckoutComponent implements OnInit {
   cart !: Cart;
   oder !: Oder;
   newOder!: Oder;
+  paypal !: string;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
+              private route: Router,
               private snackBar: MatSnackBar,
               public cartService: OrderService) {
   }
@@ -75,9 +74,6 @@ export class CheckoutComponent implements OnInit {
     }
   )
 
-  paypal() {
-  }
-
   formOrder = new FormGroup(
     {
       address: new FormControl('', [Validators.required, Validators.min(0)]),
@@ -104,17 +100,11 @@ export class CheckoutComponent implements OnInit {
 
 
   onSubmit() {
-    this.formOrder.value.qrcode = " de tim sau";
+    this.formOrder.value.qrcode = "de tim sau";
     this.formOrder.value.status = "UNCONFIRMED";
     this.formOrder.value.money = this.totalCart;
     this.formOrder.value.quantity = this.totalQuantityCart;
-    this.formOrder.value.payments = "PAYPAL"
     console.log(this.formOrder.value);
-    this.cartService.createOderUser(this.formOrder.value).subscribe(
-      data => {
-        this.snackBar.open("Thêm mới đơn hàng thành công!")._dismissAfter(3000);
-      }
-    );
     this.cartService.createOderUser(this.formOrder.value).subscribe(
       (data) => {
         this.newOder = data;
@@ -123,11 +113,10 @@ export class CheckoutComponent implements OnInit {
         for (let i = 0; i < this.cartList.length; i++) {
           this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
           let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
-            quantity: this.formOrderDEtail.value.quantity,
+            quantity: this.cartList[i].quantity,
             food: this.cartList[i].food,
             orders: this.formOrderDEtail.value.orders,
             isDeleted: this.formOrderDEtail.value.isDeleted,
-
           };
           console.log(<OrderDetail>newOderDetail);
           this.listOderDetail.push(<OrderDetail>newOderDetail);
@@ -138,19 +127,8 @@ export class CheckoutComponent implements OnInit {
             console.log("Thêm mới chi tiết món thành công");
           }
         )
-      }
+        this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
+      },
     );
-    // // Xóa các cart trong giỏ hàng
-    // for (let i = 0; i < this.cartList.length; i++) {
-    //   this.cart = this.cartList[i];
-    //   /**
-    //    * Xóa cart khỏi giỏ hàng
-    //    */
-    //   console.log(this.cart);
-    //   this.cartService.cancelByIdCart(this.cart.id).subscribe();
-    //   /**
-    //    * Đồng thời thêm chi tiết đơn hàng;
-    //    */
-    // }
   }
 }

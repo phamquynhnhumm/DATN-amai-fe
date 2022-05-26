@@ -54,12 +54,12 @@ export class MenuuserComponent implements OnInit {
 
   searchFood(search: string) {
     if (this.searchss == this.searchSubject[0]) {
-      this.foodService.searcFood(false, search, "", "").subscribe(
+      this.foodService.searcFoodUser(false, search, "").subscribe(
         (data) => {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
+          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;
@@ -70,28 +70,12 @@ export class MenuuserComponent implements OnInit {
       );
     }
     if (this.searchss == this.searchSubject[1]) {
-      this.foodService.searcFood(false, "", "", search).subscribe(
+      this.foodService.searcFoodUser(false, "", search).subscribe(
         (data) => {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
-            data => {
-              this.p = 1;
-              this.foodList = data;
-            }
-          )
-          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-        }
-      );
-    }
-    if (this.searchss == this.searchSubject[2]) {
-      this.foodService.searcFood(false, "", search, "").subscribe(
-        (data) => {
-          this.foodList = data;
-        },
-        (error) => {
-          this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
+          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;
@@ -111,6 +95,7 @@ export class MenuuserComponent implements OnInit {
         food: new FormControl(foods, Validators.required),
         money: new FormControl(foods.price * this.quatity, Validators.required),
       })
+    console.log(this.formCart.value);
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
         this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);

@@ -28,7 +28,7 @@ const routes: Routes = [
     path: "address", component: AddressuserComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
-  },  {
+  }, {
     /**
      * Nhập địa chỉ
      */
@@ -53,8 +53,7 @@ const routes: Routes = [
     data: {role: ['ROLE_CUSTOMER']}
   },
   {
-    path: "menu", component: MenuuserComponent, canActivate: [AuthGuard],
-    data: {role: ['ROLE_CUSTOMER']}
+    path: "menu", component: MenuuserComponent
   },
   {
     path: "shoping", component: ShopingcartComponent,
@@ -67,9 +66,7 @@ const routes: Routes = [
     data: {role: ['ROLE_CUSTOMER']}
   },
   {
-    path: "detailfood/:id", component: DetailfooduserComponent,
-    canActivate: [AuthGuard],
-    data: {role: ['ROLE_CUSTOMER']}
+    path: "detailfood/:id", component: DetailfooduserComponent
   },
   {
     path: "changePass", component: ChangepassComponent,
