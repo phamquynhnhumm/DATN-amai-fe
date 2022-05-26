@@ -16,7 +16,7 @@ export class ShopingcartComponent implements OnInit {
   cartList!: Array<Cart>
   p: number | any;
   eStatusCart = EStatusCart;
-  quatity: number = 1;
+  quantity!: number;
   totalCart !: number;
 
   constructor(public auth: AuthService,
@@ -40,17 +40,20 @@ export class ShopingcartComponent implements OnInit {
     )
   }
 
-  quatitycong() {
-    if (this.quatity < 51) {
-      this.quatity = this.quatity + 1;
+  quatitycong(quantity: number) {
+    console.log("đang cộng mà ko đc")
+    console.log(quantity)
+    if (quantity < 51) {
+      quantity = quantity + 1;
+      console.log(quantity)
     }
   }
 
-  quatitytru() {
-    if (this.quatity > 1) {
-      this.quatity = this.quatity - 1;
-    }
-  }
+  // quatitytru() {
+  //   if (this.quatity > 1) {
+  //     this.quatity = this.quatity - 1;
+  //   }
+  // }
 
   deleteCart(cart: Cart) {
     this.cartService.findByIdCart(cart.id).subscribe(
@@ -62,11 +65,16 @@ export class ShopingcartComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(() => {
           this.ngOnInit();
+          location.replace("/shoping");
         });
       }
-    )
+    );
   }
 
   paypal() {
+  }
+
+  quatitytru(quantity: number) {
+
   }
 }

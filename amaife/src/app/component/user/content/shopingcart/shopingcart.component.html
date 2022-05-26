@@ -41,9 +41,9 @@
                 <td class="quantity__item">
                   <div class="quantity">
                     <div class="pro-qty">
-                      <span style="color:#000;" class="dec qtybtn" (click)="quatitytru()">-</span>
-                      <input style="color: black" type="text" value="{{cart.quantity}}">
-                      <span style="color:#000;" class="inc qtybtn" (click)="quatitycong()">+</span>
+                      <span style="color:#000;" class="dec qtybtn" (click)="quatitytru(cart.quantity)">-</span>
+                      <input style="color: black" type="text" value="{{cart.quantity}}" [(ngModel)]="cart.quantity">
+                      <span style="color:#000;" class="inc qtybtn" (click)="quatitycong(cart.quantity)">+</span>
                     </div>
                   </div>
                 </td>

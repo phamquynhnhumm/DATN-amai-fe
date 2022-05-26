@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="product__details__img">
-          <img class="big_img" src="{{food.image}}" alt="">
+          <img class="big_img" src="{{food.image}}" alt="ảnh món">
         </div>
       </div>
       <div class="col-lg-6">
@@ -28,7 +28,7 @@
           <div class="product__label">{{food.foodCategory.name}}</div>
           <br>
           <br>
-          <h1 class="text-uppercase" (click)="createCartShoping(food)">{{food.name}}</h1>
+          <h1 class="text-uppercase">{{food.name}}</h1>
           <h5>{{food.price | currency :'VND'}}</h5>
           <p> Trà có vị chát, sữa có vị ngọt, trà với sữa sẽ thành một thức uống tuyệt hảo cũng như anh với em sẽ trở
             thành một cặp đôi hoàn hảo.</p>
@@ -84,8 +84,8 @@
     <div class="row" *ngIf="foodList != null">
       <div class="col-lg-3 col-md-6 col-sm-6"
            *ngFor="let food of foodList | paginate :{itemsPerPage:4,currentPage : p}">
-        <div class="product__item" (click)="detailFood(food)">
-          <div class="product__item__pic ">
+        <div class="product__item">
+          <div class="product__item__pic " (click)="detailFood(food)">
             <img style="background: #e5e5e6" src="{{food.image}}">
             <div class="product__label">
               <span>{{food.name}}</span>
