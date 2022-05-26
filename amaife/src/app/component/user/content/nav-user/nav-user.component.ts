@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../service/auth.service";
+import {MatDialog} from "@angular/material/dialog";
+import {OrderService} from "../../../../service/order.service";
 
 @Component({
   selector: 'app-nav-user',
@@ -13,8 +15,11 @@ export class NavUserComponent implements OnInit {
   navService !: string;
   navAccount !: string;
   navConten !: string;
+  totalCart !: number;
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+              public auth: AuthService,
+              public cartService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -22,8 +27,12 @@ export class NavUserComponent implements OnInit {
       this.authService.assignSessionStorageWithLocalStorage();
       this.userName = this.authService.getUsername();
     }
-    ;
-    console.log(this.navHome);
+    // @ts-ignore
+    this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+      data => {
+        this.totalCart = data;
+      }
+    )
   }
 
   public isLoggedIn() {
