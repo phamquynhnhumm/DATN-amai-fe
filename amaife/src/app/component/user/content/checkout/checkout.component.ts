@@ -7,6 +7,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Oder} from "../../../../model/order/Oder";
+import {F} from "@angular/cdk/keycodes";
+import {Account} from "../../../../model/user/Account";
+import {EStatusOrder} from "../../../../model/order/EStatusOrder";
+import {OrderDetail} from "../../../../model/order/OrderDetail";
 
 @Component({
   selector: 'app-checkout',
@@ -20,8 +25,10 @@ export class CheckoutComponent implements OnInit {
   eStatusCart = EStatusCart;
   quantity!: number;
   totalCart !: number;
+  totalQuantityCart !: number;
   cartUpdate !: Cart;
   cart !: Cart;
+  oder !: Oder;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -35,13 +42,18 @@ export class CheckoutComponent implements OnInit {
       dataCart => {
         this.p = 1;
         this.cartList = dataCart;
-        console.log(dataCart)
       }
     );
     // @ts-ignore
     this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
       data => {
         this.totalCart = data;
+      }
+    );
+    // @ts-ignore
+    this.cartService.totalQuantityCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+      data => {
+        this.totalQuantityCart = data;
       }
     )
   }
@@ -62,20 +74,76 @@ export class CheckoutComponent implements OnInit {
   paypal() {
   }
 
+  formOrder = new FormGroup(
+    {
+      address: new FormControl('', [Validators.required, Validators.min(0)]),
+      phone: new FormControl('', [Validators.required, Validators.min(0)]),
+      fullName: new FormControl('', [Validators.required, Validators.min(0)]),
+      qrcode: new FormControl('', [Validators.required, Validators.min(0)]),
+      status: new FormControl('', Validators.required),
+      orderDetailList: new FormControl('', [Validators.required, Validators.min(0)]),
+      money: new FormControl('', [Validators.required, Validators.min(0)]),
+      quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+      payments: new FormControl('', [Validators.required, Validators.min(0)]),
+    }
+  )
+
+  formOrderDEtail = new FormGroup(
+    {
+      isDeleted: new FormControl('', [Validators.required, Validators.min(0)]),
+      orders: new FormControl('', [Validators.required, Validators.min(0)]),
+      quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+      food: new FormControl('', [Validators.required, Validators.min(0)]),
+    }
+  )
+
   onSubmit() {
+    this.formOrder.value.qrcode = " de tim sau";
+    this.formOrder.value.status = "UNCONFIRMED";
+    this.formOrder.value.money = this.totalCart;
+    this.formOrder.value.quantity = this.totalQuantityCart;
+    this.formOrder.value.payments = "PAYPAL"
+    console.log(this.formOrder.value);
+    this.cartService.createOderUser(this.formOrder.value).subscribe(
+      data => {
+        this.snackBar.open("Thêm mới đơn hàng thành công!")._dismissAfter(3000);
+      }
+    );
+    //Xóa các cart trong giỏ hàng
+    // for (let i = 0; i < this.cartList.length; i++) {
+    //   this.cart = this.cartList[i];
+    //   /**
+    //    * Xóa cart khỏi giỏ hàng
+    //    */
+    //   console.log(this.cart);
+    //   // this.cartService.cancelByIdCart(this.cart.id).subscribe();
+    //   /**
+    //    * Đồng thời thêm chi tiết đơn hàng;
+    //    */
+    // }
   }
 
   delteCartShopping() {
-    for (let i = 0; i < this.cartList.length; i++) {
-      this.cart = this.cartList[i];
-      /**
-       * Xóa cart khỏi giỏ hàng
-       */
-      this.cartService.cancelByIdCart(this.cart.id).subscribe();
-      /**
-       * Đồng thời thêm chi tiết đơn hàng;
-       */
-      // this.cartService.
-    }
+    //   this.formOrder.value.qrcode = " de tim sau";
+    //   this.formOrder.value.status = "UNCONFIRMED";
+    //   this.formOrder.value.money = this.totalCart;
+    //   this.formOrder.value.quantity = this.totalQuantityCart;
+    //   this.formOrder.value.payments = "PAYPAL"
+    //   console.log(this.formOrder.value);
+    //   // this.cartService.createOderUser(this.oder);
+    //
+    //   //Xóa các cart trong giỏ hàng
+    //   for (let i = 0; i < this.cartList.length; i++) {
+    //     this.cart = this.cartList[i];
+    //     /**
+    //      * Xóa cart khỏi giỏ hàng
+    //      */
+    //     console.log(this.cart);
+    //     // this.cartService.cancelByIdCart(this.cart.id).subscribe();
+    //     /**
+    //      * Đồng thời thêm chi tiết đơn hàng;
+    //      */
+    //   }
+    // }
   }
 }

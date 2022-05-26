@@ -1,6 +1,7 @@
 import {Account} from "../user/Account";
 import {EStatusOrder} from "./EStatusOrder";
 import {OrderDetail} from "./OrderDetail";
+import {EPayments} from "./EPayments";
 
 export interface Oder {
   id: number;
@@ -17,4 +18,5 @@ export interface Oder {
   orderDetailList: Array<OrderDetail>;
   money: number;
   quantity: number;
+  payments: EPayments;
 }

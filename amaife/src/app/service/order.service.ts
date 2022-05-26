@@ -26,14 +26,21 @@ export class OrderService {
   readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
   readonly URL_ORDERUSER = "http://localhost:8080/api/order";
   readonly URL_ORDERDETAILUSER = "http://localhost:8080/api/order/detail";
+  readonly URL_CREATEORDERUSER = "http://localhost:8080/api/order/createOder";
 
   /**
    * URL giỏ hàng
    */
   readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
   readonly URL_CARTRUSER_TOTALMONEY = "http://localhost:8080/api/cart/totalMoney";
+  readonly URL_CARTRUSER_QUANTITY = "http://localhost:8080/api/cart/totalQuantity";
   readonly URL_CARTRUSER_DELETE = "http://localhost:8080/api/cart/delete";
   readonly URL_CARTRUSER_CANCEL = "http://localhost:8080/api/cart/cancel";
+
+  /**
+   * URL chi tiết đơn hàng phía User
+   */
+  readonly URL_ODERDETAIL_CREATE = "http://localhost:8080/api/order/createDetailOder";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -86,6 +93,15 @@ export class OrderService {
   }
 
   /**
+   * Người dùng thêm mới đơn hàng
+   * @param order
+   */
+  createOderUser(order: Object): Observable<Oder> {
+    return this.httpClient.post<Oder>(this.URL_CREATEORDERUSER, order);
+  }
+
+
+  /**
    * danh sách chi tiết món tìm kiếm theo id order
    * @param idOders
    */
@@ -132,7 +148,19 @@ export class OrderService {
     return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName).set('status', status)});
   }
 
+  totalQuantityCart(userName: string, status: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL_CARTRUSER_QUANTITY, {params: new HttpParams().set('userName', userName).set('status', status)});
+  }
+
   updateCart(cart: Object): Observable<Cart> {
     return this.httpClient.put<Cart>(this.URL_CARTRUSER, cart);
+  }
+
+
+  /**
+   * Thêm đồng thời nhiều chi tiết món cùng một lúc
+   */
+  createOderDetailUser(orderDetails: Array<OrderDetail>): Observable<OrderDetail> {
+    return this.httpClient.post<OrderDetail>(this.URL_ODERDETAIL_CREATE, orderDetails);
   }
 }
