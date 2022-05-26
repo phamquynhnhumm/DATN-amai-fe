@@ -46,6 +46,8 @@ export class CheckoutComponent implements OnInit {
         this.cartList = dataCart;
       }
     );
+
+
     // @ts-ignore
     this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
       data => {
@@ -119,11 +121,15 @@ export class CheckoutComponent implements OnInit {
         this.formOrderDEtail.value.orders = this.newOder;
         this.formOrderDEtail.value.isDeleted = false;
         for (let i = 0; i < this.cartList.length; i++) {
-          let detail: { quantity: number; food: Food } = {
-            quantity: this.cartList[i].quantity,
+          let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+            quantity: this.formOrderDEtail.value.quantity,
             food: this.cartList[i].food,
+            orders: this.formOrderDEtail.value.orders,
+            isDeleted: this.formOrderDEtail.value.isDeleted,
+
           };
-          this.listOderDetail.push(<OrderDetail>detail);
+          console.log(<OrderDetail>newOderDetail);
+          this.listOderDetail.push(<OrderDetail>newOderDetail);
         }
 
         this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
@@ -134,16 +140,16 @@ export class CheckoutComponent implements OnInit {
       }
     );
     // Xóa các cart trong giỏ hàng
-    for (let i = 0; i < this.cartList.length; i++) {
-      this.cart = this.cartList[i];
-      /**
-       * Xóa cart khỏi giỏ hàng
-       */
-      console.log(this.cart);
-      this.cartService.cancelByIdCart(this.cart.id).subscribe();
-      /**
-       * Đồng thời thêm chi tiết đơn hàng;
-       */
-    }
+    // for (let i = 0; i < this.cartList.length; i++) {
+    //   this.cart = this.cartList[i];
+    //   /**
+    //    * Xóa cart khỏi giỏ hàng
+    //    */
+    //   console.log(this.cart);
+    //   this.cartService.cancelByIdCart(this.cart.id).subscribe();
+    //   /**
+    //    * Đồng thời thêm chi tiết đơn hàng;
+    //    */
+    // }
   }
 }
