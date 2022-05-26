@@ -32,17 +32,12 @@ export class HomeuserComponent implements OnInit {
       datafood => {
         this.p = 1;
         this.foodList = datafood;
-        console.log(this.foodList)
       }
     );
   }
 
   detailFood(foods: Food) {
-    // this.foodService.findByIdFoodUser(foods.foodCategory.id).subscribe(
-    //   datafoodDetail => {
     this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
-    // }
-    // )
   }
 
   createCartShoping(foods: Food) {
@@ -55,10 +50,11 @@ export class HomeuserComponent implements OnInit {
       })
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
-        this.router.navigateByUrl("/home").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
+        this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
+        location.replace("/home");
       },
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
-      })
+      });
   }
 }

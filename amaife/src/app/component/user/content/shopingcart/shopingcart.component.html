@@ -40,10 +40,11 @@
                 </td>
                 <td class="quantity__item">
                   <div class="quantity">
-                    <div class="pro-qty">
-                      <span style="color:#000;" class="dec qtybtn" (click)="quatitytru(cart.quantity)">-</span>
-                      <input style="color: black" type="text" value="{{cart.quantity}}" [(ngModel)]="cart.quantity">
-                      <span style="color:#000;" class="inc qtybtn" (click)="quatitycong(cart.quantity)">+</span>
+                    <div class="pro-qtycart">
+                      <!--                      <span style="color:#000;" class="pro-qtycart">-</span>-->
+                      <input style="color: black;" type="number" min="1" max="51" value="{{cart.quantity}}"
+                             [(ngModel)]="cart.quantity" (change)="total(cart, cart.quantity)">
+                      <!--                      <span style="color:#000;" class="pro-qtycart">+</span>-->
                     </div>
                   </div>
                 </td>
@@ -61,11 +62,6 @@
               <a style="text-decoration: none" routerLink="/menu">Quay lại cửa hàng</a>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="continue__btn update__btn">
-              <a style="text-decoration: none" routerLink="/shopping">Cập nhật giỏ hàng</a>
-            </div>
-          </div>
         </div>
       </div>
       <div class="col-lg-4">
@@ -75,7 +71,7 @@
           <ul>
             <li>Tổng tiền <span>{{totalCart | currency :'VND'}}</span></li>
           </ul>
-          <a style="text-decoration: none" href="#" class="primary-btn" (click)="paypal()">Tiến hành thanh toán</a>
+          <a style="text-decoration: none" routerLink="/checkout" class="primary-btn">Tiến hành thanh toán</a>
         </div>
       </div>
     </div>

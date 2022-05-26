@@ -122,4 +122,8 @@ export class OrderService {
   totalMoneyCart(userName: string, status: string): Observable<number> {
     return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName).set('status', status)});
   }
+
+  updateCart(cart: Object): Observable<Cart> {
+    return this.httpClient.put<Cart>(this.URL_CARTRUSER, cart);
+  }
 }

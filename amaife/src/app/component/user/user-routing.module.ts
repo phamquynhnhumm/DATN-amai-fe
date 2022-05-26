@@ -11,6 +11,7 @@ import {AddressuserComponent} from "./content/addressuser/addressuser.component"
 import {ChangepassComponent} from "./content/changepass/changepass.component";
 import {OrderuserComponent} from "./content/orderuser/orderuser.component";
 import {HistoryOrderUserComponent} from "./content/history-order-user/history-order-user.component";
+import {CheckoutComponent} from "./content/checkout/checkout.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
@@ -25,6 +26,13 @@ const routes: Routes = [
      * Nhập địa chỉ
      */
     path: "address", component: AddressuserComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },  {
+    /**
+     * Nhập địa chỉ
+     */
+    path: "checkout", component: CheckoutComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },

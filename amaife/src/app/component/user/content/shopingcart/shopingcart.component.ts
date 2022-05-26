@@ -5,6 +5,8 @@ import {Cart} from "../../../../model/order/Cart";
 import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-shopingcart',
@@ -18,9 +20,11 @@ export class ShopingcartComponent implements OnInit {
   eStatusCart = EStatusCart;
   quantity!: number;
   totalCart !: number;
+  cartUpdate !: Cart;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
+              private snackBar: MatSnackBar,
               public cartService: OrderService) {
   }
 
@@ -30,6 +34,7 @@ export class ShopingcartComponent implements OnInit {
       dataCart => {
         this.p = 1;
         this.cartList = dataCart;
+        console.log(dataCart)
       }
     );
     // @ts-ignore
@@ -39,21 +44,6 @@ export class ShopingcartComponent implements OnInit {
       }
     )
   }
-
-  quatitycong(quantity: number) {
-    console.log("đang cộng mà ko đc")
-    console.log(quantity)
-    if (quantity < 51) {
-      quantity = quantity + 1;
-      console.log(quantity)
-    }
-  }
-
-  // quatitytru() {
-  //   if (this.quatity > 1) {
-  //     this.quatity = this.quatity - 1;
-  //   }
-  // }
 
   deleteCart(cart: Cart) {
     this.cartService.findByIdCart(cart.id).subscribe(
@@ -72,9 +62,34 @@ export class ShopingcartComponent implements OnInit {
   }
 
   paypal() {
+
   }
 
-  quatitytru(quantity: number) {
+  updatequantityCart(cart: Cart, quantity: number) {
+    console.log(quantity);
+    console.log(cart);
+  }
 
+  /**
+   * Change () tương tác xong ấn enter xong mới thực hiện
+   * Click () nó lấy giá trị ngay thời điểm đó
+   * Cập nhật  lại số lượng và tổng tiền trong giỏ hàng
+   * @param cart
+   * @param quantity
+   */
+  total(cart: Cart, quantity: number) {
+    console.log(quantity);
+    console.log(cart);
+    this.cartUpdate = cart;
+    this.cartUpdate.quantity = quantity;
+    this.cartUpdate.money = quantity * cart.food.price;
+    this.cartService.updateCart(this.cartUpdate).subscribe(
+      (data) => {
+        this.snackBar.open("Cập nhật số lượng thành công!")._dismissAfter(3000);
+        location.replace("/shoping");
+      },
+      error => {
+        this.snackBar.open("Cập nhật số lượng thấy bại !")._dismissAfter(3000);
+      });
   }
 }

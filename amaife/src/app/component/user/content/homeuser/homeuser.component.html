@@ -75,8 +75,8 @@
     <div class="row" *ngIf="foodList != null">
       <div class="col-lg-3 col-md-6 col-sm-6"
            *ngFor="let foods of foodList | paginate :{itemsPerPage:8,currentPage : p}">
-        <div class="product__item" (click)="detailFood(foods)">
-          <div class="product__item__pic ">
+        <div class="product__item">
+          <div class="product__item__pic" (click)="detailFood(foods)">
             <img style="background: #e5e5e6" src="{{foods.image}}">
             <div class="product__label">
               <span [routerLink]="'detailfood' + [foods.id]">{{foods.name}}</span>
@@ -86,7 +86,7 @@
             <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a href="#" style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>
