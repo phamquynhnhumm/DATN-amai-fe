@@ -37,7 +37,7 @@ export class ShopingcartComponent implements OnInit {
       }
     );
     // @ts-ignore
-    this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+    this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
       }

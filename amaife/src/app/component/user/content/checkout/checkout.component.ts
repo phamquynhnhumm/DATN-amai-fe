@@ -49,13 +49,13 @@ export class CheckoutComponent implements OnInit {
 
 
     // @ts-ignore
-    this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+    this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
       }
     );
     // @ts-ignore
-    this.cartService.totalQuantityCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+    this.cartService.totalQuantityCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalQuantityCart = data;
       }
@@ -121,6 +121,7 @@ export class CheckoutComponent implements OnInit {
         this.formOrderDEtail.value.orders = this.newOder;
         this.formOrderDEtail.value.isDeleted = false;
         for (let i = 0; i < this.cartList.length; i++) {
+          this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
           let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
             quantity: this.formOrderDEtail.value.quantity,
             food: this.cartList[i].food,
@@ -139,7 +140,7 @@ export class CheckoutComponent implements OnInit {
         )
       }
     );
-    // Xóa các cart trong giỏ hàng
+    // // Xóa các cart trong giỏ hàng
     // for (let i = 0; i < this.cartList.length; i++) {
     //   this.cart = this.cartList[i];
     //   /**

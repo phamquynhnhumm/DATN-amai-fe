@@ -28,30 +28,28 @@
             </thead>
             <tbody *ngIf="cartList !=  null">
             <tr *ngFor="let cart of cartList">
-              <div *ngIf="cart.status == eStatusCart.INSGOPPING.valueOf()">
-                <td class="product__cart__item">
-                  <img src="{{cart.food.image}}" width="40%" height="40%" alt="">
-                </td>
-                <td class="product__cart__item">
-                  <div class="product__cart__item__text">
-                    <h6>{{cart.food.name}}</h6>
-                    <h5>{{cart.food.price | currency: 'VND'}}</h5>
+              <td class="product__cart__item">
+                <img src="{{cart.food.image}}" width="40%" height="40%" alt="">
+              </td>
+              <td class="product__cart__item">
+                <div class="product__cart__item__text">
+                  <h6>{{cart.food.name}}</h6>
+                  <h5>{{cart.food.price | currency: 'VND'}}</h5>
+                </div>
+              </td>
+              <td class="quantity__item">
+                <div class="quantity">
+                  <div class="pro-qtycart">
+                    <!--                      <span style="color:#000;" class="pro-qtycart">-</span>-->
+                    <input style="color: black;" type="number" min="1" max="51" value="{{cart.quantity}}"
+                           [(ngModel)]="cart.quantity" (change)="total(cart, cart.quantity)">
+                    <!--                      <span style="color:#000;" class="pro-qtycart">+</span>-->
                   </div>
-                </td>
-                <td class="quantity__item">
-                  <div class="quantity">
-                    <div class="pro-qtycart">
-                      <!--                      <span style="color:#000;" class="pro-qtycart">-</span>-->
-                      <input style="color: black;" type="number" min="1" max="51" value="{{cart.quantity}}"
-                             [(ngModel)]="cart.quantity" (change)="total(cart, cart.quantity)">
-                      <!--                      <span style="color:#000;" class="pro-qtycart">+</span>-->
-                    </div>
-                  </div>
-                </td>
-                <td class="cart__price">{{cart.food.price * cart.quantity | currency: 'VND'}}
-                </td>
-                <td class="cart__close"><span class="icon_close" (click)="deleteCart(cart)">x</span></td>
-              </div>
+                </div>
+              </td>
+              <td class="cart__price">{{cart.food.price * cart.quantity | currency: 'VND'}}
+              </td>
+              <td class="cart__close"><span class="icon_close" (click)="deleteCart(cart)">x</span></td>
             </tr>
             </tbody>
           </table>

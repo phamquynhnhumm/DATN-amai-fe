@@ -144,12 +144,12 @@ export class OrderService {
     return this.httpClient.get<Cart>(this.URL_CARTRUSER + "/" + id);
   }
 
-  totalMoneyCart(userName: string, status: string): Observable<number> {
-    return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName).set('status', status)});
+  totalMoneyCart(userName: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName)});
   }
 
-  totalQuantityCart(userName: string, status: string): Observable<number> {
-    return this.httpClient.get<number>(this.URL_CARTRUSER_QUANTITY, {params: new HttpParams().set('userName', userName).set('status', status)});
+  totalQuantityCart(userName: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL_CARTRUSER_QUANTITY, {params: new HttpParams().set('userName', userName)});
   }
 
   updateCart(cart: Object): Observable<Cart> {

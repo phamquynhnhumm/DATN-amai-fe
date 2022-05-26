@@ -28,7 +28,7 @@ export class NavUserComponent implements OnInit {
       this.userName = this.authService.getUsername();
     }
     // @ts-ignore
-    this.cartService.totalMoneyCart(this.auth.getUsername(), 'INSGOPPING').subscribe(
+    this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
       }
