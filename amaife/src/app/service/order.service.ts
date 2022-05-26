@@ -33,6 +33,7 @@ export class OrderService {
   readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
   readonly URL_CARTRUSER_TOTALMONEY = "http://localhost:8080/api/cart/totalMoney";
   readonly URL_CARTRUSER_DELETE = "http://localhost:8080/api/cart/delete";
+  readonly URL_CARTRUSER_CANCEL = "http://localhost:8080/api/cart/cancel";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -113,6 +114,14 @@ export class OrderService {
 
   deleteByIdCart(id: number): Observable<Cart> {
     return this.httpClient.delete<Cart>(this.URL_CARTRUSER_DELETE + "/" + id);
+  }
+
+  /**
+   * Xóa card khỏi giỏ hàng ( xóa hoàn toàn)
+   * @param id
+   */
+  cancelByIdCart(id: number): Observable<Cart> {
+    return this.httpClient.delete<Cart>(this.URL_CARTRUSER_CANCEL + "/" + id);
   }
 
   findByIdCart(id: number): Observable<Cart> {

@@ -5,7 +5,6 @@ import {Cart} from "../../../../model/order/Cart";
 import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -59,15 +58,6 @@ export class ShopingcartComponent implements OnInit {
         });
       }
     );
-  }
-
-  paypal() {
-
-  }
-
-  updatequantityCart(cart: Cart, quantity: number) {
-    console.log(quantity);
-    console.log(cart);
   }
 
   /**

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Cart} from "../../../../model/order/Cart";
 import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {AuthService} from "../../../../service/auth.service";
@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   quantity!: number;
   totalCart !: number;
   cartUpdate !: Cart;
+  cart !: Cart;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -44,51 +46,36 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
-  deleteCart(cart: Cart) {
-    this.cartService.findByIdCart(cart.id).subscribe(
-      data => {
-        const dialogRef = this.dialog.open(DeleteCartComponent, {
-          width: '400px',
-          height: '280px',
-          data: data
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          this.ngOnInit();
-          location.replace("/shoping");
-        });
-      }
-    );
-  }
+  checkoutForm = new FormGroup(
+    {
+      phone: new FormControl('', [Validators.required, Validators.min(0)]),
+      fullName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      address: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      qrcode: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+      status: new FormControl('', [Validators.required, Validators.min(0)]),
+      orderDetailList: new FormArray([]),
+      money: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
+    }
+  )
 
   paypal() {
-
   }
 
-  updatequantityCart(cart: Cart, quantity: number) {
-    console.log(quantity);
-    console.log(cart);
+  onSubmit() {
   }
 
-  /**
-   * Change () tương tác xong ấn enter xong mới thực hiện
-   * Click () nó lấy giá trị ngay thời điểm đó
-   * Cập nhật  lại số lượng và tổng tiền trong giỏ hàng
-   * @param cart
-   * @param quantity
-   */
-  total(cart: Cart, quantity: number) {
-    console.log(quantity);
-    console.log(cart);
-    this.cartUpdate = cart;
-    this.cartUpdate.quantity = quantity;
-    this.cartUpdate.money = quantity * cart.food.price;
-    this.cartService.updateCart(this.cartUpdate).subscribe(
-      (data) => {
-        this.snackBar.open("Cập nhật số lượng thành công!")._dismissAfter(3000);
-        location.replace("/shoping");
-      },
-      error => {
-        this.snackBar.open("Cập nhật số lượng thấy bại !")._dismissAfter(3000);
-      });
+  delteCartShopping() {
+    for (let i = 0; i < this.cartList.length; i++) {
+      this.cart = this.cartList[i];
+      /**
+       * Xóa cart khỏi giỏ hàng
+       */
+      this.cartService.cancelByIdCart(this.cart.id).subscribe();
+      /**
+       * Đồng thời thêm chi tiết đơn hàng;
+       */
+      // this.cartService.
+    }
   }
 }
