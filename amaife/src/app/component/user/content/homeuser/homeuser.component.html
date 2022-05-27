@@ -109,10 +109,10 @@
             <span>Món đẳng cấp</span>
             <h2>Làm từ tay <br/>Của chính bạn</h2>
           </div>
-          <form action="#">
-            <input type="text" placeholder="Họ và tên">
-            <input type="text" placeholder="Số điện thoại">
-            <input type="text" placeholder="Nhập yêu cầu của bạn">
+          <form [formGroup]="formCLass" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Họ và tên" formControlName="name">
+            <input type="text" placeholder="Số điện thoại" formControlName="phone">
+            <input type="text" placeholder="Nhập yêu cầu của bạn" formControlName="content">
             <button type="submit" class="site-btn">Đăng ký nhận tư vấn</button>
           </form>
         </div>
