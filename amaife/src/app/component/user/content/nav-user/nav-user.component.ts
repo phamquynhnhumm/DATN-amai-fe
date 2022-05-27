@@ -31,6 +31,9 @@ export class NavUserComponent implements OnInit {
     this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
+      },
+      error => {
+        this.totalCart = 0;
       }
     )
   }

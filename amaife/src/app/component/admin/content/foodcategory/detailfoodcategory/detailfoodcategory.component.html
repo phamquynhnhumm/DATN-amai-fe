@@ -11,7 +11,7 @@
     <mat-select *ngIf="foods !=null " class="form-control-plaintext " placeholder="Danh sách món">
       <mat-option (click)="openDetailFood(food)" *ngFor="let food of foods" >{{food.name}}</mat-option>
     </mat-select>
-    <div *ngIf="foods ==null " class="form-control-plaintext">
+    <div *ngIf="foods ==null" class="form-control-plaintext">
       <p>"Không tồn tại món"</p>
     </div>
   </div>

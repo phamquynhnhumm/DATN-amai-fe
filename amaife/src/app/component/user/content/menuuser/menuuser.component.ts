@@ -17,7 +17,9 @@ export class MenuuserComponent implements OnInit {
   foodList!: Array<Food>;
   p: number | any;
   searchSubject = ['Tên món', 'Danh mục'];
+  sortSubject = ['Theo tên', 'Theo danh mục', 'Theo giá'];
   searchss: string = "Chọn thuộc tính";
+  sorts: string = "Sắp xếp";
   formCart!: FormGroup;
   quatity: number = 1;
   eStatusCart = EStatusCart;
@@ -32,7 +34,8 @@ export class MenuuserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.foodService.findAllFoodIsdelete_User(false).subscribe(
+    // danh sách món có isDelete =  false and FoodCategory : isDelete = false
+    this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
       datafood => {
         this.p = 1;
         this.foodList = datafood;
@@ -44,12 +47,20 @@ export class MenuuserComponent implements OnInit {
     search: ['', Validators.maxLength(100)],
   });
 
+  SortForm = this.fb.group({
+    nameSort: ['', Validators.maxLength(100)],
+  });
+
   detailFood(foods: Food) {
     this.router.navigate(['/detailfood/' + foods.id]);
   }
 
   onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
     this.searchss = searchs;
+  }
+
+  onCheckboxChangeSort($event: MatOptionSelectionChange<string>, sort: string) {
+    this.sorts = sort;
   }
 
   searchFood(search: string) {
@@ -104,5 +115,70 @@ export class MenuuserComponent implements OnInit {
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
       });
+  }
+
+  sortName() {
+    console.log(this.SortForm.value.nameSort);
+    console.log("đang log")
+  }
+
+  sortCategory() {
+    console.log("sort theo danh mục món")
+    console.log(this.SortForm.value.nameSort)
+
+  }
+
+  sortPrice() {
+    console.log("sort theo giá tiền")
+    console.log(this.SortForm.value.nameSort)
+  }
+
+  SortFood() {
+    if (this.sorts == this.sortSubject[0]) {
+      this.foodService.OrderByNameACS().subscribe(
+        datafood => {
+          this.p = 1;
+          this.foodList = datafood;
+        }, error => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
+            datafood => {
+              this.p = 1;
+              this.foodList = datafood;
+            }
+          )
+          this.matSnackBar.open("Sắp xếp theo tên không thành công!")._dismissAfter(3000)
+        }
+      )
+    } else if (this.sorts == this.sortSubject[1]) {
+      this.foodService.OrderByFoodCategoryACS().subscribe(
+        datafood => {
+          this.p = 1;
+          this.foodList = datafood;
+        }, error => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
+            datafood => {
+              this.p = 1;
+              this.foodList = datafood;
+            }
+          )
+          this.matSnackBar.open("Sắp xếp theo tên không thành công!")._dismissAfter(3000)
+        }
+      )
+    } else if (this.sorts == this.sortSubject[2]) {
+      this.foodService.OrderByPriceACS().subscribe(
+        datafood => {
+          this.p = 1;
+          this.foodList = datafood;
+        }, error => {
+          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
+            datafood => {
+              this.p = 1;
+              this.foodList = datafood;
+            }
+          )
+          this.matSnackBar.open("Sắp xếp theo tên không thành công!")._dismissAfter(3000)
+        }
+      )
+    }
   }
 }

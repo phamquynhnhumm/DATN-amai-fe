@@ -71,6 +71,7 @@ import { NewpasswordComponent } from './content/account/newpassword/newpassword.
 import { DeleteaccountComponent } from './content/account/deleteaccount/deleteaccount.component';
 import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
+import { NotityAdminComponent } from './content/notify/notity-admin/notity-admin.component';
 
 
 @NgModule({
@@ -120,7 +121,8 @@ import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
     NewpasswordComponent,
     DeleteaccountComponent,
     EditaccountComponent,
-    HomeadminComponent
+    HomeadminComponent,
+    NotityAdminComponent
   ],
   exports: [
     LayoutComponent,

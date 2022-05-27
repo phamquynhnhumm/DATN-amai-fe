@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LayoutComponent} from "./layout/layout.component";
 import {ListfoodcategoryComponent} from "./content/foodcategory/listfoodcategory/listfoodcategory.component";
 import {CreatefoodcategoryComponent} from "./content/foodcategory/createfoodcategory/createfoodcategory.component";
 import {ListfoodComponent} from "./content/food/listfood/listfood.component";
@@ -19,9 +18,9 @@ import {ForbiddenComponent} from "./content/forbidden/forbidden.component";
 import {ListComponent} from "./content/account/list/list.component";
 import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
+import {NotityAdminComponent} from "./content/notify/notity-admin/notity-admin.component";
 
 const routes: Routes = [
-  // {path: "admin", component: LayoutComponent},
   /**
    * URL danh mục món
    */
@@ -39,6 +38,12 @@ const routes: Routes = [
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },
   {path: "createfood", component: CreatefoodComponent},
+  {
+    path: "food", component: ListfoodComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
+  {path: "notify", component: NotityAdminComponent},
   {
     path: "food", component: ListfoodComponent,
     canActivate: [AuthGuard],

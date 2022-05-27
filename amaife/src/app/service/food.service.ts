@@ -25,14 +25,6 @@ export class FoodService {
   readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/admin/food/findByFoodcategoryId";
   readonly URL_FOOD_SEARCH = "http://localhost:8080/api/admin/food/search";
   readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/admin/food/searchfindBymaterial";
-  /**
-   * URL Food cho người dùng
-   */
-  readonly URL_FOODUSER_FINFDISDELETE = "http://localhost:8080/api/food/all";
-  readonly URL_FOODUSER_IDCATEGORY = "http://localhost:8080/api/food/allFood";
-  readonly URL_FOODUSER = "http://localhost:8080/api/food";
-  readonly URL_FOODUSER_SEARCH = "http://localhost:8080/api/food/search";
-  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER = "http://localhost:8080/api/food/allFood";
 
   /**
    * URL danh mục
@@ -61,6 +53,19 @@ export class FoodService {
   readonly URL_MATERIAL_DELETE = "http://localhost:8080/api/admin/material/delete";
   readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "http://localhost:8080/api/admin/material/findBySupplierId";
   readonly URL_MATERIAL_SEARCH = "http://localhost:8080/api/admin/material/search";
+
+
+  /**
+   * URL Food cho người dùng
+   */
+  readonly URL_FOODUSER_FINFDISDELETE = "http://localhost:8080/api/food/all";
+  readonly URL_FOODUSER_IDCATEGORY = "http://localhost:8080/api/food/allFood";
+  readonly URL_FOODUSER = "http://localhost:8080/api/food";
+  readonly URL_FOODUSER_SEARCH = "http://localhost:8080/api/food/search";
+  readonly URL_FOODUSER_SEARCHNAME = "http://localhost:8080/api/food/oderByName";
+  readonly URL_FOODUSER_SEARCHCATEGORY = "http://localhost:8080/api/food/oderByFoodCategory";
+  readonly URL_FOODUSER_SEARCHPRICE = "http://localhost:8080/api/food/oderByPrice";
+  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER = "http://localhost:8080/api/food/allFood";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -252,5 +257,17 @@ export class FoodService {
 
   findAllFoodIsdeleteAndFoodCategoryUer(isdeleteFood: boolean, idDeleteFoodCategory: boolean): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER + "/" + isdeleteFood + "/" + idDeleteFoodCategory, {headers: this.requestHeader});
+  }
+
+  OrderByNameACS(): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_SEARCHNAME, {headers: this.requestHeader});
+  }
+
+  OrderByFoodCategoryACS(): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_SEARCHCATEGORY, {headers: this.requestHeader});
+  }
+
+  OrderByPriceACS(): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_SEARCHPRICE, {headers: this.requestHeader});
   }
 }
