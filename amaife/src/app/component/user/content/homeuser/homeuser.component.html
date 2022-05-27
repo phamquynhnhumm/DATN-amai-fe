@@ -111,8 +111,20 @@
           </div>
           <form [formGroup]="formCLass" (ngSubmit)="onSubmit()">
             <input type="text" placeholder="Họ và tên" formControlName="name">
+            <small class="text-danger col-sm-10"
+                   *ngIf="formCLass.get('name')?.hasError('required') && formCLass.get('name')?.touched">
+              <p>Tên món không được để trống</p>
+            </small>
             <input type="text" placeholder="Số điện thoại" formControlName="phone">
+            <small class="text-danger col-sm-10"
+                   *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched">
+              <p>Tên món không được để trống</p>
+            </small>
             <input type="text" placeholder="Nhập yêu cầu của bạn" formControlName="content">
+            <small class="text-danger col-sm-10"
+                   *ngIf="formCLass.get('content')?.hasError('required') && formCLass.get('content')?.touched">
+              <p>Tên món không được để trống</p>
+            </small>
             <button type="submit" class="site-btn">Đăng ký nhận tư vấn</button>
           </form>
         </div>

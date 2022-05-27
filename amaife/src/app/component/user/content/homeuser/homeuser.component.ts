@@ -75,6 +75,8 @@ export class HomeuserComponent implements OnInit {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
           this.snackBar.open("Đăng ký thành công !")._dismissAfter(3000);
+        }, error => {
+          this.snackBar.open("Đăng ký thấy bại !")._dismissAfter(3000);
         }
       )
     } else {
