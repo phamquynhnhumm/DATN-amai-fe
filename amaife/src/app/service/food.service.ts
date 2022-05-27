@@ -66,6 +66,9 @@ export class FoodService {
   readonly URL_FOODUSER_SEARCHCATEGORY = "http://localhost:8080/api/food/oderByFoodCategory";
   readonly URL_FOODUSER_SEARCHPRICE = "http://localhost:8080/api/food/oderByPrice";
   readonly URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER = "http://localhost:8080/api/food/allFood";
+  readonly URL_FOODCATEGOR_FINFDISDELETEUSER = "http://localhost:8080/api/food/foodcategoryall";
+  readonly URL_FOOD_FINDBYFOODCATEGORY_IDUSER = "http://localhost:8080/api/food/findByFoodcategoryId";
+  readonly URL_FOODCATEGORYUSER = "http://localhost:8080/api/food/foodcategory";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -269,5 +272,17 @@ export class FoodService {
 
   OrderByPriceACS(): Observable<Array<Food>> {
     return this.httpClient.get<Array<Food>>(this.URL_FOODUSER_SEARCHPRICE, {headers: this.requestHeader});
+  }
+
+  findAllFoodCategoryIsdeleteUser(): Observable<Array<FoodCategory>> {
+    return this.httpClient.get<Array<FoodCategory>>(this.URL_FOODCATEGOR_FINFDISDELETEUSER, {headers: this.requestHeader});
+  }
+
+  findAllFoodByFoodCategory_IdUSer(id: number): Observable<Array<Food>> {
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINDBYFOODCATEGORY_IDUSER + "/" + id);
+  }
+
+  findByIdFoodCategoryUser(id: number): Observable<FoodCategory> {
+    return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORYUSER + "/" + id);
   }
 }

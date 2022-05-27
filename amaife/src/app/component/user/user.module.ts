@@ -11,7 +11,6 @@ import {MenuuserComponent} from './content/menuuser/menuuser.component';
 import {OrderuserComponent} from './content/orderuser/orderuser.component';
 import {AccountuserComponent} from './content/accountuser/accountuser.component';
 import {AddressuserComponent} from './content/addressuser/addressuser.component';
-import {FoodyouComponent} from './content/foodyou/foodyou.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {MatIconModule} from "@angular/material/icon";
 import {DetailfooduserComponent} from './content/detailfooduser/detailfooduser.component';
@@ -24,6 +23,7 @@ import {OrderDetailUserComponent} from './content/order-detail-user/order-detail
 import {HistoryOrderUserComponent} from './content/history-order-user/history-order-user.component';
 import {DeleteCartComponent} from './content/delete-cart/delete-cart.component';
 import {CheckoutComponent} from './content/checkout/checkout.component';
+import { FoodCategoryComponent } from './content/food-category/food-category.component';
 
 
 @NgModule({
@@ -37,14 +37,14 @@ import {CheckoutComponent} from './content/checkout/checkout.component';
     OrderuserComponent,
     AccountuserComponent,
     AddressuserComponent,
-    FoodyouComponent,
     DetailfooduserComponent,
     ShopingcartComponent,
     ChangepassComponent,
     OrderDetailUserComponent,
     HistoryOrderUserComponent,
     DeleteCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FoodCategoryComponent
   ],
   exports: [
     NavUserComponent,

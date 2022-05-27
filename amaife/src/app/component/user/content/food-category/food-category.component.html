@@ -1,0 +1,72 @@
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2>Danh mục {{foodCategory.name}}</h2>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a style="text-decoration: none" href="/">Trang chủ</a>
+          <span>Cửa hàng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="shopmenu spanmenu">
+  <div class="container">
+    <div class="shop__optionmenu">
+      <div class="row">
+        <div class="col-lg-7 col-md-7">
+          <div class="shop__optionmenu__search">
+            <form [formGroup]="searchForm">
+              <mat-select placeholder="{{searchss}} " class="form-select-lg "
+                          style="border: none;font-size: 16px;width: 25%; font-family: inherit;line-height:44px;position:relative">
+                <mat-option *ngFor="let searchs of searchSubject"
+                            (onSelectionChange)="onCheckboxChangeFood($event,searchs)">{{searchs.valueOf()}}</mat-option>
+              </mat-select>
+              <input type="text" placeholder="Tìm kiếm" formControlName="search" #search>
+              <button type="submit" (click)="searchFood(search.value)"><i class="fa fa-search"></i></button>
+            </form>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+              ký tự!</small>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="foodList != null">
+      <div class="col-lg-3 col-md-6 col-sm-6"
+           *ngFor="let foods of foodList | paginate :{itemsPerPage:12,currentPage : p}">
+        <div class="product__item">
+          <div class="product__item__pic" (click)="detailFood(foods)">
+            <img style="background: #e5e5e6" src="{{foods.image}}">
+            <div class="product__label">
+              <span [routerLink]="'detailfood' + [foods.id]">{{foods.name }}</span>
+            </div>
+          </div>
+          <div class="product__item__text">
+            <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
+            <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
+            <div class="cart_add">
+              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </div>
+
+    <div class="row" *ngIf="foodList == null">
+      <h2 style="text-align: center">Không có món nào nằm trong danh mục {{foodCategory.name}}</h2>
+    </div>
+  </div>
+</section>

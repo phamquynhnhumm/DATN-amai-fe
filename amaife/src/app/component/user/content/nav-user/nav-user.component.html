@@ -43,7 +43,19 @@
             <li class="{{navHome}}"><a (click)="navHomeFunction()" style="text-decoration: none" routerLink="/home">Trang
               chủ</a></li>
             <li class="{{navFood}}"><a style="text-decoration: none" (click)="navFoodFunction()" routerLink="/menu">Cửa
-              hàng</a></li>
+              hàng</a>
+              <ul class="dropdown">
+                <li><a style="text-decoration: none" routerLink="/menu">Tất cả </a></li>
+                <div *ngIf="foodcategory != null">
+                  <div *ngFor="let category of foodcategory">
+                    <li>
+                      <a style="text-decoration: none" (click)="reload(category.id)"
+                      >{{category.name}}</a>
+                    </li>
+                  </div>
+                </div>
+              </ul>
+            </li>
             <li class="{{navConten}}"><a href="./blog.html" (click)="navContenFunction()" style="text-decoration: none">Bài
               viết</a></li>
             <li class="{{navAccount}}"><a routerLink="/user" (click)="navAccountFunction()"

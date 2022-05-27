@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../service/auth.service";
-import {MatDialog} from "@angular/material/dialog";
 import {OrderService} from "../../../../service/order.service";
+import {FoodService} from "../../../../service/food.service";
+import {FoodCategory} from "../../../../model/food/FoodCategory";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-nav-user',
@@ -16,9 +19,13 @@ export class NavUserComponent implements OnInit {
   navAccount !: string;
   navConten !: string;
   totalCart !: number;
+  foodcategory !: Array<FoodCategory>;
 
   constructor(public authService: AuthService,
+              public foodcategoryService: FoodService,
               public auth: AuthService,
+              private router: Router,
+              private snackBar: MatSnackBar,
               public cartService: OrderService) {
   }
 
@@ -34,6 +41,11 @@ export class NavUserComponent implements OnInit {
       },
       error => {
         this.totalCart = 0;
+      }
+    );
+    this.foodcategoryService.findAllFoodCategoryIsdeleteUser().subscribe(
+      data => {
+        this.foodcategory = data;
       }
     )
   }
@@ -87,5 +99,11 @@ export class NavUserComponent implements OnInit {
     this.navFood = "";
     this.navService = "";
     this.navAccount = "";
+  }
+
+  reload(id: number) {
+    console.log(id)
+    this.router.navigateByUrl("/category/" + id);
+    location.replace("/category/" + id);
   }
 }
