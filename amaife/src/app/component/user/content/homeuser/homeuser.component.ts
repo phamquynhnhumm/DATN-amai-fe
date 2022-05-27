@@ -43,6 +43,7 @@ export class HomeuserComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.min(0)]),
       phone: new FormControl('', [Validators.required, Validators.min(0)]),
       content: new FormControl('', [Validators.required, Validators.min(0)]),
+      handle: new FormControl('NOTCONTACTED', [Validators.required, Validators.min(0)]),
     }
   )
 

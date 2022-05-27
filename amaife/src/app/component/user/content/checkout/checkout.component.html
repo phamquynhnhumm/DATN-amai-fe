@@ -27,18 +27,30 @@
                 <div class="checkout__input">
                   <p>Người nhận<span>*</span></p>
                   <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched">
+                    <p>Tên món không được để trống</p>
+                  </small>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="checkout__input">
                   <p>Số điện thoại<span>*</span></p>
                   <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
+                    <p>Tên món không được để trống</p>
+                  </small>
                 </div>
               </div>
             </div>
             <div class="checkout__input">
               <p>Địa chỉ<span>*</span></p>
               <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched">
+                <p>Tên món không được để trống</p>
+              </small>
             </div>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">

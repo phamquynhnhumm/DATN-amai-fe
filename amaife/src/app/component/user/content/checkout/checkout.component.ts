@@ -61,36 +61,22 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
-  checkoutForm = new FormGroup(
-    {
-      phone: new FormControl('', [Validators.required, Validators.min(0)]),
-      fullName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      address: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      qrcode: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
-      status: new FormControl('', [Validators.required, Validators.min(0)]),
-      orderDetailList: new FormArray([]),
-      money: new FormControl('', Validators.required),
-      quantity: new FormControl('', Validators.required),
-    }
-  )
-
   formOrder = new FormGroup(
     {
       address: new FormControl('', [Validators.required, Validators.min(0)]),
       phone: new FormControl('', [Validators.required, Validators.min(0)]),
       fullName: new FormControl('', [Validators.required, Validators.min(0)]),
-      qrcode: new FormControl('', [Validators.required, Validators.min(0)]),
-      status: new FormControl('', Validators.required),
-      orderDetailList: new FormControl('', [Validators.required, Validators.min(0)]),
-      money: new FormControl('', [Validators.required, Validators.min(0)]),
-      quantity: new FormControl('', [Validators.required, Validators.min(0)]),
+      qrcode: new FormControl(''),
+      status: new FormControl(''),
+      money: new FormControl(''),
+      quantity: new FormControl(''),
       payments: new FormControl('', [Validators.required, Validators.min(0)]),
     }
   )
 
   formOrderDEtail = new FormGroup(
     {
-      isDeleted: new FormControl('', [Validators.required, Validators.min(0)]),
+      isDeleted: new FormControl(''),
       orders: new FormControl('', [Validators.required, Validators.min(0)]),
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
       food: new FormControl('', [Validators.required, Validators.min(0)]),
