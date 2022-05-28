@@ -1,106 +1,109 @@
-<div class="breadcrumb-option">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="breadcrumb__text">
-          <h2>Thủ tục thanh toán</h2>
+<div *ngIf="!apppayapl">
+  <div class="breadcrumb-option">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="breadcrumb__text">
+            <h2>Thủ tục thanh toán</h2>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="breadcrumb__links">
-          <a style="text-decoration: none" routerLink="/home">Trang chủ</a>
-          <span>Thanh toán</span>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="breadcrumb__links">
+            <a style="text-decoration: none" routerLink="/home">Trang chủ</a>
+            <span>Thanh toán</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<section class="checkout spad">
-  <div class="container">
-    <div class="checkout__form">
-      <form [formGroup]="formOrder" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col-lg-8 col-md-6">
-            <h4 class="checkout__title">Chi tiết thông tin</h4>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="checkout__input">
-                  <p>Người nhận<span>*</span></p>
-                  <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
-                  <small class="text-danger col-sm-10"
-                         *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched">
-                    <p>Tên món không được để trống</p>
-                  </small>
+  <section class="checkout spad">
+    <div class="container">
+      <div class="checkout__form">
+        <form [formGroup]="formOrder" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-lg-8 col-md-6">
+              <h4 class="checkout__title">Chi tiết thông tin</h4>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="checkout__input">
+                    <p>Người nhận<span>*</span></p>
+                    <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
+                    <small class="text-danger col-sm-10"
+                           *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched">
+                      <p>Tên món không được để trống</p>
+                    </small>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="checkout__input">
-                  <p>Số điện thoại<span>*</span></p>
-                  <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
-                  <small class="text-danger col-sm-10"
-                         *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
-                    <p>Tên món không được để trống</p>
-                  </small>
-                </div>
-              </div>
-            </div>
-            <div class="checkout__input">
-              <p>Địa chỉ<span>*</span></p>
-              <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched">
-                <p>Tên món không được để trống</p>
-              </small>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="continue__btn">
-                  <a style="text-decoration: none" routerLink="/shoping">Quay lại giỏ hàng</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="checkout__order">
-              <h4 class="order__title">Đơn đặt hàng của bạn</h4>
-              <div class="checkout__order__products">Tên món <span>Giá </span></div>
-              <div class="checkout__total__products" *ngIf="cartList !=null">
-                <div *ngFor="let cart of cartList">
-                  <div class="checkout__order__products">
-                    <small> {{cart.food.id}} {{cart.quantity}}  {{cart.food.name}}</small>
-                    <span><small>{{cart.money | currency:'VND'}}</small></span>
+                <div class="col-lg-6">
+                  <div class="checkout__input">
+                    <p>Số điện thoại<span>*</span></p>
+                    <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
+                    <small class="text-danger col-sm-10"
+                           *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
+                      <p>Tên món không được để trống</p>
+                    </small>
                   </div>
                 </div>
               </div>
-              <ul class="checkout__total__all">
-                <li>Tổng tiền <span>{{totalCart | currency:'VND'}}</span></li>
-              </ul>
-              <div class="checkout__input__checkbox">
-                <label>
-                  Thanh toán khi nhận hàng
-                  <input type="radio" name="paypal" formControlName="payments" value="CASH">
-                  <span class="checkmark"></span>
-                </label>
+              <div class="checkout__input">
+                <p>Địa chỉ<span>*</span></p>
+                <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
+                <small class="text-danger col-sm-10"
+                       *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched">
+                  <p>Tên món không được để trống</p>
+                </small>
               </div>
-              <div class="checkout__input__checkbox">
-                <label>
-                  Thanh toán bằng Paypal
-                  <input type="radio" name="paypal" formControlName="payments" value="PAYPAL">
-                  <span class="checkmark"></span>
-                </label>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="continue__btn">
+                    <a style="text-decoration: none" routerLink="/shoping">Quay lại giỏ hàng</a>
+                  </div>
+                </div>
               </div>
-              <div class="checkout__input__checkbox">
-                <label>
-                  Hãy chuẩn bị món, tôi sẽ đến cửa hàng
-                  <input type="radio" name="paypal" formControlName="payments" value="NO">
-                  <span class="checkmark"></span>
-                </label>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="checkout__order">
+                <h4 class="order__title">Đơn đặt hàng của bạn</h4>
+                <div class="checkout__order__products">Tên món <span>Giá </span></div>
+                <div class="checkout__total__products" *ngIf="cartList !=null">
+                  <div *ngFor="let cart of cartList">
+                    <div class="checkout__order__products">
+                      <small> {{cart.food.id}} {{cart.quantity}}  {{cart.food.name}}</small>
+                      <span><small>{{cart.money | currency:'VND'}}</small></span>
+                    </div>
+                  </div>
+                </div>
+                <ul class="checkout__total__all">
+                  <li>Tổng tiền <span>{{totalCart | currency:'VND'}}</span></li>
+                </ul>
+                <div class="checkout__input__checkbox">
+                  <label>
+                    Thanh toán khi nhận hàng
+                    <input type="radio" name="paypal" formControlName="payments" value="CASH">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="checkout__input__checkbox">
+                  <label>
+                    Thanh toán bằng Paypal
+                    <input type="radio" name="paypal" formControlName="payments" value="PAYPAL">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="checkout__input__checkbox">
+                  <label>
+                    Hãy chuẩn bị món, tôi sẽ đến cửa hàng
+                    <input type="radio" name="paypal" formControlName="payments" value="NO">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <button type="submit" class="site-btn">Đặt hàng</button>
               </div>
-              <button type="submit" class="site-btn">Đặt hàng</button>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+<app-paypal *ngIf="apppayapl" [formOder]="formOrder"></app-paypal>

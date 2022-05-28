@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
-import {Router} from "@angular/router";
+import {NavigationExtras, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
+import {FormGroup} from "@angular/forms";
+import {Oder} from "../../../../model/order/Oder";
 
 @Component({
   selector: 'app-paypal',
@@ -12,8 +14,9 @@ import {OrderService} from "../../../../service/order.service";
 export class PaypalComponent implements OnInit {
 
   public payPalConfig?: IPayPalConfig;
-  // @Input() price!: number;
-  // @Input() booking!: Booking;
+  @Input() formOder!: FormGroup;
+
+  @Input() oder!: Oder;
   price1: number = 0.3;
   test!: boolean;
 
@@ -23,6 +26,7 @@ export class PaypalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.formOder);
     this.initConfig();
   }
 

@@ -5,7 +5,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Oder} from "../../../../model/order/Oder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
@@ -29,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   oder !: Oder;
   newOder!: Oder;
   paypal !: string;
+  apppayapl: boolean = false;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -87,7 +88,8 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     if (this.formOrder.value.payments == 'PAYPAL') {
-      this.route.navigateByUrl("/paypal").then();
+      this.apppayapl = true;
+      // this.route.navigateByUrl("/paypal").then();
     } else if (this.formOrder.value.payments == 'CASH') {
       this.formOrder.value.qrcode = "de tim sau";
       this.formOrder.value.status = "UNCONFIRMED";
