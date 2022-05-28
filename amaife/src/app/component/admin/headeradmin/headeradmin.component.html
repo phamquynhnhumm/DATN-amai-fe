@@ -70,16 +70,15 @@
   </c-dropdown>
 </ng-template>
 <ng-template #notify>
-  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto" style="height: 500px">
+  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
     <button [caret]="false" cDropdownToggle class="py-0"
             style="border: 0px solid black;border-color: snow;background-color: snow">
       <svg [cIcon]="icons.cilBell" size="lg"></svg>
     </button>
-    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto " style="height: 500px">
+    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
       <li cDropdownHeader>
         <h2 class="fw-semibold py-2" style="text-align: center">Đơn mới</h2>
-        <!--        <p class="dismiss text-right"><a id="dismiss-all" href="#">Xác nhận tất cả</a></p>-->
-        <div *ngIf="oderList != null" style="height: 500px">
+        <div *ngIf="oderList != null" style="height: 560px ;overflow-y: scroll">
           <div class="card-body  card notification-card  notification-invitation"
                *ngFor="let order of oderList" style="scroll-behavior: smooth;">
             <table>
@@ -93,7 +92,8 @@
                 </td>
                 <td style="width:30%">
                   <br>
-                  <a (click)="confirm(order)" class="btn dismiss-notification" style="background: #FF7851">Xác nhận</a>
+                  <a (click)="confirm(order)" class="btn dismiss-notification" style="background: #FF7851">Xác
+                    nhận</a>
                 </td>
               </tr>
             </table>

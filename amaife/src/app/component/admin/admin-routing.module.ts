@@ -18,7 +18,6 @@ import {ForbiddenComponent} from "./content/forbidden/forbidden.component";
 import {ListComponent} from "./content/account/list/list.component";
 import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
-import {NotityAdminComponent} from "./content/notify/notity-admin/notity-admin.component";
 import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
 
 const routes: Routes = [
@@ -44,7 +43,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },
-  {path: "notify", component: NotityAdminComponent},
   {
     path: "food", component: ListfoodComponent,
     canActivate: [AuthGuard],

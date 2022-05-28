@@ -70,7 +70,6 @@ import { NewpasswordComponent } from './content/account/newpassword/newpassword.
 import { DeleteaccountComponent } from './content/account/deleteaccount/deleteaccount.component';
 import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
-import { NotityAdminComponent } from './content/notify/notity-admin/notity-admin.component';
 import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.component';
 
 
@@ -121,7 +120,6 @@ import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.
     DeleteaccountComponent,
     EditaccountComponent,
     HomeadminComponent,
-    NotityAdminComponent,
     ConfirmOderComponent
   ],
   exports: [

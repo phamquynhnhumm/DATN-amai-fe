@@ -4,9 +4,7 @@ import {Observable} from "rxjs";
 import {Oder} from "../model/order/Oder";
 import {OrderDetail} from "../model/order/OrderDetail";
 import {Cart} from "../model/order/Cart";
-import {Food} from "../model/food/Food";
 import {EStatusOrder} from "../model/order/EStatusOrder";
-import {ConfirmOderComponent} from "../component/admin/content/order/confirm-oder/confirm-oder.component";
 
 @Injectable({
   providedIn: 'root'
