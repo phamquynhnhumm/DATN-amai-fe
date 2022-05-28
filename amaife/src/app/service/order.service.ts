@@ -5,6 +5,8 @@ import {Oder} from "../model/order/Oder";
 import {OrderDetail} from "../model/order/OrderDetail";
 import {Cart} from "../model/order/Cart";
 import {Food} from "../model/food/Food";
+import {EStatusOrder} from "../model/order/EStatusOrder";
+import {ConfirmOderComponent} from "../component/admin/content/order/confirm-oder/confirm-oder.component";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,9 @@ export class OrderService {
    * URL đơn hàng ADmin
    */
   readonly URL_ORDER = "http://localhost:8080/api/admin/order";
+  readonly URL_ORDER_CONFIRM = "http://localhost:8080/api/admin/order/confirm";
   readonly URL_ORDER_FINFDISDELETE = "http://localhost:8080/api/admin/order/all";
+  readonly URL_ORDER_STATUS = "http://localhost:8080/api/admin/order/status";
   readonly URL_ORDER_UNDELETE = "http://localhost:8080/api/admin/order/undelete";
   readonly URL_ORDER_DELETE = "http://localhost:8080/api/admin/order/delete";
   readonly URL_ORDER_FINDBYACOUNT_NAME = "http://localhost:8080/api/admin/order/findBySupplierId";
@@ -48,6 +52,10 @@ export class OrderService {
   /**
    * CRUD đơn hàng ADMIN
    */
+  // danh đơn hàng mới
+  finAllStatus(status: EStatusOrder): Observable<Array<Oder>> {
+    return this.httpClient.get<Array<Oder>>(this.URL_ORDER_STATUS + "/" + status);
+  }
 
   findAllOder(): Observable<Array<Oder>> {
     return this.httpClient.get<Array<Oder>>(this.URL_ORDER);
@@ -71,6 +79,10 @@ export class OrderService {
 
   updateOder(order: Object): Observable<Oder> {
     return this.httpClient.put<Oder>(this.URL_ORDER, order);
+  }
+
+  confirmOder(order: Object): Observable<Oder> {
+    return this.httpClient.put<Oder>(this.URL_ORDER_CONFIRM, order);
   }
 
   deleteByIdOder(id: number): Observable<Oder> {

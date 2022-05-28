@@ -1,7 +1,13 @@
 import {Component, Input} from '@angular/core';
 import {HeaderComponent} from "@coreui/angular";
-import {cilUser, cilSettings, cilMenu, cilEnvelopeOpen, cilBell} from '@coreui/icons';
+import {cilBell, cilEnvelopeOpen, cilMenu, cilSettings, cilUser} from '@coreui/icons';
 import {AuthService} from "../../../service/auth.service";
+import {OrderService} from "../../../service/order.service";
+import {Oder} from "../../../model/order/Oder";
+import {EStatusOrder} from "../../../model/order/EStatusOrder";
+import {DetailorderComponent} from "../content/order/detailorder/detailorder.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmOderComponent} from "../content/order/confirm-oder/confirm-oder.component";
 
 @Component({
   selector: 'app-headeradmin',
@@ -14,9 +20,12 @@ export class HeaderadminComponent extends HeaderComponent {
 
   public newMessages = new Array(4)
   userName!: string | null;
+  oderList!: Array<Oder>;
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private oderService: OrderService,
+    private dialog: MatDialog
   ) {
     super();
   }
@@ -26,6 +35,11 @@ export class HeaderadminComponent extends HeaderComponent {
       this.authService.assignSessionStorageWithLocalStorage();
       this.userName = this.authService.getUsername();
     }
+    this.oderService.finAllStatus(EStatusOrder.UNCONFIRMED).subscribe(
+      data => {
+        this.oderList = data;
+      }
+    )
   }
 
   public isLoggedIn() {
@@ -34,5 +48,35 @@ export class HeaderadminComponent extends HeaderComponent {
 
   public logout() {
     this.authService.clear();
+  }
+
+  confirm(order: Oder) {
+    this.oderService.findByIdOder(order.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(ConfirmOderComponent, {
+          width: '400px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
+
+  detail(order: Oder) {
+    this.oderService.findByIdOder(order.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailorderComponent, {
+          width: '800px',
+          height: '580px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 }

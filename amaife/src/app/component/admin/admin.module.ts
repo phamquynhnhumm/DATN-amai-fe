@@ -72,6 +72,7 @@ import { DeleteaccountComponent } from './content/account/deleteaccount/deleteac
 import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
 import { NotityAdminComponent } from './content/notify/notity-admin/notity-admin.component';
+import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.component';
 
 
 @NgModule({
@@ -122,7 +123,8 @@ import { NotityAdminComponent } from './content/notify/notity-admin/notity-admin
     DeleteaccountComponent,
     EditaccountComponent,
     HomeadminComponent,
-    NotityAdminComponent
+    NotityAdminComponent,
+    ConfirmOderComponent
   ],
   exports: [
     LayoutComponent,
