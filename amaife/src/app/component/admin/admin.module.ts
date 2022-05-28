@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {AdminRoutingModule} from './admin-routing.module';
 import {LayoutComponent} from './layout/layout.component';
-import {FooterComponent} from './footer/footer.component';
 import {
   AvatarModule,
   BreadcrumbModule, CardModule,
@@ -78,7 +77,6 @@ import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.
 @NgModule({
   declarations: [
     LayoutComponent,
-    FooterComponent,
     HeaderadminComponent,
     ListfoodcategoryComponent,
     CreatefoodcategoryComponent,

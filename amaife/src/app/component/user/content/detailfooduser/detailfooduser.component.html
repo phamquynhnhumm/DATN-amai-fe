@@ -8,7 +8,7 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__links">
-          <a style="text-decoration: none" href="./index.html">Trang chủ</a>
+          <a style="text-decoration: none" routerLink="/home">Trang chủ</a>
           <span>Chi tiết món</span>
         </div>
       </div>
@@ -92,7 +92,7 @@
             </div>
           </div>
           <div class="product__item__text">
-            <h6><a style="text-decoration: none" href=" #">{{food.foodCategory.name}}</a></h6>
+            <h6><a style="text-decoration: none">{{food.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{food.price | currency :'VND'}}</div>
             <div class="cart_add">
               <a style="text-decoration: none" (click)="createCartShoping(food)">Thêm vào giỏ hàng</a>

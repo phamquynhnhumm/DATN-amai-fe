@@ -60,12 +60,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },
-  {
-    path: "detailfood/:id", component: DetailfooduserComponent
-  },
-  {
-    path: "category/:id", component: FoodCategoryComponent
-  },
+  {path: "detailfood/:id", component: DetailfooduserComponent},
+  {path: "category/:id", component: FoodCategoryComponent},
   {
     path: "changePass", component: ChangepassComponent,
     canActivate: [AuthGuard],

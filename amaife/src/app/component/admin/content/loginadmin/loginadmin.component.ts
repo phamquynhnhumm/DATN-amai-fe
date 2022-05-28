@@ -6,7 +6,6 @@ import {LoginService} from "../../../../service/login.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../../service/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
 
@@ -32,8 +31,7 @@ export class LoginadminComponent implements OnInit {
               private router: Router,
               private socialAuthService: SocialAuthService,
               private authService: AuthService,
-              private matSnackBar: MatSnackBar,
-              private matDialog: MatDialog) {
+              private matSnackBar: MatSnackBar) {
   }
 
 
@@ -44,7 +42,7 @@ export class LoginadminComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.getToken() !== null) {
-      this.router.navigate(['/']).then(
+      this.router.navigate(['/login']).then(
         () => window.location.reload()
       )
     }
@@ -58,16 +56,16 @@ export class LoginadminComponent implements OnInit {
     const role = loginResponse.user.account.role;
     switch (role) {
       case "ROLE_MANAGEMENT":
-        this.router.navigate(['/food']);
+        this.router.navigate(['/admin']);
         break;
       case "ROLE_CUSTOMER":
         this.router.navigate(['/home']);
         break;
       case "ROLE_ADMIN":
-        this.router.navigate(['/food']);
+        this.router.navigate(['/admin']);
         break;
       default:
-        this.router.navigate(['/forbidden'])
+        this.router.navigate(['/login'])
     }
   }
 

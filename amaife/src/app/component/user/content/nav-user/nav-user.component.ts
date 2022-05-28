@@ -30,10 +30,10 @@ export class NavUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("token") !== null) {
-      this.authService.assignSessionStorageWithLocalStorage();
-      this.userName = this.authService.getUsername();
-    }
+    // if (localStorage.getItem("token") !== null) {
+    //   this.authService.assignSessionStorageWithLocalStorage();
+    //   this.userName = this.authService.getUsername();
+    // }
     // @ts-ignore
     this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
@@ -75,15 +75,6 @@ export class NavUserComponent implements OnInit {
 
   }
 
-  navServiceFunction() {
-    this.navService = "active";
-    this.navHome = "";
-    this.navFood = "";
-    this.navAccount = "";
-    this.navConten = "";
-
-  }
-
   navAccountFunction() {
     this.navAccount = "active";
     this.navHome = "";
@@ -102,8 +93,7 @@ export class NavUserComponent implements OnInit {
   }
 
   reload(id: number) {
-    console.log(id)
-    this.router.navigateByUrl("/category/" + id);
+    // this.router.navigateByUrl("/category/" + id);
     location.replace("/category/" + id);
   }
 }

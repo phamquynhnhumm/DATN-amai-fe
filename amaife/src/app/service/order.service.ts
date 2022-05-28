@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Oder} from "../model/order/Oder";
 import {OrderDetail} from "../model/order/OrderDetail";
@@ -45,6 +45,10 @@ export class OrderService {
    * URL chi tiết đơn hàng phía User
    */
   readonly URL_ODERDETAIL_CREATE = "http://localhost:8080/api/order/createDetailOder";
+
+  requestHeader = new HttpHeaders(
+    {"No-Auth": "True"}
+  );
 
   constructor(private httpClient: HttpClient) {
   }
@@ -157,7 +161,10 @@ export class OrderService {
   }
 
   totalMoneyCart(userName: string): Observable<number> {
-    return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {params: new HttpParams().set('userName', userName)});
+    return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {
+      params: new HttpParams().set('userName', userName),
+      headers: this.requestHeader
+    });
   }
 
   totalQuantityCart(userName: string): Observable<number> {

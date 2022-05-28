@@ -11,9 +11,6 @@ import {Material} from "../model/food/Material";
 })
 export class FoodService {
 
-  requestHeader = new HttpHeaders(
-    {"No-Auth": "True"}
-  );
   /**
    * URL Món
    */
@@ -72,6 +69,10 @@ export class FoodService {
 
   constructor(private httpClient: HttpClient) {
   }
+
+  requestHeader = new HttpHeaders(
+    {"No-Auth": "True"}
+  );
 
   /**
    * CRUD Món
@@ -259,7 +260,8 @@ export class FoodService {
 
 
   findAllFoodIsdeleteAndFoodCategoryUer(isdeleteFood: boolean, idDeleteFoodCategory: boolean): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER + "/" + isdeleteFood + "/" + idDeleteFoodCategory, {headers: this.requestHeader});
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER + "/" + isdeleteFood + "/" + idDeleteFoodCategory,
+      {headers: this.requestHeader});
   }
 
   OrderByNameACS(): Observable<Array<Food>> {
@@ -279,10 +281,10 @@ export class FoodService {
   }
 
   findAllFoodByFoodCategory_IdUSer(id: number): Observable<Array<Food>> {
-    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINDBYFOODCATEGORY_IDUSER + "/" + id);
+    return this.httpClient.get<Array<Food>>(this.URL_FOOD_FINDBYFOODCATEGORY_IDUSER + "/" + id, {headers: this.requestHeader});
   }
 
   findByIdFoodCategoryUser(id: number): Observable<FoodCategory> {
-    return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORYUSER + "/" + id);
+    return this.httpClient.get<FoodCategory>(this.URL_FOODCATEGORYUSER + "/" + id, {headers: this.requestHeader});
   }
 }

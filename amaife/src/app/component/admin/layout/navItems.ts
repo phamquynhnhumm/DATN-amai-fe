@@ -4,7 +4,7 @@ import {cilSettings} from "@coreui/icons";
 export const navItems: INavData[] = [
   {
     name: 'TIỆM TRÀ SỮA AMAI',
-    url: '/dashboard',
+    url: '/admin',
     iconComponent: {name: cilSettings},
     badge: {
       color: 'info',
