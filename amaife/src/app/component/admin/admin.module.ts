@@ -124,7 +124,8 @@ import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.
   ],
   exports: [
     LayoutComponent,
-    HeaderadminComponent
+    HeaderadminComponent,
+    LoginadminComponent
   ],
     imports: [
         CommonModule,

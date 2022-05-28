@@ -14,7 +14,7 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) {
   }
 
-  readonly URL_CLASS = "http://localhost:8080/api/class";
+  readonly URL_CLASS = "http://localhost:8080/api/class/create";
 
   /**
    * Đăng ký nhận tư vấn ( tự chế biến món)

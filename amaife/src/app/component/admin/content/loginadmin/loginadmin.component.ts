@@ -66,6 +66,7 @@ export class LoginadminComponent implements OnInit {
         break;
       default:
         this.router.navigate(['/login'])
+        window.location.reload();
     }
   }
 

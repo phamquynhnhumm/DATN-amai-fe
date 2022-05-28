@@ -43,7 +43,6 @@ export class HomeuserComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.min(0)]),
       phone: new FormControl('', [Validators.required, Validators.min(0)]),
       content: new FormControl('', [Validators.required, Validators.min(0)]),
-      handle: new FormControl('NOTCONTACTED', [Validators.required, Validators.min(0)]),
     }
   )
 
@@ -70,8 +69,9 @@ export class HomeuserComponent implements OnInit {
   }
 
   onSubmit() {
+
     console.log(this.formCLass.value)
-    if (this.formCLass.valid) {
+    // if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
           this.snackBar.open("Đăng ký thành công !")._dismissAfter(3000);
@@ -79,8 +79,8 @@ export class HomeuserComponent implements OnInit {
           this.snackBar.open("Đăng ký thấy bại !")._dismissAfter(3000);
         }
       )
-    } else {
-      this.snackBar.open("Đăng ký thất bại !")._dismissAfter(3000);
-    }
+    // } else {
+    //   this.snackBar.open("Đăng ký thất bại !")._dismissAfter(3000);
+    // }
   }
 }

@@ -4,10 +4,15 @@
   <app-footer-user></app-footer-user>
 </div>
 
-<div *ngIf="authService.getRole() == null">
+<div *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login'">
   <app-nav-user></app-nav-user>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
+</div>
+<div *ngIf="href =='http://localhost:4200/login'">
+  <!--  <app-nav-user></app-nav-user>-->
+  <app-loginadmin></app-loginadmin>
+  <!--  <app-footer-user></app-footer-user>-->
 </div>
 
 <c-sidebar *ngIf="authService.getRole() == 'ROLE_ADMIN' || authService.getRole()=='ROLE_MANAGEMENT' "

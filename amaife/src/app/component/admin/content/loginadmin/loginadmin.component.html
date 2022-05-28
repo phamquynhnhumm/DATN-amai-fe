@@ -8,6 +8,7 @@
               <h1 class="mb-5" style="font-family: Georgia;font-weight: bolder">ĐĂNG NHẬP TRANG QUẢN TRỊ </h1>
               <div class="form-outline mb-4">
                 <input class="form-control form-control-lg" type="text" formControlName="userName" #elementUsername
+                       placeholder="Nhập tài khoản"
                        (change)="checkValidUsernameAuto(elementUsername.value)">
                 <div
                   *ngIf="formLogin.get('userName')?.hasError('required') && (formLogin.get('userName')?.touched || isLoginValid) ; then thenUsername else elseUsername"></div>
@@ -21,6 +22,7 @@
               </div>
               <div class="form-outline mb-4">
                 <input type="password" class="form-control form-control-lg" formControlName="password" #elementPassword
+                       placeholder="Nhập mật khẩu"
                        (change)="checkValidPassword(elementPassword.value)">
                 <div
                   *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.touched || isLoginValid) ; then thenPassword else elsePassword"></div>
@@ -35,7 +37,7 @@
               <div class="custom-control custom-checkbox mb-4" style="text-align: left;">
                 <input class="cursor-pointer" type="checkbox" name="vehicle1" value="true" #element
                        (click)="rememberMeLogin()">
-                <label class="cursor-pointer"  style="margin-left: 5px">Lưu đăng nhập</label>
+                <label class="cursor-pointer" style="margin-left: 5px">Lưu đăng nhập</label>
               </div>
 
               <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue">Truy

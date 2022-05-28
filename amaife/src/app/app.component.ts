@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {navItems} from "./component/admin/layout/navItems";
 import {AuthService} from "./service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import {AuthService} from "./service/auth.service";
 export class AppComponent {
   title = 'amaife';
   public navItems = navItems;
+  public href: string = "";
 
   public perfectScrollbarConfig = {
     suppressScrollX: true,
@@ -17,6 +19,12 @@ export class AppComponent {
 
   constructor(
     public authService: AuthService,
+    public router: Router
   ) {
+  }
+
+  ngOnInit() {
+    this.href = window.location.href;
+    console.log(this.href);
   }
 }

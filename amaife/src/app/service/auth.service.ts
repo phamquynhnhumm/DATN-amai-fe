@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {LoginResponse} from "../model/login/LoginResponse";
+import {Router, RouterOutlet} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   public setSessionStorage(authoricationResponse: LoginResponse) {
@@ -76,6 +77,7 @@ export class AuthService {
   public clear() {
     sessionStorage.clear();
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   public isLoggedIn() {
