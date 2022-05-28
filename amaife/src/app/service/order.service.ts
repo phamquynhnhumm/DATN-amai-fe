@@ -43,6 +43,7 @@ export class OrderService {
    * URL chi tiết đơn hàng phía User
    */
   readonly URL_ODERDETAIL_CREATE = "http://localhost:8080/api/order/createDetailOder";
+  readonly URL_CREATEQRCODE = "http://localhost:8080/api/order/generateQRCode";
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
@@ -179,5 +180,9 @@ export class OrderService {
    */
   createOderDetailUser(orderDetails: Array<OrderDetail>): Observable<OrderDetail> {
     return this.httpClient.post<OrderDetail>(this.URL_ODERDETAIL_CREATE, orderDetails);
+  }
+
+  createQRCode(oder: Oder): Observable<string> {
+    return this.httpClient.post<string>(this.URL_CREATEQRCODE, oder);
   }
 }

@@ -10,6 +10,7 @@ import {Oder} from "../../../../model/order/Oder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
+import {data} from "jquery";
 
 @Component({
   selector: 'app-checkout',
@@ -28,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   cart !: Cart;
   oder !: Oder;
   newOder!: Oder;
+  OderQR!: Oder;
   paypal !: string;
   apppayapl: boolean = false;
 
@@ -92,18 +94,30 @@ export class CheckoutComponent implements OnInit {
       this.apppayapl = true;
       // this.route.navigateByUrl("/paypal").then();
     } else if (this.formOrder.value.payments == 'CASH') {
-      this.formOrder.value.qrcode = "de tim sau";
+      this.formOrder.value.qrcode = "";
       this.formOrder.value.status = "UNCONFIRMED";
       this.formOrder.value.money = this.totalCart;
       this.formOrder.value.quantity = this.totalQuantityCart;
       console.log(this.formOrder.value);
       if (this.formOrder.valid) {
+        //Tiép tục thực hiện thêm mới Order
         this.cartService.createOderUser(this.formOrder.value).subscribe(
           (data) => {
+            this.OderQR = data;
+            console.log(data);
+            this.cartService.createQRCode(this.OderQR).subscribe(
+              (dataQRcode) => {
+                //Xét lại cho qrcode bằng data mới được tạo ta
+                console.log(dataQRcode);
+              }, error => {
+                this.snackBar.open("Cập nhật mã QR thất bại!")._dismissAfter(3000);
+              })
             this.newOder = data;
+            console.log(this.formOrder.value);
             this.formOrderDEtail.value.orders = this.newOder;
             this.formOrderDEtail.value.isDeleted = false;
             for (let i = 0; i < this.cartList.length; i++) {
+              //Chạy vòng for đê5
               this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
               let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
                 quantity: this.cartList[i].quantity,
@@ -114,14 +128,11 @@ export class CheckoutComponent implements OnInit {
               console.log(<OrderDetail>newOderDetail);
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
-            this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
-              (datatickte) => {
-                console.log("Thêm mới chi tiết món thành công");
-              }
-            )
+            this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
             this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
           },
         );
+
       } else {
         this.snackBar.open("Đặt món thất bại !")._dismissAfter(3000);
       }
