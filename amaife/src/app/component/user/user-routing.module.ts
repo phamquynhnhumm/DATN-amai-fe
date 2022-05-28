@@ -12,6 +12,7 @@ import {OrderuserComponent} from "./content/orderuser/orderuser.component";
 import {HistoryOrderUserComponent} from "./content/history-order-user/history-order-user.component";
 import {CheckoutComponent} from "./content/checkout/checkout.component";
 import {FoodCategoryComponent} from "./content/food-category/food-category.component";
+import {PaypalComponent} from "./content/paypal/paypal.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
@@ -57,6 +58,10 @@ const routes: Routes = [
   },
   {
     path: "shoping", component: ShopingcartComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },  {
+    path: "paypal", component: PaypalComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },

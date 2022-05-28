@@ -24,6 +24,8 @@ import {HistoryOrderUserComponent} from './content/history-order-user/history-or
 import {DeleteCartComponent} from './content/delete-cart/delete-cart.component';
 import {CheckoutComponent} from './content/checkout/checkout.component';
 import { FoodCategoryComponent } from './content/food-category/food-category.component';
+import { PaypalComponent } from './content/paypal/paypal.component';
+import {NgxPayPalModule} from "ngx-paypal";
 
 
 @NgModule({
@@ -44,23 +46,25 @@ import { FoodCategoryComponent } from './content/food-category/food-category.com
     HistoryOrderUserComponent,
     DeleteCartComponent,
     CheckoutComponent,
-    FoodCategoryComponent
+    FoodCategoryComponent,
+    PaypalComponent
   ],
   exports: [
     NavUserComponent,
     FooterUserComponent,
     HomeuserComponent
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    NgxPaginationModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    GridModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        NgxPaginationModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        GridModule,
+        FormsModule,
+        NgxPayPalModule
+    ]
 })
 export class UserModule {
 }

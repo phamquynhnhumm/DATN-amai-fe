@@ -6,6 +6,7 @@ import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {isElementScrolledOutsideView} from "@angular/cdk/overlay/position/scroll-clip";
 
 @Component({
   selector: 'app-shopingcart',
@@ -40,6 +41,7 @@ export class ShopingcartComponent implements OnInit {
     this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
+        console.log(this.totalCart)
       }
     )
   }

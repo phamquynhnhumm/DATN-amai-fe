@@ -161,7 +161,7 @@ export class OrderService {
   totalMoneyCart(userName: string): Observable<number> {
     return this.httpClient.get<number>(this.URL_CARTRUSER_TOTALMONEY, {
       params: new HttpParams().set('userName', userName),
-      headers: this.requestHeader
+      // headers: this.requestHeader
     });
   }
 

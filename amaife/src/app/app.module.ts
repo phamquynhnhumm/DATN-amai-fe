@@ -12,10 +12,11 @@ import {AdminModule} from "./component/admin/admin.module";
 import {UserModule} from "./component/user/user.module";
 import {DataTablesModule} from "angular-datatables";
 import {MatDialogModule} from "@angular/material/dialog";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {RouterModule} from "@angular/router";
+import {NgxPayPalModule} from "ngx-paypal";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {RouterModule} from "@angular/router";
     MatDialogModule,
     MatSnackBarModule,
     NgxPaginationModule,
+    NgxPayPalModule,
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
