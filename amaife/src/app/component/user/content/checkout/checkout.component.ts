@@ -35,7 +35,8 @@ export class CheckoutComponent implements OnInit {
               private dialog: MatDialog,
               private route: Router,
               private snackBar: MatSnackBar,
-              public cartService: OrderService) {
+              public cartService: OrderService
+  ) {
   }
 
   ngOnInit(): void {
