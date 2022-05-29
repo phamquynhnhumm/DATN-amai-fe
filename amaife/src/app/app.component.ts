@@ -25,6 +25,5 @@ export class AppComponent {
 
   ngOnInit() {
     this.href = window.location.href;
-    console.log(this.href);
   }
 }

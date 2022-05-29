@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {AuthService} from "../../../../service/auth.service";
 import {OrderService} from "../../../../service/order.service";
 import {Oder} from "../../../../model/order/Oder";
@@ -7,7 +7,6 @@ import {EStatusOrder} from "../../../../model/order/EStatusOrder";
 import {MatDialog} from "@angular/material/dialog";
 import {OrderDetailUserComponent} from "../order-detail-user/order-detail-user.component";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
-import {Food} from "../../../../model/food/Food";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -22,10 +21,11 @@ export class OrderuserComponent implements OnInit {
   orderDetailList !: Array<OrderDetail>;
   p: number | any;
   eStatusOrder = EStatusOrder;
-  idOrder !: number;
 
   constructor(public authService: AuthService,
-              private orderService: OrderService, private router: Router, private snackBar: MatSnackBar,
+              private orderService: OrderService,
+              private router: Router,
+              private snackBar: MatSnackBar,
               private dialog: MatDialog
   ) {
   }
@@ -39,19 +39,14 @@ export class OrderuserComponent implements OnInit {
         this.orderList = dataorder;
       }
     );
-    this.orderService.findOderDetailUser(4).subscribe(
-      dataOrrderDetail => {
-        this.orderDetailList = dataOrrderDetail;
-      }
-    )
   }
 
   openDetailOrder(oder: Oder) {
     this.orderService.findByIdOderUser(oder.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(OrderDetailUserComponent, {
-          width: '800px',
-          height: '500px',
+          width: '900px',
+          height: '680px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
