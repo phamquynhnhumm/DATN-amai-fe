@@ -65,16 +65,16 @@
               </div>
               <br>
             </div>
-            <div class="button-submit">
-              <button>Hủy</button>
+            <div>
+              <button class="btn btn-light">Hủy</button>
               <label *ngIf="isGetOtp">
-                <button color="primary" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
+                <button class="btn btn-warning" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
                         style="margin-left: 50px;">
                   Lấy mã
                 </button>
               </label>
               <label *ngIf="isInputOtp">
-                <button color="primary" (click)="changePassword()" style="margin-left: 50px;">
+                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;">
                   Xác nhận
                 </button>
               </label>

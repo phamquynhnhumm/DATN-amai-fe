@@ -38,49 +38,54 @@ export class ChangepassComponent implements OnInit {
 
   sendOtp(userName: string) {
     if (userName !== "") {
-      this.isGetOtp = false;
       this.userName = userName;
       this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
-      this.userService.generateOtp(userName).subscribe(
-        (data) => {
-          console.log(data)
-          if (data) {
-            this.isInputOtp = true;
-            this.ngOnInit()
-            this.matSnackBar.open("Đã gửi mã OTP thành công đến email", "OK", {
-              duration: 10000,
-              panelClass: ['mat-toolbar', 'mat-primary']
-            })
-          } else {
-            this.isGetOtp = true;
-            this.matSnackBar.open("Tài khoản chưa xác thực, lấy mã otp thất bại", "OK", {
-              duration: 3000,
-              panelClass: ['mat-toolbar', 'mat-primary']
-            });
-          }
-        },
-        (error) => {
-          this.isGetOtp = true;
-          if (error.status === 400) {
-            if (error.error) {
-              this.matSnackBar.open("Tài khoản đã bị khóa !", "Đóng", {
-                duration: 3000
-              });
+      if (this.userName == this.authService.getUsername()) {
+        this.isGetOtp = false;
+        this.userService.generateOtp(userName).subscribe(
+          (data) => {
+            console.log(data)
+            if (data) {
+              this.isInputOtp = true;
+              this.ngOnInit()
+              this.matSnackBar.open("Đã gửi mã OTP thành công đến email", "OK", {
+                duration: 10000,
+                panelClass: ['mat-toolbar', 'mat-primary']
+              })
             } else {
-              this.matSnackBar.open("Tài khoản không tồn tại !", "Đóng", {
+              this.isGetOtp = true;
+              this.matSnackBar.open("Tài khoản chưa xác thực, lấy mã otp thất bại", "OK", {
+                duration: 3000,
+                panelClass: ['mat-toolbar', 'mat-primary']
+              });
+            }
+          },
+          (error) => {
+            this.isGetOtp = true;
+            if (error.status === 400) {
+              if (error.error) {
+                this.matSnackBar.open("Tài khoản đã bị khóa !", "Đóng", {
+                  duration: 3000
+                });
+              } else {
+                this.matSnackBar.open("Tài khoản không tồn tại !", "Đóng", {
+                  duration: 3000
+                });
+              }
+            } else {
+              this.matSnackBar.open("Hệ thống đang bảo trì !", "Đóng", {
                 duration: 3000
               });
             }
-          } else {
-            this.matSnackBar.open("Hệ thống đang bảo trì !", "Đóng", {
-              duration: 3000
-            });
+
           }
-
-        }
-      )
+        )
+      } else {
+        this.matSnackBar.open("Tên đăng nhập không hợp lệ !", "Đóng", {
+          duration: 3000
+        });
+      }
     }
-
   }
 
   changePassword() {
