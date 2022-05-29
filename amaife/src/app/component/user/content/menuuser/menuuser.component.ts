@@ -106,7 +106,6 @@ export class MenuuserComponent implements OnInit {
         food: new FormControl(foods, Validators.required),
         money: new FormControl(foods.price * this.quatity, Validators.required),
       })
-    console.log(this.formCart.value);
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
         this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
@@ -115,22 +114,6 @@ export class MenuuserComponent implements OnInit {
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
       });
-  }
-
-  sortName() {
-    console.log(this.SortForm.value.nameSort);
-    console.log("đang log")
-  }
-
-  sortCategory() {
-    console.log("sort theo danh mục món")
-    console.log(this.SortForm.value.nameSort)
-
-  }
-
-  sortPrice() {
-    console.log("sort theo giá tiền")
-    console.log(this.SortForm.value.nameSort)
   }
 
   SortFood() {

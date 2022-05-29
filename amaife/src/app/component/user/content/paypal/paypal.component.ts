@@ -126,5 +126,10 @@ export class PaypalComponent implements OnInit {
     };
     return this.payPalConfig;
   };
+
+  checkout() {
+    // this.route.navigateByUrl("/shoping").then();
+    window.location.reload();
+  }
 }
 

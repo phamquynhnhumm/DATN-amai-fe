@@ -7,7 +7,7 @@
     <ngx-paypal [config]="payPalConfig"></ngx-paypal>
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="continue__btn">
-        <a style="text-decoration: none" routerLink="/checkout">Quay lại trang thanh toán</a>
+        <a style="text-decoration: none" (click)="checkout()">Quay lại trang thanh toán</a>
       </div>
     </div>
     <br>

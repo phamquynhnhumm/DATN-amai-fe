@@ -108,34 +108,36 @@ export class CheckoutComponent implements OnInit {
             this.cartService.createQRCode(this.OderQR).subscribe(
               (dataQRcode) => {
                 //Xét lại cho qrcode bằng data mới được tạo ta
+                this.snackBar.open("Thành công!")._dismissAfter(3000);
                 console.log(dataQRcode);
               }, error => {
                 this.snackBar.open("Cập nhật mã QR thất bại!")._dismissAfter(3000);
               })
-            this.newOder = data;
-            console.log(this.formOrder.value);
-            this.formOrderDEtail.value.orders = this.newOder;
-            this.formOrderDEtail.value.isDeleted = false;
-            for (let i = 0; i < this.cartList.length; i++) {
-              //Chạy vòng for đê5
-              this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
-              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
-                quantity: this.cartList[i].quantity,
-                food: this.cartList[i].food,
-                orders: this.formOrderDEtail.value.orders,
-                isDeleted: this.formOrderDEtail.value.isDeleted,
-              };
-              console.log(<OrderDetail>newOderDetail);
-              this.listOderDetail.push(<OrderDetail>newOderDetail);
-            }
-            this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
-            this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
+            //     this.newOder = data;
+            //     console.log(this.formOrder.value);
+            //     this.formOrderDEtail.value.orders = this.newOder;
+            //     this.formOrderDEtail.value.isDeleted = false;
+            //     for (let i = 0; i < this.cartList.length; i++) {
+            //       //Chạy vòng for đê5
+            //       this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
+            //       let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+            //         quantity: this.cartList[i].quantity,
+            //         food: this.cartList[i].food,
+            //         orders: this.formOrderDEtail.value.orders,
+            //         isDeleted: this.formOrderDEtail.value.isDeleted,
+            //       };
+            //       console.log(<OrderDetail>newOderDetail);
+            //       this.listOderDetail.push(<OrderDetail>newOderDetail);
+            //     }
+            //     this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
+            //     this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
           },
         );
-
-      } else {
-        this.snackBar.open("Đặt món thất bại !")._dismissAfter(3000);
       }
+      // else
+      //   {
+      //     this.snackBar.open("Đặt món thất bại !")._dismissAfter(3000);
+      //   }
     } else {
       this.snackBar.open("Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000);
     }

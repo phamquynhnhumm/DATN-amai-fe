@@ -70,7 +70,6 @@ export class HomeuserComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.formCLass.value)
     // if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
@@ -79,8 +78,5 @@ export class HomeuserComponent implements OnInit {
           this.snackBar.open("Đăng ký thấy bại !")._dismissAfter(3000);
         }
       )
-    // } else {
-    //   this.snackBar.open("Đăng ký thất bại !")._dismissAfter(3000);
-    // }
   }
 }
