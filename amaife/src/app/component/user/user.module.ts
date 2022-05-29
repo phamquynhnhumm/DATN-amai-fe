@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
 import {UserRoutingModule} from './user-routing.module';
 import {MemberComponent} from './content/member/member.component';
 import {LayoutUserComponent} from './content/layout-user/layout-user.component';
@@ -26,6 +25,7 @@ import {CheckoutComponent} from './content/checkout/checkout.component';
 import { FoodCategoryComponent } from './content/food-category/food-category.component';
 import { PaypalComponent } from './content/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -63,7 +63,8 @@ import {NgxPayPalModule} from "ngx-paypal";
         MatSelectModule,
         GridModule,
         FormsModule,
-        NgxPayPalModule
+        NgxPayPalModule,
+        MatDialogModule
     ]
 })
 export class UserModule {
