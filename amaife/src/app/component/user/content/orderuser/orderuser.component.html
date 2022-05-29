@@ -35,7 +35,7 @@
           <div class="card mb-3">
             <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
               class="text-uppercase label-color-1" style="color: black">Lịch theo dõi đơn hàng - </span><span
-              class="text-medium" style="color:black;" [(ngModel)]="idOrder"> Mã đơn hàng: {{oder.id}}</span></div>
+              class="text-medium" style="color:black;"> Mã đơn hàng: {{oder.id}}</span></div>
             <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
               <div class="w-100 text-center py-1 px-2"><span
                 class="text-medium">Người xác nhận:</span> {{oder.account.userName}}
@@ -62,7 +62,7 @@
                   <h4 class="step-title">Chờ xác nhận</h4>
                 </div>
                 <div
-                  *ngIf="oder.status ==eStatusOrder.CONFIRMED.valueOf() || oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
+                  *ngIf="oder.status ==eStatusOrder.CONFIRMED.valueOf() || oder.status ==eStatusOrder.TRANSPORT.valueOf()"
                   class="step completed">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
@@ -70,7 +70,9 @@
                   </div>
                   <h4 class="step-title">Chờ lấy</h4>
                 </div>
-                <div *ngIf="oder.status !=eStatusOrder.CONFIRMED.valueOf() && oder.status ==eStatusOrder.TRANSPORT.valueOf() && oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step">
+                <div
+                  *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf()"
+                  class="step">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
                     </div>
@@ -78,7 +80,8 @@
                   <h4 class="step-title">Chờ lấy</h4>
                 </div>
                 <div
-                  *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
+                  *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
+                  class="step completed">
                   <div class="step-icon-wrap">
                     <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>

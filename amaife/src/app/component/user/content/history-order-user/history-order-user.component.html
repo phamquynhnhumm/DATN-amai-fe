@@ -36,7 +36,7 @@
           <div class="card mb-3">
             <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
               class="text-uppercase label-color-1" style="color: black">Lịch theo dõi đơn hàng - </span><span
-              class="text-medium" style="color:black;" [(ngModel)]="idOrder"> Mã đơn hàng: {{oder.id}}</span></div>
+              class="text-medium" style="color:black;"> Mã đơn hàng: {{oder.id}}</span></div>
             <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
               <div class="w-100 text-center py-1 px-2"><span
                 class="text-medium">Người xác nhận:</span> {{oder.account.userName}}
@@ -102,9 +102,6 @@
             </div>
             <div class="container bootdey">
               <div class="panel panel-default panel-order">
-                <div class="panel-heading">
-                  <strong>Chi tiết món</strong>
-                </div>
                 <div class="panel-body">
                   <div class="row"
                        *ngFor="let oderDetail of orderDetailList "

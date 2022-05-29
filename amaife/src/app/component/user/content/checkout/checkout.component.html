@@ -68,7 +68,7 @@
                 <div class="checkout__total__products" *ngIf="cartList !=null">
                   <div *ngFor="let cart of cartList">
                     <div class="checkout__order__products">
-                      <small> {{cart.food.id}} {{cart.quantity}}  {{cart.food.name}}</small>
+                      <small> Món: {{cart.food.name}} SL:  {{cart.quantity}}</small>
                       <span><small>{{cart.money | currency:'VND'}}</small></span>
                     </div>
                   </div>
