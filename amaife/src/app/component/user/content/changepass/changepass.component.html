@@ -52,21 +52,15 @@
                      maxlength="6">
               <br>
               <div id="inline">
-                <input class="one" [type]="fieldTextType ? 'text' : 'password'" formControlName="newPassword"
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="newPassword"
                        #newPassword
                        placeholder="Nhập mật khẩu mới"
                        class="form-control">
-                <div class="input-group-append two">
-                <span class="input-group-text">
-                    <i class="fa" [ngClass]="{ 'fa-eye-slash': !fieldTextType,'fa-eye': fieldTextType}"
-                       (click)="toggleFieldTextType()"></i>
-                </span>
-                </div>
               </div>
               <br>
             </div>
             <div>
-              <button class="btn btn-light">Hủy</button>
+              <button class="btn btn-light" routerLink="/home">Hủy</button>
               <label *ngIf="isGetOtp">
                 <button class="btn btn-warning" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
                         style="margin-left: 50px;">
