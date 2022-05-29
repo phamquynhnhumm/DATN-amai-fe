@@ -182,7 +182,7 @@ export class OrderService {
     return this.httpClient.post<OrderDetail>(this.URL_ODERDETAIL_CREATE, orderDetails);
   }
 
-  createQRCode(oder: Oder): Observable<string> {
-    return this.httpClient.post<string>(this.URL_CREATEQRCODE, oder);
+  createQRCode(oder: Oder): Observable<Oder> {
+    return this.httpClient.post<Oder>(this.URL_CREATEQRCODE, oder);
   }
 }
