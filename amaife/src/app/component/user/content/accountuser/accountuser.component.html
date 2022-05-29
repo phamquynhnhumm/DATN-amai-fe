@@ -9,10 +9,14 @@
                 <div class="side-bar">
                   <nav class="side-menu">
                     <ul class="nav">
-                      <li class="active"><a style="text-decoration: none"><span class="fa fa-user"></span> Thông tin cá nhân</a></li>
-                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-cog"></span> Đổi mật khẩu</a></li>
-                      <li><a style="text-decoration: none" routerLink="/oder"><span class="fa fa-credit-card"></span> Đơn hàng</a></li>
-                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-envelope"></span> Lịch sử đơn hàng</a>
+                      <li class="active"><a style="text-decoration: none"><span class="fa fa-user"></span> Thông tin cá
+                        nhân</a></li>
+                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-cog"></span> Đổi
+                        mật khẩu</a></li>
+                      <li><a style="text-decoration: none" routerLink="/oder"><span class="fa fa-credit-card"></span>
+                        Đơn hàng</a></li>
+                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-envelope"></span>
+                        Lịch sử đơn hàng</a>
                       </li>
                     </ul>
                   </nav>
@@ -40,29 +44,32 @@
                 <div class="row">
                   <div class="col">
                     <div class="profile_lable">Họ và tên *</div>
-                    <input type="text" class="profile-input" placeholder="email" formControlName="fullName">
+                    <input type="text" class="profile-input" formControlName="fullName"
+                           value="{{formUser.value.fullName}}">
                   </div>
                   <div class="col">
                     <div class="profile_lable">Email</div>
-                    <input type="email" class="profile-input" formControlName="email">
+                    <input type="email" class="profile-input" formControlName="email" value="{{formUser.value.email}}">
                   </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="profile_lable">Số điện thoại</div>
-                    <input type="text" class="profile-input" placeholder="email" formControlName="phone">
+                    <input type="text" class="profile-input" formControlName="phone" value="{{formUser.value.phone}}">
                   </div>
                   <div class="col-sm-3">
                     <div class="profile_lable">Ngày sinh</div>
-                    <input type="date" class="profile-input" formControlName="birthday">
+                    <input type="date" class="profile-input" formControlName="birthday"
+                           value="{{formUser.value.birthday}}">
                   </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="profile_lable">Địa chỉ</div>
-                    <input type="text" class="profile-input" formControlName="address">
+                    <input type="text" class="profile-input" formControlName="address"
+                           value="{{formUser.value.address}}">
                   </div>
                   <div class="col-sm-2">
                     <div class="profile_lable">Giới tính</div>

@@ -44,11 +44,9 @@ export class AccountuserComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = this.authService.getIdUser();
-    console.log(this.idUser)
     // @ts-ignore
     this.userService.findByIdUser(this.idUser).subscribe(
       dataUser => {
-        console.log(dataUser)
         this.user = dataUser;
         this.formUser = new FormGroup(
           {

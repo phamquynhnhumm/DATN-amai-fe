@@ -90,7 +90,6 @@ export class ChangepassComponent implements OnInit {
 
   changePassword() {
     if (this.formForgotPassword.valid) {
-      console.log(this.formForgotPassword.value)
       this.userService.forgotPassword(this.formForgotPassword.value).subscribe(
         (data) => {
           if (data) {
@@ -112,17 +111,18 @@ export class ChangepassComponent implements OnInit {
           }
         },
         (error) => {
-          if (error.status === 400) {
-            if (!error.error) {
-              this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
-                duration: 3000
-              });
-            } else {
-              this.matSnackBar.open("Tài khoản không tồn tại !", "Đóng", {
-                duration: 3000
-              });
-            }
+          // if (error.status == 400) {
+          console.log(error.status)
+          if (error.status == 400) {
+            this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
+              duration: 3000
+            });
+          } else {
+            this.matSnackBar.open("Vui lòng kiểm tra lại thông tin !", "Đóng", {
+              duration: 3000
+            });
           }
+          // }
         }
       );
     }

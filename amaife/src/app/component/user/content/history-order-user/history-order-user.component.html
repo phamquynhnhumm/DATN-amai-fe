@@ -123,28 +123,6 @@
                 </div>
               </div>
             </div>
-            <div class="container bootdey">
-              <div class="panel panel-default panel-order">
-                <div class="panel-body">
-                  <div class="row"
-                       *ngFor="let oderDetail of orderDetailList "
-                       (click)="detailFood(oderDetail)">
-                    <div class="col-md-1"><img src="{{oderDetail.food.image}}"
-                                               class="media-object img-thumbnail"/></div>
-                    <div class="col-md-11">
-                      <div class="row">
-                        <div class="col-sm-12"><br>
-                          <span><strong>Tên món: </strong></span> <span
-                            class="label label-info">{{oderDetail.food.name}}</span><br/>
-                          Số lượng : {{oderDetail.quantity}}, Giá: {{oderDetail.food.price | currency:'VND'}} <br/>
-                        </div>
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div
             class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center">

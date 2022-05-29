@@ -47,7 +47,8 @@
               <i *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</i>
               <i *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</i></span>
               </div>
-              <div class="w-100 text-center py-1 px-2"><span class="text-medium">Thời gian đặt:</span> {{oder.createAt}}</div>
+              <div class="w-100 text-center py-1 px-2"><span class="text-medium">Thời gian đặt:</span> {{oder.createAt}}
+              </div>
             </div>
             <div class="card-body">
               <div
@@ -137,13 +138,10 @@
         </pagination-controls>
       </div>
     </div>
+    <br><br> <br><br><br><br> <br><br>
+    <br><br> <br><br><br><br> <br><br>
     <div class="col-lg-9 gedf-main" *ngIf="orderList == null">
-      <br><br> <br><br>
-      <div>
-        <p>Hiên tại bạn đang không có đơn hàng nào cả</p>
-      </div>
-      <br><br> <br><br><br><br> <br><br>
-      <br><br> <br><br><br><br> <br><br>
+      <p>Hiên tại bạn đang không có đơn hàng nào cả</p>
     </div>
   </div>
 </div>
