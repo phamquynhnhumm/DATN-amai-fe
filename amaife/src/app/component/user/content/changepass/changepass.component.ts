@@ -19,7 +19,8 @@ export class ChangepassComponent implements OnInit {
 
   constructor(private userService: UserService,
               public authService: AuthService,
-              private matSnackBar: MatSnackBar) {
+              private matSnackBar: MatSnackBar
+  ) {
   }
 
   formForgotPassword = new FormGroup({
@@ -30,10 +31,6 @@ export class ChangepassComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
-
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
   }
 
   sendOtp(userName: string) {

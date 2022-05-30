@@ -14,7 +14,9 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) {
   }
 
-  readonly URL_CLASS = "http://localhost:8080/api/class/create";
+  readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
+  readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
+
 
   /**
    * Đăng ký nhận tư vấn ( tự chế biến món)
@@ -22,5 +24,13 @@ export class RegistrationService {
    */
   createRegistration(registration: Object): Observable<Registration> {
     return this.httpClient.post<Registration>(this.URL_CLASS, registration, {headers: this.requestHeader});
+  }
+
+  /**
+   * Đăng ký tài khoản
+   * @param email
+   */
+  public generateOtpSinup(email: string): Observable<Boolean> {
+    return this.httpClient.get<Boolean>(this.API_USER_SINUP + "/account/otpsotpsinup/" + email, {headers: this.requestHeader});
   }
 }

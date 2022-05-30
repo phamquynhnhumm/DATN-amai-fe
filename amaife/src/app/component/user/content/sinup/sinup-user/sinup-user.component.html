@@ -1,4 +1,4 @@
-<section class="vh-100 bg-image"
+<section class="vh-100 bg-image" *ngIf="sinup"
          style="background: #1da1f2">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
@@ -7,17 +7,28 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">ĐĂNG KÝ TÀI KHOẢN </h2>
-              <form>
+              <form [formGroup]="formSinUp" (ngSubmit)="otp()">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1cg">Họ và Tên</label>
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg"/>
+                  <label class="form-label">Họ và Tên</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="fullName"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('fullName')?.hasError('required') && formSinUp.get('fullName')?.touched">
+                    <p>Họ tên không được để trống</p>
+                  </small>
                 </div>
-                <div class="form-outline mb-4"><label class="form-label" for="form3Example3cg">Email</label>
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg"/>
-                </div>
+                <div class="form-outline mb-4"><label class="form-label">Email</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="email"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('email')?.hasError('required') && formSinUp.get('email')?.touched">
+                    <p>Email không được để trống</p>
+                  </small></div>
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example4cg">Số điện thoại</label>
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"/>
+                  <label class="form-label">Số điện thoại</label>
+                  <input type="password" class="form-control form-control-lg" formControlName="phone"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.touched">
+                    <p>Số điện thoại không được để trống</p>
+                  </small>
                 </div>
 
                 <div class="form-check d-flex justify-content-center mb-5">
@@ -28,13 +39,49 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button"
-                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="otp()">Đăng Ký
+                  <button type="submit"
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng Ký
                   </button>
                 </div>
                 <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản? <a (click)="login()"
                                                                                 class="fw-bold text-body"><u>Đăng nhập
                 </u></a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vh-100 bg-image" *ngIf="!sinup"
+         style="background: #1da1f2">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">XÁC NHẬN MÃ OPT </h2>
+              <form>
+                <div class="form-outline mb-4">
+                  <label class="form-label">Mã OPT</label>
+                  <input type="text" class="form-control form-control-lg"/>
+                </div>
+                <div class="form-outline mb-4"><label class="form-label" for="form3Example3cg">Tên đăng nhập</label>
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg"/>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg">Mật khẩu</label>
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"/>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng Ký
+                  </button>
+                </div>
+                <p class="text-center text-muted mt-5 mb-0" (click)="sinups()">Gửi lại mã OTP? </p>
               </form>
             </div>
           </div>
