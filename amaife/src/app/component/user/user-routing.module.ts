@@ -13,13 +13,11 @@ import {HistoryOrderUserComponent} from "./content/history-order-user/history-or
 import {CheckoutComponent} from "./content/checkout/checkout.component";
 import {FoodCategoryComponent} from "./content/food-category/food-category.component";
 import {PaypalComponent} from "./content/paypal/paypal.component";
-import {SinupUserComponent} from "./content/sinup/sinup-user/sinup-user.component";
-import {OptConfirmationComponent} from "./content/sinup/opt-confirmation/opt-confirmation.component";
+import {SinupUserComponent} from "./content/sinup-user/sinup-user.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
   {path: "sinup", component: SinupUserComponent},
-  {path: "otp", component: OptConfirmationComponent},
   {path: "", component: HomeuserComponent},
   {
     path: "user", component: AccountuserComponent,

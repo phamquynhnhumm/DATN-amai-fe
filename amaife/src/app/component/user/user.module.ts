@@ -22,12 +22,11 @@ import {OrderDetailUserComponent} from './content/order-detail-user/order-detail
 import {HistoryOrderUserComponent} from './content/history-order-user/history-order-user.component';
 import {DeleteCartComponent} from './content/delete-cart/delete-cart.component';
 import {CheckoutComponent} from './content/checkout/checkout.component';
-import { FoodCategoryComponent } from './content/food-category/food-category.component';
-import { PaypalComponent } from './content/paypal/paypal.component';
+import {FoodCategoryComponent} from './content/food-category/food-category.component';
+import {PaypalComponent} from './content/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 import {MatDialogModule} from "@angular/material/dialog";
-import { SinupUserComponent } from './content/sinup/sinup-user/sinup-user.component';
-import { OptConfirmationComponent } from './content/sinup/opt-confirmation/opt-confirmation.component';
+import {SinupUserComponent} from './content/sinup-user/sinup-user.component';
 
 
 @NgModule({
@@ -50,28 +49,25 @@ import { OptConfirmationComponent } from './content/sinup/opt-confirmation/opt-c
     CheckoutComponent,
     FoodCategoryComponent,
     PaypalComponent,
-    SinupUserComponent,
-    OptConfirmationComponent
+    SinupUserComponent
   ],
   exports: [
     NavUserComponent,
     FooterUserComponent,
     HomeuserComponent,
-    SinupUserComponent,
-    OptConfirmationComponent
-  ],
-    imports: [
-        CommonModule,
-        UserRoutingModule,
-        NgxPaginationModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        GridModule,
-        FormsModule,
-        NgxPayPalModule,
-        MatDialogModule
-    ]
+    SinupUserComponent],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    NgxPaginationModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    GridModule,
+    FormsModule,
+    NgxPayPalModule,
+    MatDialogModule
+  ]
 })
 export class UserModule {
 }

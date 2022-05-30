@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {RegistrationService} from "../../../../../service/registration.service";
+import {RegistrationService} from "../../../../service/registration.service";
 
 @Component({
   selector: 'app-sinup-user',
