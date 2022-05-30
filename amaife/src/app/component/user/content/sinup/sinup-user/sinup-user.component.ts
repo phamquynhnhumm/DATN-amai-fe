@@ -28,6 +28,7 @@ export class SinupUserComponent implements OnInit {
   )
   formCreateAccount = new FormGroup({
     userName: new FormControl('', Validators.required),
+    email: new FormControl(),
     password: new FormControl('', Validators.required),
     otp: new FormControl('', Validators.required),
   });
@@ -66,6 +67,8 @@ export class SinupUserComponent implements OnInit {
 
   sinups() {
     this.sinup = false;
+    this.formCreateAccount.value.email = this.formSinUp.value.email;
+    console.log(this.formCreateAccount.value.email)
     if (this.formCreateAccount.valid) {
       console.log(this.formCreateAccount.value)
       this.sinupService.CreateaccountSinup(this.formCreateAccount.value).subscribe(
@@ -81,6 +84,8 @@ export class SinupUserComponent implements OnInit {
           })
         }
       )
+    } else {
+      this.matSnackBar.open("Tạo mới tài khoản thấy bại !")._dismissAfter(3000);
     }
   }
 
