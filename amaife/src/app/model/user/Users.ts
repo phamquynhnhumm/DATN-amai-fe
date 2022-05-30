@@ -1,5 +1,6 @@
 import {EGender} from "./EGender";
 import {Account} from "./Account";
+import {EProvider} from "./EProvider";
 
 export interface Users {
   id: string;
@@ -15,5 +16,6 @@ export interface Users {
   gender: EGender;
   image: string;
   account: Account;
-  address: string
+  address: string;
+  provider: EProvider;
 }

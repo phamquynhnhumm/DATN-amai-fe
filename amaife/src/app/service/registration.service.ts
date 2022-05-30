@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Registration} from "../model/class/Registration";
 import {AccountSinup} from "../model/user/AccountSinup";
 import {Account} from "../model/user/Account";
+import {Users} from "../model/user/Users";
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,14 @@ export class RegistrationService {
    */
   public CreateaccountSinup(accountSinup: AccountSinup): Observable<Account> {
     return this.httpClient.post<Account>(this.API_USER_SINUP + "/account/register", accountSinup, {headers: this.requestHeader});
+  }
+
+  /**
+   * Thêm mới đồng thời tài khoản user khi thêm account thành công
+   * @param users
+   * @constructor
+   */
+  public CreateUser(users: Users): Observable<Users> {
+    return this.httpClient.post<Users>(this.API_USER_SINUP + "/user/create", users, {headers: this.requestHeader});
   }
 }
