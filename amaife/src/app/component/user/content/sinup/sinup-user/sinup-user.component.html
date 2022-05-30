@@ -64,24 +64,38 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">XÁC NHẬN MÃ OPT </h2>
-              <form>
+              <form [formGroup]="formCreateAccount" (ngSubmit)="sinups()">
                 <div class="form-outline mb-4">
                   <label class="form-label">Mã OPT</label>
-                  <input type="text" class="form-control form-control-lg"/>
+                  <input type="text" class="form-control form-control-lg" formControlName="otp"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('otp')?.hasError('required') && formCreateAccount.get('otp')?.touched">
+                    <p>Số điện thoại không được để trống</p>
+                  </small>
                 </div>
                 <div class="form-outline mb-4"><label class="form-label" for="form3Example3cg">Tên đăng nhập</label>
-                  <input type="text" id="form3Example3cg" class="form-control form-control-lg"/>
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg"
+                         formControlName="userName"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('userName')?.hasError('required') && formCreateAccount.get('userName')?.touched">
+                    <p>Số điện thoại không được để trống</p>
+                  </small>
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example4cg">Mật khẩu</label>
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"/>
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                         formControlName="password"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('password')?.hasError('required') && formCreateAccount.get('password')?.touched">
+                    <p>Số điện thoại không được để trống</p>
+                  </small>
                 </div>
                 <div class="d-flex justify-content-center">
                   <button type="submit"
                           class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng Ký
                   </button>
                 </div>
-                <p class="text-center text-muted mt-5 mb-0" (click)="sinups()">Gửi lại mã OTP? </p>
+                <p class="text-center text-muted mt-5 mb-0" (click)="sendotp()">Gửi lại mã OTP? </p>
               </form>
             </div>
           </div>

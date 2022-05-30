@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserService} from "../../../../../service/user.service";
-import {config} from "rxjs";
 import {RegistrationService} from "../../../../../service/registration.service";
 
 @Component({
@@ -28,10 +26,10 @@ export class SinupUserComponent implements OnInit {
       phone: new FormControl('', Validators.required),
     }
   )
-  formForgotPassword = new FormGroup({
-    userName: new FormControl(),
-    password: new FormControl(),
-    otp: new FormControl()
+  formCreateAccount = new FormGroup({
+    userName: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    otp: new FormControl('', Validators.required),
   });
 
   login() {
@@ -67,6 +65,26 @@ export class SinupUserComponent implements OnInit {
   }
 
   sinups() {
+    this.sinup = false;
+    if (this.formCreateAccount.valid) {
+      console.log(this.formCreateAccount.value)
+      this.sinupService.CreateaccountSinup(this.formCreateAccount.value).subscribe(
+        (data) => {
+          this.matSnackBar.open("Đăng ký tài khoản thành công", "Đóng", {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-primary']
+          })
+        }, error => {
+          this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-warn'],
+          })
+        }
+      )
+    }
+  }
+
+  sendotp() {
     this.sinup = true;
   }
 }

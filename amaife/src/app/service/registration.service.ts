@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Registration} from "../model/class/Registration";
+import {AccountSinup} from "../model/user/AccountSinup";
+import {Account} from "../model/user/Account";
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +29,19 @@ export class RegistrationService {
   }
 
   /**
-   * Đăng ký tài khoản
+   * gửi mã OTP để Đăng ký tài khoản
    * @param email
    */
   public generateOtpSinup(email: string): Observable<Boolean> {
     return this.httpClient.get<Boolean>(this.API_USER_SINUP + "/account/otpsotpsinup/" + email, {headers: this.requestHeader});
+  }
+
+  /**
+   * Thực hiện thêm mới account
+   * @param accountSinup
+   * @constructor
+   */
+  public CreateaccountSinup(accountSinup: AccountSinup): Observable<Account> {
+    return this.httpClient.post<Account>(this.API_USER_SINUP + "/account/register", accountSinup, {headers: this.requestHeader});
   }
 }

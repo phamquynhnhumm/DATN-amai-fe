@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Users} from "../model/user/Users";
 import {ForgotPassword} from "../model/user/ForgotPassword";
+import {AccountSinup} from "../model/user/AccountSinup";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,4 @@ export class UserService {
   public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {
     return this.httpClient.post<Boolean>(this.API_USER_Pass + "/account/forgot-password", forgotPassword);
   }
-
 }
