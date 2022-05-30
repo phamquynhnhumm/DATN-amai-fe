@@ -1,12 +1,13 @@
 <section class="vh-100" style="background-color: #508bfc;">
-  <div class="container py-5 h-100">
+  <div class="container py-5 h-70">
     <form [formGroup]="formLogin" (ngSubmit)="login()">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-              <h1 class="mb-5" style="font-family: Georgia;font-weight: bolder">ĐĂNG NHẬP </h1>
+            <div class="card-body p-5 ">
+              <h1 class="mb-5 text-center" style="font-family: Georgia;font-weight: bolder">ĐĂNG NHẬP </h1>
               <div class="form-outline mb-4">
+                <label class="form-label" style="text-align: right">Tên đăng nhập</label>
                 <input class="form-control form-control-lg" type="text" formControlName="userName" #elementUsername
                        placeholder="Nhập tài khoản"
                        (change)="checkValidUsernameAuto(elementUsername.value)">
@@ -21,6 +22,7 @@
                 </ng-template>
               </div>
               <div class="form-outline mb-4">
+                <label class="form-label">Mật khẩu</label>
                 <input type="password" class="form-control form-control-lg" formControlName="password" #elementPassword
                        placeholder="Nhập mật khẩu"
                        (change)="checkValidPassword(elementPassword.value)">
@@ -39,20 +41,32 @@
                        (click)="rememberMeLogin()">
                 <label class="cursor-pointer" style="margin-left: 5px">Lưu đăng nhập</label>
               </div>
+              <div class="text-center">
 
-              <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue">Truy
-                cập
-              </button>
+                <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue">
+                  Truy
+                  cập
+                </button>
+              </div>
               <hr class="my-4">
-              <button class="btn btn-lg   mb-2" style="background-color: #dd4b39;color:white;width: 70%"
-                      type="submit" (click)="loginWithFacebook()"><i class="fab fa-google me-2"></i> Google
-              </button>
-              <br>
-              <button class="btn btn-lg   mb-2" style="background-color: #435d7d;color:white;width: 70%"
-                      type="submit" (click)="loginWithGoogle()"><i class="fab fa-facebook-f me-2"></i>Facebook
-              </button>
+              <div class="text-center">
+
+                <button class="btn btn-lg   mb-2" style="background-color: #dd4b39;color:white;width: 70%"
+                        type="submit" (click)="loginWithFacebook()"><i class="fab fa-google me-2"></i> Google
+                </button>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-lg  text-center"
+                        style="background-color: #435d7d;color:white;width: 70%;"
+                        type=" submit" (click)="loginWithGoogle()"><i class="fab fa-facebook-f me-2"></i>Facebook
+                </button>
+              </div>
               <div style="text-align: center">
                 <p class="cursor-pointer forgot-password" (click)="forgotPassword()">Quên mật khẩu?</p>
+                <p class="text-center text-muted mt-5 mb-0">Bạn chưa có tài khoản ?<a (click)="sinup()"
+                                                                                      class="fw-bold text-body"><u>Đăng
+                  Ký
+                </u></a></p>
               </div>
             </div>
           </div>

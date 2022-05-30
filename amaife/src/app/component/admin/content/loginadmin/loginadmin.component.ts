@@ -124,4 +124,8 @@ export class LoginadminComponent implements OnInit {
       this.isLoginValid = true;
     }
   }
+
+  sinup() {
+    location.replace("/sinup")
+  }
 }

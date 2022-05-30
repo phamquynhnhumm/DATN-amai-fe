@@ -26,6 +26,8 @@ import { FoodCategoryComponent } from './content/food-category/food-category.com
 import { PaypalComponent } from './content/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 import {MatDialogModule} from "@angular/material/dialog";
+import { SinupUserComponent } from './content/sinup/sinup-user/sinup-user.component';
+import { OptConfirmationComponent } from './content/sinup/opt-confirmation/opt-confirmation.component';
 
 
 @NgModule({
@@ -47,12 +49,16 @@ import {MatDialogModule} from "@angular/material/dialog";
     DeleteCartComponent,
     CheckoutComponent,
     FoodCategoryComponent,
-    PaypalComponent
+    PaypalComponent,
+    SinupUserComponent,
+    OptConfirmationComponent
   ],
   exports: [
     NavUserComponent,
     FooterUserComponent,
-    HomeuserComponent
+    HomeuserComponent,
+    SinupUserComponent,
+    OptConfirmationComponent
   ],
     imports: [
         CommonModule,

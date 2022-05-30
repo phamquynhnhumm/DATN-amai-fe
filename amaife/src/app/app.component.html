@@ -4,7 +4,8 @@
   <app-footer-user></app-footer-user>
 </div>
 
-<div *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login'">
+<div
+  *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login' && href !='http://localhost:4200/sinup' && href !='http://localhost:4200/otp'">
   <app-nav-user></app-nav-user>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
@@ -12,6 +13,16 @@
 <div *ngIf="href =='http://localhost:4200/login'">
   <!--  <app-nav-user></app-nav-user>-->
   <app-loginadmin></app-loginadmin>
+  <!--  <app-footer-user></app-footer-user>-->
+</div>
+<div *ngIf="href =='http://localhost:4200/sinup'">
+  <!--  <app-nav-user></app-nav-user>-->
+  <app-sinup-user></app-sinup-user>
+  <!--  <app-footer-user></app-footer-user>-->
+</div>
+<div *ngIf="href =='http://localhost:4200/otp'">
+  <!--  <app-nav-user></app-nav-user>-->
+  <app-opt-confirmation></app-opt-confirmation>
   <!--  <app-footer-user></app-footer-user>-->
 </div>
 
