@@ -47,6 +47,7 @@ export class CreatefoodComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
       price: new FormControl('', [Validators.required, Validators.min(0)]),
+      content: new FormControl('', [Validators.required, Validators.min(0)]),
       status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       foodCategory: new FormControl('', Validators.required),
       orderDetailList: new FormArray([]),
@@ -57,6 +58,7 @@ export class CreatefoodComponent implements OnInit {
 
   onSubmit() {
     if (this.formFood.valid) {
+      this.formFood.value.image = this.url;
       this.foodService.createFood(this.formFood.value).subscribe(
         (data) => {
           this.route.navigateByUrl("/food").then(() => this.snackBar.open("Thêm mới thành công!")._dismissAfter(3000))
@@ -64,17 +66,20 @@ export class CreatefoodComponent implements OnInit {
       )
     } else {
       this.snackBar.open("Thêm mới thấy bại !")._dismissAfter(3000);
-    }
+    };
+    this.url ="";
   }
 
   selectFile(event: any) {
     const path = new Date().toString();
     this.selectedFile = event.target.files[0];
+    console.log(this.selectFile)
     this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
       finalize(() => {
         this.angularFireStorage.ref(path).getDownloadURL().subscribe(
           (data) => {
             this.url = data;
+            console.log(this.url)
           }
         )
       })

@@ -18,6 +18,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {RouterModule} from "@angular/router";
 import {NgxPayPalModule} from "ngx-paypal";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
     MatSnackBarModule,
     NgxPaginationModule,
     NgxPayPalModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule
   ],

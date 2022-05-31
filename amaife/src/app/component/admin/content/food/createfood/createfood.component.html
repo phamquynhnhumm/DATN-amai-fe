@@ -23,6 +23,18 @@
           <br><br><br>
           <c-row>
             <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Mô tả món</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="text" class="form-control" formControlName="content" placeholder="Nhập mô tả món">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('content')?.hasError('required') && formFood.get('content')?.touched">
+                <p>Mô tả món vui lòng không để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <c-row>
+            <c-col [md]="2">
               <label class="col-sm-12 col-form-label"><strong>Danh mục món</strong></label>
             </c-col>
             <c-col [md]="8">
@@ -85,9 +97,10 @@
               <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
             </c-col>
             <c-col [md]="8">
-              <img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 20%">
+<!--              <img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 20%">-->
               <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh"
-                     (change)="selectFile($event)">
+                     (change)="selectFile($event)"   autocomplete="off"
+                      #userPhoto>
               <small class="text-danger col-sm-10"
                      *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
                 <p>Ảnh không được để trống</p>

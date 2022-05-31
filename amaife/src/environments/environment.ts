@@ -5,14 +5,15 @@ import {initializeApp} from "firebase/app";
 
 export const environment = {
   production: false,
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebaseConfig: {
-    apiKey: "AIzaSyA_3tcnZrLeqki7UL74hHgmDcmEqI5G6z4",
-    authDomain: "amai-8cd08.firebaseapp.com",
-    projectId: "amai-8cd08",
-    storageBucket: "amai-8cd08.appspot.com",
-    messagingSenderId: "930577392090",
-    appId: "1:930577392090:web:b22db0a71ecdd4196820e3",
-    measurementId: "G-TVG9FBNC98"
+    apiKey: "AIzaSyCmnpehxDXFhtZFXpjF7sla3De9df1xOAQ",
+    authDomain: "amai-d208b.firebaseapp.com",
+    projectId: "amai-d208b",
+    storageBucket: "amai-d208b.appspot.com",
+    messagingSenderId: "854284928607",
+    appId: "1:854284928607:web:87d2fcfbadb10038e07dea",
+    measurementId: "G-0CBB48Z35X"
   }
 };
 const app = initializeApp(environment.firebaseConfig);
