@@ -37,7 +37,7 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Khách hàng',
-        url: '/buttons/buttons'
+        url: '/customer'
       },
       {
         name: 'Nhà cung cấp',

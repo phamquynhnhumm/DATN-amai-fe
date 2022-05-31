@@ -19,6 +19,7 @@ import {ListComponent} from "./content/account/list/list.component";
 import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
+import {ListcustomerComponent} from "./content/customer/listcustomer/listcustomer.component";
 
 const routes: Routes = [
   /**
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: "food",
     component: ListfoodComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },  {
+    path: "customer",
+    component: ListcustomerComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },

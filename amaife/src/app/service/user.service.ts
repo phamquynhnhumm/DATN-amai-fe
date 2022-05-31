@@ -4,12 +4,17 @@ import {Observable} from "rxjs";
 import {Users} from "../model/user/Users";
 import {ForgotPassword} from "../model/user/ForgotPassword";
 import {AccountSinup} from "../model/user/AccountSinup";
+import {ERole} from "../model/user/ERole";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  readonly URL_USER = "http://localhost:8080/api/admin/user"
+  /**
+   * URL phía ADmin
+   */
+  readonly URL_USER = "http://localhost:8080/api/admin/user/findByRole"
+  readonly URL_FindById = "http://localhost:8080/api/admin/user"
   readonly API_USER_Pass = "http://localhost:8080/api/users"
 
   requestHeader = new HttpHeaders(
@@ -20,7 +25,11 @@ export class UserService {
   }
 
   public findByIdUser(id: string): Observable<Users> {
-    return this.httpClient.get<Users>(this.URL_USER + "/" + id);
+    return this.httpClient.get<Users>(this.URL_FindById + "/" + id);
+  }
+
+  public findAllByAccount_Role(role: string): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.URL_USER + "/" + role);
   }
 
   public updateUser(user: Users): Observable<any> {

@@ -101,7 +101,6 @@ export class EditfoodComponent implements OnInit {
   selectFile(event: any) {
     const path = new Date().toString();
     this.selectedFile = event.target.files[0];
-    console.log(this.selectFile)
     this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
       finalize(() => {
         this.angularFireStorage.ref(path).getDownloadURL().subscribe(

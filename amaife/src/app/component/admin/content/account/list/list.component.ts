@@ -4,6 +4,9 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../../service/user.service";
 import {Users} from "../../../../../model/user/Users";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {FILE} from "dns";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-list',
@@ -15,11 +18,14 @@ export class ListComponent implements OnInit {
   user !: Users;
   formUser !: FormGroup;
   idUser!: string | null;
+  url: String = "";
+  selectedFile = File;
 
   constructor(
     public authService: AuthService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private augularFireStorage: AngularFireStorage
   ) {
   }
 
@@ -81,5 +87,31 @@ export class ListComponent implements OnInit {
       )
     }
 
+  }
+
+  selectFile(event: any) {
+    const path = new Date().toString();
+    this.selectedFile = event.target.files[0];
+    this.augularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
+      finalize(() => {
+        this.augularFireStorage.ref(path).getDownloadURL().subscribe(
+          (data) => {
+            this.url = data;
+          }
+        )
+      })
+    ).subscribe();
+  }
+
+  updateimage() {
+    // @ts-ignore
+    this.user.image = this.url;
+    this.userService.updateUser(this.user).subscribe(
+      () => {
+        this.snackBar.open("Cập nhật avata thành công", "OK", {
+          duration: 4000
+        })
+      }
+    )
   }
 }

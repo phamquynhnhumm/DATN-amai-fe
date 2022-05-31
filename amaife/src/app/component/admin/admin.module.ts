@@ -71,6 +71,8 @@ import { DeleteaccountComponent } from './content/account/deleteaccount/deleteac
 import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
 import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.component';
+import { ListcustomerComponent } from './content/customer/listcustomer/listcustomer.component';
+import { DetailcustomerComponent } from './content/customer/detailcustomer/detailcustomer.component';
 
 
 @NgModule({
@@ -120,7 +122,9 @@ import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.
     DeleteaccountComponent,
     EditaccountComponent,
     HomeadminComponent,
-    ConfirmOderComponent
+    ConfirmOderComponent,
+    ListcustomerComponent,
+    DetailcustomerComponent
   ],
   exports: [
     LayoutComponent,
