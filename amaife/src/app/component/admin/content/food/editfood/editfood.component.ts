@@ -36,7 +36,6 @@ export class EditfoodComponent implements OnInit {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         unit: new FormControl(this.data.unit, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
         price: new FormControl(this.data.price, [Validators.required, Validators.min(0)]),
-        quanity: new FormControl(this.data.quanity, [Validators.required, Validators.min(0)]),
         status: new FormControl(this.data.status, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         foodCategory: new FormControl(this.data.foodCategory, Validators.required),
         orderDetailList: new FormArray([]),

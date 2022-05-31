@@ -17,6 +17,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {RouterModule} from "@angular/router";
 import {NgxPayPalModule} from "ngx-paypal";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {NgxPayPalModule} from "ngx-paypal";
     MatSnackBarModule,
     NgxPaginationModule,
     NgxPayPalModule,
+    AngularFirestoreModule,
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]

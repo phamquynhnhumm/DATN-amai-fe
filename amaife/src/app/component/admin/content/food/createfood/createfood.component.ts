@@ -6,6 +6,8 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-createfood',
@@ -17,10 +19,14 @@ export class CreatefoodComponent implements OnInit {
   food!: Food;
   foodcategory !: Array<FoodCategory>;
   fooddetail!: Array<FoodDetail>;
+  url: string = "";
+  selectedFile: File | any;
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
-              private foodService: FoodService) {
+              private foodService: FoodService,
+              private angularFireStorage: AngularFireStorage,
+  ) {
   }
 
   ngOnInit(): void {
@@ -41,7 +47,6 @@ export class CreatefoodComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
       price: new FormControl('', [Validators.required, Validators.min(0)]),
-      quanity: new FormControl('', [Validators.required, Validators.min(0)]),
       status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       foodCategory: new FormControl('', Validators.required),
       orderDetailList: new FormArray([]),
@@ -60,5 +65,19 @@ export class CreatefoodComponent implements OnInit {
     } else {
       this.snackBar.open("Thêm mới thấy bại !")._dismissAfter(3000);
     }
+  }
+
+  selectFile(event: any) {
+    const path = new Date().toString();
+    this.selectedFile = event.target.files[0];
+    this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
+      finalize(() => {
+        this.angularFireStorage.ref(path).getDownloadURL().subscribe(
+          (data) => {
+            this.url = data;
+          }
+        )
+      })
+    ).subscribe();
   }
 }
