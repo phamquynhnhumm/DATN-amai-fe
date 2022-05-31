@@ -78,11 +78,20 @@
           </c-row>
           <br><br><br>
           <c-row>
-            <c-col [md]="3">
+            <c-col [md]="2">
               <label class="col-sm-12 col-form-label"><strong>Chọn ảnh</strong></label>
             </c-col>
-            <c-col [md]="9">
-              <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh">
+            <c-col [md]="6">
+              <input type="file" class="form-control" formControlName="image" placeholder="Chọn ảnh"
+                     (change)="selectFile($event)" autocomplete="off"
+                     #userPhoto>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('status')?.hasError('required') && formFood.get('status')?.touched">
+                <p>Ảnh không được để trống</p>
+              </small>
+            </c-col>
+            <c-col [md]="2">
+              <img src="{{food.image}}" class="img-thumbnail">
             </c-col>
           </c-row>
           <br><br><br>

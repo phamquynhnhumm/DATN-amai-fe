@@ -5,6 +5,8 @@ import {FoodService} from "../../../../../service/food.service";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
+import {finalize} from "rxjs";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-editfood',
@@ -16,11 +18,14 @@ export class EditfoodComponent implements OnInit {
   food!: Food;
   foodcategory !: Array<FoodCategory>;
   formFood!: FormGroup;
+  url: string = "";
+  selectedFile: File | any;
 
   constructor(
     private dialogRef: MatDialogRef<EditfoodComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private snackBar: MatSnackBar,
+    private angularFireStorage: AngularFireStorage,
     private foodService: FoodService) {
   }
 
@@ -75,7 +80,7 @@ export class EditfoodComponent implements OnInit {
        * Trường họpe nếu cập nhât ảnh thì lấy ảnh mới còn ko thì lấy ảnh cũ ( tránh trường hợp ko cập nhật ảnh nhưng submit kiếm image bị null
        */
       if (this.formFood.value.image != "") {
-        this.food.image = this.formFood.value.image;
+        this.food.image = this.url;
       }
       if (!this.bolen) {
         this.food.isDeleted = this.formFood.value.isDeleted;
@@ -83,12 +88,29 @@ export class EditfoodComponent implements OnInit {
             this.dialogRef.close();
             this.snackBar.open("Cập nhật món thành công", "OK", {
               duration: 4000
-            })
+            });
+            this.ngOnInit();
           }
         )
       }
     } else {
       this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
     }
+  }
+
+  selectFile(event: any) {
+    const path = new Date().toString();
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectFile)
+    this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
+      finalize(() => {
+        this.angularFireStorage.ref(path).getDownloadURL().subscribe(
+          (data) => {
+            this.url = data;
+            console.log(this.url)
+          }
+        )
+      })
+    ).subscribe();
   }
 }
