@@ -36,6 +36,7 @@ export class NewpasswordComponent implements OnInit {
   sendOtp(userName: string) {
     if (userName !== "") {
       this.userName = userName;
+      console.log(this.userName)
       this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
       if (this.userName == this.authService.getUsername()) {
         this.isGetOtp = false;

@@ -34,6 +34,9 @@ export const navItems: INavData[] = [
       {
         name: 'Khách hàng',
         url: '/customer'
+      }, {
+        name: 'Nhân viên',
+        url: '/management'
       },
       {
         name: 'Nhà cung cấp',

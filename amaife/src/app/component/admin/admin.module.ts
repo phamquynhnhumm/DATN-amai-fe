@@ -74,6 +74,8 @@ import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.
 import { ListcustomerComponent } from './content/customer/listcustomer/listcustomer.component';
 import { DetailcustomerComponent } from './content/customer/detailcustomer/detailcustomer.component';
 import { UnUsercustomerComponent } from './content/bin/un-usercustomer/un-usercustomer.component';
+import { ListmanagenmentComponent } from './content/managenment/listmanagenment/listmanagenment.component';
+import { LidetailmanagenmentComponent } from './content/managenment/lidetailmanagenment/lidetailmanagenment.component';
 
 
 @NgModule({
@@ -126,7 +128,9 @@ import { UnUsercustomerComponent } from './content/bin/un-usercustomer/un-usercu
     ConfirmOderComponent,
     ListcustomerComponent,
     DetailcustomerComponent,
-    UnUsercustomerComponent
+    UnUsercustomerComponent,
+    ListmanagenmentComponent,
+    LidetailmanagenmentComponent
   ],
   exports: [
     LayoutComponent,

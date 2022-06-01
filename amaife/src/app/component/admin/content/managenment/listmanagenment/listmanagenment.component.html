@@ -1,0 +1,80 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-10">
+            <h1><strong style="margin: 0 auto; color: white">DANH SÁCH NHÂN VIÊN</strong></h1>
+          </div>
+        </c-row>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <form [formGroup]="searchForm">
+            <div class="dropdown  input-group">
+              <c-col [md]="2">
+                <mat-select class=" form-control"
+                            placeholder="{{searchss}} ">
+                  <mat-option *ngFor="let searchs of searchSubject"
+                              (onSelectionChange)="onCheckboxChangeCustomer($event,searchs)">{{searchs.valueOf()}}</mat-option>
+                </mat-select>
+              </c-col>
+              <c-col [md]="1">
+              </c-col>
+              <c-col [md]="2"><input type="search" class="form-control rounded mr-4" formControlName="search"
+                                     placeholder="Tìm kiếm..."
+                                     #search>
+              </c-col>
+              <c-col [md]="3">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchUser(search.value)"> Tìm kiếm
+                </button>
+              </c-col>
+            </div>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+              ký tự!</small>
+          </form>
+        </div>
+        <br>
+        <!--        </div>-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead class="table table-striped able-bordered jambo_table bulk_action">
+          <tr>
+            <th>Tài khoản</th>
+            <th>Tên khách hàng</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="users != null">
+          <tr class="even pointer"
+              *ngFor="let user of users | paginate :{itemsPerPage:5,currentPage : p}"
+              (click)="openDetailCustomer(user)">
+            <td>{{user.account.userName}}</td>
+            <td>{{user.fullName}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <td> {{user.address}}</td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="users == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+      <!--        Pagination-->
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+</c-row>

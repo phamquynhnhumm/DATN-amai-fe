@@ -20,6 +20,7 @@ import {NewpasswordComponent} from "./content/account/newpassword/newpassword.co
 import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
 import {ListcustomerComponent} from "./content/customer/listcustomer/listcustomer.component";
+import {ListmanagenmentComponent} from "./content/managenment/listmanagenment/listmanagenment.component";
 
 const routes: Routes = [
   /**
@@ -40,6 +41,11 @@ const routes: Routes = [
   },  {
     path: "customer",
     component: ListcustomerComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  }, {
+    path: "management",
+    component: ListmanagenmentComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },
