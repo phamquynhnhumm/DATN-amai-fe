@@ -6,8 +6,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {MatOptionSelectionChange} from "@angular/material/core";
-import {Supplier} from "../../../../../model/supplier/Supplier";
-import {DetailsupplierComponent} from "../../supplier/detailsupplier/detailsupplier.component";
 import {Oder} from "../../../../../model/order/Oder";
 import {OrderService} from "../../../../../service/order.service";
 import {DeleteorderComponent} from "../deleteorder/deleteorder.component";
@@ -49,7 +47,6 @@ export class ListorderComponent implements OnInit {
       data => {
         this.p = 1;
         this.orderList = data;
-        console.log(data)
       }
     )
   }
@@ -170,21 +167,5 @@ export class ListorderComponent implements OnInit {
         }
       );
     }
-
-  }
-
-  openDetailSuppkier(supplierList: Supplier) {
-    this.supplierService.findByIdSupplier(supplierList.id).subscribe(
-      data => {
-        const dialogRef = this.dialog.open(DetailsupplierComponent, {
-          width: '450px',
-          height: '580px',
-          data: data
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          this.ngOnInit();
-        });
-      }
-    )
   }
 }

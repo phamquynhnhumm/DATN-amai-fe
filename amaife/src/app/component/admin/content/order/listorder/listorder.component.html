@@ -58,7 +58,6 @@
               *ngFor="let oder of orderList | paginate :{itemsPerPage:5,currentPage : p}">
             <td (click)="openDetailOrder(oder)">Chi tiết đơn hàng mã : {{oder.id}} </td>
             <td>{{oder.fullName}}</td>
-            <!--            <td (click)="openDetailSuppkier(material.supplierList)">{{material.supplierList.name}}</td>-->
             <td>{{oder.address}}</td>
             <td>{{oder.phone}}</td>
             <td>{{oder.account.userName}}</td>
