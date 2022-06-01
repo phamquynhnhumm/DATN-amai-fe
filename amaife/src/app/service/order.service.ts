@@ -45,6 +45,12 @@ export class OrderService {
   readonly URL_ODERDETAIL_CREATE = "http://localhost:8080/api/order/createDetailOder";
   readonly URL_CREATEQRCODE = "http://localhost:8080/api/order/generateQRCode";
 
+
+  /**
+   * URL chi tiết đơn hàng phía Admin
+   */
+  readonly OrderDetail = "http://localhost:8080/api/admin/orderdetail/detail";
+
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
   );
@@ -98,6 +104,14 @@ export class OrderService {
 
   searcOder(isDeleteOder: boolean, isDeleteAccount: boolean, fullName: string, userName: string, address: string, phone: string): Observable<Array<Oder>> {
     return this.httpClient.get<Array<Oder>>(this.URL_ORDER_SEARCH, {params: new HttpParams().set('isDeleteOder', isDeleteOder).set('isDeleteAccount', isDeleteAccount).set('fullName', fullName).set('userName', userName).set('address', address).set('phone', phone)});
+  }
+
+  /**
+   * CRUD chi tiết đơn hàng phía ADMIN
+   */
+  // danh sách chi tiết đơn hàng có cùng mã đơn hàng
+  findAllOrderDetailByIdOder(id: number): Observable<Array<OrderDetail>> {
+    return this.httpClient.get<Array<OrderDetail>>(this.OrderDetail + "/" + id);
   }
 
   /**

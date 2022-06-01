@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Food} from "../../../../../model/food/Food";
-import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {FoodService} from "../../../../../service/food.service";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Material} from "../../../../../model/food/Material";
 
 @Component({
@@ -27,7 +26,7 @@ export class CreatefooddetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.foodService.findAllFoodIsdeleteAndFoodCategory(false,false).subscribe(
+    this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
       data => {
         this.foodList = data;
       }

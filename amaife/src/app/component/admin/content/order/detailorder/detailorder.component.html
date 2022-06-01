@@ -39,9 +39,16 @@
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</p>
         <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</p>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Chi tiết đơn hàng</strong></label>
+      <label class="col-sm-5 col-form-label"> <strong>Chi tiết món trong đơn hàng</strong></label>
       <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" value="email@example.com">List ra danh sách chi tiết đơn hàng</p>
+        <mat-select *ngIf="orderDetailList !=null " class="form-control-plaintext " placeholder="Danh sách món">
+          <mat-option (click)="openDetailFood(orderDetai)"
+                      *ngFor="let orderDetai of orderDetailList">Tên món:{{orderDetai.food.name}}
+            SL: {{orderDetai.quantity}} Giá : {{orderDetai.food.price}}</mat-option>
+        </mat-select>
+        <div *ngIf="orderDetailList ==null " class="form-control-plaintext">
+          <p>"Không tồn tại món"</p>
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-5"></div>
