@@ -22,6 +22,10 @@ import {OrderService} from "../../../../../service/order.service";
 import {Oder} from "../../../../../model/order/Oder";
 import {DetailorderComponent} from "../../order/detailorder/detailorder.component";
 import {UnoderComponent} from "../unoder/unoder.component";
+import {UserService} from "../../../../../service/user.service";
+import {Users} from "../../../../../model/user/Users";
+import {DetailcustomerComponent} from "../../customer/detailcustomer/detailcustomer.component";
+import {UnUsercustomerComponent} from "../un-usercustomer/un-usercustomer.component";
 
 @Component({
   selector: 'app-deletefoodandcategory',
@@ -35,6 +39,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
   supplierList!: Array<Supplier>;
   materialList!: Array<Material>;
   oderList!: Array<Oder>;
+  userList!: Array<Users>;
   p: number | any;
   pfood: number | any;
   icons = {cilSettings, cilLoopCircular};
@@ -45,6 +50,7 @@ export class DeletefoodandcategoryComponent implements OnInit {
     private supplierService: SupplierService,
     private oderService: OrderService,
     private activatedRoute: ActivatedRoute,
+    private usserService: UserService,
     private fb: FormBuilder,
     private matSnackBar: MatSnackBar,
     private dialog: MatDialog) {
@@ -94,6 +100,14 @@ export class DeletefoodandcategoryComponent implements OnInit {
       dataoder => {
         this.pfood = 1;
         this.oderList = dataoder;
+      }
+    );
+    //Tài khoản khách hàng đã bị kháo
+    this.usserService.findAllByAccount_Role("ROLE_CUSTOMER", true).subscribe(
+      dataUser => {
+        this.pfood = 1;
+        this.userList = dataUser;
+        console.log(this.userList)
       }
     )
   }
@@ -324,5 +338,34 @@ export class DeletefoodandcategoryComponent implements OnInit {
 
   searchOder(value: string) {
 
+  }
+
+  openDetailUser(user: Users) {
+    this.usserService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailcustomerComponent, {
+          width: '800px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
+
+  openUnDeleteUser(user: Users) {
+    this.usserService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UnUsercustomerComponent, {
+          width: '450px',
+          height: '300px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      })
   }
 }

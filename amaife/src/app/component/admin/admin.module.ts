@@ -73,6 +73,7 @@ import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
 import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.component';
 import { ListcustomerComponent } from './content/customer/listcustomer/listcustomer.component';
 import { DetailcustomerComponent } from './content/customer/detailcustomer/detailcustomer.component';
+import { UnUsercustomerComponent } from './content/bin/un-usercustomer/un-usercustomer.component';
 
 
 @NgModule({
@@ -124,7 +125,8 @@ import { DetailcustomerComponent } from './content/customer/detailcustomer/detai
     HomeadminComponent,
     ConfirmOderComponent,
     ListcustomerComponent,
-    DetailcustomerComponent
+    DetailcustomerComponent,
+    UnUsercustomerComponent
   ],
   exports: [
     LayoutComponent,

@@ -6,6 +6,7 @@ import {ForgotPassword} from "../model/user/ForgotPassword";
 import {AccountSinup} from "../model/user/AccountSinup";
 import {ERole} from "../model/user/ERole";
 import {Oder} from "../model/order/Oder";
+import {Food} from "../model/food/Food";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class UserService {
    * URL phía ADmin
    */
   readonly URL_USER = "http://localhost:8080/api/admin/user/findByRole"
+  readonly URL_UN_USER = "http://localhost:8080/api/admin/user/undelete"
   readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
   readonly API_USER_Pass = "http://localhost:8080/api/users"
@@ -30,8 +32,8 @@ export class UserService {
     return this.httpClient.get<Users>(this.URL_FindById + "/" + id);
   }
 
-  public findAllByAccount_Role(role: string): Observable<Array<Users>> {
-    return this.httpClient.get<Array<Users>>(this.URL_USER + "/" + role);
+  public findAllByAccount_Role(role: string, isDeleted: boolean): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.URL_USER + "/" + role + "/" + isDeleted);
   }
 
   public updateUser(user: Users): Observable<any> {
@@ -49,5 +51,9 @@ export class UserService {
   searchUserCustomer(fullName: string, userName: string, phone: string, email: string, address: string): Observable<Array<Users>> {
     return this.httpClient.get<Array<Users>>(this.URL_USER_SEARCH,
       {params: new HttpParams().set('fullName', fullName).set('userName', userName).set('phone', phone).set('email', email).set('address', address)});
+  }
+
+  undeleteByIdCustomer(id: string, users: Object): Observable<Users> {
+    return this.httpClient.put<Users>(this.URL_UN_USER + "/" + id, users);
   }
 }

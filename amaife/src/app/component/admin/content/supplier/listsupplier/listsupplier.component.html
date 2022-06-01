@@ -6,7 +6,7 @@
       <c-card-header style="background: #435d7d;color: white"><br>
         <c-row>
           <div class="col-sm-10">
-            <h1><strong style="margin: 0 auto;">DANH SÁCH NHÀ CUNG CẤP</strong></h1>
+            <h1><strong style="margin: 0 auto;color: white">DANH SÁCH NHÀ CUNG CẤP</strong></h1>
           </div>
           <div class="col-sm-2">
             <a routerLink="/createsupplier" class="btn btn-success" data-toggle="modal">
@@ -53,7 +53,7 @@
             <th>Số điệnt thoại</th>
             <!--            <th>Danh mục món</th>-->
             <th>Địa chỉ</th>
-<!--            <th>Danh sách nguyên liệu</th>-->
+            <!--            <th>Danh sách nguyên liệu</th>-->
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
@@ -64,7 +64,7 @@
             <td>{{supplier.email}}</td>
             <td>{{supplier.phone}}</td>
             <td>{{supplier.address}}</td>
-<!--            <td>{{supplier.materialList.length}}</td>-->
+            <!--            <td>{{supplier.materialList.length}}</td>-->
             <td>
               <a (click)="openEditSupplier(supplier)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
