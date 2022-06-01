@@ -19,7 +19,10 @@ export class UserService {
   readonly URL_UN_USER = "http://localhost:8080/api/admin/user/undelete"
   readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
+
+
   readonly API_USER_Pass = "http://localhost:8080/api/users"
+  readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/users"
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
@@ -55,5 +58,13 @@ export class UserService {
 
   undeleteByIdCustomer(id: string, users: Object): Observable<Users> {
     return this.httpClient.put<Users>(this.URL_UN_USER + "/" + id, users);
+  }
+
+  public generateOtpAdmin(userName: string): Observable<Boolean> {
+    return this.httpClient.get<Boolean>(this.API_USER_Pass_ADMIN + "/account/generate/" + userName);
+  }
+
+  public forgotPasswordADMIN(forgotPassword: ForgotPassword): Observable<Boolean> {
+    return this.httpClient.post<Boolean>(this.API_USER_Pass_ADMIN + "/account/forgot-password", forgotPassword);
   }
 }
