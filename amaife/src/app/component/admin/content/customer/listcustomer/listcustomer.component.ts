@@ -17,7 +17,7 @@ import {UserService} from "../../../../../service/user.service";
 export class ListcustomerComponent implements OnInit {
   users!: Array<Users>;
   p: number | any;
-  searchSubject = ['Tên khách hàng', 'Số điện thoại', 'Email'];
+  searchSubject = ['Tên khách hàng', 'Tài khoản', 'Số điện thoại', 'Email', "Địa chỉ"];
   searchss: string = "Chọn thuộc tính";
 
   constructor(
@@ -67,57 +67,86 @@ export class ListcustomerComponent implements OnInit {
     )
   }
 
-  // searchFood(search: string) {
-  //   if (this.searchss == this.searchSubject[0]) {
-  //     this.foodService.searcFood(false, search, "", "").subscribe(
-  //       (data) => {
-  //         this.users = data;
-  //       },
-  //       (error) => {
-  //         this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
-  //           data => {
-  //             this.p = 1;
-  //             this.users = data;
-  //           }
-  //         )
-  //         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-  //       }
-  //     );
-  //   }
-  //   if (this.searchss == this.searchSubject[1]) {
-  //     this.foodService.searcFood(false, "", "", search).subscribe(
-  //       (data) => {
-  //         this.users = data;
-  //       },
-  //       (error) => {
-  //         this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
-  //           data => {
-  //             this.p = 1;
-  //             this.users = data;
-  //           }
-  //         )
-  //         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-  //       }
-  //     );
-  //   }
-  //   if (this.searchss == this.searchSubject[2]) {
-  //     this.foodService.searcFood(false, "", search, "").subscribe(
-  //       (data) => {
-  //         this.users = data;
-  //       },
-  //       (error) => {
-  //         this.foodService.findAllFoodIsdeleteAndFoodCategory(false, false).subscribe(
-  //           data => {
-  //             this.p = 1;
-  //             this.users = data;
-  //           }
-  //         )
-  //         this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
-  //       }
-  //     );
-  //   }
-  // }
-  searchUser(value: string) {
-
+  searchUser(search: string) {
+    if (this.searchss == this.searchSubject[0]) {
+      this.userService.searchUserCustomer(search, "", "", "", "").subscribe(
+        (data) => {
+          this.users = data;
+        },
+        (error) => {
+          this.userService.findAllByAccount_Role("ROLE_CUSTOMER").subscribe(
+            data => {
+              this.p = 1;
+              this.users = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[1]) {
+      this.userService.searchUserCustomer("", search, "", "", "").subscribe(
+        (data) => {
+          this.users = data;
+        },
+        (error) => {
+          this.userService.findAllByAccount_Role("ROLE_CUSTOMER").subscribe(
+            data => {
+              this.p = 1;
+              this.users = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[2]) {
+      this.userService.searchUserCustomer("", "", search, "", "").subscribe(
+        (data) => {
+          this.users = data;
+        },
+        (error) => {
+          this.userService.findAllByAccount_Role("ROLE_CUSTOMER").subscribe(
+            data => {
+              this.p = 1;
+              this.users = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[3]) {
+      this.userService.searchUserCustomer("", "", "", search, "").subscribe(
+        (data) => {
+          this.users = data;
+        },
+        (error) => {
+          this.userService.findAllByAccount_Role("ROLE_CUSTOMER").subscribe(
+            data => {
+              this.p = 1;
+              this.users = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
+    if (this.searchss == this.searchSubject[4]) {
+      this.userService.searchUserCustomer("", "", "", "", search).subscribe(
+        (data) => {
+          this.users = data;
+        },
+        (error) => {
+          this.userService.findAllByAccount_Role("ROLE_CUSTOMER").subscribe(
+            data => {
+              this.p = 1;
+              this.users = data;
+            }
+          )
+          this.matSnackBar.open("Hiện không có kết quả nào phù hợp với thông tin cần tìm!")._dismissAfter(3000)
+        }
+      );
+    }
   }
 }

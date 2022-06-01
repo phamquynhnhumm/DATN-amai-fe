@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Users} from "../model/user/Users";
 import {ForgotPassword} from "../model/user/ForgotPassword";
 import {AccountSinup} from "../model/user/AccountSinup";
 import {ERole} from "../model/user/ERole";
+import {Oder} from "../model/order/Oder";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
    * URL phía ADmin
    */
   readonly URL_USER = "http://localhost:8080/api/admin/user/findByRole"
+  readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
   readonly API_USER_Pass = "http://localhost:8080/api/users"
 
@@ -42,5 +44,10 @@ export class UserService {
 
   public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {
     return this.httpClient.post<Boolean>(this.API_USER_Pass + "/account/forgot-password", forgotPassword);
+  }
+
+  searchUserCustomer(fullName: string, userName: string, phone: string, email: string, address: string): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.URL_USER_SEARCH,
+      {params: new HttpParams().set('fullName', fullName).set('userName', userName).set('phone', phone).set('email', email).set('address', address)});
   }
 }

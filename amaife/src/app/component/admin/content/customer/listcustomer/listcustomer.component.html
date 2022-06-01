@@ -43,7 +43,7 @@
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
-            <th>Mã khách hàng</th>
+            <th>Tài khoản</th>
             <th>Tên khách hàng</th>
             <th>Số điện thoại</th>
             <th>Email</th>
@@ -54,7 +54,7 @@
           <tr class="even pointer"
               *ngFor="let user of users | paginate :{itemsPerPage:5,currentPage : p}"
               (click)="openDetailCustomer(user)">
-            <td>{{user.id}}</td>
+            <td>{{user.account.userName}}</td>
             <td>{{user.fullName}}</td>
             <td>{{user.phone}}</td>
             <td>{{user.email}}</td>
