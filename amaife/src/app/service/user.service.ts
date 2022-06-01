@@ -19,6 +19,7 @@ export class UserService {
   readonly URL_UN_USER = "http://localhost:8080/api/admin/user/undelete"
   readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
+  readonly URL_FindById_DELETE = "http://localhost:8080/api/admin/user/delete"
 
 
   readonly API_USER_Pass = "http://localhost:8080/api/users"
@@ -41,6 +42,10 @@ export class UserService {
 
   public updateUser(user: Users): Observable<any> {
     return this.httpClient.put(this.URL_USER, user);
+  }
+
+  public deleteUser(id: string): Observable<Food> {
+    return this.httpClient.delete<Food>(this.URL_FindById_DELETE + "/" + id);
   }
 
   public generateOtp(userName: string): Observable<Boolean> {

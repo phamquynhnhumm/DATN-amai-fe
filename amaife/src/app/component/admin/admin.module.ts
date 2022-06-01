@@ -76,6 +76,8 @@ import { DetailcustomerComponent } from './content/customer/detailcustomer/detai
 import { UnUsercustomerComponent } from './content/bin/un-usercustomer/un-usercustomer.component';
 import { ListmanagenmentComponent } from './content/managenment/listmanagenment/listmanagenment.component';
 import { LidetailmanagenmentComponent } from './content/managenment/lidetailmanagenment/lidetailmanagenment.component';
+import { UpdateRoleComponent } from './content/managenment/update-role/update-role.component';
+import { DeletemanagenmentComponent } from './content/managenment/deletemanagenment/deletemanagenment.component';
 
 
 @NgModule({
@@ -130,7 +132,9 @@ import { LidetailmanagenmentComponent } from './content/managenment/lidetailmana
     DetailcustomerComponent,
     UnUsercustomerComponent,
     ListmanagenmentComponent,
-    LidetailmanagenmentComponent
+    LidetailmanagenmentComponent,
+    UpdateRoleComponent,
+    DeletemanagenmentComponent
   ],
   exports: [
     LayoutComponent,

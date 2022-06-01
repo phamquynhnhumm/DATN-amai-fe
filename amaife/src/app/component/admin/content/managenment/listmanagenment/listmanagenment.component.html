@@ -48,6 +48,7 @@
             <th>Số điện thoại</th>
             <th>Email</th>
             <th>Địa chỉ</th>
+            <th *ngIf="auth.getRole() == 'ROLE_ADMIN'">Cập nhật</th>
           </tr>
           </thead>
           <tbody *ngIf="users != null">
@@ -59,6 +60,16 @@
             <td>{{user.phone}}</td>
             <td>{{user.email}}</td>
             <td> {{user.address}}</td>
+            <td *ngIf="auth.getRole() == 'ROLE_ADMIN'">
+              <div>
+                <a (click)="updatqRole(user)" class="btn btn-success" data-toggle="modal">
+                  <span style="color: white">Cập nhật quyền </span></a>
+              </div>
+              <div>
+                <a (click)="deltemangenment(user)" class="btn btn-success" data-toggle="modal">
+                  <span style="color: white">Xóa tài khoản </span></a>
+              </div>
+            </td>
           </tr>
           </tbody>
           <tbody *ngIf="users == null">

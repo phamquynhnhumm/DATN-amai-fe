@@ -9,6 +9,9 @@ import {Food} from "../../../../../model/food/Food";
 import {MatOptionSelectionChange} from "@angular/material/core";
 import {DetailcustomerComponent} from "../../customer/detailcustomer/detailcustomer.component";
 import {LidetailmanagenmentComponent} from "../lidetailmanagenment/lidetailmanagenment.component";
+import {AuthService} from "../../../../../service/auth.service";
+import {UpdateRoleComponent} from "../update-role/update-role.component";
+import {DeletemanagenmentComponent} from "../deletemanagenment/deletemanagenment.component";
 
 @Component({
   selector: 'app-listmanagenment',
@@ -27,7 +30,8 @@ export class ListmanagenmentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private matSnackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public auth: AuthService,
   ) {
   }
 
@@ -43,7 +47,7 @@ export class ListmanagenmentComponent implements OnInit {
         this.p = 1;
         this.users = data;
       }
-    )
+    );
   }
 
   onCheckboxChangeCustomer($event: MatOptionSelectionChange<string>, searchs: string) {
@@ -66,7 +70,7 @@ export class ListmanagenmentComponent implements OnInit {
           this.ngOnInit();
         });
       }
-    )
+    );
   }
 
   searchUser(search: string) {
@@ -150,5 +154,35 @@ export class ListmanagenmentComponent implements OnInit {
         }
       );
     }
+  }
+
+  updatqRole(user: Users) {
+    this.userService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UpdateRoleComponent, {
+          width: '850px',
+          height: '400px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    );
+  }
+
+  deltemangenment(user: Users) {
+    this.userService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DeletemanagenmentComponent, {
+          width: '850px',
+          height: '400px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    );
   }
 }
