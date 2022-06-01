@@ -15,6 +15,7 @@ export class FoodService {
    * URL Món
    */
   readonly URL_FOOD = "http://localhost:8080/api/admin/food";
+  readonly URL_Matrerail = "http://localhost:8080/api/admin/fooddetail/findByIdFood";
   readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/admin/food/all";
   readonly URL_FOOD_FINFDISDELETANDFOODCATEGORY = "http://localhost:8080/api/admin/food/allFood";
   readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/admin/food/undelete";
@@ -92,6 +93,14 @@ export class FoodService {
 
   findByIdFood(id: number): Observable<Food> {
     return this.httpClient.get<Food>(this.URL_FOOD + "/" + id);
+  }
+
+  /**
+   * Danh sách nguyên liệu tạo nên một món
+   * @param idFood
+   */
+  findByMaterailFindByIdFood(idFood: number): Observable<Array<FoodDetail>> {
+    return this.httpClient.get<Array<FoodDetail>>(this.URL_Matrerail + "/" + idFood);
   }
 
   findAllFoodByFoodCategory_Id(id: number): Observable<Array<Food>> {

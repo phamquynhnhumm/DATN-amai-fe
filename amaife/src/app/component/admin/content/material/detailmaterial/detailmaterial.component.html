@@ -1,4 +1,4 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chi Tiết Nguyên
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Chi Tiết Nguyên
   Liệu</strong>
 </h1></div>
 <hr>
@@ -41,27 +41,27 @@
       <p>"Không tồn tại món"</p>
     </div>
   </div>
-    <label class="col-sm-3 col-form-label"><strong>Tài khoản thêm </strong></label>
-    <div class="col-sm-3">
-      <p readonly class="form-control-plaintext">{{material.createdBy.userName}}</p>
-    </div>
-    <label class="col-sm-3 col-form-label"><strong>Thời gian thêm</strong> </label>
-    <div class="col-sm-3">
-      <p readonly class="form-control-plaintext">{{material.createAt}}</p>
-    </div>
-    <label class="col-sm-3 col-form-label"><strong>Tài khoản cập nhật </strong></label>
-    <div class="col-sm-3">
-      <p readonly class="form-control-plaintext">{{material.updatedBy.userName}}</p>
-    </div>
-    <label class="col-sm-3 col-form-label"><strong>Thời gian cập nhật</strong></label>
-    <div class="col-sm-3">
-      <p readonly class="form-control-plaintext">{{material.updateAt}}</p>
-    </div>
-    <div class="row">
-      <div class="col-sm-5"></div>
-      <div class="col-sm-2">
-        <button mat-button (click)="deleteMaterial()">Thoát</button>
-      </div>
-      <div class="col-sm-5"></div>
-    </div>
+  <label class="col-sm-3 col-form-label"><strong>Tài khoản thêm </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.createdBy.userName}}</p>
   </div>
+  <label class="col-sm-3 col-form-label"><strong>Thời gian thêm</strong> </label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.createAt}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.updatedBy.userName}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Thời gian cập nhật</strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.updateAt}}</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button mat-button (click)="deleteMaterial()">Thoát</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>

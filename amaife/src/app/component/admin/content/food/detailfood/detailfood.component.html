@@ -24,7 +24,12 @@
       </div>
       <label class="col-sm-5 col-form-label"> <strong>Nguyên liệu pha chế </strong></label>
       <div class="col-sm-7">
-        <p readonly class="form-control-plaintext" >List ra danh sách nguyên liệu</p>
+        <mat-select *ngIf="foodDetail !=null " class="form-control-plaintext " placeholder="Danh sách món">
+          <mat-option (click)="openDetailMaterail(foodDetail)" *ngFor="let foodDetail of foodDetail">{{foodDetail.material.name}}</mat-option>
+        </mat-select>
+        <div *ngIf="foodDetail ==null " class="form-control-plaintext">
+          <p>"Không tồn tại món"</p>
+        </div>
       </div>
       <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
       <div class="col-sm-7">

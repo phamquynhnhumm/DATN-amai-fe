@@ -4,7 +4,7 @@
   <c-col xs="9">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
-        <h1><strong>THÊM MỚI NGUYÊN LIỆU</strong></h1>
+        <h1><strong style="color: white">THÊM MỚI NGUYÊN LIỆU</strong></h1>
       </c-card-header>
       <c-card-body><br>
         <form cForm class="row g-3" [formGroup]="formMaterial" (ngSubmit)="onSubmit()">
@@ -82,7 +82,8 @@
               <label class="col-sm-12 col-form-label"><strong>Khối lượng </strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="number" class="form-control" formControlName="importKg" placeholder="Nhập khối lượng của một nguyên liệu">
+              <input type="number" class="form-control" formControlName="importKg"
+                     placeholder="Nhập khối lượng của một nguyên liệu">
               <small class="text-danger col-sm-10"
                      *ngIf="formMaterial.get('importKg')?.hasError('required') && formMaterial.get('importKg')?.touched">
                 <p>Khối lượng nhập vào không được để trống</p>
