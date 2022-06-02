@@ -8,6 +8,9 @@ import {EStatusOrder} from "../../../model/order/EStatusOrder";
 import {DetailorderComponent} from "../content/order/detailorder/detailorder.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmOderComponent} from "../content/order/confirm-oder/confirm-oder.component";
+import {Registration} from "../../../model/class/Registration";
+import {RegistrationService} from "../../../service/registration.service";
+import {EStatuasHandle} from "../../../model/class/EStatuasHandle";
 
 @Component({
   selector: 'app-headeradmin',
@@ -21,9 +24,11 @@ export class HeaderadminComponent extends HeaderComponent {
   public newMessages = new Array(4)
   userName!: string | null;
   oderList!: Array<Oder>;
+  registration!: Array<Registration>;
 
   constructor(
     public authService: AuthService,
+    private registrationService: RegistrationService,
     private oderService: OrderService,
     private dialog: MatDialog
   ) {
@@ -38,6 +43,12 @@ export class HeaderadminComponent extends HeaderComponent {
     this.oderService.finAllStatus(EStatusOrder.UNCONFIRMED).subscribe(
       data => {
         this.oderList = data;
+      }
+    )
+    this.registrationService.finAllStatus(EStatuasHandle.NOTCONTACTED).subscribe(
+      data => {
+        this.registration = data;
+        console.log(data)
       }
     )
   }
@@ -78,5 +89,13 @@ export class HeaderadminComponent extends HeaderComponent {
         });
       }
     )
+  }
+
+  detailregistrations(registrations: Registration) {
+
+  }
+
+  confirmregistrations(registrations: Registration) {
+
   }
 }

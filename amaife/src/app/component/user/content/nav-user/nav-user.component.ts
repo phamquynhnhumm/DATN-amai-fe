@@ -18,7 +18,7 @@ export class NavUserComponent implements OnInit {
   navService !: string;
   navAccount !: string;
   navConten !: string;
-  totalCart !: number;
+  // totalCart !: number;
   foodcategory !: Array<FoodCategory>;
 
   constructor(public authService: AuthService,
@@ -29,14 +29,14 @@ export class NavUserComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
-      data => {
-        this.totalCart = data;
-      },
-      error => {
-        this.totalCart = 0;
-      }
-    );
+    // this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
+    //   data => {
+    //     this.totalCart = data;
+    //   },
+    //   error => {
+    //     this.totalCart = 0;
+    //   }
+    // );
     this.foodcategoryService.findAllFoodCategoryIsdeleteUser().subscribe(
       data => {
         this.foodcategory = data;

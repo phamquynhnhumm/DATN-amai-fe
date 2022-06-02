@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Registration} from "../model/class/Registration";
 import {AccountSinup} from "../model/user/AccountSinup";
 import {Account} from "../model/user/Account";
 import {Users} from "../model/user/Users";
+import {EStatuasHandle} from "../model/class/EStatuasHandle";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,12 @@ export class RegistrationService {
 
   constructor(private httpClient: HttpClient) {
   }
+
+  readonly URL_CLASS_STATUS = "http://localhost:8080/api/admin/class/status";
+  readonly URL_CLASS_ADMIN = "http://localhost:8080/api/admin/class";
+  readonly URL_CLASS_ADMIN_SEARCH = "http://localhost:8080/api/admin/class/search";
+  readonly URL_CLASS_ADMIN_DELETE = "http://localhost:8080/api/admin/class/delete";
+  readonly URL_CLASS_FINALLBYISDELETE = "http://localhost:8080/api/admin/class/all";
 
   readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
   readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
@@ -53,5 +60,29 @@ export class RegistrationService {
    */
   public CreateUser(users: Users): Observable<Users> {
     return this.httpClient.post<Users>(this.API_USER_SINUP + "/user/create", users, {headers: this.requestHeader});
+  }
+
+  public finAllStatus(handle: EStatuasHandle): Observable<Array<Registration>> {
+    return this.httpClient.get<Array<Registration>>(this.URL_CLASS_STATUS + "/" + handle);
+  }
+
+  public finByID(id: number): Observable<Registration> {
+    return this.httpClient.get<Registration>(this.URL_CLASS_ADMIN + "/" + id);
+  }
+
+  public findALlBYIsDelete(isdelete: boolean): Observable<Array<Registration>> {
+    return this.httpClient.get<Array<Registration>>(this.URL_CLASS_FINALLBYISDELETE + "/" + isdelete);
+  }
+
+  public updateRegistration(registration: Object): Observable<Registration> {
+    return this.httpClient.put<Registration>(this.URL_CLASS_ADMIN, registration);
+  }
+
+  public deleteById(id: number): Observable<Registration> {
+    return this.httpClient.delete<Registration>(this.URL_CLASS_ADMIN_DELETE + "/" + id);
+  }
+
+  public searchRegistration(isDelete: boolean, name: string, phone: string): Observable<Array<Registration>> {
+    return this.httpClient.get<Array<Registration>>(this.URL_CLASS_ADMIN_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('phone', phone)});
   }
 }

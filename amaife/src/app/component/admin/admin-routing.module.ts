@@ -21,6 +21,7 @@ import {EditaccountComponent} from "./content/account/editaccount/editaccount.co
 import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
 import {ListcustomerComponent} from "./content/customer/listcustomer/listcustomer.component";
 import {ListmanagenmentComponent} from "./content/managenment/listmanagenment/listmanagenment.component";
+import {ListClassComponent} from "./content/class/list-class/list-class.component";
 
 const routes: Routes = [
   /**
@@ -46,6 +47,11 @@ const routes: Routes = [
   }, {
     path: "management",
     component: ListmanagenmentComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  }, {
+    path: "registration",
+    component: ListClassComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },

@@ -78,6 +78,9 @@ import { ListmanagenmentComponent } from './content/managenment/listmanagenment/
 import { LidetailmanagenmentComponent } from './content/managenment/lidetailmanagenment/lidetailmanagenment.component';
 import { UpdateRoleComponent } from './content/managenment/update-role/update-role.component';
 import { DeletemanagenmentComponent } from './content/managenment/deletemanagenment/deletemanagenment.component';
+import { ListClassComponent } from './content/class/list-class/list-class.component';
+import { UpdateClassComponent } from './content/class/update-class/update-class.component';
+import { DeleteClassComponent } from './content/class/delete-class/delete-class.component';
 
 
 @NgModule({
@@ -134,7 +137,10 @@ import { DeletemanagenmentComponent } from './content/managenment/deletemanagenm
     ListmanagenmentComponent,
     LidetailmanagenmentComponent,
     UpdateRoleComponent,
-    DeletemanagenmentComponent
+    DeletemanagenmentComponent,
+    ListClassComponent,
+    UpdateClassComponent,
+    DeleteClassComponent
   ],
   exports: [
     LayoutComponent,

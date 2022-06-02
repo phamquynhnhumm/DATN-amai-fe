@@ -57,7 +57,7 @@ export class ListcustomerComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(DetailcustomerComponent, {
           width: '850px',
-          height: '400px',
+          height: '580px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
