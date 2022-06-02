@@ -82,9 +82,6 @@ export class LoginadminComponent implements OnInit {
 
   }
 
-  rememberMeLogin() {
-    this.rememberMe++;
-  }
 
   checkValidPassword(value: string) {
 
