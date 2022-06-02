@@ -22,6 +22,7 @@ import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
 import {ListcustomerComponent} from "./content/customer/listcustomer/listcustomer.component";
 import {ListmanagenmentComponent} from "./content/managenment/listmanagenment/listmanagenment.component";
 import {ListClassComponent} from "./content/class/list-class/list-class.component";
+import {ListShopComponent} from "./content/shop/list-shop/list-shop.component";
 
 const routes: Routes = [
   /**
@@ -39,9 +40,16 @@ const routes: Routes = [
     component: ListfoodComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
-  },  {
+  },
+  {
     path: "customer",
     component: ListcustomerComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
+  {
+    path: "shop",
+    component: ListShopComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   }, {

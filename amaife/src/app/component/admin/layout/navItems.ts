@@ -121,5 +121,8 @@ export const navItems: INavData[] = [
     name: 'THÙNG RÁC',
     url: '/deletefoodandcategory',
     iconComponent: {name: 'cil-bell'},
+  }, {
+    name: 'THÔNG TIN CỬA HÀNG',
+    url: '/shop'
   },
 ];

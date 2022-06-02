@@ -81,6 +81,8 @@ import { DeletemanagenmentComponent } from './content/managenment/deletemanagenm
 import { ListClassComponent } from './content/class/list-class/list-class.component';
 import { UpdateClassComponent } from './content/class/update-class/update-class.component';
 import { DeleteClassComponent } from './content/class/delete-class/delete-class.component';
+import { ListShopComponent } from './content/shop/list-shop/list-shop.component';
+import { UpdateShopComponent } from './content/shop/update-shop/update-shop.component';
 
 
 @NgModule({
@@ -140,7 +142,9 @@ import { DeleteClassComponent } from './content/class/delete-class/delete-class.
     DeletemanagenmentComponent,
     ListClassComponent,
     UpdateClassComponent,
-    DeleteClassComponent
+    DeleteClassComponent,
+    ListShopComponent,
+    UpdateShopComponent
   ],
   exports: [
     LayoutComponent,
