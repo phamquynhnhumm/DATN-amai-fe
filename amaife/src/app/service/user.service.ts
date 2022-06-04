@@ -23,7 +23,7 @@ export class UserService {
 
 
   readonly API_USER_Pass = "http://localhost:8080/api/users"
-  readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/users"
+  readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/user"
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
@@ -41,7 +41,7 @@ export class UserService {
   }
 
   public updateUser(user: Users): Observable<any> {
-    return this.httpClient.put(this.URL_USER, user);
+    return this.httpClient.put(this.URL_FindById, user);
   }
 
   public deleteUser(id: string): Observable<Food> {

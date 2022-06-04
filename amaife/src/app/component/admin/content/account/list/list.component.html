@@ -9,12 +9,15 @@
       <div class="card mb-4 mb-xl-0">
         <div class="card-header" style="background: #435d7d;color: white"><strong>Ảnh đại diện</strong></div>
         <div class="card-body text-center">
-          <img class="img-account-profile rounded-circle mb-2" src="{{user.image}}" alt="">
+          <input type="file" id="image_uploads" class="form-control col-sm-1" (change)="selectFile($event)"
+                 accept=".jpg, .jpeg, .png" style="  visibility: hidden;">
+          <img for="image_uploads" class="img-account-profile rounded-circle mb-2" src="{{user.image}}"
+               alt="ảnh đại diện"><br>
+          <label for="image_uploads"><i (change)="selectFile($event)" for="image_uploads"
+                                        class="fas fa-camera" style="color: #435d7d"></i></label>
           <div class="card-body row text-center">
-            <input type="file" class="form-control col-sm-1" (change)="selectFile($event)">
-            <button type="submit" class="btn btn-light col-sm-3" (click)="updateimage()">Lưu</button>
           </div>
-          <div class="small font-italic text-muted mb-4"><h2>{{user.fullName}} <br>Quyền:  {{user.account.role}}</h2>
+          <div class="small font-italic text-muted mb-4"><h2>{{user.fullName}} <br></h2>
           </div>
         </div>
       </div>

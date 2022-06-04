@@ -9,7 +9,6 @@ import {HomeuserComponent} from './content/homeuser/homeuser.component';
 import {MenuuserComponent} from './content/menuuser/menuuser.component';
 import {OrderuserComponent} from './content/orderuser/orderuser.component';
 import {AccountuserComponent} from './content/accountuser/accountuser.component';
-import {AddressuserComponent} from './content/addressuser/addressuser.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {MatIconModule} from "@angular/material/icon";
 import {DetailfooduserComponent} from './content/detailfooduser/detailfooduser.component';
@@ -39,7 +38,6 @@ import {SinupUserComponent} from './content/sinup-user/sinup-user.component';
     MenuuserComponent,
     OrderuserComponent,
     AccountuserComponent,
-    AddressuserComponent,
     DetailfooduserComponent,
     ShopingcartComponent,
     ChangepassComponent,

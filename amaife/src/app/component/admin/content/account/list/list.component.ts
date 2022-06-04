@@ -6,6 +6,7 @@ import {Users} from "../../../../../model/user/Users";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
+import {signOut} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-list',
@@ -17,14 +18,14 @@ export class ListComponent implements OnInit {
   user !: Users;
   formUser !: FormGroup;
   idUser!: string | null;
-  url: String = "";
+  url: string = "";
   selectedFile = File;
 
   constructor(
     public authService: AuthService,
     private userService: UserService,
     private snackBar: MatSnackBar,
-    private augularFireStorage: AngularFireStorage
+    private angularFireStorage: AngularFireStorage,
   ) {
   }
 
@@ -91,26 +92,39 @@ export class ListComponent implements OnInit {
   selectFile(event: any) {
     const path = new Date().toString();
     this.selectedFile = event.target.files[0];
-    this.augularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
+    this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
       finalize(() => {
-        this.augularFireStorage.ref(path).getDownloadURL().subscribe(
+        this.angularFireStorage.ref(path).getDownloadURL().subscribe(
           (data) => {
             this.url = data;
+            this.user.image = this.url;
+            if (this.user.image != '') {
+              this.userService.updateUser(this.user).subscribe(
+                () => {
+                  this.snackBar.open("Cập nhật avata thành công", "OK", {
+                    duration: 4000,
+                    panelClass: ['mat-toolbar', 'mat-primary']
+
+                  })
+                  // window.location.reload();
+                }
+              );
+              this.url = "";
+            } else {
+              this.snackBar.open("Cập nhật avata thất bại", "OK", {
+                duration: 4000,
+                panelClass: ['mat-toolbar', 'mat-primary']
+              });
+            }
+          }, error => {
+            this.snackBar.open("Cập nhật avata thất bại", "OK", {
+              duration: 4000,
+              panelClass: ['mat-toolbar', 'mat-primary']
+
+            });
           }
         )
       })
     ).subscribe();
-  }
-
-  updateimage() {
-    // @ts-ignore
-    this.user.image = this.url;
-    this.userService.updateUser(this.user).subscribe(
-      () => {
-        this.snackBar.open("Cập nhật avata thành công", "OK", {
-          duration: 4000
-        })
-      }
-    )
   }
 }

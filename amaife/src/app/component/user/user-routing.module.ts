@@ -6,7 +6,6 @@ import {DetailfooduserComponent} from "./content/detailfooduser/detailfooduser.c
 import {ShopingcartComponent} from "./content/shopingcart/shopingcart.component";
 import {AuthGuard} from "../../guard/auth.guard";
 import {AccountuserComponent} from "./content/accountuser/accountuser.component";
-import {AddressuserComponent} from "./content/addressuser/addressuser.component";
 import {ChangepassComponent} from "./content/changepass/changepass.component";
 import {OrderuserComponent} from "./content/orderuser/orderuser.component";
 import {HistoryOrderUserComponent} from "./content/history-order-user/history-order-user.component";
@@ -25,13 +24,6 @@ const routes: Routes = [
     data: {role: ['ROLE_CUSTOMER']}
   },
   {
-    /**
-     * Nhập địa chỉ
-     */
-    path: "address", component: AddressuserComponent,
-    canActivate: [AuthGuard],
-    data: {role: ['ROLE_CUSTOMER']}
-  }, {
     /**
      * Nhập địa chỉ
      */

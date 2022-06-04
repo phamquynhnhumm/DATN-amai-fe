@@ -57,3 +57,23 @@ body{margin-top:20px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.avata {
+  .btn-add-photo {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -8%;
+    height: 36px;
+    width: 36px;
+    z-index: 3;
+    border-radius: 50%;
+    left: 62%;
+    z-index: 1;
+    box-shadow: 2px 2px 15px 0 rgba(0, 0, 0, 0.2);
+    background: url(https://tocotocotea.com/wp-content/themes/tocotocotea/assets/images/camera-regular.svg) no-repeat center;
+    background-color: #ffffff;
+    background-size: 20px auto;
+    cursor: pointer;
+  }
+}

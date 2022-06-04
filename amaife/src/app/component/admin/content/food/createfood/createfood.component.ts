@@ -79,7 +79,6 @@ export class CreatefoodComponent implements OnInit {
         this.angularFireStorage.ref(path).getDownloadURL().subscribe(
           (data) => {
             this.url = data;
-            console.log(this.url)
           }
         )
       })
