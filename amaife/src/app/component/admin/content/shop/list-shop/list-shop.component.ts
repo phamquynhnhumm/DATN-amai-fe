@@ -15,7 +15,7 @@ import {Shop} from "../../../../../model/shop/Shop";
 })
 export class ListShopComponent implements OnInit {
 
-  shop !: Shop;
+  shop !: Array<Shop>;
   formShop !: FormGroup;
 
   constructor(private shopService: ShopService,
@@ -28,10 +28,7 @@ export class ListShopComponent implements OnInit {
   ngOnInit(): void {
     this.shopService.findAllShop().subscribe(
       data => {
-        for (let sp of data) {
-          this.shop = data[0];
-          console.log(this.shop);
-        }
+        this.shop = data;
       }
     )
   }
