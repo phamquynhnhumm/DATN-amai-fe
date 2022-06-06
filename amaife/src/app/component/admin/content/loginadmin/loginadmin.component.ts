@@ -57,29 +57,19 @@ export class LoginadminComponent implements OnInit {
     switch (role) {
       case "ROLE_MANAGEMENT":
         this.router.navigate(['/admin']);
+        location.replace("/admin");
         break;
       case "ROLE_CUSTOMER":
         this.router.navigate(['/home']);
         break;
       case "ROLE_ADMIN":
         this.router.navigate(['/admin']);
+        location.replace("/admin");
         break;
       default:
         this.router.navigate(['/login'])
         window.location.reload();
     }
-  }
-
-  loginWithFacebook() {
-
-  }
-
-  checkValidPassword(value: string) {
-
-  }
-
-  checkValidUsernameAuto(value: string) {
-
   }
 
   login() {

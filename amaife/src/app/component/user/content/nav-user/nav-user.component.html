@@ -12,7 +12,7 @@
                     <li>Việt</li>
                   </ul>
                 </li>
-                <li><a *ngIf="! isLoggedIn()" [routerLink]="['/login']">Đăng nhập</a>
+                <li><a *ngIf="! isLoggedIn()" (click)="login()">Đăng nhập</a>
                   <a *ngIf="isLoggedIn()" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>

@@ -4,6 +4,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegistrationService} from "../../../../service/registration.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-forgotpassword',
@@ -17,7 +18,8 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private matSnackBar: MatSnackBar,
               private sinupService: RegistrationService,
-              private newPassService: RegistrationService
+              private newPassService: RegistrationService,
+              private route: Router
   ) {
   }
 
@@ -85,6 +87,7 @@ export class ForgotpasswordComponent implements OnInit {
               duration: 3000,
               panelClass: ['mat-toolbar', 'mat-primary']
             })
+            location.replace("/login");
           } else if (data == null) {
             this.matSnackBar.open("Hệ thống đang bảo trì", "Đóng", {
               duration: 3000,

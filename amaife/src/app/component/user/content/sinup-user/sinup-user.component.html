@@ -1,5 +1,5 @@
 <section class="vh-100 bg-image" *ngIf="sinup"
-         style="background: #1da1f2">
+         style="background-color: #508bfc;">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -11,41 +11,39 @@
                 <div class="form-outline mb-4">
                   <label class="form-label">Họ và Tên</label>
                   <input type="text" class="form-control form-control-lg" formControlName="fullName"/>
-                  <small class="text-danger col-sm-10"
+                  <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formSinUp.get('fullName')?.hasError('required') && formSinUp.get('fullName')?.touched">
-                    <p>Họ tên không được để trống</p>
+                    Họ tên không được để trống
                   </small>
                 </div>
                 <div class="form-outline mb-4"><label class="form-label">Email</label>
                   <input type="email" class="form-control form-control-lg" formControlName="email"/>
-                  <small class="text-danger col-sm-10"
+                  <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formSinUp.get('email')?.hasError('required') && formSinUp.get('email')?.touched">
-                    <p>Email không được để trống</p>
+                    Email không được để trống
                   </small></div>
                 <div class="form-outline mb-4">
                   <label class="form-label">Số điện thoại</label>
                   <input type="password" class="form-control form-control-lg" formControlName="phone"/>
-                  <small class="text-danger col-sm-10"
+                  <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.touched">
-                    <p>Số điện thoại không được để trống</p>
+                    Số điện thoại không được để trống
                   </small>
                 </div>
-
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg"/>
                   <label class="form-check-label">
-                    Tôi đồng ý với các điều<a href="#!" class="text-body"><u> Điều khoản dịch vụ</u></a>
+                    Tôi đồng ý với các <a href="#!" class="text-body"><u> điều khoản dịch vụ</u></a>
                   </label>
                 </div>
-
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng Ký
+                  <button type="submit" style="width: 70%;color: white;background-color: royalblue"
+                          class="btn btn-lg ">Đăng Ký
                   </button>
                 </div>
-                <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản? <a (click)="login()"
-                                                                                class="fw-bold text-body"><u>Đăng nhập
-                </u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản?
+                  <a (click)="login()" class="fw-bold text-body"><u>Đăng nhập
+                  </u></a></p>
               </form>
             </div>
           </div>
@@ -68,17 +66,17 @@
                 <div class="form-outline mb-4">
                   <label class="form-label">Mã OPT</label>
                   <input type="text" class="form-control form-control-lg" formControlName="otp"/>
-                  <small class="text-danger col-sm-10"
+                  <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formCreateAccount.get('otp')?.hasError('required') && formCreateAccount.get('otp')?.touched">
-                    <p>Số điện thoại không được để trống</p>
+                    Mã OTP không được để trống
                   </small>
                 </div>
                 <div class="form-outline mb-4"><label class="form-label" for="form3Example3cg">Tên đăng nhập</label>
                   <input type="text" id="form3Example3cg" class="form-control form-control-lg"
                          formControlName="userName"/>
-                  <small class="text-danger col-sm-10"
+                  <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formCreateAccount.get('userName')?.hasError('required') && formCreateAccount.get('userName')?.touched">
-                    <p>Số điện thoại không được để trống</p>
+                    Tên đăng nhập không được để trống
                   </small>
                 </div>
                 <div class="form-outline mb-4">
@@ -87,12 +85,12 @@
                          formControlName="password"/>
                   <small class="text-danger col-sm-10"
                          *ngIf="formCreateAccount.get('password')?.hasError('required') && formCreateAccount.get('password')?.touched">
-                    <p>Số điện thoại không được để trống</p>
+                    Mật khẩu không được để trống
                   </small>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng Ký
+                  <button type="submit" style="width: 70%;color: white;background-color: royalblue" class="btn btn-lg ">
+                    Đăng Ký
                   </button>
                 </div>
                 <p class="text-center text-muted mt-5 mb-0" (click)="sendotp()">Gửi lại mã OTP? </p>

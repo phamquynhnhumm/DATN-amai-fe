@@ -89,4 +89,8 @@ export class NavUserComponent implements OnInit {
   reload(id: number) {
     location.replace("/category/" + id);
   }
+
+  login() {
+    location.replace("/login");
+  }
 }

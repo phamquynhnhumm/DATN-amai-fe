@@ -48,7 +48,6 @@ export class HeaderadminComponent extends HeaderComponent {
     this.registrationService.finAllStatus(EStatuasHandle.NOTCONTACTED).subscribe(
       data => {
         this.registration = data;
-        console.log(data)
       }
     )
   }
@@ -59,6 +58,7 @@ export class HeaderadminComponent extends HeaderComponent {
 
   public logout() {
     this.authService.clear();
+    location.replace("/login");
   }
 
   confirm(order: Oder) {
@@ -97,5 +97,9 @@ export class HeaderadminComponent extends HeaderComponent {
 
   confirmregistrations(registrations: Registration) {
 
+  }
+
+  login() {
+    location.replace("/login");
   }
 }
