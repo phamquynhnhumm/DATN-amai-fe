@@ -1,4 +1,4 @@
-<c-row ngPreserveWhitespaces>
+<c-row ngPreserveWhitespaces *ngIf="shopboolen">
   <c-col xs="1">
   </c-col>
   <c-col xs="10">
@@ -9,62 +9,151 @@
       <c-card-body class=" row g-2" *ngFor=" let shops of shop">
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Tên cửa hàng</label>
-          <input type="text" class="form-control" value="{{shops.nameShop}}">
+          <input type="text" class="form-control" readonly value="{{shops.nameShop}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Logo</label>
-          <img src="assets/logoamin.png" width="50%" height="70%">
-          <input type="file" class="form-control" placeholder="Logo" value="{{shops.logo}}">
+          <img src="{{shops.logo}}" width="50%" height="70%">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Khẩu hiệu</label>
-          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" value="{{shops.slogen}}">
+          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" readonly value="{{shops.slogen}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Địa chỉ, trụ sở</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.address}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" readonly value="{{shops.address}}">
         </c-col>
         <c-col [md]="12" class="mb-3">
           <label class="form-label">Giới thiệu ngắn</label>
-          <textarea class="form-control" rows="3" value="{{shops.content}}">></textarea>
+          <textarea class="form-control" rows="3" readonly value="{{shops.content}}">></textarea>
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Số điện thoại</label>
-          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" value="{{shops.phone}}">
+          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" readonly value="{{shops.phone}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Email</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.email}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" readonly value="{{shops.email}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Tên tài khoản</label>
-          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" value="{{shops.nameTransfer}}">
+          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" readonly
+                 value="{{shops.nameTransfer}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Số tài khoản</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.number}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" readonly value="{{shops.number}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label"> Tên ngân hàng, chi nhánh</label>
-          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" value="{{shops.number}}">
+          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" readonly value="{{shops.number}}">
         </c-col>
         <c-col [md]="6" class="mb-3">
           <label class="form-label">Địa chỉ, trụ sở</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.number}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" readonly value="{{shops.number}}">
         </c-col>
         <c-col [md]="4" class="mb-3">
           <label class="form-label"> Link fakebook</label>
-          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" value="{{shops.number}}">
+          <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" readonly value="{{shops.number}}">
         </c-col>
         <c-col [md]="4" class="mb-3">
           <label class="form-label">Link instagram</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.number}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" readonly value="{{shops.number}}">
         </c-col>
         <c-col [md]="4" class="mb-3">
           <label class="form-label">Link youtube</label>
-          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.youtube}}">
+          <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" value="{{shops.youtube}}" readonly>
+        </c-col>
+        <c-col [md]="12" class="mb-3">
+          <button class="btn btn-outline-info" (click)="updateShop(shops)" style="margin-left: 50px;">
+            Cập nhật thông tin
+          </button>
         </c-col>
       </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="1">
+  </c-col>
+</c-row>
+
+<c-row ngPreserveWhitespaces *ngIf="!shopboolen">
+  <c-col xs="1">
+  </c-col>
+  <c-col xs="10">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="color: white">THÔNG TIN CỬA HÀNG</strong></h1>
+      </c-card-header>
+      <form [formGroup]="formShop" (ngSubmit)="onSubmit()">
+
+        <c-card-body class=" row g-2">
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Tên cửa hàng</label>
+            <input type="text" class="form-control" formControlName="nameShop">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Logo</label>
+            <input type="file" id="image_uploads" class="form-control col-sm-1" (change)="selectFile($event)"
+                   accept=".jpg, .jpeg, .png" style="  visibility: hidden;">
+            <img for="image_uploads" class="img-account-profile rounded-circle mb-2" src="{{formShop.value.logo}}"
+                 alt="logo cửa hàng"><br>
+            <label for="image_uploads"><i (change)="selectFile($event)" for="image_uploads"
+                                          class="fas fa-camera" style="color: #435d7d"></i></label>
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Khẩu hiệu</label>
+            <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" formControlName="slogen">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Địa chỉ, trụ sở</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="address">
+          </c-col>
+          <c-col [md]="12" class="mb-3">
+            <label class="form-label">Giới thiệu ngắn</label>
+            <textarea class="form-control" rows="3" formControlName="content"></textarea>
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" formControlName="phone">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="email">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Tên tài khoản</label>
+            <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" formControlName="nameTransfer">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Số tài khoản</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="number">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label"> Tên ngân hàng, chi nhánh</label>
+            <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" formControlName="bankName">
+          </c-col>
+          <c-col [md]="6" class="mb-3">
+            <label class="form-label">Địa chỉ, trụ sở</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="address">
+          </c-col>
+          <c-col [md]="4" class="mb-3">
+            <label class="form-label"> Link fakebook</label>
+            <input type="text" class="form-control" placeholder="Khẩu hiệu cửa hàng" formControlName="facebook">
+          </c-col>
+          <c-col [md]="4" class="mb-3">
+            <label class="form-label">Link instagram</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="instagram">
+          </c-col>
+          <c-col [md]="4" class="mb-3">
+            <label class="form-label">Link youtube</label>
+            <input type="text" class="form-control" placeholder="Địa chỉ, trụ sở" formControlName="youtube">
+          </c-col>
+          <c-col [md]="12" class="mb-3">
+            <button type="submit" class="btn btn-dark mb-2">Lưu thay đổi</button>
+            <button (click)="cencal()" type="button" class="btn btn-dark mb-2">Hủy</button>
+          </c-col>
+        </c-card-body>
+      </form>
     </c-card>
   </c-col>
   <c-col xs="1">

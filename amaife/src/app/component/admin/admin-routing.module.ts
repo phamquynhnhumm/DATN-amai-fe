@@ -17,7 +17,6 @@ import {AuthGuard} from "../../guard/auth.guard";
 import {ForbiddenComponent} from "./content/forbidden/forbidden.component";
 import {ListComponent} from "./content/account/list/list.component";
 import {NewpasswordComponent} from "./content/account/newpassword/newpassword.component";
-import {EditaccountComponent} from "./content/account/editaccount/editaccount.component";
 import {HomeadminComponent} from "./content/homeadmin/homeadmin.component";
 import {ListcustomerComponent} from "./content/customer/listcustomer/listcustomer.component";
 import {ListmanagenmentComponent} from "./content/managenment/listmanagenment/listmanagenment.component";
@@ -128,7 +127,6 @@ const routes: Routes = [
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },
   {path: "newpassword", component: NewpasswordComponent},
-  {path: "editaccount", component: EditaccountComponent}
 ];
 
 @NgModule({

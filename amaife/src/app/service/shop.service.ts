@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Shop} from "../model/shop/Shop";
+import {Food} from "../model/food/Food";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class ShopService {
   }
   updateSupplier(shop: Object): Observable<Shop> {
     return this.httpClient.put<Shop>(this.URL_SHOP, shop);
+  }
+
+  findBy(id: number): Observable<Shop> {
+    return this.httpClient.get<Shop>(this.URL_SHOP + "/" + id);
   }
 }

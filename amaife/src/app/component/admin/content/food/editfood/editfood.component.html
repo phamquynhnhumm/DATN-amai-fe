@@ -12,9 +12,30 @@
             </c-col>
             <c-col [md]="9">
               <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên món">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate "
                      *ngIf="formFood.get('name')?.hasError('required') && formFood.get('name')?.touched">
-                <p>Tên món không được để trống</p>
+                Tên món không được để trống
+              </small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formFood.get('name')?.hasError('minlength') || formFood.get('name')?.hasError('maxlength') && formFood.get('name')?.touched">
+                Tên phải lớn hơn 3 ký tự và phải nhỏ hơn 255 ký tự
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="3">
+              <label class="col-sm-12 col-form-label"><strong>Mô tả</strong></label>
+            </c-col>
+            <c-col [md]="9">
+              <input type="text" class="form-control" formControlName="content">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formFood.get('content')?.hasError('required') && formFood.get('content')?.touched">
+                Mô tả món vui lòng không để trống
+              </small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formFood.get('content')?.hasError('minlength') || formFood.get('content')?.hasError('maxlength') && formFood.get('content')?.touched">
+                Nội dung món phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
               </small>
             </c-col>
           </c-row>
@@ -42,9 +63,13 @@
             </c-col>
             <c-col [md]="9">
               <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate "
                      *ngIf="formFood.get('unit')?.hasError('required') && formFood.get('unit')?.touched">
-                <p>Đơn vị không được để trống</p></small>
+                Đơn vị không được để trống</small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formFood.get('unit')?.hasError('minlength') || formFood.get('unit')?.hasError('maxlength') && formFood.get('unit')?.touched">
+                Tên phải lớn hơn 1 ký tự và phải nhỏ hơn 15 ký tự
+              </small>
             </c-col>
           </c-row>
           <br><br><br>
@@ -54,9 +79,17 @@
             </c-col>
             <c-col [md]="9">
               <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá bán">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formFood.get('price')?.hasError('required') && formFood.get('price')?.touched">
-                <p>Tên món không được để trống</p>
+                Giá bán không được để trống và phải là số
+              </small>
+              <small class="form-text text-danger validate"
+                     *ngIf="formFood.get('price')?.hasError('min')  && formFood.get('price')?.dirty">
+                Giá bán phải lớn hơn hoặc bằng 1.000đ
+              </small>
+              <small class="form-text text-danger validate"
+                     *ngIf="formFood.get('price')?.hasError('max')  && formFood.get('price')?.dirty">
+                Giá bán phải nhỏ hơn 1.000.000đ
               </small>
             </c-col>
           </c-row>

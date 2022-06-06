@@ -67,8 +67,6 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig} fro
 import { ForbiddenComponent } from './content/forbidden/forbidden.component';
 import { ListComponent } from './content/account/list/list.component';
 import { NewpasswordComponent } from './content/account/newpassword/newpassword.component';
-import { DeleteaccountComponent } from './content/account/deleteaccount/deleteaccount.component';
-import { EditaccountComponent } from './content/account/editaccount/editaccount.component';
 import { HomeadminComponent } from './content/homeadmin/homeadmin.component';
 import { ConfirmOderComponent } from './content/order/confirm-oder/confirm-oder.component';
 import { ListcustomerComponent } from './content/customer/listcustomer/listcustomer.component';
@@ -82,7 +80,6 @@ import { ListClassComponent } from './content/class/list-class/list-class.compon
 import { UpdateClassComponent } from './content/class/update-class/update-class.component';
 import { DeleteClassComponent } from './content/class/delete-class/delete-class.component';
 import { ListShopComponent } from './content/shop/list-shop/list-shop.component';
-import { UpdateShopComponent } from './content/shop/update-shop/update-shop.component';
 
 
 @NgModule({
@@ -129,8 +126,6 @@ import { UpdateShopComponent } from './content/shop/update-shop/update-shop.comp
     ForbiddenComponent,
     ListComponent,
     NewpasswordComponent,
-    DeleteaccountComponent,
-    EditaccountComponent,
     HomeadminComponent,
     ConfirmOderComponent,
     ListcustomerComponent,
@@ -143,8 +138,7 @@ import { UpdateShopComponent } from './content/shop/update-shop/update-shop.comp
     ListClassComponent,
     UpdateClassComponent,
     DeleteClassComponent,
-    ListShopComponent,
-    UpdateShopComponent
+    ListShopComponent
   ],
     exports: [
         LayoutComponent,

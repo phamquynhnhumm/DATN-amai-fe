@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {FoodService} from "../../../../../service/food.service";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
@@ -44,17 +44,29 @@ export class CreatefoodComponent implements OnInit {
 
   formFood = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
       unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
-      price: new FormControl('', [Validators.required, Validators.min(0)]),
-      content: new FormControl('', [Validators.required, Validators.min(0)]),
-      status: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      price: new FormControl('', [Validators.required, Validators.min(1000), Validators.max(1000000)]),
+      content: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      status: new FormControl('', [Validators.required]),
       foodCategory: new FormControl('', Validators.required),
       orderDetailList: new FormArray([]),
       foodDetailList: new FormArray([]),
       image: new FormControl('', Validators.required),
     }
   )
+
+  //Kiểm tra số dương
+  checkPositiveNumber(formControl: AbstractControl) {
+    let num = parseInt(formControl.value);
+    if (!formControl.value.match("^-?\\d+$")) {
+      return {'invalidCapacity': true};
+    } else if (num <= 0) {
+      return {'negativeCapacity': true};
+    } else {
+      return null;
+    }
+  }
 
   onSubmit() {
     if (this.formFood.valid) {
@@ -66,8 +78,9 @@ export class CreatefoodComponent implements OnInit {
       )
     } else {
       this.snackBar.open("Thêm mới thấy bại !")._dismissAfter(3000);
-    };
-    this.url ="";
+    }
+    ;
+    this.url = "";
   }
 
   selectFile(event: any) {

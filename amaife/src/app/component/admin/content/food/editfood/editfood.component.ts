@@ -36,16 +36,18 @@ export class EditfoodComponent implements OnInit {
       }
     )
     this.food = this.data;
+
     this.formFood = new FormGroup(
       {
-        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+        name: new FormControl(this.data.name, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
         unit: new FormControl(this.data.unit, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
-        price: new FormControl(this.data.price, [Validators.required, Validators.min(0)]),
+        price: new FormControl(this.data.price, [Validators.required, Validators.min(1000), Validators.max(1000000)]),
+        content: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         status: new FormControl(this.data.status, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         foodCategory: new FormControl(this.data.foodCategory, Validators.required),
         orderDetailList: new FormArray([]),
         foodDetailList: new FormArray([]),
-        image: new FormControl(''),
+        image: new FormControl('',Validators.required),
       }
     )
   }
@@ -72,6 +74,7 @@ export class EditfoodComponent implements OnInit {
     if (this.formFood.valid) {
       this.food.name = this.formFood.value.name;
       this.food.unit = this.formFood.value.unit;
+      this.food.content = this.formFood.value.content;
       this.food.price = this.formFood.value.price;
       this.food.status = this.formFood.value.status;
       this.food.foodCategory = this.formFood.value.foodCategory;
