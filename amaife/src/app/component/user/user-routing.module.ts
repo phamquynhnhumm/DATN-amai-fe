@@ -13,11 +13,13 @@ import {CheckoutComponent} from "./content/checkout/checkout.component";
 import {FoodCategoryComponent} from "./content/food-category/food-category.component";
 import {PaypalComponent} from "./content/paypal/paypal.component";
 import {SinupUserComponent} from "./content/sinup-user/sinup-user.component";
+import {ForgotpasswordComponent} from "./content/forgotpassword/forgotpassword.component";
 
 const routes: Routes = [
   {path: "home", component: HomeuserComponent},
   {path: "sinup", component: SinupUserComponent},
   {path: "", component: HomeuserComponent},
+  {path: "forgot", component: ForgotpasswordComponent},
   {
     path: "user", component: AccountuserComponent,
     canActivate: [AuthGuard],

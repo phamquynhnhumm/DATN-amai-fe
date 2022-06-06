@@ -30,7 +30,6 @@ export class ChangepassComponent implements OnInit {
   });
 
   ngOnInit(): void {
-
   }
 
   sendOtp(userName: string) {
@@ -90,7 +89,6 @@ export class ChangepassComponent implements OnInit {
       this.userService.forgotPassword(this.formForgotPassword.value).subscribe(
         (data) => {
           if (data) {
-            // this.matDialogRef.close();
             this.matSnackBar.open("Đã đổi mật khẩu thành công", "Đóng", {
               duration: 3000,
               panelClass: ['mat-toolbar', 'mat-primary']
@@ -108,7 +106,6 @@ export class ChangepassComponent implements OnInit {
           }
         },
         (error) => {
-          // if (error.status == 400) {
           console.log(error.status)
           if (error.status == 400) {
             this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
@@ -119,7 +116,6 @@ export class ChangepassComponent implements OnInit {
               duration: 3000
             });
           }
-          // }
         }
       );
     }

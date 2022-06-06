@@ -7,6 +7,7 @@ import {AccountSinup} from "../model/user/AccountSinup";
 import {ERole} from "../model/user/ERole";
 import {Oder} from "../model/order/Oder";
 import {Food} from "../model/food/Food";
+import {NewPassword} from "../model/user/NewPassword";
 
 @Injectable({
   providedIn: 'root'

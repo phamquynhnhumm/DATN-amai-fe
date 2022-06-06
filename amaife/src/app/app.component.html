@@ -5,7 +5,7 @@
 </div>
 
 <div
-  *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login' && href !='http://localhost:4200/sinup' && href !='http://localhost:4200/otp'">
+  *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login' && href !='http://localhost:4200/sinup' && href !='http://localhost:4200/otp' && href !='http://localhost:4200/forgot' ">
   <app-nav-user></app-nav-user>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
@@ -15,6 +15,8 @@
 </div>
 <div *ngIf="href =='http://localhost:4200/sinup'">
   <app-sinup-user></app-sinup-user>
+</div><div *ngIf="href =='http://localhost:4200/forgot'">
+  <app-forgotpassword></app-forgotpassword>
 </div>
 <c-sidebar *ngIf="authService.getRole() == 'ROLE_ADMIN' || authService.getRole()=='ROLE_MANAGEMENT' "
            #sidebar="cSidebar"

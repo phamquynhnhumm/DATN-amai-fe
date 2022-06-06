@@ -6,6 +6,8 @@ import {AccountSinup} from "../model/user/AccountSinup";
 import {Account} from "../model/user/Account";
 import {Users} from "../model/user/Users";
 import {EStatuasHandle} from "../model/class/EStatuasHandle";
+import {ForgotPassword} from "../model/user/ForgotPassword";
+import {NewPassword} from "../model/user/NewPassword";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,7 @@ export class RegistrationService {
 
   readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
   readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
+  readonly API_USER_Pass = "http://localhost:8080/api/sinup"
 
 
   /**
@@ -37,11 +40,16 @@ export class RegistrationService {
   }
 
   /**
-   * gửi mã OTP để Đăng ký tài khoản
+   * gửi mã OTP để Đăng ký tài khoản hoặc lấy lại mật khẩu
    * @param email
    */
   public generateOtpSinup(email: string): Observable<Boolean> {
     return this.httpClient.get<Boolean>(this.API_USER_SINUP + "/account/otpsotpsinup/" + email, {headers: this.requestHeader});
+  }
+
+
+  public newpassword(newPassword: NewPassword): Observable<Boolean> {
+    return this.httpClient.post<Boolean>(this.API_USER_Pass + "/account/newpassword", newPassword,{headers: this.requestHeader});
   }
 
   /**

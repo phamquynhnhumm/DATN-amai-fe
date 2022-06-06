@@ -49,6 +49,7 @@ export class SinupUserComponent implements OnInit {
 
   otp() {
     if (this.formSinUp.valid) {
+      console.log("đamng đăng ký")
       this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
       this.sinupService.generateOtpSinup(this.formSinUp.value.email).subscribe(
         (data) => {

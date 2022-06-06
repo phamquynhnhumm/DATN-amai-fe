@@ -74,15 +74,6 @@ export class LoginadminComponent implements OnInit {
 
   }
 
-  loginWithGoogle() {
-
-  }
-
-  forgotPassword() {
-
-  }
-
-
   checkValidPassword(value: string) {
 
   }
@@ -121,7 +112,13 @@ export class LoginadminComponent implements OnInit {
       this.isLoginValid = true;
     }
   }
+
   sinup() {
     location.replace("/sinup")
+  }
+
+  forgotPassword() {
+    location.replace("/forgot")
+
   }
 }

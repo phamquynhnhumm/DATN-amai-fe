@@ -146,11 +146,12 @@ import { UpdateShopComponent } from './content/shop/update-shop/update-shop.comp
     ListShopComponent,
     UpdateShopComponent
   ],
-  exports: [
-    LayoutComponent,
-    HeaderadminComponent,
-    LoginadminComponent
-  ],
+    exports: [
+        LayoutComponent,
+        HeaderadminComponent,
+        LoginadminComponent,
+        ForbiddenComponent
+    ],
     imports: [
         CommonModule,
         AdminRoutingModule,
