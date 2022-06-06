@@ -30,12 +30,23 @@
             <div class="mb-3">
               <label class="small mb-1">Họ và Tên</label>
               <input class="form-control" formControlName="fullName">
+              <small class="text-danger col-sm-10 validate"
+                     *ngIf="formUser.get('fullName')?.hasError('required') && formUser.get('fullName')?.touched">
+                Họ tên không được để trống
+              </small>
             </div>
             <div class="row gx-3 mb-3">
-              <!-- Form Group (organization name)-->
               <div class="col-md-6">
                 <label class="small mb-1">Email</label>
                 <input class="form-control" type="emai" formControlName="email">
+                <small class="text-danger col-sm-10 validate"
+                       *ngIf="formUser.get('email')?.hasError('required') && formUser.get('email')?.touched">
+                  Email không được để trống
+                </small>
+                <small class="form-text text-danger validate"
+                       *ngIf="formUser.get('email')?.hasError('email')  && formUser.get('email')?.dirty">
+                  Không đúng định dạng email
+                </small>
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
