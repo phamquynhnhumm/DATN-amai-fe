@@ -26,19 +26,19 @@ export class ForgotpasswordComponent implements OnInit {
 
   formforgotPassword = new FormGroup(
     {
-      emailnew: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
     }
   )
   FormUser = new FormGroup(
     {
       fullName: new FormControl('', Validators.required),
-      emailnew: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       account: new FormControl('', Validators.required),
     }
   )
   formnewpassword = new FormGroup({
-    emailnew: new FormControl(''),
+    email: new FormControl(''),
     newPassword: new FormControl('', Validators.required),
     otp: new FormControl('', Validators.required),
   });
@@ -49,9 +49,8 @@ export class ForgotpasswordComponent implements OnInit {
 
   otp() {
     if (this.formforgotPassword.valid) {
-      console.log("đang chờ nhận mã OTP")
       this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
-      this.sinupService.generateOtpnewpassword(this.formforgotPassword.value.emailnew).subscribe(
+      this.sinupService.generateOtpnewpassword(this.formforgotPassword.value.email).subscribe(
         (data) => {
           if (data) {
             this.sinup = false;
@@ -76,7 +75,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   newpassword() {
     this.sinup = false;
-    this.formnewpassword.value.emailnew = this.formforgotPassword.value.emailnew;
+    this.formnewpassword.value.email = this.formforgotPassword.value.email;
     console.log(this.formnewpassword.value)
     if (this.formnewpassword.valid) {
       this.newPassService.newpassword(this.formnewpassword.value).subscribe(

@@ -11,6 +11,9 @@ import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
 import {data} from "jquery";
+import {signOut} from "@angular/fire/auth";
+import {finalize} from "rxjs";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-checkout',
@@ -33,12 +36,15 @@ export class CheckoutComponent implements OnInit {
   paypal !: string;
   apppayapl: boolean = false;
   QR !: string;
+  url: string = "";
+  selectedFile: File | any;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
               private route: Router,
               private snackBar: MatSnackBar,
-              public cartService: OrderService
+              public cartService: OrderService,
+              private angularFireStorage: AngularFireStorage
   ) {
   }
 
@@ -104,28 +110,26 @@ export class CheckoutComponent implements OnInit {
         this.cartService.createOderUser(this.formOrder.value).subscribe(
           (data) => {
             this.OderQR = data;
-            console.log(data);
-            console.log(this.OderQR);
             this.cartService.createQRCode(this.OderQR).subscribe(
               (dataQRcode) => {
+                this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
               }
               , error => {
                 this.snackBar.open("Cập nhật mã QR thất bại!")._dismissAfter(3000);
               })
             this.newOder = data;
-            console.log(this.formOrder.value);
             this.formOrderDEtail.value.orders = this.newOder;
             this.formOrderDEtail.value.isDeleted = false;
             for (let i = 0; i < this.cartList.length; i++) {
               //Chạy vòng for đê5
-              this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
+              //xóa  giỏ hàng
+              // this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
               let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
                 quantity: this.cartList[i].quantity,
                 food: this.cartList[i].food,
                 orders: this.formOrderDEtail.value.orders,
                 isDeleted: this.formOrderDEtail.value.isDeleted,
               };
-              console.log(<OrderDetail>newOderDetail);
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
             this.cartService.createOderDetailUser(this.listOderDetail).subscribe()

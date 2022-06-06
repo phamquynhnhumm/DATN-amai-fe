@@ -203,6 +203,12 @@
                     <input class="profile-input" value="{{oder.money | currency: 'VND'}}" readonly>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="{{oder.qrcode}}">
+                    <p><a href="{{oder.qrcode}}">Bấm vào đây</a></p>
+                  </div>
+                </div>
                 <br>
                 <div class="row">
                   <button class=" col-sm-32 btn  btn-outline-warning" (click)="cancel()">Thoát</button>

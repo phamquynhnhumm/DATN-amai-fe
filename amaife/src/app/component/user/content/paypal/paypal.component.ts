@@ -128,8 +128,8 @@ export class PaypalComponent implements OnInit {
   };
 
   checkout() {
-    // this.route.navigateByUrl("/shoping").then();
-    window.location.reload();
+    this.route.navigateByUrl("/shoping").then();
+    // window.location.reload();
   }
 }
 
