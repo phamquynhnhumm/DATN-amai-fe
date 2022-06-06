@@ -26,20 +26,20 @@ export class ForgotpasswordComponent implements OnInit {
 
   formforgotPassword = new FormGroup(
     {
-      email: new FormControl('', Validators.required),
+      emailnew: new FormControl('', Validators.required),
     }
   )
   FormUser = new FormGroup(
     {
       fullName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      emailnew: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       account: new FormControl('', Validators.required),
     }
   )
   formnewpassword = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('', Validators.required),
+    emailnew: new FormControl(''),
+    newPassword: new FormControl('', Validators.required),
     otp: new FormControl('', Validators.required),
   });
 
@@ -51,7 +51,7 @@ export class ForgotpasswordComponent implements OnInit {
     if (this.formforgotPassword.valid) {
       console.log("đang chờ nhận mã OTP")
       this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
-      this.sinupService.generateOtpSinup(this.formforgotPassword.value.email).subscribe(
+      this.sinupService.generateOtpnewpassword(this.formforgotPassword.value.emailnew).subscribe(
         (data) => {
           if (data) {
             this.sinup = false;
@@ -76,7 +76,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   newpassword() {
     this.sinup = false;
-    this.formnewpassword.value.email = this.formforgotPassword.value.email;
+    this.formnewpassword.value.emailnew = this.formforgotPassword.value.emailnew;
     console.log(this.formnewpassword.value)
     if (this.formnewpassword.valid) {
       this.newPassService.newpassword(this.formnewpassword.value).subscribe(
@@ -99,7 +99,6 @@ export class ForgotpasswordComponent implements OnInit {
           }
         },
         (error) => {
-          console.log(error.status)
           if (error.status == 400) {
             this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
               duration: 3000

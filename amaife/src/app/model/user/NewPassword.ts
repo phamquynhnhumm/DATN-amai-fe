@@ -1,5 +1,5 @@
 export interface NewPassword {
   newPassword: string;
-  email: string;
+  emailnew: string;
   otp: string
 }

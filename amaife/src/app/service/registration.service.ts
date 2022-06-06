@@ -28,7 +28,7 @@ export class RegistrationService {
 
   readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
   readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
-  readonly API_USER_Pass = "http://localhost:8080/api/sinup"
+  readonly API_USER_Pass = "http://localhost:8080/api/forgot"
 
 
   /**
@@ -47,9 +47,13 @@ export class RegistrationService {
     return this.httpClient.get<Boolean>(this.API_USER_SINUP + "/account/otpsotpsinup/" + email, {headers: this.requestHeader});
   }
 
+  public generateOtpnewpassword(emailnew: string): Observable<Boolean> {
+    return this.httpClient.get<Boolean>(this.API_USER_Pass + "/account/otpsotnewpassword/" + emailnew, {headers: this.requestHeader});
+  }
+
 
   public newpassword(newPassword: NewPassword): Observable<Boolean> {
-    return this.httpClient.post<Boolean>(this.API_USER_Pass + "/account/newpassword", newPassword,{headers: this.requestHeader});
+    return this.httpClient.post<Boolean>(this.API_USER_Pass + "/account/newpassword", newPassword, {headers: this.requestHeader});
   }
 
   /**
