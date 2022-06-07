@@ -22,8 +22,11 @@ export class UserService {
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
   readonly URL_FindById_DELETE = "http://localhost:8080/api/admin/user/delete"
 
-
+  /**
+   * URL phía người dùng
+   */
   readonly API_USER_Pass = "http://localhost:8080/api/users"
+  readonly API_USER_FINDALLNPOTEMAIL = "http://localhost:8080/api/users/findallnotemail"
   readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/user"
 
   requestHeader = new HttpHeaders(
@@ -72,5 +75,12 @@ export class UserService {
 
   public forgotPasswordADMIN(forgotPassword: ForgotPassword): Observable<Boolean> {
     return this.httpClient.post<Boolean>(this.API_USER_Pass_ADMIN + "/account/forgot-password", forgotPassword);
+  }
+
+  /**
+   * danhh sách các tài khoản user khác với email của tài khoản hiện tại
+   */
+  public findUserByNotAccount_Email(email: string): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.API_USER_FINDALLNPOTEMAIL + "/" + email);
   }
 }

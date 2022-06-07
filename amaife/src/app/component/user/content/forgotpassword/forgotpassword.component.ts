@@ -3,7 +3,6 @@ import {Users} from "../../../../model/user/Users";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegistrationService} from "../../../../service/registration.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../../service/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -57,7 +56,6 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   otp() {
-    console.log(this.userList)
     for (const user of this.userList) {
       if (user.email === this.formforgotPassword.value.email) {
         if (this.formforgotPassword.valid) {
@@ -98,7 +96,6 @@ export class ForgotpasswordComponent implements OnInit {
   newpassword() {
     this.sinup = false;
     this.formnewpassword.value.email = this.formforgotPassword.value.email;
-    console.log(this.formnewpassword.value)
     if (this.formnewpassword.valid) {
       this.newPassService.newpassword(this.formnewpassword.value).subscribe(
         (data) => {
