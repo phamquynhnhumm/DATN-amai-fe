@@ -4,7 +4,7 @@
   <c-col xs="6">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
-        <h1><strong>Thêm mới danh mục món</strong></h1>
+        <h1><strong style="color: white" >Thêm mới danh mục món</strong></h1>
       </c-card-header>
       <c-card-body>
         <form cForm class="row g-3" [formGroup]="formFoodCategory" (ngSubmit)="onSubmit()">
@@ -17,15 +17,15 @@
             <input cFormControl type="text" class="form-control" formControlName="name" placeholder="Nhập tên danh mục">
             <small class="text-danger col-sm-10"
                    *ngIf="formFoodCategory.get('name')?.hasError('minlength') && formFoodCategory.get('name')?.touched">
-              <p>Tên danh mục phải lớn hơn 2 ký tự</p>
+              Tên danh mục phải lớn hơn 2 ký tự
             </small>
             <small class="text-danger col-sm-10"
                    *ngIf="formFoodCategory.get('name')?.hasError('required') && formFoodCategory.get('name')?.touched">
-              <p>Tên danh mục không được để trống</p>
+              Tên danh mục không được để trống
             </small>
             <small class="text-danger col-sm-10"
                    *ngIf="formFoodCategory.get('name')?.hasError('maxlength') && formFoodCategory.get('name')?.touched">
-              <p>Tên danh mục phải nhỏ hơn 255 ký tự</p></small>
+              Tên danh mục phải nhỏ hơn 255 ký tự</small>
           </c-col>
           <c-col [md]="2">
           </c-col>

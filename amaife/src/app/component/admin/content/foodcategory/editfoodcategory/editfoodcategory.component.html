@@ -1,4 +1,4 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chỉnh sửa danh mục</strong>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong  style="color: white" >Chỉnh sửa danh mục</strong>
 </h1></div>
 <hr>
 <div mat-dialog-content>
@@ -9,15 +9,15 @@
              placeholder="Nhập tên danh mục">
       <small class="text-danger col-sm-10"
              *ngIf="formFoodCategory.get('name')?.hasError('minlength') && formFoodCategory.get('name')?.touched">
-        <p>Tên danh mục phải lớn hơn 2 ký tự</p>
+        Tên danh mục phải lớn hơn 2 ký tự
       </small>
       <small class="text-danger col-sm-10"
              *ngIf="formFoodCategory.get('name')?.hasError('required') && formFoodCategory.get('name')?.touched">
-        <p>Tên danh mục không được để trống</p>
+        Tên danh mục không được để trống
       </small>
       <small class="text-danger col-sm-10"
              *ngIf="formFoodCategory.get('name')?.hasError('maxlength') && formFoodCategory.get('name')?.touched">
-        <p>Tên danh mục phải nhỏ hơn 255 ký tự</p></small>
+        Tên danh mục phải nhỏ hơn 255 ký tự</small>
     </c-col>
     <br>
     <c-col [md]="12">

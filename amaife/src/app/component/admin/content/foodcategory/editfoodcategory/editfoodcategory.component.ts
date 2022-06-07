@@ -2,9 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators} from "@angular/forms";
 import {FoodService} from "../../../../../service/food.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-editfoodcategory',
@@ -18,9 +17,7 @@ export class EditfoodcategoryComponent implements OnInit {
     private dialogRef: MatDialogRef<EditfoodcategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private snackBar: MatSnackBar,
-    private foodcategoryService: FoodService,
-    private route: Router,
-    private fb: FormBuilder) {
+    private foodcategoryService: FoodService) {
   }
 
   formFoodCategory!: FormGroup;
@@ -32,7 +29,8 @@ export class EditfoodcategoryComponent implements OnInit {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         isDeleted: new FormControl(this.data.isDeleted),
       }
-    );}
+    );
+  }
 
   bolen: boolean = false;
 
