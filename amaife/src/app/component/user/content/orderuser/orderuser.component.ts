@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {OrderDetailUserComponent} from "../order-detail-user/order-detail-user.component";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CancelorderComponent} from "../cancelorder/cancelorder.component";
 
 @Component({
   selector: 'app-orderuser',
@@ -57,15 +58,19 @@ export class OrderuserComponent implements OnInit {
   }
 
   openCancelOrder(oder: Oder) {
-    oder.status = <EStatusOrder>'CANCEL';
-    this.orderService.updateOderUser(oder).subscribe(data => {
-        this.snackBar.open("Hủy đơn hàng thành công", "OK", {
-          duration: 4000
-        })
+    this.orderService.findByIdOderUser(oder.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(CancelorderComponent, {
+          width: '450px',
+          height: '580px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
       }
     )
   }
-
 
   detailFood(oderDetail: OrderDetail
   ) {

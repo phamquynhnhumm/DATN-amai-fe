@@ -74,9 +74,9 @@ export class CheckoutComponent implements OnInit {
 
   formOrder = new FormGroup(
     {
-      address: new FormControl('', [Validators.required, Validators.min(0)]),
-      phone: new FormControl('', [Validators.required, Validators.min(0)]),
-      fullName: new FormControl('', [Validators.required, Validators.min(0)]),
+      address: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(12)]),
+      fullName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       qrcode: new FormControl(''),
       status: new FormControl(''),
       money: new FormControl(''),
@@ -115,15 +115,18 @@ export class CheckoutComponent implements OnInit {
                 this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
               }
               , error => {
-                this.snackBar.open("Cập nhật mã QR thất bại!")._dismissAfter(3000);
+                this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
+                  duration: 3000,
+                  panelClass: ['mat-toolbar', 'mat-warn']
+                })
               })
             this.newOder = data;
             this.formOrderDEtail.value.orders = this.newOder;
             this.formOrderDEtail.value.isDeleted = false;
             for (let i = 0; i < this.cartList.length; i++) {
               //Chạy vòng for đê5
-              //xóa  giỏ hàng
-              // this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
+              //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
+              this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
               let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
                 quantity: this.cartList[i].quantity,
                 food: this.cartList[i].food,
@@ -137,10 +140,62 @@ export class CheckoutComponent implements OnInit {
           },
         );
       } else {
-        this.snackBar.open("Đặt món thất bại !")._dismissAfter(3000);
+        this.snackBar.open("Đặt món thất bại! Vui lòng nhập thông tin", "OK", {
+          duration: 3000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
+      }
+    } else if (this.formOrder.value.payments == 'NO') {
+      this.formOrder.value.qrcode = "null";
+      this.formOrder.value.status = "UNCONFIRMED";
+      this.formOrder.value.money = this.totalCart;
+      this.formOrder.value.quantity = this.totalQuantityCart;
+      if (this.formOrder.valid) {
+        //Tiép tục thực hiện thêm mới Order
+        this.cartService.createOderUser(this.formOrder.value).subscribe(
+          (data) => {
+            this.OderQR = data;
+            this.cartService.createQRCode(this.OderQR).subscribe(
+              (dataQRcode) => {
+                this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
+              }
+              , error => {
+                this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
+                  duration: 3000,
+                  panelClass: ['mat-toolbar', 'mat-warn']
+                })
+              })
+            this.newOder = data;
+            this.formOrderDEtail.value.orders = this.newOder;
+            this.formOrderDEtail.value.isDeleted = false;
+            for (let i = 0; i < this.cartList.length; i++) {
+              //Chạy vòng for đê5
+              //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
+              this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
+              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+                quantity: this.cartList[i].quantity,
+                food: this.cartList[i].food,
+                orders: this.formOrderDEtail.value.orders,
+                isDeleted: this.formOrderDEtail.value.isDeleted,
+              };
+              this.listOderDetail.push(<OrderDetail>newOderDetail);
+            }
+            this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
+            this.route.navigateByUrl("/home").then(() =>
+              this.snackBar.open(" Đặt món thành công!. Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000));
+          },
+        );
+      } else {
+        this.snackBar.open("Đặt món thất bại ! Vui lòng nhập thông tin", "OK", {
+          duration: 3000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
       }
     } else {
-      this.snackBar.open("Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000);
+      this.snackBar.open("Vui lòng chọn phương thức thanh toán", "OK", {
+        duration: 3000,
+        panelClass: ['mat-toolbar', 'mat-warn']
+      })
     }
   }
 }

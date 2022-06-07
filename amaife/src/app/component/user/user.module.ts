@@ -27,6 +27,7 @@ import {NgxPayPalModule} from "ngx-paypal";
 import {MatDialogModule} from "@angular/material/dialog";
 import {SinupUserComponent} from './content/sinup-user/sinup-user.component';
 import { ForgotpasswordComponent } from './content/forgotpassword/forgotpassword.component';
+import { CancelorderComponent } from './content/cancelorder/cancelorder.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ForgotpasswordComponent } from './content/forgotpassword/forgotpassword
     FoodCategoryComponent,
     PaypalComponent,
     SinupUserComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    CancelorderComponent
   ],
     exports: [
         NavUserComponent,

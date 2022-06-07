@@ -40,9 +40,9 @@ export class HomeuserComponent implements OnInit {
 
   formCLass = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, Validators.min(0)]),
-      phone: new FormControl('', [Validators.required, Validators.min(0)]),
-      content: new FormControl('', [Validators.required, Validators.min(0)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      phone: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      content: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
     }
   )
 
@@ -70,7 +70,7 @@ export class HomeuserComponent implements OnInit {
 
   onSubmit() {
 
-    // if (this.formCLass.valid) {
+    if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
           this.snackBar.open("Đăng ký thành công !")._dismissAfter(3000);
@@ -78,5 +78,11 @@ export class HomeuserComponent implements OnInit {
           this.snackBar.open("Đăng ký thấy bại !")._dismissAfter(3000);
         }
       )
+    } else {
+      this.snackBar.open("Đăng ký thất bại", "OK", {
+        duration: 3000,
+        panelClass: ['mat-toolbar', 'mat-warn']
+      })
+    }
   }
 }

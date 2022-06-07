@@ -69,7 +69,7 @@
           <ul>
             <li>Tổng tiền <span>{{totalCart | currency :'VND'}}</span></li>
           </ul>
-          <a style="text-decoration: none" routerLink="/checkout" class="primary-btn">Tiến hành thanh toán</a>
+          <a style="text-decoration: none" (click)="checkout(totalCart)" class="primary-btn">Tiến hành thanh toán</a>
         </div>
       </div>
     </div>

@@ -34,14 +34,12 @@ export class ShopingcartComponent implements OnInit {
       dataCart => {
         this.p = 1;
         this.cartList = dataCart;
-        console.log(dataCart)
       }
     );
     // @ts-ignore
     this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
       data => {
         this.totalCart = data;
-        console.log(this.totalCart)
       }
     )
   }
@@ -83,5 +81,16 @@ export class ShopingcartComponent implements OnInit {
       error => {
         this.snackBar.open("Cập nhật số lượng thấy bại !")._dismissAfter(3000);
       });
+  }
+
+  checkout(totalCart: number) {
+    if (totalCart == null) {
+      this.snackBar.open("Giỏ hàng đang rỗng,vui lòng chọn món", "OK", {
+        duration: 3000,
+        panelClass: ['mat-toolbar', 'mat-warn']
+      })
+    } else {
+      location.replace("/checkout");
+    }
   }
 }

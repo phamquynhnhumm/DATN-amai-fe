@@ -30,7 +30,11 @@
                     <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
                     <small class="text-danger col-sm-10"
                            *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched">
-                      <p>Tên người nhận không được để trống</p>
+                      Tên người nhận không được để trống
+                    </small>
+                    <small class="text-danger col-sm-10 validate "
+                           *ngIf="formOrder.get('fullName')?.hasError('minlength') || formOrder.get('fullName')?.hasError('maxlength') && formOrder.get('fullName')?.touched">
+                      Họ tên phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
                     </small>
                   </div>
                 </div>
@@ -40,17 +44,26 @@
                     <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
                     <small class="text-danger col-sm-10"
                            *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
-                      <p>Số điện thoại không được để trống</p>
+                      Số điện thoại không được để trống
+                    </small>
+                    <small class="text-danger col-sm-10 validate "
+                           *ngIf="formOrder.get('phone')?.hasError('minlength') || formOrder.get('phone')?.hasError('maxlength') && formOrder.get('phone')?.touched">
+                      Số điện thoại có độ dài lớn hơn 10 ký tự và phải nhỏ hơn 12 ký tự
                     </small>
                   </div>
                 </div>
               </div>
               <div class="checkout__input">
                 <p>Địa chỉ<span>*</span></p>
+                <span style="color: #FFC107;font-size: small">Nếu bạn tới cửa hàng, vui lòng nhập thời gian tới để chúng tôi chuẩn bị chuẩn bị đón tiếp bạn!</span>
                 <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
                 <small class="text-danger col-sm-10"
                        *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched">
-                  <p>Địa chỉ không được để trống</p>
+                  Địa chỉ không được để trống
+                </small>
+                <small class="text-danger col-sm-10 validate "
+                       *ngIf="formOrder.get('address')?.hasError('minlength') || formOrder.get('address')?.hasError('maxlength') && formOrder.get('address')?.touched">
+                  Địa chỉ có độ dài lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
                 </small>
               </div>
               <div class="row">
