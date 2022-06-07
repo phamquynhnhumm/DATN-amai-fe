@@ -1,4 +1,6 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong>Chỉnh sửa danh mục</strong>
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Chỉnh
+  sửa nhà cung
+  cấp</strong>
 </h1></div>
 <hr>
 <div mat-dialog-content>
@@ -8,38 +10,46 @@
       <input cFormControl type="text" class="form-control" name="name" formControlName="name">
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('name')?.hasError('minlength') && formSupplier.get('name')?.touched">
-        <p>Tên nhà cung cấp phải lớn hơn 2 ký tự</p>
+        nhà cung cấp phải lớn hơn 2 ký tự
       </small>
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('name')?.hasError('required') && formSupplier.get('name')?.touched">
-        <p>Tên nhà cung cấp không được để trống</p>
+        Tên nhà cung cấp không được để trống
       </small>
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('name')?.hasError('maxlength') && formSupplier.get('name')?.touched">
-        <p>Tên nhà cung cấp phải nhỏ hơn 255 ký tự</p></small>
+        Tên nhà cung cấp phải nhỏ hơn 255 ký tự</small>
     </c-col>
     <c-col [md]="12">
       <label cLabel>Email</label>
       <input cFormControl type="text" class="form-control" name="email" formControlName="email">
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('email')?.hasError('required') && formSupplier.get('email')?.touched">
-        <p>Email không được để trống</p>
+        Email không được để trống
+      </small>
+      <small class="form-text text-danger validate"
+             *ngIf="formSupplier.get('email')?.hasError('email')  && formSupplier.get('email')?.dirty">
+        Không đúng định dạng email
       </small>
     </c-col>
     <c-col [md]="12">
       <label cLabel>Số điện thoại</label>
-      <input cFormControl type="text" class="form-control"  formControlName="phone">
+      <input cFormControl type="text" class="form-control" formControlName="phone">
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.touched">
-        <p>Số điện thoại không được để trống</p>
+        Số điện thoại không được để trống
+      </small>
+      <small class="form-text text-danger validate"
+             *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.parent && formSupplier.get('phone')?.touched">
+        Số điện thoại không đúng định dạng
       </small>
     </c-col>
     <c-col [md]="12">
       <label cLabel>Địa chỉ</label>
-      <input cFormControl type="text" class="form-control"  formControlName="address">
+      <input cFormControl type="text" class="form-control" formControlName="address">
       <small class="text-danger col-sm-10"
              *ngIf="formSupplier.get('address')?.hasError('required') && formSupplier.get('address')?.touched">
-        <p>Địa chỉ không được để trống</p>
+        Địa chỉ không được để trống
       </small>
     </c-col>
     <br>

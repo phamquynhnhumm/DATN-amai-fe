@@ -32,9 +32,9 @@ export class EditsupplierComponent implements OnInit {
     this.formSupplier = new FormGroup(
       {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-        email: new FormControl(this.data.email, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+        email: new FormControl(this.data.email, [Validators.required, Validators.email]),
         address: new FormControl(this.data.address, [Validators.required, Validators.min(0)]),
-        phone: new FormControl(this.data.phone, [Validators.required, Validators.min(0)]),
+        phone: new FormControl(this.data.phone, [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
         isDeleted: new FormControl(this.data.isDeleted),
       }
     );
@@ -45,7 +45,7 @@ export class EditsupplierComponent implements OnInit {
   cencal() {
     this.bolen = true;
     this.dialogRef.close();
-    this.snackBar.open("Hủy cập nhật danh mục", "OK", {
+    this.snackBar.open("Hủy cập nhật nhà cung cấp", "OK", {
       duration: 4000
     })
   }

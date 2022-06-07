@@ -26,9 +26,9 @@ export class CreatesupplierComponent implements OnInit {
   formSupplier = new FormGroup(
     {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      email: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       address: new FormControl('', [Validators.required, Validators.min(0)]),
-      phone: new FormControl('', [Validators.required, Validators.min(0)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
       materialList: new FormArray([]),
     }
   )

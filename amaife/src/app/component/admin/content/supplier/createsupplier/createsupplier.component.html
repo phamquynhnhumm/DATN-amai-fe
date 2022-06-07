@@ -4,7 +4,7 @@
   <c-col xs="9">
     <c-card class="mb-4">
       <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
-        <h1><strong>THÊM MỚI NHÀ CUNG CẤP</strong></h1>
+        <h1><strong style="color: white">THÊM MỚI NHÀ CUNG CẤP</strong></h1>
       </c-card-header>
       <c-card-body><br>
         <form cForm class="row g-3" [formGroup]="formSupplier" (ngSubmit)="onSubmit()">
@@ -15,8 +15,12 @@
             <c-col [md]="8">
               <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên nhà cung cấp">
               <small class="text-danger col-sm-10"
-                     *ngIf="formSupplier.get('name')?.hasError('required') && formSupplier.get('name')?.touched">
-                <p>Tên nhà cung cấp không được để trống</p>
+                     *ngIf="formSupplier.get('name')?.hasError('required') && formSupplier.get('name')?.touched">Tên nhà
+                cung cấp không được để trống
+              </small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formSupplier.get('name')?.hasError('minlength') || formSupplier.get('name')?.hasError('maxlength') && formSupplier.get('name')?.touched">
+                Tên phải lớn hơn 3 ký tự và phải nhỏ hơn 255 ký tự
               </small>
             </c-col>
           </c-row>
@@ -29,7 +33,11 @@
               <input type="email" class="form-control" formControlName="email" placeholder="Nhập email">
               <small class="text-danger col-sm-10"
                      *ngIf="formSupplier.get('email')?.hasError('required') && formSupplier.get('email')?.touched">
-                <p>Email không được để trống</p></small>
+                Email không được để trống</small>
+              <small class="form-text text-danger validate"
+                     *ngIf="formSupplier.get('email')?.hasError('email')  && formSupplier.get('email')?.dirty">
+                Không đúng định dạng email
+              </small>
             </c-col>
           </c-row>
           <br><br><br>
@@ -38,10 +46,10 @@
               <label class="col-sm-12 col-form-label"><strong>Địa chỉ</strong></label>
             </c-col>
             <c-col [md]="8">
-              <input type="text" class="form-control" formControlName="address" placeholder="Nhập giá bán">
+              <input type="text" class="form-control" formControlName="address" placeholder="Nhập địa chỉ">
               <small class="text-danger col-sm-10"
                      *ngIf="formSupplier.get('address')?.hasError('required') && formSupplier.get('address')?.touched">
-                <p>Địa chỉ không được để trống</p>
+                Địa chỉ không được để trống
               </small>
             </c-col>
           </c-row>
@@ -54,7 +62,12 @@
               <input type="tel" class="form-control" formControlName="phone" placeholder="Nhập số điện thoại">
               <small class="text-danger col-sm-10"
                      *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.touched">
-                <p>Số điện thoại không được để trống</p>
+                Số điện thoại không được để trống
+              </small>
+
+              <small class="form-text text-danger validate"
+                     *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.parent && formSupplier.get('phone')?.touched">
+                Số điện thoại không đúng định dạng
               </small>
             </c-col>
           </c-row>
