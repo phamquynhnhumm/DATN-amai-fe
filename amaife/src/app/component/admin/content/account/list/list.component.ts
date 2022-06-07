@@ -6,7 +6,6 @@ import {Users} from "../../../../../model/user/Users";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
-import {signOut} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-list',
@@ -20,6 +19,8 @@ export class ListComponent implements OnInit {
   idUser!: string | null;
   url: string = "";
   selectedFile = File;
+  userList: Array<Users> = [];
+  email: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -54,21 +55,24 @@ export class ListComponent implements OnInit {
     // @ts-ignore
     this.userService.findByIdUser(this.idUser).subscribe(
       dataUser => {
-        console.log(dataUser)
         this.user = dataUser;
+        this.userService.findUserByNotAccount_EmailADMIN(this.user.email).subscribe(
+          (data) => {
+            this.userList = data;
+            console.log(this.userList);
+          })
         this.formUser = new FormGroup(
           {
             id: new FormControl(this.user.id, Validators.required),
             isDeleted: new FormControl(this.user.isDeleted, Validators.required),
-            fullName: new FormControl(this.user.fullName, Validators.required),
+            fullName: new FormControl(this.user.fullName, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
             birthday: new FormControl(this.user.birthday, Validators.required),
             email: new FormControl(this.user.email, [Validators.required, Validators.email]),
-            phone: new FormControl(this.user.phone, Validators.required),
-            // phone: new FormControl(this.user.phone, [Validators.required, Validators.pattern("^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$")]),
+            phone: new FormControl(this.user.phone, [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
             gender: new FormControl(this.user.gender, Validators.required),
             image: new FormControl(this.user.image, Validators.required),
             account: new FormControl(this.user.account, Validators.required),
-            address: new FormControl(this.user.address, Validators.required),
+            address: new FormControl(this.user.address, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
           }
         );
       }
@@ -77,25 +81,38 @@ export class ListComponent implements OnInit {
 
 
   updateUser() {
-    if (this.formUser.valid) {
-      console.log(this.formUser.value);
-      this.user = this.formUser.value;
-      this.userService.updateUser(this.user).subscribe(
-        () => {
-          this.snackBar.open("Cập nhập tài khoản thành công", "OK", {
-            duration: 4000
-          })
-        },
-        error => {
-          this.snackBar.open("Cập nhập thất bại", "OK", {
-            duration: 4000
-          })
-        }
-      )
-    } else {
-      this.snackBar.open("Cập nhập thất bại", "OK", {
-        duration: 4000
-      })
+    console.log(this.userList);
+    for (const user of this.userList) {
+      if (user.email === this.formUser.value.email) {
+        this.snackBar.open("Email đã trùng với tài khoản khác", "OK", {
+          duration: 10000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
+        this.email = true;
+        break;
+      } else this.email = false;
+    }
+    if (!this.email) {
+      if (this.formUser.valid) {
+        console.log(this.formUser.value);
+        this.user = this.formUser.value;
+        this.userService.updateUser(this.user).subscribe(
+          () => {
+            this.snackBar.open("Cập nhập tài khoản thành công", "OK", {
+              duration: 4000
+            })
+          },
+          error => {
+            this.snackBar.open("Cập nhập thất bại", "OK", {
+              duration: 4000
+            })
+          }
+        )
+      } else {
+        this.snackBar.open("Cập nhập thất bại", "OK", {
+          duration: 4000
+        })
+      }
     }
   }
 
@@ -116,7 +133,6 @@ export class ListComponent implements OnInit {
                     panelClass: ['mat-toolbar', 'mat-primary']
 
                   })
-                  // window.location.reload();
                 }
               );
               this.url = "";

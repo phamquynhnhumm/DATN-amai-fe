@@ -20,6 +20,7 @@ export class UserService {
   readonly URL_UN_USER = "http://localhost:8080/api/admin/user/undelete"
   readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
+  readonly API_USER_FINDALLNPOTEMAIL_ADMIN = "http://localhost:8080/api/admin/user/findallnotemail"
   readonly URL_FindById_DELETE = "http://localhost:8080/api/admin/user/delete"
 
   /**
@@ -82,5 +83,12 @@ export class UserService {
    */
   public findUserByNotAccount_Email(email: string): Observable<Array<Users>> {
     return this.httpClient.get<Array<Users>>(this.API_USER_FINDALLNPOTEMAIL + "/" + email);
+  }
+
+  /**
+   * danhh sách các tài khoản user khác với email của tài khoản hiện tại
+   */
+  public findUserByNotAccount_EmailADMIN(email: string): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.API_USER_FINDALLNPOTEMAIL_ADMIN + "/" + email);
   }
 }

@@ -41,7 +41,6 @@ export class AccountuserComponent implements OnInit {
         this.AccountfindAllService.findUserByNotAccount_Email(this.user.email).subscribe(
           (data) => {
             this.userList = data;
-            console.log(this.userList);
           }
         )
         this.formUser = new FormGroup(
@@ -102,7 +101,6 @@ export class AccountuserComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.userList);
     for (const user of this.userList) {
       if (user.email === this.formUser.value.email) {
         this.snackBar.open("Email đã trùng với tài khoản khác", "OK", {

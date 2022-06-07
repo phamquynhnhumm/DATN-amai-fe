@@ -34,6 +34,10 @@
                      *ngIf="formUser.get('fullName')?.hasError('required') && formUser.get('fullName')?.touched">
                 Họ tên không được để trống
               </small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formUser.get('fullName')?.hasError('minlength') || formUser.get('fullName')?.hasError('maxlength') && formUser.get('fullName')?.touched">
+                Họ tên phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+              </small>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-6">
@@ -48,7 +52,6 @@
                   Không đúng định dạng email
                 </small>
               </div>
-              <!-- Form Group (location)-->
               <div class="col-md-6">
                 <label class="small mb-1">Số điện thoại</label>
                 <input class="form-control" type="text" formControlName="phone">
@@ -57,7 +60,7 @@
                   Số điện thoại không được để trống
                 </small>
                 <small class="form-text text-danger validate"
-                       *ngIf="formUser.get('phone')?.hasError('pattern')  && formUser.get('phone')?.dirty">
+                       *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.parent && formUser.get('phone')?.touched">
                   Số điện thoại không đúng định dạng
                 </small>
               </div>
@@ -85,6 +88,14 @@
             <div class="mb-3">
               <label class="small mb-1">Địa chỉ</label>
               <input class="form-control" formControlName="address">
+              <small class="text-danger col-sm-10 validate"
+                     *ngIf="formUser.get('address')?.hasError('required') && formUser.get('address')?.touched">
+                Địa chỉ không được để trống
+              </small>
+              <small class="text-danger col-sm-10 validate "
+                     *ngIf="formUser.get('address')?.hasError('minlength') || formUser.get('address')?.hasError('maxlength') && formUser.get('address')?.touched">
+                Địa chỉ phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+              </small>
             </div>
             <button type="submit" class="btn btn-outline-info">Lưu thay đổi</button>
           </form>
