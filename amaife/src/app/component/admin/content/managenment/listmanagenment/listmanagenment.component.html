@@ -54,12 +54,12 @@
           <tbody *ngIf="users != null">
           <tr class="even pointer"
               *ngFor="let user of users | paginate :{itemsPerPage:5,currentPage : p}"
-              (click)="openDetailCustomer(user)">
-            <td>{{user.account.userName}}</td>
-            <td>{{user.fullName}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.email}}</td>
-            <td> {{user.address}}</td>
+          >
+            <td (click)="openDetailCustomer(user)">{{user.account.userName}}</td>
+            <td (click)="openDetailCustomer(user)">{{user.fullName}}</td>
+            <td (click)="openDetailCustomer(user)">{{user.phone}}</td>
+            <td (click)="openDetailCustomer(user)">{{user.email}}</td>
+            <td (click)="openDetailCustomer(user)"> {{user.address}}</td>
             <td *ngIf="auth.getRole() == 'ROLE_ADMIN'">
               <div>
                 <a (click)="updatqRole(user)" class="btn btn-success" data-toggle="modal">

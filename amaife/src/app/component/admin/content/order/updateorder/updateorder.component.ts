@@ -1,10 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import { FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Oder} from "../../../../../model/order/Oder";
 import {OrderService} from "../../../../../service/order.service";
-import {EStatusOrder} from "../../../../../model/order/EStatusOrder";
 
 @Component({
   selector: 'app-updateorder',
@@ -13,8 +12,9 @@ import {EStatusOrder} from "../../../../../model/order/EStatusOrder";
 })
 export class UpdateorderComponent implements OnInit {
 
+
   oder!: Oder;
-  eStatusOrder = ['UNCONFIRMED', 'CONFIRMED','TRANSPORT','RECEIVED','CANCEL']
+  eStatusOrder = ['UNCONFIRMED', 'CONFIRMED', 'TRANSPORT', 'RECEIVED', 'CANCEL']
 
   constructor(
     private dialogRef: MatDialogRef<UpdateorderComponent>,
@@ -55,7 +55,7 @@ export class UpdateorderComponent implements OnInit {
       this.formFoodOder.value.isDeleted = false;
     }
     if (this.formFoodOder.valid) {
-      console.log( this.formFoodOder.value)
+      console.log(this.formFoodOder.value)
       this.oder.status = this.formFoodOder.value.status;
       if (!this.bolen) {
         this.oder.isDeleted = this.formFoodOder.value.isDeleted;
