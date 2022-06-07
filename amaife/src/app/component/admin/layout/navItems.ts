@@ -66,57 +66,57 @@ export const navItems: INavData[] = [
       }
     ]
   },
-  {
-    name: 'QUẢN LÝ KHO',
-    iconComponent: {name: 'cil-star'},
-    url: '/icons',
-    children: [
-      {
-        name: 'Phiếu nhập',
-        url: '/icons/coreui-icons',
-        // badge: {
-        //   color: 'success',
-        //   text: 'FREE'
-        // }
-      },
-      {
-        name: 'Nguyên liệu',
-        url: '/material'
-      },
-      {
-        name: 'Nhập nguyên liệu',
-        url: '/icons/brands'
-      }
-    ]
-  },
-  {
-    name: 'THỐNG KÊ',
-    url: '/notifications',
-    iconComponent: {name: 'cil-bell'},
-    children: [
-      {
-        name: 'Thống kê đơn hàng',
-        url: '/notifications/alerts'
-      },
-      {
-        name: 'Thống kê khách hàng',
-        url: '/notifications/badges'
-      },
-      {
-        name: 'Thống kê nhà cung cấp',
-        url: '/notifications/modal'
-      },
-      {
-        name: 'Thống kê nguyên liệu',
-        url: '/notifications/toasts'
-      }
-      ,
-      {
-        name: 'Thống kê thu chi',
-        url: '/notifications/toasts'
-      }
-    ]
-  },
+  // {
+  //   name: 'QUẢN LÝ KHO',
+  //   iconComponent: {name: 'cil-star'},
+  //   url: '/icons',
+  //   children: [
+  //     {
+  //       name: 'Phiếu nhập',
+  //       url: '/icons/coreui-icons',
+  //       // badge: {
+  //       //   color: 'success',
+  //       //   text: 'FREE'
+  //       // }
+  //     },
+  //     {
+  //       name: 'Nguyên liệu',
+  //       url: '/material'
+  //     },
+  //     {
+  //       name: 'Nhập nguyên liệu',
+  //       url: '/icons/brands'
+  //     }
+  //   ]
+  // },
+  // {
+  //   name: 'THỐNG KÊ',
+  //   url: '/notifications',
+  //   iconComponent: {name: 'cil-bell'},
+  //   children: [
+  //     {
+  //       name: 'Thống kê đơn hàng',
+  //       url: '/notifications/alerts'
+  //     },
+  //     {
+  //       name: 'Thống kê khách hàng',
+  //       url: '/notifications/badges'
+  //     },
+  //     {
+  //       name: 'Thống kê nhà cung cấp',
+  //       url: '/notifications/modal'
+  //     },
+  //     {
+  //       name: 'Thống kê nguyên liệu',
+  //       url: '/notifications/toasts'
+  //     }
+  //     ,
+  //     {
+  //       name: 'Thống kê thu chi',
+  //       url: '/notifications/toasts'
+  //     }
+  //   ]
+  // },
   {
     name: 'THÙNG RÁC',
     url: '/deletefoodandcategory',

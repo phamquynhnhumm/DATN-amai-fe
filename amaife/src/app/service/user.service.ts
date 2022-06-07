@@ -8,6 +8,7 @@ import {ERole} from "../model/user/ERole";
 import {Oder} from "../model/order/Oder";
 import {Food} from "../model/food/Food";
 import {NewPassword} from "../model/user/NewPassword";
+import {Account} from "../model/user/Account";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,13 @@ export class UserService {
   readonly API_USER_Pass = "http://localhost:8080/api/users"
   readonly API_USER_FINDALLNPOTEMAIL = "http://localhost:8080/api/users/findallnotemail"
   readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/user"
+
+  /**
+   * URL đang ký tài khoản nhân viên
+   */
+  readonly API_USER_LISTUSER = "http://localhost:8080/api/admin/user/userlist"
+  readonly API_USER_SINUP = "http://localhost:8080/api/admin/user"
+
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
@@ -91,4 +99,38 @@ export class UserService {
   public findUserByNotAccount_EmailADMIN(email: string): Observable<Array<Users>> {
     return this.httpClient.get<Array<Users>>(this.API_USER_FINDALLNPOTEMAIL_ADMIN + "/" + email);
   }
+
+  /**
+   * Đăng ký tài khoản nhân viên
+   */
+  public finAllUser(): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.API_USER_LISTUSER);
+  }
+
+  /**
+   * gửi mã OTP để Đăng ký tài khoản hoặc lấy lại mật khẩu
+   * @param email
+   */
+  public generateOtpSinup(email: string): Observable<Boolean> {
+    return this.httpClient.get<Boolean>(this.API_USER_SINUP + "/account/otpsotpsinup/" + email);
+  }
+
+  /**
+   * Thực hiện thêm mới account
+   * @param accountSinup
+   * @constructor
+   */
+  public CreateaccountSinup(accountSinup: AccountSinup): Observable<Account> {
+    return this.httpClient.post<Account>(this.API_USER_SINUP + "/account/register", accountSinup);
+  }
+
+  /**
+   * Thêm mới đồng thời tài khoản user khi thêm account thành công
+   * @param users
+   * @constructor
+   */
+  public CreateUser(users: Users): Observable<Users> {
+    return this.httpClient.post<Users>(this.API_USER_SINUP + "/user/create", users);
+  }
+
 }

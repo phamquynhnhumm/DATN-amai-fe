@@ -80,6 +80,7 @@ import { ListClassComponent } from './content/class/list-class/list-class.compon
 import { UpdateClassComponent } from './content/class/update-class/update-class.component';
 import { DeleteClassComponent } from './content/class/delete-class/delete-class.component';
 import { ListShopComponent } from './content/shop/list-shop/list-shop.component';
+import { SinupAdminComponent } from './content/account/sinup-admin/sinup-admin.component';
 
 
 @NgModule({
@@ -138,7 +139,8 @@ import { ListShopComponent } from './content/shop/list-shop/list-shop.component'
     ListClassComponent,
     UpdateClassComponent,
     DeleteClassComponent,
-    ListShopComponent
+    ListShopComponent,
+    SinupAdminComponent
   ],
     exports: [
         LayoutComponent,

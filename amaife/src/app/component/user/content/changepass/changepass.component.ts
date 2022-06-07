@@ -3,6 +3,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {UserService} from "../../../../service/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Users} from "../../../../model/user/Users";
 
 @Component({
   selector: 'app-changepass',
@@ -14,7 +15,8 @@ export class ChangepassComponent implements OnInit {
   isInputOtp: boolean = false;
   userName: string = "";
   isGetOtp: boolean = true;
-
+  user !: Users;
+  idUser!: string | null;
   fieldTextType: boolean | any;
 
   constructor(private userService: UserService,
@@ -30,6 +32,12 @@ export class ChangepassComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.idUser = this.authService.getIdUser();
+    // @ts-ignore
+    this.userService.findByIdUser(this.idUser).subscribe(
+      dataUser => {
+        this.user = dataUser;
+      });
   }
 
   sendOtp(userName: string) {

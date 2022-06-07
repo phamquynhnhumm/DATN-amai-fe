@@ -50,6 +50,12 @@
           Tài Khoản
         </a>
       </li>
+      <li *ngIf="authService.getRole() == 'ROLE_ADMIN'">
+        <a routerLink="/sinupadmin" cDropdownItem>
+          <svg class="me-2" [cIcon]="icons.cilUser"></svg>
+          Thêm mới tài khoản nhân viên
+        </a>
+      </li>
       <li></li>
       <li>
         <a *ngIf="! isLoggedIn()" (click)="login()" cDropdownItem>
