@@ -102,7 +102,6 @@ export class RegistrationService {
   /**
    * hiểnn thị all các user để nhằm xét tránh email trùng lăp
    */
-
   public finAllUser(): Observable<Array<Users>> {
     return this.httpClient.get<Array<Users>>(this.API_USER_LISTUSER, {headers: this.requestHeader});
   }

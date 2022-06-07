@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegistrationService} from "../../../../service/registration.service";
 import {Users} from "../../../../model/user/Users";
-import {UserService} from "../../../../service/user.service";
 
 @Component({
   selector: 'app-sinup-user',
@@ -15,10 +14,10 @@ export class SinupUserComponent implements OnInit {
   user!: Users;
   userList: Array<Users> = [];
   email: boolean = false;
+  username: boolean = false;
 
   constructor(private matSnackBar: MatSnackBar,
               private sinupService: RegistrationService,
-              private userService: UserService
   ) {
   }
 
@@ -26,7 +25,6 @@ export class SinupUserComponent implements OnInit {
     this.sinupService.finAllUser().subscribe(
       (data) => {
         this.userList = data;
-        console.log(this.userList)
       }
     )
   }
@@ -34,7 +32,7 @@ export class SinupUserComponent implements OnInit {
   formSinUp = new FormGroup(
     {
       fullName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', Validators.required),
     }
   )
@@ -58,12 +56,11 @@ export class SinupUserComponent implements OnInit {
   }
 
   otp() {
-    console.log(this.userList)
     for (const user of this.userList) {
       if (user.email === this.formSinUp.value.email) {
         this.matSnackBar.open("Email đã tồng tại vui lòng đăng ký email mới", "OK", {
           duration: 10000,
-          panelClass: ['mat-toolbar', 'mat-toolbar']
+          panelClass: ['mat-toolbar', 'mat-warn']
         })
         this.email = true;
         break;
@@ -84,7 +81,7 @@ export class SinupUserComponent implements OnInit {
             } else {
               this.matSnackBar.open("Tài khoản chưa xác thực, lấy mã otp thất bại", "OK", {
                 duration: 3000,
-                panelClass: ['mat-toolbar', 'mat-primary']
+                panelClass: ['mat-toolbar', 'mat-warn']
               });
             }
           }, error => {
@@ -97,39 +94,51 @@ export class SinupUserComponent implements OnInit {
     }
   }
 
-
   sinups() {
     this.sinup = false;
     this.formCreateAccount.value.email = this.formSinUp.value.email;
     this.FormUser.value.fullName = this.formSinUp.value.fullName;
     this.FormUser.value.email = this.formSinUp.value.email;
     this.FormUser.value.phone = this.formSinUp.value.phone;
-    if (this.formCreateAccount.valid) {
-      this.sinupService.CreateaccountSinup(this.formCreateAccount.value).subscribe(
-        (data) => {
-          this.FormUser.value.account = data;
-          this.sinupService.CreateUser(this.FormUser.value).subscribe(
-            (data) => {
-              this.matSnackBar.open("Đăng ký tài khoản thành công", "Đóng", {
-                duration: 3000,
-                panelClass: ['mat-toolbar', 'mat-primary']
-              })
-            }, error => {
-              this.matSnackBar.open("Đăng ký tài khoản thất bại", "Đóng", {
-                duration: 3000,
-                panelClass: ['mat-toolbar', 'mat-warn'],
-              })
-            }
-          )
-        }, error => {
-          this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
-            duration: 3000,
-            panelClass: ['mat-toolbar', 'mat-warn'],
-          })
-        }
-      )
-    } else {
-      this.matSnackBar.open("Tạo mới tài khoản thấy bại !")._dismissAfter(3000);
+    for (const user of this.userList) {
+      if (user.account.userName === this.formCreateAccount.value.userName) {
+        this.matSnackBar.open("Tên tài khoản đã tồng tại", "OK", {
+          duration: 10000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
+        this.username = true;
+        break;
+      } else this.username = false;
+    }
+    if (!this.username) {
+      if (this.formCreateAccount.valid) {
+        this.sinupService.CreateaccountSinup(this.formCreateAccount.value).subscribe(
+          (data) => {
+            this.FormUser.value.account = data;
+            this.sinupService.CreateUser(this.FormUser.value).subscribe(
+              (data) => {
+                this.matSnackBar.open("Đăng ký tài khoản thành công", "Đóng", {
+                  duration: 3000,
+                  panelClass: ['mat-toolbar', 'mat-primary']
+                })
+                location.replace("/login");
+              }, error => {
+                this.matSnackBar.open("Đăng ký tài khoản thất bại", "Đóng", {
+                  duration: 3000,
+                  panelClass: ['mat-toolbar', 'mat-warn'],
+                })
+              }
+            )
+          }, error => {
+            this.matSnackBar.open("Mã OTP không đúng", "Đóng", {
+              duration: 3000,
+              panelClass: ['mat-toolbar', 'mat-warn'],
+            })
+          }
+        )
+      } else {
+        this.matSnackBar.open("Tạo mới tài khoản thấy bại !")._dismissAfter(3000);
+      }
     }
   }
 

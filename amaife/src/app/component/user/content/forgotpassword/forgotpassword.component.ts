@@ -15,6 +15,8 @@ export class ForgotpasswordComponent implements OnInit {
 
   sinup: boolean = true;
   user!: Users;
+  userList: Array<Users> = [];
+  email: boolean = false;
 
   constructor(private matSnackBar: MatSnackBar,
               private sinupService: RegistrationService,
@@ -24,11 +26,16 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sinupService.finAllUser().subscribe(
+      (data) => {
+        this.userList = data;
+      }
+    )
   }
 
   formforgotPassword = new FormGroup(
     {
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
     }
   )
   FormUser = new FormGroup(
@@ -50,28 +57,41 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   otp() {
-    if (this.formforgotPassword.valid) {
-      this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
-      this.sinupService.generateOtpnewpassword(this.formforgotPassword.value.email).subscribe(
-        (data) => {
-          if (data) {
-            this.sinup = false;
-            this.matSnackBar.open("Đã gửi mã OTP thành công đến email", "OK", {
-              duration: 10000,
-              panelClass: ['mat-toolbar', 'mat-primary']
-            })
-          } else {
-            this.matSnackBar.open("Tài khoản chưa xác thực, lấy mã otp thất bại", "OK", {
-              duration: 3000,
-              panelClass: ['mat-toolbar', 'mat-primary']
-            });
-          }
-        }, error => {
-          this.matSnackBar.open("Hệ thống không tìm thấy email của bạn!", "Đóng", {
-            duration: 3000
-          });
+    console.log(this.userList)
+    for (const user of this.userList) {
+      if (user.email === this.formforgotPassword.value.email) {
+        if (this.formforgotPassword.valid) {
+          this.matSnackBar.open("Mã OTP đang được gửi đến email của bạn...");
+          this.sinupService.generateOtpnewpassword(this.formforgotPassword.value.email).subscribe(
+            (data) => {
+              if (data) {
+                this.sinup = false;
+                this.matSnackBar.open("Đã gửi mã OTP thành công đến email", "OK", {
+                  duration: 10000,
+                  panelClass: ['mat-toolbar', 'mat-primary']
+                })
+              } else {
+                this.matSnackBar.open("Tài khoản chưa xác thực, lấy mã otp thất bại", "OK", {
+                  duration: 3000,
+                  panelClass: ['mat-toolbar', 'mat-primary']
+                });
+              }
+            }, error => {
+              this.matSnackBar.open("Hệ thống không tìm thấy email của bạn!", "Đóng", {
+                duration: 3000
+              });
+            }
+          )
         }
-      )
+        this.email = true;
+        break;
+      } else this.email = false;
+    }
+    if (!this.email) {
+      this.matSnackBar.open("Email của bạn chưa đăng ký", "OK", {
+        duration: 10000,
+        panelClass: ['mat-toolbar', 'mat-warn']
+      })
     }
   }
 
