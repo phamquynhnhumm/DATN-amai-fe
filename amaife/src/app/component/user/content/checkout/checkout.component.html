@@ -46,10 +46,11 @@
                            *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
                       Số điện thoại không được để trống
                     </small>
-                    <small class="text-danger col-sm-10 validate "
-                           *ngIf="formOrder.get('phone')?.hasError('minlength') || formOrder.get('phone')?.hasError('maxlength') && formOrder.get('phone')?.touched">
-                      Số điện thoại có độ dài lớn hơn 10 ký tự và phải nhỏ hơn 12 ký tự
-                    </small>
+                    <small class="form-text text-danger validate"
+                                    *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.parent && formOrder.get('phone')?.touched">
+                    Số điện thoại không đúng định dạng
+                  </small>
+
                   </div>
                 </div>
               </div>

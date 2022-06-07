@@ -75,7 +75,7 @@ export class CheckoutComponent implements OnInit {
   formOrder = new FormGroup(
     {
       address: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(12)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
       fullName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       qrcode: new FormControl(''),
       status: new FormControl(''),

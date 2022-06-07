@@ -50,7 +50,7 @@ export class AccountuserComponent implements OnInit {
             fullName: new FormControl(this.user.fullName, Validators.required),
             birthday: new FormControl(this.user.birthday),
             email: new FormControl(this.user.email, [Validators.required, Validators.email]),
-            phone: new FormControl(this.user.phone, Validators.required),
+            phone: new FormControl(this.user.phone, [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
             gender: new FormControl(this.user.gender),
             image: new FormControl(this.user.image),
             account: new FormControl(this.user.account, Validators.required),

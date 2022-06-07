@@ -77,6 +77,10 @@
                     <small style="color: red" class="text-danger col-sm-10"
                            *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.touched">
                       Vui lòng không để trống số thoại </small>
+                    <small class="form-text text-danger validate"
+                           *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.parent && formUser.get('phone')?.touched">
+                      Số điện thoại không đúng định dạng
+                    </small>
                   </div>
                   <div class="col-sm-3">
                     <div class="profile_lable">Ngày sinh</div>

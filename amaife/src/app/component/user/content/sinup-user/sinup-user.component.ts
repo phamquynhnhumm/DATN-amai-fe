@@ -33,7 +33,7 @@ export class SinupUserComponent implements OnInit {
     {
       fullName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', Validators.required),
+      phone: new FormControl('', [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
     }
   )
   FormUser = new FormGroup(
