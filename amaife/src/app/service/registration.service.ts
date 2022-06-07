@@ -28,6 +28,7 @@ export class RegistrationService {
 
   readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
   readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
+  readonly API_USER_LISTUSER = "http://localhost:8080/api/sinup/userlist"
   readonly API_USER_Pass = "http://localhost:8080/api/forgot"
 
 
@@ -96,5 +97,13 @@ export class RegistrationService {
 
   public searchRegistration(isDelete: boolean, name: string, phone: string): Observable<Array<Registration>> {
     return this.httpClient.get<Array<Registration>>(this.URL_CLASS_ADMIN_SEARCH, {params: new HttpParams().set('isDelete', isDelete).set('name', name).set('phone', phone)});
+  }
+
+  /**
+   * hiểnn thị all các user để nhằm xét tránh email trùng lăp
+   */
+
+  public finAllUser(): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(this.API_USER_LISTUSER, {headers: this.requestHeader});
   }
 }

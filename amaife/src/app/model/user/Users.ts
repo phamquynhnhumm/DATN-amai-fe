@@ -17,5 +17,4 @@ export interface Users {
   image: string;
   account: Account;
   address: string;
-  provider: EProvider;
 }

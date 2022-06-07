@@ -52,6 +52,14 @@
               <div class="col-md-6">
                 <label class="small mb-1">Số điện thoại</label>
                 <input class="form-control" type="text" formControlName="phone">
+                <small class="text-danger col-sm-10 validate"
+                       *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.touched">
+                  Số điện thoại không được để trống
+                </small>
+                <small class="form-text text-danger validate"
+                       *ngIf="formUser.get('phone')?.hasError('pattern')  && formUser.get('phone')?.dirty">
+                  Số điện thoại không đúng định dạng
+                </small>
               </div>
             </div>
             <!-- Form Row-->
@@ -78,7 +86,7 @@
               <label class="small mb-1">Địa chỉ</label>
               <input class="form-control" formControlName="address">
             </div>
-            <button type="ngSubmit" class="btn btn-outline-info">Lưu thay đổi</button>
+            <button type="submit" class="btn btn-outline-info">Lưu thay đổi</button>
           </form>
         </div>
       </div>

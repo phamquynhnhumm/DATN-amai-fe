@@ -21,7 +21,12 @@
                   <small style="color: red" class="text-danger col-sm-10"
                          *ngIf="formSinUp.get('email')?.hasError('required') && formSinUp.get('email')?.touched">
                     Email không được để trống
-                  </small></div>
+                  </small>
+<!--                  <small style="color: red" class="text-danger col-sm-10"-->
+                  <!--                         *ngIf="formSinUp.get('email')?.hasError('invaliEmail') && formSinUp.get('email')?.touched">-->
+                  <!--                    Email đã tồn tại-->
+                  <!--                  </small>-->
+                </div>
                 <div class="form-outline mb-4">
                   <label class="form-label">Số điện thoại</label>
                   <input type="password" class="form-control form-control-lg" formControlName="phone"/>

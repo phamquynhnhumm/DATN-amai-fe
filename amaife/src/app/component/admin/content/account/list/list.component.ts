@@ -62,8 +62,9 @@ export class ListComponent implements OnInit {
             isDeleted: new FormControl(this.user.isDeleted, Validators.required),
             fullName: new FormControl(this.user.fullName, Validators.required),
             birthday: new FormControl(this.user.birthday, Validators.required),
-            email: new FormControl(this.user.email,[Validators.required, Validators.email]),
-            phone: new FormControl(this.user.phone, [Validators.required,Validators.pattern(/^\+84\d{9,10}$/)]),
+            email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+            phone: new FormControl(this.user.phone, Validators.required),
+            // phone: new FormControl(this.user.phone, [Validators.required, Validators.pattern("^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$")]),
             gender: new FormControl(this.user.gender, Validators.required),
             image: new FormControl(this.user.image, Validators.required),
             account: new FormControl(this.user.account, Validators.required),
@@ -74,6 +75,7 @@ export class ListComponent implements OnInit {
     )
   }
 
+
   updateUser() {
     if (this.formUser.valid) {
       console.log(this.formUser.value);
@@ -83,10 +85,18 @@ export class ListComponent implements OnInit {
           this.snackBar.open("Cập nhập tài khoản thành công", "OK", {
             duration: 4000
           })
+        },
+        error => {
+          this.snackBar.open("Cập nhập thất bại", "OK", {
+            duration: 4000
+          })
         }
       )
+    } else {
+      this.snackBar.open("Cập nhập thất bại", "OK", {
+        duration: 4000
+      })
     }
-
   }
 
   selectFile(event: any) {

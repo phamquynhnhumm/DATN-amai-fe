@@ -45,8 +45,8 @@ export class UserService {
     return this.httpClient.put(this.URL_FindById, user);
   }
 
-  public deleteUser(id: string): Observable<Food> {
-    return this.httpClient.delete<Food>(this.URL_FindById_DELETE + "/" + id);
+  public deleteUser(id: string): Observable<Users> {
+    return this.httpClient.delete<Users>(this.URL_FindById_DELETE + "/" + id);
   }
 
   public generateOtp(userName: string): Observable<Boolean> {
