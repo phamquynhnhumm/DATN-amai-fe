@@ -8,6 +8,10 @@ import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {FoodDetail} from "../../../../../model/food/FoodDetail";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
+import {OrderService} from "../../../../../service/order.service";
+import {Oder} from "../../../../../model/order/Oder";
+import {fileURLToPath} from "url";
+import {getStorage, ref, uploadString} from "@angular/fire/storage";
 
 @Component({
   selector: 'app-createfood',
@@ -21,10 +25,12 @@ export class CreatefoodComponent implements OnInit {
   fooddetail!: Array<FoodDetail>;
   url: string = "";
   selectedFile: File | any;
+  ooder !: Oder;
 
   constructor(private snackBar: MatSnackBar,
               private route: Router,
               private foodService: FoodService,
+              private oderService: OrderService,
               private angularFireStorage: AngularFireStorage,
   ) {
   }
@@ -38,6 +44,11 @@ export class CreatefoodComponent implements OnInit {
     this.foodService.findAllFoodDetailIsdelete(false).subscribe(
       datafoodDetail => {
         this.fooddetail = datafoodDetail;
+      }
+    )
+    this.oderService.findByIdOder(30).subscribe(
+      (data) => {
+        this.ooder = data;
       }
     )
   }
@@ -79,7 +90,6 @@ export class CreatefoodComponent implements OnInit {
     } else {
       this.snackBar.open("Thêm mới thấy bại !")._dismissAfter(3000);
     }
-    ;
     this.url = "";
   }
 
