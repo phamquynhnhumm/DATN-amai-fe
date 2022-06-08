@@ -81,6 +81,9 @@ import { UpdateClassComponent } from './content/class/update-class/update-class.
 import { DeleteClassComponent } from './content/class/delete-class/delete-class.component';
 import { ListShopComponent } from './content/shop/list-shop/list-shop.component';
 import { SinupAdminComponent } from './content/account/sinup-admin/sinup-admin.component';
+import {ZXingScannerModule} from "@zxing/ngx-scanner";
+import { OrderQrcodeComponent } from './content/order/order-qrcode/order-qrcode.component';
+import { OpencameraComponent } from './content/opencamera/opencamera.component';
 
 
 @NgModule({
@@ -140,7 +143,9 @@ import { SinupAdminComponent } from './content/account/sinup-admin/sinup-admin.c
     UpdateClassComponent,
     DeleteClassComponent,
     ListShopComponent,
-    SinupAdminComponent
+    SinupAdminComponent,
+    OrderQrcodeComponent,
+    OpencameraComponent
   ],
     exports: [
         LayoutComponent,
@@ -169,7 +174,8 @@ import { SinupAdminComponent } from './content/account/sinup-admin/sinup-admin.c
         ReactiveFormsModule,
         NgxPaginationModule,
         MatSnackBarModule,
-        MatSelectModule
+        MatSelectModule,
+        ZXingScannerModule
     ],
   providers: [
     {

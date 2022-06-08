@@ -11,6 +11,7 @@ import {ConfirmOderComponent} from "../content/order/confirm-oder/confirm-oder.c
 import {Registration} from "../../../model/class/Registration";
 import {RegistrationService} from "../../../service/registration.service";
 import {EStatuasHandle} from "../../../model/class/EStatuasHandle";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-headeradmin',
@@ -30,7 +31,8 @@ export class HeaderadminComponent extends HeaderComponent {
     public authService: AuthService,
     private registrationService: RegistrationService,
     private oderService: OrderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: Router
   ) {
     super();
   }
@@ -101,5 +103,9 @@ export class HeaderadminComponent extends HeaderComponent {
 
   login() {
     location.replace("/login");
+  }
+
+  opencamera() {
+    location.replace("/opencamera");
   }
 }

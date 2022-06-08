@@ -23,6 +23,8 @@ import {ListmanagenmentComponent} from "./content/managenment/listmanagenment/li
 import {ListClassComponent} from "./content/class/list-class/list-class.component";
 import {ListShopComponent} from "./content/shop/list-shop/list-shop.component";
 import {SinupAdminComponent} from "./content/account/sinup-admin/sinup-admin.component";
+import {OrderQrcodeComponent} from "./content/order/order-qrcode/order-qrcode.component";
+import {OpencameraComponent} from "./content/opencamera/opencamera.component";
 
 const routes: Routes = [
   /**
@@ -119,6 +121,15 @@ const routes: Routes = [
    */
   {
     path: "order", component: ListorderComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },
+  {
+    path: "orderqrcode/:id", component: OrderQrcodeComponent,
+    canActivate: [AuthGuard],
+    data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
+  },  {
+    path: "opencamera", component: OpencameraComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_MANAGEMENT', 'ROLE_ADMIN']}
   },

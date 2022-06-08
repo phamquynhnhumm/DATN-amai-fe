@@ -37,6 +37,7 @@ export class CheckoutComponent implements OnInit {
   url: string = "";
   selectedFile: File | any;
   urlqrcode !: string;
+  orderQrCode !: Oder;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -108,32 +109,7 @@ export class CheckoutComponent implements OnInit {
         //Tiép tục thực hiện thêm mới Order
         this.cartService.createOderUser(this.formOrder.value).subscribe(
           (data) => {
-            this.OderQR = data;
-            this.cartService.createQRCode(this.OderQR).subscribe(
-              (dataQRcode) => {
-                const storage = getStorage();
-                const message4 = dataQRcode.qrcode;
-                const storageRef = ref(storage, 'some-child');
-                uploadString(storageRef, message4, 'data_url').then((snapshot) => {
-                  dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
-                  this.cartService.updateQrcode(dataQRcode).subscribe(
-                    (data) => {
-                      this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
-                    }, error => {
-                      this.snackBar.open("Đặt món thất bại!", "OK", {
-                        duration: 3000,
-                        panelClass: ['mat-toolbar', 'mat-warn']
-                      })
-                    }
-                  );
-                });
-              }
-              , error => {
-                this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
-                  duration: 3000,
-                  panelClass: ['mat-toolbar', 'mat-warn']
-                })
-              })
+            this.orderQrCode = data;
             this.newOder = data;
             this.formOrderDEtail.value.orders = this.newOder;
             this.formOrderDEtail.value.isDeleted = false;
@@ -150,11 +126,37 @@ export class CheckoutComponent implements OnInit {
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
             this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
-              data => {
-                this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
+              (data) => {
+                this.OderQR = this.orderQrCode;
+                this.cartService.createQRCode(this.OderQR).subscribe(
+                  (dataQRcode) => {
+                    const storage = getStorage();
+                    const message4 = dataQRcode.qrcode;
+                    const storageRef = ref(storage, 'some-child');
+                    uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+                      dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
+                      this.cartService.updateQrcode(dataQRcode).subscribe(
+                        (data) => {
+                          this.route.navigateByUrl("/home").then(() =>
+                            this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000))
+                        }, error => {
+                          this.snackBar.open("Đặt món thất bại!", "OK", {
+                            duration: 3000,
+                            panelClass: ['mat-toolbar', 'mat-warn']
+                          })
+                        }
+                      );
+                    });
+                  }
+                  , error => {
+                    this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
+                      duration: 3000,
+                      panelClass: ['mat-toolbar', 'mat-warn']
+                    })
+                  })
               })
-          },
-        );
+          }
+        )
       } else {
         this.snackBar.open("Đặt món thất bại! Vui lòng nhập thông tin", "OK", {
           duration: 3000,
@@ -170,32 +172,7 @@ export class CheckoutComponent implements OnInit {
         //Tiép tục thực hiện thêm mới Order
         this.cartService.createOderUser(this.formOrder.value).subscribe(
           (data) => {
-            this.OderQR = data;
-            this.cartService.createQRCode(this.OderQR).subscribe(
-              (dataQRcode) => {
-                const storage = getStorage();
-                const message4 = dataQRcode.qrcode;
-                const storageRef = ref(storage, 'some-child');
-                uploadString(storageRef, message4, 'data_url').then((snapshot) => {
-                  dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
-                  this.cartService.updateQrcode(dataQRcode).subscribe(
-                    (data) => {
-                      this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
-                    }, error => {
-                      this.snackBar.open("Đặt món thất bại!", "OK", {
-                        duration: 3000,
-                        panelClass: ['mat-toolbar', 'mat-warn']
-                      })
-                    }
-                  );
-                });
-              }
-              , error => {
-                this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
-                  duration: 3000,
-                  panelClass: ['mat-toolbar', 'mat-warn']
-                })
-              })
+            this.orderQrCode = data;
             this.newOder = data;
             this.formOrderDEtail.value.orders = this.newOder;
             this.formOrderDEtail.value.isDeleted = false;
@@ -211,11 +188,39 @@ export class CheckoutComponent implements OnInit {
               };
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
-            this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
-            this.route.navigateByUrl("/home").then(() =>
-              this.snackBar.open(" Đặt món thành công!. Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000));
-          },
-        );
+            this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
+              (data) => {
+                this.OderQR = this.orderQrCode;
+                this.cartService.createQRCode(this.OderQR).subscribe(
+                  (dataQRcode) => {
+                    const storage = getStorage();
+                    const message4 = dataQRcode.qrcode;
+                    const storageRef = ref(storage, 'some-child');
+                    uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+                      dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
+                      this.cartService.updateQrcode(dataQRcode).subscribe(
+                        (data) => {
+                          this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
+                        }, error => {
+                          this.snackBar.open("Đặt món thất bại!", "OK", {
+                            duration: 3000,
+                            panelClass: ['mat-toolbar', 'mat-warn']
+                          })
+                        }
+                      );
+                    });
+                  }
+                  , error => {
+                    this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
+                      duration: 3000,
+                      panelClass: ['mat-toolbar', 'mat-warn']
+                    })
+                  })
+              })
+          }
+        )
+        this.route.navigateByUrl("/home").then(() =>
+          this.snackBar.open(" Đặt món thành công!. Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000));
       } else {
         this.snackBar.open("Đặt món thất bại ! Vui lòng nhập thông tin", "OK", {
           duration: 3000,
@@ -223,10 +228,18 @@ export class CheckoutComponent implements OnInit {
         })
       }
     } else {
-      this.snackBar.open("Vui lòng chọn phương thức thanh toán", "OK", {
-        duration: 3000,
-        panelClass: ['mat-toolbar', 'mat-warn']
-      })
+      this
+        .snackBar
+        .open(
+          "Vui lòng chọn phương thức thanh toán"
+          ,
+          "OK"
+          , {
+            duration: 3000
+            ,
+            panelClass: ['mat-toolbar', 'mat-warn']
+          }
+        )
     }
   }
 }

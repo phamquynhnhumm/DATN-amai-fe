@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BarcodeFormat} from "@zxing/library";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-homeadmin',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeadminComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }

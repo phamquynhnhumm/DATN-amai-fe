@@ -1,0 +1,103 @@
+<c-row>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white"><br>
+        <c-row>
+          <div class="col-sm-9">
+            <h1><strong style="margin: 0 auto;color: white">CHI TIẾT ĐƠN HÀNG</strong></h1>
+          </div>
+        </c-row>
+      </c-card-header>
+      <div class="row">
+        <br>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <label class="col-sm-5 col-form-label"> <strong>Tên người nhận </strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.fullName}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Địa chỉ nhận</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.address}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Số điện thoại</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.phone}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Tài khoản đặt món</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.account.userName}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Số lượng</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.quantity}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Tổng tiền </strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext">{{oder.money | currency:'VND'}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Trạng thái đơn hàng</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf() ">Chờ
+                xác
+                nhận</p>
+              <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CONFIRMED.valueOf() ">Đang
+                chế
+                biến</p>
+              <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.TRANSPORT.valueOf() ">Đang
+                vận
+                chuyển</p>
+              <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã
+                nhận</p>
+              <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã
+                hủy</p>
+            </div>
+            <label class="col-sm-5 col-form-label"> <strong>Chi tiết món trong đơn hàng</strong></label>
+            <div class="col-sm-7">
+              <mat-select *ngIf="orderDetailList !=null " class="form-control-plaintext " placeholder="Danh sách món">
+                <mat-option (click)="openDetailFood(orderDetai)"
+                            *ngFor="let orderDetai of orderDetailList">Tên món:{{orderDetai.food.name}}
+                  SL: {{orderDetai.quantity}} Giá : {{orderDetai.food.price}}</mat-option>
+              </mat-select>
+              <div *ngIf="orderDetailList ==null " class="form-control-plaintext">
+                <p>"Không tồn tại món"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext" value="email@example.com">{{oder.account.userName}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"><strong>Thời gian thêm</strong> </label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext" value="email@example.com">{{oder.createAt}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext" value="email@example.com">{{oder.updatedBy.userName}}</p>
+            </div>
+            <label class="col-sm-5 col-form-label"><strong>Thời gian cập nhật</strong></label>
+            <div class="col-sm-7">
+              <p readonly class="form-control-plaintext" value="email@example.com">{{oder.updateAt}}</p>
+            </div>
+            <div class="col-sm-12">
+              <img src="{{oder.qrcode}}" alt="Mã QRCode" style="width: 60%;height: 70%;">
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" (click)="upateStatus(oder)" class="btn btn-warning">Cập nhật trạng thái đơn hàng
+              </button>
+              <br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card>
+  </c-col>
+</c-row>

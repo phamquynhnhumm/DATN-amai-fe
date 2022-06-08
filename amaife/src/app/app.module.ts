@@ -20,6 +20,7 @@ import {NgxPayPalModule} from "ngx-paypal";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import {ZXingScannerModule} from "@zxing/ngx-scanner";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {environment} from "../environments/environment";
     NgxPayPalModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    ZXingScannerModule,
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
