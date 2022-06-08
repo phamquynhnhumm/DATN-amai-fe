@@ -199,4 +199,11 @@ export class OrderService {
   createQRCode(oder: Oder): Observable<Oder> {
     return this.httpClient.post<Oder>(this.URL_CREATEQRCODE, oder);
   }
+
+  /**
+   * Cập nhật max QR coee thành link firebase
+   */
+  updateQrcode(order: Object): Observable<Oder> {
+    return this.httpClient.put<Oder>(this.URL_ORDERUSER, order);
+  }
 }

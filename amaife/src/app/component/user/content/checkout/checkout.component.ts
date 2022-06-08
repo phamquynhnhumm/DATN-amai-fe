@@ -11,7 +11,6 @@ import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {signOut} from "@angular/fire/auth";
 import {getStorage, ref, uploadString} from "@angular/fire/storage";
 
 @Component({
@@ -37,6 +36,7 @@ export class CheckoutComponent implements OnInit {
   QR !: string;
   url: string = "";
   selectedFile: File | any;
+  urlqrcode !: string;
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -111,14 +111,22 @@ export class CheckoutComponent implements OnInit {
             this.OderQR = data;
             this.cartService.createQRCode(this.OderQR).subscribe(
               (dataQRcode) => {
-                console.log(dataQRcode.qrcode);
                 const storage = getStorage();
                 const message4 = dataQRcode.qrcode;
-                const storageRef = ref(storage, 'qrcode');
+                const storageRef = ref(storage, 'some-child');
                 uploadString(storageRef, message4, 'data_url').then((snapshot) => {
-                  console.log(`https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/${snapshot.metadata.fullPath}?alt=media&token=38860683-4d62-4df1-99e0-452de2997840`);
+                  dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
+                  this.cartService.updateQrcode(dataQRcode).subscribe(
+                    (data) => {
+                      this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
+                    }, error => {
+                      this.snackBar.open("Đặt món thất bại!", "OK", {
+                        duration: 3000,
+                        panelClass: ['mat-toolbar', 'mat-warn']
+                      })
+                    }
+                  );
                 });
-                this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
               }
               , error => {
                 this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
@@ -141,8 +149,10 @@ export class CheckoutComponent implements OnInit {
               };
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
-            this.cartService.createOderDetailUser(this.listOderDetail).subscribe()
-            this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
+            this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
+              data => {
+                this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
+              })
           },
         );
       } else {
@@ -163,7 +173,22 @@ export class CheckoutComponent implements OnInit {
             this.OderQR = data;
             this.cartService.createQRCode(this.OderQR).subscribe(
               (dataQRcode) => {
-                this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
+                const storage = getStorage();
+                const message4 = dataQRcode.qrcode;
+                const storageRef = ref(storage, 'some-child');
+                uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+                  dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
+                  this.cartService.updateQrcode(dataQRcode).subscribe(
+                    (data) => {
+                      this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000);
+                    }, error => {
+                      this.snackBar.open("Đặt món thất bại!", "OK", {
+                        duration: 3000,
+                        panelClass: ['mat-toolbar', 'mat-warn']
+                      })
+                    }
+                  );
+                });
               }
               , error => {
                 this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
