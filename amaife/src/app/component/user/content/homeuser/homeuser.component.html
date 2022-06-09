@@ -3,7 +3,7 @@
     <div class="carousel-item active">
       <img class="d-block w-100" src="assets/image/hero-1.jpg" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
-        <h1 style="font-family: Georgia;color:#435d7d;width: 1000px;height: 100px">Chào mừng bạn đến với AMAI</h1>
+        <h1 style="font-family: Georgia;color:#435d7d;width: 1000px;height: 100px" translate>settings.chaomung</h1>
       </div>
     </div>
     <div class="carousel-item ">
@@ -11,13 +11,6 @@
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="assets/image/slibar3.png" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="assets/image/slibar2.png" alt="Third slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Chào mừng bạn đến với AMAI</h5>
-        <p>quỳnh như xin chào</p>
-      </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="assets/image/slibar2.png" alt="Third slide">
@@ -30,17 +23,16 @@
       <div class="col-lg-6 col-md-6">
         <div class="about__text">
           <div class="section-title">
-            <span>Về cửa hàng chúng tôi</span>
-            <h2>Trà sữa, đồ ăn vặt từ nhà AMAI!</h2>
+            <span translate>settings.vecuahang </span>
+            <h2 translate>settings.trasua </h2>
           </div>
-          <p>"Tiệm trà Amai" là một Thương hiệu của Jordan, khởi đầu là một doanh nghiệp gia đình nhỏ. Chủ sở hữu là
-            quỳnh như, được hỗ trợ bởi đội ngũ 80 nhân viên.</p>
+          <p translate>settings.tiemtraamai</p>
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="about__bar">
           <div class="about__bar__item">
-            <p>Tự Tay Thiết kế</p>
+            <p translate>settings.tutay </p>
             <div id="bar1" class="barfiller progress">
               <div class="progress-bar" role="progressbar" style="width: 85%;background:black " aria-valuenow="85"
                    aria-valuemax="100">
@@ -48,14 +40,14 @@
             </div>
           </div>
           <div class="about__bar__item">
-            <p>Chuyên nghiệp</p>
+            <p translate>settings.chuyennghiep</p>
             <div id="bar2" class="barfiller progress">
               <div class="progress-bar" role="progressbar" style="width: 75%;background:black " aria-valuenow="75"
                    aria-valuemax="100"></div>
             </div>
           </div>
           <div class="about__bar__item">
-            <p> An toàn</p>
+            <p translate>settings.antoan</p>
             <div id="bar3" class="barfiller progress">
               <div class="progress-bar" role="progressbar" style="width: 95%;background:black " aria-valuenow="95"
                    aria-valuemax="100"></div>
@@ -86,7 +78,7 @@
             <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(foods)" translate>settings.themvaogiohang</a>
             </div>
           </div>
         </div>
@@ -106,38 +98,36 @@
       <div class="col-lg-6">
         <div class="class__form">
           <div class="section-title">
-            <span>Món đẳng cấp</span>
-            <h2>Làm từ tay <br/>Của chính bạn</h2>
+            <span translate>settings.mondangcap</span>
+            <h2 translate>settings.lamtutayban <br/></h2>
+            <h2 translate>settings.cuachinhban</h2>
           </div>
           <form [formGroup]="formCLass" (ngSubmit)="onSubmit()">
             <input type="text" placeholder="Họ và tên" formControlName="name">
             <small class="text-danger col-sm-10"
-                   *ngIf="formCLass.get('name')?.hasError('required') && formCLass.get('name')?.touched">
-              Vui lòng nhập họ tên
+                   *ngIf="formCLass.get('name')?.hasError('required') && formCLass.get('name')?.touched" translate>settings.validatenamehome
             </small>
             <small class="text-danger col-sm-10 validate "
-                   *ngIf="formCLass.get('name')?.hasError('minlength') || formCLass.get('name')?.hasError('maxlength') && formCLass.get('name')?.touched">
-              Họ và tên phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
-            </small>
+                   *ngIf="formCLass.get('name')?.hasError('minlength') || formCLass.get('name')?.hasError('maxlength') && formCLass.get('name')?.touched"
+                   translate>settings.validatenamehome2 </small>
             <input type="text" placeholder="Số điện thoại" formControlName="phone">
             <small class="text-danger col-sm-10"
-                   *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched">
-              Vui lòng nhập số điện thoại
+                   *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched" translate>settings.validatephonehome
             </small>
             <small class="text-danger col-sm-10 validate "
-                   *ngIf="formCLass.get('phone')?.hasError('minlength') || formCLass.get('phone')?.hasError('maxlength') && formCLass.get('phone')?.touched">
-              Số điện thoại phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+                   *ngIf="formCLass.get('phone')?.hasError('minlength') || formCLass.get('phone')?.hasError('maxlength') && formCLass.get('phone')?.touched"
+                   translate>settings.validatephonehome2
             </small>
             <input type="text" placeholder="Nhập yêu cầu của bạn" formControlName="content">
             <small class="text-danger col-sm-10"
-                   *ngIf="formCLass.get('content')?.hasError('required') && formCLass.get('content')?.touched">
-              Vui lòng nhập yêu cầu của bạn
+                   *ngIf="formCLass.get('content')?.hasError('required') && formCLass.get('content')?.touched"
+                   translate>settings.validatecontenthome
             </small>
             <small class="text-danger col-sm-10 validate "
-                   *ngIf="formCLass.get('content')?.hasError('minlength') || formCLass.get('content')?.hasError('maxlength') && formCLass.get('content')?.touched">
-              Yêu cầu phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+                   *ngIf="formCLass.get('content')?.hasError('minlength') || formCLass.get('content')?.hasError('maxlength') && formCLass.get('content')?.touched"
+                   translate>settings.validatecontenthome2
             </small>
-            <button type="submit" class="site-btn">Đăng ký nhận tư vấn</button>
+            <button type="submit" class="site-btn" translate>settings.dangkynhantuvan</button>
           </form>
         </div>
       </div>

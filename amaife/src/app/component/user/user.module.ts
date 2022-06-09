@@ -26,9 +26,15 @@ import {PaypalComponent} from './content/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 import {MatDialogModule} from "@angular/material/dialog";
 import {SinupUserComponent} from './content/sinup-user/sinup-user.component';
-import { ForgotpasswordComponent } from './content/forgotpassword/forgotpassword.component';
-import { CancelorderComponent } from './content/cancelorder/cancelorder.component';
+import {ForgotpasswordComponent} from './content/forgotpassword/forgotpassword.component';
+import {CancelorderComponent} from './content/cancelorder/cancelorder.component';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
+export function rootLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -53,13 +59,13 @@ import { CancelorderComponent } from './content/cancelorder/cancelorder.componen
     ForgotpasswordComponent,
     CancelorderComponent
   ],
-    exports: [
-        NavUserComponent,
-        FooterUserComponent,
-        HomeuserComponent,
-        SinupUserComponent,
-        ForgotpasswordComponent
-    ],
+  exports: [
+    NavUserComponent,
+    FooterUserComponent,
+    HomeuserComponent,
+    SinupUserComponent,
+    ForgotpasswordComponent
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -70,6 +76,13 @@ import { CancelorderComponent } from './content/cancelorder/cancelorder.componen
     GridModule,
     FormsModule,
     NgxPayPalModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: rootLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     MatDialogModule
   ]
 })

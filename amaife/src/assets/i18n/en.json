@@ -1,0 +1,38 @@
+{
+  "home": {
+    "title": "チューページ",
+    "welcome_text": "チャオ禁止してください"
+  },
+  "settings": {
+    "ngonngu": "ベトナム語",
+    "login": "丸太",
+    "logput": "ログアウトする",
+    "giohang": "カート :",
+    "trangchu": "ホームページ",
+    "cuahang": "店",
+    "tatca": "すべての",
+    "chaomung": "アマイへようこそ",
+    "vecuahang": "当店について。",
+    "trasua": "ミルクティー、天井さんの家からのジャンクフード!",
+    "tiemtraamai": "「Amai Tea Shop」はヨルダンのブランドで、小さな家族経営の企業としてスタートしました。所有者は\n 80人の従業員のチームによって支えられています。",
+    "tutay": "セルフデザイン",
+    "chuyennghiep": "プロ",
+    "antoan": "金庫",
+    "themvaogiohang": "カートに入れる",
+    "mondangcap": "上品な料理",
+    "lamtutayban": "あなたの手から作られました。",
+    "cuachinhban": "委員会自体。",
+    "validatenamehome": "フルネームを入力してください",
+    "validatenamehome2": "フルネームと名前は 2 文字より大きく、255 文字未満にする必要があります。\n",
+    "validatephonehome": "電話番号を入力してください\n",
+    "validatephonehome2": "電話番号は 2 文字以上 255 文字未満にする必要があります。\n",
+    "validatecontenthome": "リクエストを入力してください\n",
+    "validatecontenthome2": "要件は 2 文字より大きく、255 文字未満でなければなりません。\n",
+    "dangkynhantuvan": "アドバイスにサインアップする",
+    "hovatemhome": "フルネームと名前を入力してください",
+    "taikhoan": "すべての"
+  }
+}
+
+
+

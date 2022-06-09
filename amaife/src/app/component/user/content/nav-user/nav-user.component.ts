@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Shop} from "../../../../model/shop/Shop";
 import {ShopService} from "../../../../service/shop.service";
+import {TranslateConfigService} from "../../../../service/translate-config.service";
 
 @Component({
   selector: 'app-nav-user',
@@ -28,7 +29,8 @@ export class NavUserComponent implements OnInit {
   constructor(public authService: AuthService, private shopService: ShopService,
               public foodcategoryService: FoodService,
               public auth: AuthService,
-              public cartService: OrderService) {
+              public cartService: OrderService,
+              private translateConfigService: TranslateConfigService) {
   }
 
   ngOnInit(): void {
@@ -113,5 +115,10 @@ export class NavUserComponent implements OnInit {
 
   login() {
     location.replace("/login");
+  }
+
+  /* Change default language */
+  changeDefaultLanguage(langType: string) {
+    this.translateConfigService.changeLanguage(langType);
   }
 }

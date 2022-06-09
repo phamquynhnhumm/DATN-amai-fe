@@ -1,0 +1,35 @@
+{
+  "home": {
+    "title": "Trang chu",
+    "welcome_text": "xin chao ban"
+  },
+  "settings": {
+    "ngonngu": "Tiếng Việt",
+    "login": "Đăng Nhập",
+    "logput": "Đăng Xuất",
+    "giohang": "Giỏ hàng :",
+    "trangchu": "Trang chủ",
+    "cuahang": "Cửa hàng",
+    "tatca": "Tất cả",
+    "chaomung": "Chào mừng bạn đến với AMAI",
+    "vecuahang": "Về cửa hàng chúng tôi",
+    "trasua": "Trà sữa, đồ ăn vặt từ nhà AMAI!",
+    "tiemtraamai": "\"Tiệm trà Amai\" là một Thương hiệu của Jordan, khởi đầu là một doanh nghiệp gia đình nhỏ. Chủ sở hữu là\n quỳnh như, được hỗ trợ bởi đội ngũ 80 nhân viên.",
+    "tutay": "Tự Tay Thiết Kế",
+    "chuyennghiep": "Chuyên Nghiệp",
+    "antoan": "An Toàn",
+    "themvaogiohang": "Thêm vào giỏ hàng",
+    "mondangcap": "Món đẳng cấp",
+    "lamtutayban": "Làm từ tay bạn",
+    "cuachinhban": "Của chính ban",
+    "validatenamehome": "Vui lòng nhập họ tên",
+    "validatenamehome2": "Họ và tên phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự\n",
+    "validatephonehome": " Vui lòng nhập số điện thoại\n",
+    "validatephonehome2": " Số điện thoại phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự\n",
+    "validatecontenthome": "  Vui lòng nhập yêu cầu của bạn\n",
+    "validatecontenthome2": "  Yêu cầu phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự\n",
+    "dangkynhantuvan": " Đăng ký nhận tư vấn",
+    "hovatemhome": " Nhập họ và tên",
+    "taikhoan": "Tất cả"
+  }
+}
