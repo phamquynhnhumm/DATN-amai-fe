@@ -61,6 +61,7 @@ export class LoginadminComponent implements OnInit {
         break;
       case "ROLE_CUSTOMER":
         this.router.navigate(['/home']);
+        location.replace("/home");
         break;
       case "ROLE_ADMIN":
         this.router.navigate(['/admin']);
@@ -109,6 +110,5 @@ export class LoginadminComponent implements OnInit {
 
   forgotPassword() {
     location.replace("/forgot")
-
   }
 }

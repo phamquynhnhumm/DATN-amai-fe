@@ -50,6 +50,7 @@ export class NavUserComponent implements OnInit {
 
   logout() {
     this.authService.clear();
+    location.replace("/login");
   }
 
   navHomeFunction() {

@@ -1,6 +1,7 @@
-<footer class="footer set-bg" data-setbg="ihttps://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/img_1.png?alt=media&token=9e859d54-8a9f-4eb9-b4ad-e1a1532d5454">
-  <div class="container">
-    <div class="row">
+<footer class="footer set-bg"
+        data-setbg="ihttps://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/img_1.png?alt=media&token=9e859d54-8a9f-4eb9-b4ad-e1a1532d5454">
+  <div class="container" *ngIf="shop != null">
+    <div class="row" *ngFor="let shops of shop">
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="footer__widget">
           <h2 style="color: white">KHUNG GIỜ MỞ CỬA</h2>
@@ -16,16 +17,15 @@
           <div class="footer__logo">
             <a href="#"><img src="/assets/image/logo.png" alt=""></a>
           </div>
-          <p>Tôi yêu chính tôi, yêu cách tôi làm ra những ly trà đầy sự ngọt ngào.Tôi trao tình yêu vào ly trà và gửi nó
-            cho khách hàng của tôi.</p>
+          <p>{{shops.content}}</p>
           <div class="footer__social">
-            <a href="#">
+            <a href="{{shops.facebook}}">
               <i class='fab fa-facebook  fa-1x'></i>
             </a>
-            <a href="#">
+            <a href="{{shops.instagram}}">
               <i class='fab fa-instagram  fa-1x'></i>
             </a>
-            <a href="#">
+            <a href="{{shops.youtube}}">
               <i class='fab fa-youtube  fa-1x'></i>
             </a>
           </div>
@@ -35,10 +35,15 @@
         <div class="footer__newslatter">
           <h2 style="color: white">LIÊN HỆ</h2>
           <p>Vui lòng liên hệ với chúng tôi được hỗ trợ bạn.</p>
-          <p>Địa Chỉ : Đại Học Bách Khoa -Đại Học Đà Nẵng</p>
-          <p>Số điện thoại: 0815502367</p>
+          <p>Địa Chỉ : {{shops.address}}</p>
+          <p>Số điện thoại: {{shops.phone}}</p>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container" *ngIf="shop == null">
+    <div class="row">
+      <p><strong>Chúng tôi đang cố gắng cập nhật </strong></p>
     </div>
   </div>
 </footer>

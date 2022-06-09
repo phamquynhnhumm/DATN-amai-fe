@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ShopService} from "../../../../service/shop.service";
+import {Shop} from "../../../../model/shop/Shop";
 
 @Component({
   selector: 'app-footer-user',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterUserComponent implements OnInit {
 
-  constructor() { }
+  shop !: Array<Shop>;
+
+  constructor(private shopService: ShopService) {
+  }
 
   ngOnInit(): void {
+    this.shopService.findAllShopCustomer().subscribe(
+      data => {
+        this.shop = data;
+      }
+    )
   }
 
 }
