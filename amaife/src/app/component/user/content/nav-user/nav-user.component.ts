@@ -5,6 +5,8 @@ import {FoodService} from "../../../../service/food.service";
 import {FoodCategory} from "../../../../model/food/FoodCategory";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Shop} from "../../../../model/shop/Shop";
+import {ShopService} from "../../../../service/shop.service";
 
 @Component({
   selector: 'app-nav-user',
@@ -18,25 +20,43 @@ export class NavUserComponent implements OnInit {
   navService !: string;
   navAccount !: string;
   navConten !: string;
-  // totalCart !: number;
+  totalCart !: number;
+  totalQuantityCart !: number;
   foodcategory !: Array<FoodCategory>;
+  shop !: Array<Shop>;
 
-  constructor(public authService: AuthService,
+  constructor(public authService: AuthService, private shopService: ShopService,
               public foodcategoryService: FoodService,
               public auth: AuthService,
               public cartService: OrderService) {
   }
 
   ngOnInit(): void {
-    // @ts-ignore
-    // this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
-    //   data => {
-    //     this.totalCart = data;
-    //   },
-    //   error => {
-    //     this.totalCart = 0;
-    //   }
-    // );
+    if (this.auth.getUsername() != null) {
+      // @ts-ignore
+      this.cartService.totalMoneyCart(this.auth.getUsername()).subscribe(
+        data => {
+          this.totalCart = data;
+        },
+        error => {
+          this.totalCart = 0;
+        }
+      );
+      // @ts-ignore
+      this.cartService.totalQuantityCart(this.auth.getUsername()).subscribe(
+        data => {
+          this.totalQuantityCart = data;
+        }
+      )
+    } else {
+      this.totalCart = 0;
+      this.totalQuantityCart = 0;
+    }
+    this.shopService.findAllShopCustomer().subscribe(
+      data => {
+        this.shop = data;
+      }
+    )
     this.foodcategoryService.findAllFoodCategoryIsdeleteUser().subscribe(
       data => {
         this.foodcategory = data;

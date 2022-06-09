@@ -17,7 +17,7 @@
               </ul>
             </div>
             <div class="header__logo">
-              <a href="/"><img src="assets/image/logo.png" alt=""></a>
+              <a href="/"><img src="assets/image/logo3.png" height="70%" width="70%" alt=""></a>
             </div>
             <div class="header__top__right">
               <div class="header__top__right__links">
@@ -28,7 +28,8 @@
               <div class="header__top__right__cart" routerLink="/shoping">
                 <a><img
                   src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/cart.png?alt=media&token=59bda640-9591-41ce-8261-3eece1fe29e2"
-                  alt=""> <span></span></a>
+                  alt=""> <span>{{totalQuantityCart}}</span></a>
+                <div class="cart__price">Giỏ hàng: <span>{{totalCart | currency :'VND'}}</span></div>
               </div>
             </div>
           </div>
