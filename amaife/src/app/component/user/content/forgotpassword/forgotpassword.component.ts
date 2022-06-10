@@ -4,6 +4,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegistrationService} from "../../../../service/registration.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {TranslateConfigService} from "../../../../service/translate-config.service";
 
 @Component({
   selector: 'app-forgotpassword',
@@ -19,6 +20,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private matSnackBar: MatSnackBar,
               private sinupService: RegistrationService,
+              private translateConfigService: TranslateConfigService,
               private newPassService: RegistrationService,
               private route: Router
   ) {
@@ -30,6 +32,12 @@ export class ForgotpasswordComponent implements OnInit {
         this.userList = data;
       }
     )
+  }
+
+  /* Change default language */
+  changeDefaultLanguages(event: any) {
+    console.log(event.target.value)
+    this.translateConfigService.changeLanguage(event.target.value);
   }
 
   formforgotPassword = new FormGroup(

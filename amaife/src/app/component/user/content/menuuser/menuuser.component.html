@@ -4,13 +4,13 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__text">
-          <h2>Món</h2>
+          <h2 translate>settings.mon</h2>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__links">
-          <a style="text-decoration: none" href="/">Trang chủ</a>
-          <span>Cửa hàng</span>
+          <a style="text-decoration: none" href="/" translate>settings.trangchu</a>
+          <span translate>settings.cuahang</span>
         </div>
       </div>
     </div>
@@ -32,8 +32,7 @@
               <button type="submit" (click)="searchFood(search.value)"><i class="fa fa-search"></i></button>
             </form>
             <small class="form-text text-muted text-danger"
-                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
-              ký tự!</small>
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched" translate>settings.validatesearch</small>
 
           </div>
         </div>
@@ -65,7 +64,7 @@
             <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" (click)="createCartShoping(foods)">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(foods)" translate>settings.themvaogiohang</a>
             </div>
           </div>
         </div>

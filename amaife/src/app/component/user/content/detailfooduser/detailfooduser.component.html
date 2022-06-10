@@ -3,13 +3,13 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__text">
-          <h2>Chi tiết món</h2>
+          <h2 translate>settings.chitietmon</h2>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__links">
-          <a style="text-decoration: none" routerLink="/home">Trang chủ</a>
-          <span>Chi tiết món</span>
+          <a style="text-decoration: none" routerLink="/home" translate>settings.trangchu</a>
+          <span translate>settings.chitietmon</span>
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
           <br>
           <h1 class="text-uppercase">{{food.name}}</h1>
           <h5>{{food.price | currency :'VND'}}</h5>
-          <p> Trà có vị chát, sữa có vị ngọt, trà với sữa sẽ thành một thức uống tuyệt hảo cũng như anh với em sẽ trở
-            thành một cặp đôi hoàn hảo.</p>
           <ul>
-            <li>Mã món: {{food.id}}</li>
-            <li>Danh mục: {{food.foodCategory.name}}</li>
+            <li style="display: inline-block" translate>settings.mamondetail</li>
+            <li style="display: inline-block"> {{food.id}}</li><br>
+            <li style="display: inline-block" translate>settings.danhmucdetail</li>
+            <li style="display: inline-block"> {{food.foodCategory.name}}</li>
           </ul>
           <div class="product__details__option">
             <div class="quantity">
@@ -44,8 +44,7 @@
                 <span style="color:#000;" class="inc qtybtn" (click)="quatitycong()">+</span>
               </div>
             </div>
-            <a style="text-decoration: none" class="btn primary-btn" (click)="createCartShoping(food)">THÊM VÀO GIỎ
-              HÀNG </a>
+            <a style="text-decoration: none" class="btn primary-btn" (click)="createCartShoping(food)" translate>settings.themvaogiohangdetail </a>
           </div>
         </div>
       </div>
@@ -54,7 +53,7 @@
       <div class="col-lg-12">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Sự miêu tả</a>
+            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" translate>settings.mieutadetail</a>
           </li>
         </ul>
         <div class="tab-content">
@@ -77,7 +76,7 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <div class="section-title">
-          <h2>Những sản phẩm tương tự</h2>
+          <h2 translate>settings.sptuongtudetail </h2>
         </div>
       </div>
     </div>
@@ -95,7 +94,7 @@
             <h6><a style="text-decoration: none">{{food.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{food.price | currency :'VND'}}</div>
             <div class="cart_add">
-              <a style="text-decoration: none" (click)="createCartShoping(food)">Thêm vào giỏ hàng</a>
+              <a style="text-decoration: none" (click)="createCartShoping(food)" translate>settings.themvaogiohang </a>
             </div>
           </div>
         </div>

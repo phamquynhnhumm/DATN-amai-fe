@@ -9,14 +9,13 @@
                 <div class="side-bar">
                   <nav class="side-menu">
                     <ul class="nav">
-                      <li><a style="text-decoration: none" routerLink="/user"><span class="fa fa-user"></span> Thông tin
-                        cá nhân</a></li>
-                      <li class="active"><a style="text-decoration: none" routerLink="/changePass"><span
-                        class="fa fa-cog"></span> Đổi mật khẩu</a></li>
-                      <li><a style="text-decoration: none" routerLink="/oder"><span class="fa fa-credit-card"></span>
-                        Đơn hàng</a></li>
-                      <li><a style="text-decoration: none" routerLink="/history"><span class="fa fa-envelope"></span>
-                        Lịch sử đơn hàng</a>
+                      <li><a style="text-decoration: none" routerLink="/user" translate><span class="fa fa-user"></span> settings.thongtincanhan</a></li>
+                      <li class="active"><a style="text-decoration: none" translate routerLink="/changePass"><span
+                        class="fa fa-cog"></span> settings.doimatkhau</a></li>
+                      <li><a style="text-decoration: none" routerLink="/oder" translate><span class="fa fa-credit-card"></span>
+                        settings.donhanguser</a></li>
+                      <li><a style="text-decoration: none" routerLink="/history" translate><span class="fa fa-envelope"></span>
+                        settings.lsdonhang</a>
                       </li>
                     </ul>
                   </nav>
@@ -59,16 +58,14 @@
               <br>
             </div>
             <div>
-              <button class="btn btn-light" routerLink="/home">Hủy</button>
+              <button class="btn btn-light" routerLink="/home"   translate> settings.huy</button>
               <label *ngIf="isGetOtp">
                 <button class="btn btn-warning" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
-                        style="margin-left: 50px;">
-                  Lấy mã
+                        style="margin-left: 50px;"   translate> settings.layma
                 </button>
               </label>
               <label *ngIf="isInputOtp">
-                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;">
-                  Xác nhận
+                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;"   translate> settings.xacnhan
                 </button>
               </label>
             </div>

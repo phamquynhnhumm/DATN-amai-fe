@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="breadcrumb__text">
-            <h2>Thủ tục thanh toán</h2>
+            <h2 translate>settings.thutucthanhtoan </h2>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="breadcrumb__links">
-            <a style="text-decoration: none" routerLink="/home">Trang chủ</a>
-            <span>Thanh toán</span>
+            <a style="text-decoration: none" routerLink="/home" translate>settings.trangchu</a>
+            <span translate>settings.thanhtoan </span>
           </div>
         </div>
       </div>
@@ -22,96 +22,98 @@
         <form [formGroup]="formOrder" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-lg-8 col-md-6">
-              <h4 class="checkout__title">Chi tiết thông tin</h4>
+              <h4 class="checkout__title" translate>settings.chitietthonogtin </h4>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="checkout__input">
-                    <p>Người nhận<span>*</span></p>
+                    <p translate>settings.nguoinhan <span>*</span></p>
                     <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
                     <small class="text-danger col-sm-10"
-                           *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched">
-                      Tên người nhận không được để trống
+                           *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched"
+                           translate>settings.validatenguoinhan
                     </small>
                     <small class="text-danger col-sm-10 validate "
-                           *ngIf="formOrder.get('fullName')?.hasError('minlength') || formOrder.get('fullName')?.hasError('maxlength') && formOrder.get('fullName')?.touched">
-                      Họ tên phải lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+                           *ngIf="formOrder.get('fullName')?.hasError('minlength') || formOrder.get('fullName')?.hasError('maxlength') && formOrder.get('fullName')?.touched"
+                           translate>settings.validatelengthnguoinhan
                     </small>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="checkout__input">
-                    <p>Số điện thoại<span>*</span></p>
+                    <p translate>settings.sdtfooter<span>*</span></p>
                     <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
                     <small class="text-danger col-sm-10"
-                           *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched">
-                      Số điện thoại không được để trống
+                           *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched"
+                           translate>settings.validatesdt
                     </small>
                     <small class="form-text text-danger validate"
-                                    *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.parent && formOrder.get('phone')?.touched">
-                    Số điện thoại không đúng định dạng
-                  </small>
+                           *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.parent && formOrder.get('phone')?.touched"
+                           translate>settings.validatesdtdinhdang
+                    </small>
 
                   </div>
                 </div>
               </div>
               <div class="checkout__input">
-                <p>Địa chỉ<span>*</span></p>
-                <span style="color: #FFC107;font-size: small">Nếu bạn tới cửa hàng, vui lòng nhập thời gian tới để chúng tôi chuẩn bị chuẩn bị đón tiếp bạn!</span>
+                <p translate>settings.diachi <span>*</span></p>
+                <span style="color: #FFC107;font-size: small" translate>settings.luuydiachi </span>
                 <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
                 <small class="text-danger col-sm-10"
-                       *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched">
-                  Địa chỉ không được để trống
+                       *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched"
+                       translate>settings.validatediachi
                 </small>
                 <small class="text-danger col-sm-10 validate "
-                       *ngIf="formOrder.get('address')?.hasError('minlength') || formOrder.get('address')?.hasError('maxlength') && formOrder.get('address')?.touched">
-                  Địa chỉ có độ dài lớn hơn 2 ký tự và phải nhỏ hơn 255 ký tự
+                       *ngIf="formOrder.get('address')?.hasError('minlength') || formOrder.get('address')?.hasError('maxlength') && formOrder.get('address')?.touched"
+                       translate>settings.validatediachilength
                 </small>
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="continue__btn">
-                    <a style="text-decoration: none" routerLink="/shoping">Quay lại giỏ hàng</a>
+                    <a style="text-decoration: none" routerLink="/shoping" translate>settings.quaylaigiohang</a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="checkout__order">
-                <h4 class="order__title">Đơn đặt hàng của bạn</h4>
-                <div class="checkout__order__products">Tên món <span>Giá </span></div>
+                <h4 class="order__title" translate>settings.donhang </h4>
+                <div class="checkout__order__products" translate>settings.tenmon <span translate>settings.gia </span>
+                </div>
                 <div class="checkout__total__products" *ngIf="cartList !=null">
                   <div *ngFor="let cart of cartList">
                     <div class="checkout__order__products">
-                      <small> Món: {{cart.food.name}} SL:  {{cart.quantity}}</small>
+                      <small style="display: inline-block" translate>settings.moncheckout</small><small
+                      style="display: inline-block">{{cart.food.name}}</small>
+                      <small style="display: inline-block"
+                             translate> settings.sl</small><small
+                      style="display: inline-block">  {{cart.quantity}}</small>
                       <span><small>{{cart.money | currency:'VND'}}</small></span>
                     </div>
                   </div>
                 </div>
                 <ul class="checkout__total__all">
-                  <li>Tổng tiền <span>{{totalCart | currency:'VND'}}</span></li>
+                  <li translate>settings.tongtien<span>{{totalCart | currency:'VND'}}</span></li>
                 </ul>
                 <div class="checkout__input__checkbox">
-                  <label>
-                    Thanh toán khi nhận hàng
+                  <label translate>settings.thanhtoankhinhanhang
                     <input type="radio" name="paypal" formControlName="payments" value="CASH">
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="checkout__input__checkbox">
-                  <label>
-                    Thanh toán bằng Paypal
+                  <label translate>settings.thanhtoanpaypal
                     <input type="radio" name="paypal" formControlName="payments" value="PAYPAL">
                     <span class="checkmark"></span>
                   </label>
                 </div>
                 <div class="checkout__input__checkbox">
-                  <label>
-                    Hãy chuẩn bị món, tôi sẽ đến cửa hàng
+                  <label translate>settings.thanhtoantaicuahang
                     <input type="radio" name="paypal" formControlName="payments" value="NO">
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <button type="submit" class="site-btn">Đặt hàng</button>
+                <button type="submit" class="site-btn" translate>settings.dathang</button>
               </div>
             </div>
           </div>

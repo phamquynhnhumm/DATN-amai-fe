@@ -8,6 +8,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
+import {TranslateConfigService} from "../../../../service/translate-config.service";
 
 @Component({
   selector: 'app-loginadmin',
@@ -28,12 +29,12 @@ export class LoginadminComponent implements OnInit {
   };
 
   constructor(private loginService: LoginService,
+              private translateConfigService: TranslateConfigService,
               private router: Router,
               private socialAuthService: SocialAuthService,
               private authService: AuthService,
               private matSnackBar: MatSnackBar) {
   }
-
 
   formLogin = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -46,6 +47,12 @@ export class LoginadminComponent implements OnInit {
         () => window.location.reload()
       )
     }
+  }
+
+  /* Change default language */
+  changeDefaultLanguages(event: any) {
+    console.log(event.target.value)
+    this.translateConfigService.changeLanguage(event.target.value);
   }
 
   public setLoginComplete(loginResponse: LoginResponse) {
@@ -111,4 +118,5 @@ export class LoginadminComponent implements OnInit {
   forgotPassword() {
     location.replace("/forgot")
   }
+
 }

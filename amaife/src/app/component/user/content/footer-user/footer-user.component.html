@@ -4,11 +4,11 @@
     <div class="row" *ngFor="let shops of shop">
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="footer__widget">
-          <h2 style="color: white">KHUNG GIỜ MỞ CỬA</h2>
+          <h2 style="color: white" translate>settings.khunggiomocua</h2>
           <ul>
-            <li>Thứ Hai - Thứ Sáu: 08:00 am – 08:30 pm</li>
-            <li>Thứ Bảy: 10:00 am – 16:30 pm</li>
-            <li>Chủ Nhật: 10:00 am – 16:30 pm</li>
+            <li translate>settings.thuhai</li>
+            <li translate>settings.thucbay</li>
+            <li translate>settings.chunhat</li>
           </ul>
         </div>
       </div>
@@ -33,17 +33,19 @@
       </div>
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="footer__newslatter">
-          <h2 style="color: white">LIÊN HỆ</h2>
-          <p>Vui lòng liên hệ với chúng tôi được hỗ trợ bạn.</p>
-          <p>Địa Chỉ : {{shops.address}}</p>
-          <p>Số điện thoại: {{shops.phone}}</p>
+          <h2 style="color: white" translate>settings.lienhefooter</h2>
+          <p translate>settings.hotrofooter</p>
+          <p style="display: inline-block" translate>settings.diachifooter </p>
+          <p style="display: inline-block">{{shops.address}}</p><br>
+          <p style="display: inline-block" translate>settings.sdtfooter </p>
+          <p style="display: inline-block">{{shops.phone}}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="container" *ngIf="shop == null">
     <div class="row">
-      <p><strong>Chúng tôi đang cố gắng cập nhật </strong></p>
+      <p><strong translate>settings.chungtoidangcogangcapnhat </strong></p>
     </div>
   </div>
 </footer>

@@ -9,14 +9,14 @@
                 <div class="side-bar">
                   <nav class="side-menu">
                     <ul class="nav">
-                      <li class="active"><a style="text-decoration: none"><span class="fa fa-user"></span> Thông tin cá
-                        nhân</a></li>
-                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-cog"></span> Đổi
-                        mật khẩu</a></li>
-                      <li><a style="text-decoration: none" routerLink="/oder"><span class="fa fa-credit-card"></span>
-                        Đơn hàng</a></li>
-                      <li><a style="text-decoration: none" routerLink="/changePass"><span class="fa fa-envelope"></span>
-                        Lịch sử đơn hàng</a>
+                      <li class="active"><a style="text-decoration: none" translate><span class="fa fa-user"></span>
+                        settings.thongtincanhan </a></li>
+                      <li><a style="text-decoration: none" routerLink="/changePass" translate><span
+                        class="fa fa-cog"></span>settings.doimatkhau </a></li>
+                      <li><a style="text-decoration: none" routerLink="/oder" translate><span
+                        class="fa fa-credit-card"></span>settings.donhanguser</a></li>
+                      <li><a style="text-decoration: none" routerLink="/changePass" translate><span
+                        class="fa fa-envelope"></span>settings.lsdonhang</a>
                       </li>
                     </ul>
                   </nav>
@@ -48,42 +48,42 @@
                 <br><br>
                 <div class="row">
                   <div class="col">
-                    <div class="profile_lable">Họ và tên *</div>
+                    <div class="profile_lable" translate> settings.hovaten</div>
                     <input type="text" class="profile-input" formControlName="fullName"
                            value="{{formUser.value.fullName}}">
                     <small style="color: red" class="text-danger col-sm-10"
-                           *ngIf="formUser.get('fullName')?.hasError('required') && formUser.get('fullName')?.touched">
+                           *ngIf="formUser.get('fullName')?.hasError('required') && formUser.get('fullName')?.touched"
+                           translate> settings.validatehovaten
                       Vui lòng không để trống họ tên
                     </small>
                   </div>
                   <div class="col">
-                    <div class="profile_lable">Email*</div>
+                    <div class="profile_lable" translate> settings.email</div>
                     <input type="email" class="profile-input" formControlName="email" value="{{formUser.value.email}}">
                     <small style="color: red" class="text-danger col-sm-10"
-                           *ngIf="formUser.get('email')?.hasError('required') && formUser.get('email')?.touched">
-                      Vui lòng không để trống email
+                           *ngIf="formUser.get('email')?.hasError('required') && formUser.get('email')?.touched"
+                           translate> settings.validateemail
                     </small>
                     <small class="form-text text-danger validate"
-                           *ngIf="formUser.get('email')?.hasError('email')  && formUser.get('email')?.dirty">
-                      Không đúng định dạng email
+                           *ngIf="formUser.get('email')?.hasError('email')  && formUser.get('email')?.dirty" translate>
+                      settings.validateemaildinhdang
                     </small>
                   </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-sm-6">
-                    <div class="profile_lable">Số điện thoại*</div>
+                    <div class="profile_lable" translate> settings.sodienthoai</div>
                     <input type="text" class="profile-input" formControlName="phone" value="{{formUser.value.phone}}">
                     <small style="color: red" class="text-danger col-sm-10"
-                           *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.touched">
-                      Vui lòng không để trống số thoại </small>
+                           *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.touched"
+                           translate> settings.validatesdt</small>
                     <small class="form-text text-danger validate"
-                           *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.parent && formUser.get('phone')?.touched">
-                      Số điện thoại không đúng định dạng
-                    </small>
+                           *ngIf="formUser.get('phone')?.hasError('required') && formUser.get('phone')?.parent && formUser.get('phone')?.touched"
+                           translate> settings.validatesdtdinhdang</small>
                   </div>
                   <div class="col-sm-3">
-                    <div class="profile_lable">Ngày sinh</div>
+                    <div class="profile_lable" translate> settings.ngaysinh</div>
                     <input type="date" class="profile-input" formControlName="birthday"
                            value="{{formUser.value.birthday}}">
                   </div>
@@ -91,23 +91,25 @@
                 <br>
                 <div class="row">
                   <div class="col-sm-6">
-                    <div class="profile_lable">Địa chỉ</div>
+                    <div class="profile_lable" translate> settings.diachi</div>
                     <input type="text" class="profile-input" formControlName="address"
                            value="{{formUser.value.address}}">
                   </div>
                   <div class="col-sm-2">
-                    <div class="profile_lable">Giới tính</div>
+                    <div class="profile_lable" translate> settings.gioitinh</div>
                     <mat-select class="custom-select profile-input" formControlName="gender">
                       <mat-option *ngFor="let eGendes of eGender" [value]="eGendes">
-                        <p readonly class="form-control-plaintext" *ngIf="eGendes == 'FEMALE' ">Nữ</p>
-                        <p readonly class="form-control-plaintext" *ngIf="eGendes == 'MALE'">Nam</p>
-                        <p readonly class="form-control-plaintext" *ngIf=" eGendes== 'OTHER'">Khác</p>
+                        <p readonly class="form-control-plaintext" *ngIf="eGendes == 'FEMALE' " translate>
+                          settings.nu</p>
+                        <p readonly class="form-control-plaintext" *ngIf="eGendes == 'MALE'" translate> settings.nam</p>
+                        <p readonly class="form-control-plaintext" *ngIf=" eGendes== 'OTHER'" translate>
+                          settings.khac</p>
                       </mat-option>
                     </mat-select>
                   </div>
                 </div>
                 <br><br>
-                <button type="submit" class="btn primary-btn ">Cập nhật</button>
+                <button type="submit" class="btn primary-btn " translate> settings.capnhat</button>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegistrationService} from "../../../../service/registration.service";
 import {Users} from "../../../../model/user/Users";
+import {TranslateConfigService} from "../../../../service/translate-config.service";
 
 @Component({
   selector: 'app-sinup-user',
@@ -18,6 +19,7 @@ export class SinupUserComponent implements OnInit {
 
   constructor(private matSnackBar: MatSnackBar,
               private sinupService: RegistrationService,
+              private translateConfigService: TranslateConfigService
   ) {
   }
 
@@ -27,6 +29,13 @@ export class SinupUserComponent implements OnInit {
         this.userList = data;
       }
     )
+  }
+
+
+  /* Change default language */
+  changeDefaultLanguages(event: any) {
+    console.log(event.target.value)
+    this.translateConfigService.changeLanguage(event.target.value);
   }
 
   formSinUp = new FormGroup(

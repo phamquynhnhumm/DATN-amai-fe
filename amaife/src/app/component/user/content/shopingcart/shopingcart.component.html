@@ -3,13 +3,13 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__text">
-          <h2>Giỏ hàng</h2>
+          <h2 translate>settings.giohang</h2>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__links">
-          <a style="text-decoration: none" href="./index.html">Trang chủ</a>
-          <span>Giỏ hàng</span>
+          <a style="text-decoration: none" href="./index.html" translate>settings.trangchu</a>
+          <span translate>settings.giohang</span>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <table>
             <thead>
             <tr>
-              <th colspan="5">Sản phẩm</th>
+              <th colspan="5" translate>settings.sanpham</th>
             </tr>
             </thead>
             <tbody *ngIf="cartList !=  null">
@@ -57,7 +57,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="continue__btn">
-              <a style="text-decoration: none" routerLink="/menu">Quay lại cửa hàng</a>
+              <a style="text-decoration: none" routerLink="/menu" translate>settings.quaylaicuahang</a>
             </div>
           </div>
         </div>
@@ -65,11 +65,12 @@
       <div class="col-lg-4">
         <br><br>
         <div class="cart__total">
-          <h6>Tổng giỏ hàng</h6>
+          <h6 translate>settings.tonggiohang</h6>
           <ul>
-            <li>Tổng tiền <span>{{totalCart | currency :'VND'}}</span></li>
+            <li translate>settings.tongtien <span>{{totalCart | currency :'VND'}}</span></li>
           </ul>
-          <a style="text-decoration: none" (click)="checkout(totalCart)" class="primary-btn">Tiến hành thanh toán</a>
+          <a style="text-decoration: none" (click)="checkout(totalCart)" class="primary-btn" translate>settings.tienhanhthanhtoan
+        </a>
         </div>
       </div>
     </div>
