@@ -132,6 +132,20 @@
     "huydonhang": "取消訂單",
     "xemchitietdonhang": "查看訂單詳細資訊",
     "donhangrong": "軒，你沒有任何訂單",
+    "xoamonkhoigiohang": "從購物車中刪除物品",
+    "bancochacchanmuonxoakhonog": "你確定要刪除它",
+    "luuyneuxoacartkhoigiohang": "如果刪除，購物車上將不再存在",
+    "xoa": "刪除",
+    "bancochacchanhuydonhangkhong": "注文をキャンセルしてよろしいですか?",
+    "chitietdonhang": "注文の詳細 -",
+    "madonahang": "注文コード:",
+    "chitietdon": "単一の詳細",
+    "soluong": "量：",
+    "tennguoinhan": "受信者の名前",
+    "diachinhan": "受信アドレス",
+    "taikhoandatmon": "注文アカウント",
+    "banvaoday": "ここをクリック",
+    "thoat": "逃げる",
     "taikhoan": "すべての"
   }
 }

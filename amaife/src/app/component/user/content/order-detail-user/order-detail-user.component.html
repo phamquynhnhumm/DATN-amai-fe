@@ -6,10 +6,11 @@
       <div>
         <div class="card mb-3">
           <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
-            class="text-uppercase label-color-1" style="color: black">Chi tiết đơn hàng - </span><span
-            class="text-medium" style="color:black;"> Mã đơn hàng: {{oder.id}}</span>
+            class="text-uppercase label-color-1" style="color: black" translate> settings.chitietdonhang </span><span
+            class="text-medium" style="color:black;display: inline-block" translate> settings.madonahang</span><span
+            style="display: inline-block">{{oder.id}}</span>
             <div class="w-100 text-center py-1 px-2" style="color: black"><span class="text-medium" style="color: black"
-            >Thời gian đặt:</span> {{oder.createAt}}
+                                                                                translate> settings.thoigiandat </span> {{oder.createAt}}
             </div>
           </div>
 
@@ -22,7 +23,7 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ xác nhận</h4>
+                <h4 class="step-title" translate> settings.choxacnhan</h4>
               </div>
               <div
                 *ngIf="oder.status ==eStatusOrder.CONFIRMED.valueOf() || oder.status ==eStatusOrder.TRANSPORT.valueOf()"
@@ -31,7 +32,7 @@
                   <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ lấy</h4>
+                <h4 class="step-title" translate> settings.cholay</h4>
               </div>
               <div
                 *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf()"
@@ -40,7 +41,7 @@
                   <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ lấy</h4>
+                <h4 class="step-title" translate> settings.cholay</h4>
               </div>
               <div
                 *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
@@ -49,21 +50,21 @@
                   <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đang giao</h4>
+                <h4 class="step-title" translate> settings.danggiao</h4>
               </div>
               <div *ngIf="oder.status !=eStatusOrder.TRANSPORT.valueOf()" class="step">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đang giao</h4>
+                <h4 class="step-title" translate> settings.danggiao</h4>
               </div>
               <div class="step ">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đã giao</h4>
+                <h4 class="step-title" translate> settings.dagiao</h4>
               </div>
               <div class="step">
                 <div class="completed">
@@ -71,7 +72,7 @@
                     <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <h4 class="step-title">Đã hủy</h4>
+                  <h4 class="step-title" translate> settings.dahuy</h4>
                 </div>
               </div>
             </div>
@@ -84,7 +85,7 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ xác nhận</h4>
+                <h4 class="step-title" translate> settings.choxacnhan</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
                 <div class="step-icon-wrap">
@@ -92,7 +93,7 @@
                     <i class="fa fa-cog" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ lấy</h4>
+                <h4 class="step-title" translate> settings.cholay</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.CANCEL.valueOf()" class="step">
                 <div class="step-icon-wrap">
@@ -100,35 +101,35 @@
                     <i class="fa fa-cog" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Chờ lấy</h4>
+                <h4 class="step-title" translate> settings.cholay</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đang giao</h4>
+                <h4 class="step-title" translate> settings.danggiao</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.CANCEL.valueOf()" class="step">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đang giao</h4>
+                <h4 class="step-title" translate> settings.danggiao</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step completed">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đã giao</h4>
+                <h4 class="step-title" translate> settings.dagiao</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.CANCEL.valueOf()" class="step">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đã giao</h4>
+                <h4 class="step-title" translate> settings.dagiao</h4>
               </div>
 
               <div *ngIf="oder.status ==eStatusOrder.CANCEL.valueOf()" class="step completed">
@@ -136,14 +137,14 @@
                   <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đã hủy</h4>
+                <h4 class="step-title" translate> settings.dahuy</h4>
               </div>
               <div *ngIf="oder.status ==eStatusOrder.RECEIVED.valueOf()" class="step">
                 <div class="step-icon-wrap">
                   <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
                   </div>
                 </div>
-                <h4 class="step-title">Đã hủy</h4>
+                <h4 class="step-title" translate> settings.dahuy</h4>
               </div>
             </div>
 
@@ -151,7 +152,7 @@
 
               <div class="panel panel-default panel-order">
                 <div class="panel-heading">
-                  <strong>Chi tiết đơn</strong>
+                  <strong translate> settings.chitietdon</strong>
                 </div>
                 <div class="panel-body">
                   <div class="row"
@@ -162,9 +163,12 @@
                     <div class="col-md-11">
                       <div class="row">
                         <div class="col-sm-12"><br>
-                          <span><strong>Tên món: </strong></span> <span
+                          <span><strong translate> settings.tenmon </strong></span> <span
                             class="label label-info">{{oderDetail.food.name}}</span><br/>
-                          Số lượng : {{oderDetail.quantity}}, Giá: {{oderDetail.food.price | currency:'VND'}} <br/>
+                          <span style="display: inline-block" translate>settings.soluong </span><span
+                            style="display: inline-block"> {{oderDetail.quantity}}</span><span
+                            style="display: inline-block"
+                            translate>settings.gia</span><span>{{oderDetail.food.price | currency:'VND'}}</span> <br/>
                         </div>
                       </div>
                       <br>
@@ -176,42 +180,43 @@
                 <br><br>
                 <div class="row">
                   <div class="col">
-                    <div class="profile_lable"> Tên người nhận</div>
+                    <div class="profile_lable" translate> settings.tennguoinhan</div>
                     <input class="profile-input" value="{{oder.fullName}}" readonly>
                   </div>
                   <div class="col">
-                    <div class="profile_lable"> Địa chỉ nhận</div>
+                    <div class="profile_lable" translate> settings.diachinhan</div>
                     <input class="profile-input" value="{{oder.address}}" readonly>
                   </div>
                   <div class="col">
-                    <div class="profile_lable">Số điện thoại</div>
+                    <div class="profile_lable" translate> settings.sodienthoai</div>
                     <input class="profile-input" value="{{oder.phone}}" readonly>
                   </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col">
-                    <div class="profile_lable"> Tài khoản đặt món</div>
+                    <div class="profile_lable" translate> settings.taikhoandatmon</div>
                     <input class="profile-input" value="{{oder.account.userName}}" readonly>
                   </div>
                   <div class="col">
-                    <div class="profile_lable"> Số lượng</div>
+                    <div class="profile_lable" translate> settings.soluong</div>
                     <input class="profile-input" value="{{oder.quantity}}" readonly>
                   </div>
                   <div class="col">
-                    <div class="profile_lable">Tổng tiền</div>
+                    <div class="profile_lable" translate> settings.tongtien</div>
                     <input class="profile-input" value="{{oder.money | currency: 'VND'}}" readonly>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
                     <img src="{{oder.qrcode}}">
-                    <p><a href="{{oder.qrcode}}">Bấm vào đây</a></p>
+                    <p><a href="{{oder.qrcode}}" translate> settings.banvaoday </a></p>
                   </div>
                 </div>
                 <br>
                 <div class="row">
-                  <button class=" col-sm-32 btn  btn-outline-warning" (click)="cancel()">Thoát</button>
+                  <button class=" col-sm-32 btn  btn-outline-warning" (click)="cancel()" translate> settings.thoat
+                  </button>
                 </div>
               </div>
               <br><br>
