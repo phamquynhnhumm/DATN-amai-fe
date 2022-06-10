@@ -30,7 +30,8 @@ export class NavUserComponent implements OnInit {
               public foodcategoryService: FoodService,
               public auth: AuthService,
               public cartService: OrderService,
-              private translateConfigService: TranslateConfigService) {
+              private translateConfigService: TranslateConfigService
+  ) {
   }
 
   ngOnInit(): void {
