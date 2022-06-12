@@ -16,8 +16,7 @@
 </div>
 <div *ngIf="href =='http://localhost:4200/sinup'">
   <app-sinup-user></app-sinup-user>
-</div>
-<div *ngIf="href =='http://localhost:4200/forgot'">
+</div><div *ngIf="href =='http://localhost:4200/forgot'">
   <app-forgotpassword></app-forgotpassword>
 </div>
 <c-sidebar *ngIf="authService.getRole() == 'ROLE_ADMIN' || authService.getRole()=='ROLE_MANAGEMENT' "
