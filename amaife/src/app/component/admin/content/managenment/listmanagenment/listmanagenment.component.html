@@ -43,6 +43,7 @@
         <table class="table table-striped able-bordered jambo_table bulk_action">
           <thead class="table table-striped able-bordered jambo_table bulk_action">
           <tr>
+            <th>Ảnh đại diện</th>
             <th>Tài khoản</th>
             <th>Tên khách hàng</th>
             <th>Số điện thoại</th>
@@ -53,8 +54,9 @@
           </thead>
           <tbody *ngIf="users != null">
           <tr class="even pointer"
-              *ngFor="let user of users | paginate :{itemsPerPage:5,currentPage : p}"
-          >
+              *ngFor="let user of users | paginate :{itemsPerPage:5,currentPage : p}">
+            <td (click)="openDetailCustomer(user)"><img src="{{user.image}}" alt="ảnh đại diện" width="15%"
+                                                        height="15%"></td>
             <td (click)="openDetailCustomer(user)">{{user.account.userName}}</td>
             <td (click)="openDetailCustomer(user)">{{user.fullName}}</td>
             <td (click)="openDetailCustomer(user)">{{user.phone}}</td>
@@ -77,7 +79,6 @@
             <td colspan="7" style="text-align: center; color: crimson"><strong>Không có dữ liệu</strong></td>
           </tr>
           </tbody>
-
         </table>
       </c-card-body>
       <!--        Pagination-->
