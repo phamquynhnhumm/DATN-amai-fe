@@ -31,6 +31,7 @@ import {CancelorderComponent} from './content/cancelorder/cancelorder.component'
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ChatbotComponent } from './content/chatbot/chatbot.component';
 
 export function rootLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -57,15 +58,17 @@ export function rootLoaderFactory(http: HttpClient) {
     PaypalComponent,
     SinupUserComponent,
     ForgotpasswordComponent,
-    CancelorderComponent
+    CancelorderComponent,
+    ChatbotComponent
   ],
-  exports: [
-    NavUserComponent,
-    FooterUserComponent,
-    HomeuserComponent,
-    SinupUserComponent,
-    ForgotpasswordComponent
-  ],
+    exports: [
+        NavUserComponent,
+        FooterUserComponent,
+        HomeuserComponent,
+        SinupUserComponent,
+        ForgotpasswordComponent,
+        ChatbotComponent
+    ],
   imports: [
     CommonModule,
     UserRoutingModule,
