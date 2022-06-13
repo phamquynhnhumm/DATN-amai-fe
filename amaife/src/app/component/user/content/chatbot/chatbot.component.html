@@ -1,4 +1,4 @@
-<div class="container  absolute p-0 bottomright ">
+<div class="container  absolute p-0 bottomright " style="position:fixed;">
   <div class="card">
     <div class="row g-0">
       <div class="col-12 col-lg-12 col-xl-12">
@@ -176,8 +176,10 @@
         </div>
         <div class="flex-grow-0 py-3 px-4 border-top">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Nhập tin nhắn">
-            <button class="btn btn-primary">Gửi</button>
+            <form [formGroup]="formChat" (click)="chatbox()">
+              <input type="text" class="form-control" value="chat" formControlName="msg" placeholder="Nhập tin nhắn">
+              <button type="submit" class="btn btn-primary">Gửi</button>
+            </form>
           </div>
         </div>
       </div>

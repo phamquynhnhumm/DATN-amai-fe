@@ -1,5 +1,5 @@
 body {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .chat-online {
@@ -54,14 +54,7 @@ body {
 .absolute {
   position: absolute;
   padding-top: 25px;
-  top: 80px;
-  right: 0;
-  width: 25%;
-  border: 3px solid white;
-}
-
-.bottomright {
-  position: absolute;
-  right: 16px;
-  font-size: 18px;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
 }
