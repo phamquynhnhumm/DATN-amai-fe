@@ -1,6 +1,7 @@
 <div *ngIf="authService.getRole() == 'ROLE_CUSTOMER'">
   <app-nav-user></app-nav-user>
   <router-outlet></router-outlet>
+  <app-chatbot></app-chatbot>
   <app-footer-user></app-footer-user>
 </div>
 

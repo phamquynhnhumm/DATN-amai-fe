@@ -21,7 +21,10 @@ const routes: Routes = [
   {path: "sinup", component: SinupUserComponent},
   {path: "", component: HomeuserComponent},
   {path: "forgot", component: ForgotpasswordComponent},
-  {path: "chat", component: ChatbotComponent},
+  {
+    path: "chat", component: ChatbotComponent, canActivate: [AuthGuard],
+    data: {role: ['ROLE_CUSTOMER']}
+  },
   {
     path: "user", component: AccountuserComponent,
     canActivate: [AuthGuard],
