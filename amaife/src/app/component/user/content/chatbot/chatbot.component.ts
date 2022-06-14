@@ -4,6 +4,8 @@ import {ChatboxService} from "../../../../service/chatbox.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../../../service/auth.service";
 import {Chat} from "../../../../model/chat/Chat";
+import {UserService} from "../../../../service/user.service";
+import {Users} from "../../../../model/user/Users";
 
 @Component({
   selector: 'app-chatbot',
@@ -13,10 +15,12 @@ import {Chat} from "../../../../model/chat/Chat";
 export class ChatbotComponent implements OnInit {
   rep!: string;
   chatList !: Array<Chat>
+  user!: Users;
 
   constructor(private chatService: ChatboxService,
               private snackBar: MatSnackBar,
               public auth: AuthService,
+              public userService: UserService,
   ) {
   }
 
@@ -31,22 +35,30 @@ export class ChatbotComponent implements OnInit {
         console.log("chưa có data")
       }
     )
+    // @ts-ignore
+    this.userService.findByIdUser(this.auth.getIdUser()).subscribe(
+      dataUser => {
+        this.user = dataUser;
+      }
+    )
   }
 
   formChat = new FormGroup(
     {
-      msg: new FormControl(""),
+      msg: new FormControl("", Validators.required),
     })
 
   chatbox() {
     if (this.formChat.valid) {
       this.chatService.chatbot(this.formChat.value.msg).subscribe(
-        data => {
+        (data) => {
           this.rep = data;
-          console.log("không dta doc luón" + this.rep)
-        },
-        (errors) => {
-          console.log("không được");
+          console.log(this.rep);
+        }, error => {
+          this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạns!", "OK", {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-warn']
+          });
         }
       )
     } else {

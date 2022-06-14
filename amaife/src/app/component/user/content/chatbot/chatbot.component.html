@@ -9,25 +9,21 @@
                    alt="Sharon Lessman" width="40" height="40">
             </div>
             <div class="flex-grow-1 pl-3">
-              <strong>Sharon Lessman</strong>
+              <strong>{{auth.getUsername()}}</strong>
             </div>
             <div>
               <button class="btn  btn-lg mr-1 px-3 d-none d-md-inline">
                 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                <!--                  <i class="fa fa-times-circle" aria-hidden="true"></i>-->
               </button>
             </div>
           </div>
         </div>
-
         <div class="position-relative">
           <div class="chat-messages p-4">
-
             <div class="chat-message-right mb-4">
               <div>
                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1"
                      alt="Chris Wood" width="40" height="40">
-                <div class="text-muted small text-nowrap mt-2">2:35 am</div>
               </div>
               <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
                 <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
@@ -38,36 +34,51 @@
               <div>
                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1"
                      alt="Chris Wood" width="40" height="40">
-                <div class="text-muted small text-nowrap mt-2">2:35 am</div>
               </div>
               <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
                 <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
                 Hân hạnh được chào đón bạn
               </div>
             </div>
-
-            <div class="chat-message-left pb-4">
-              <div>
-                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
-                     alt="Sharon Lessman" width="40" height="40">
-                <div class="text-muted small text-nowrap mt-2">2:36 am</div>
+            <div *ngFor="let chat of chatList">
+              <div class=" chat-message-left mb-4 text-muted small text-nowrap mt-2">{{chat.createAt}}</div>
+              <div class="chat-message-left pb-4">
+                <div>
+                  <img src="{{user.image}}" class="rounded-circle mr-1"
+                       alt="{{auth.getUsername()}}" width="40" height="40">
+                </div>
+                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                  <div class="font-weight-bold mb-1"><small style="color: #3a591d;">{{auth.getUsername()}}</small></div>
+                  {{chat.msg}}
+                </div>
               </div>
-              <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div class="font-weight-bold mb-1"><small style="color: #3a591d;">{{auth.getUsername()}}</small></div>
-                Sed pulvinar, massa vitae interdum pulvinar, risus lectus porttitor magna, vitae commodo lectus mauris
-                et velit.
-                Proin ultricies placerat imperdiet. Morbi varius quam ac venenatis tempus.
+              <div class=" chat-message-right mb-4 text-muted small text-nowrap mt-2">{{chat.updateAt}}</div>
+              <div class="chat-message-right mb-4">
+                <div>
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=d63e50b2-b08a-4f74-b24f-b5ecc1448125"
+                    class="rounded-circle mr-1"
+                    alt="Chris Wood" width="40" height="40">
+                </div>
+                <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+                  <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
+                  {{chat.msgchatbot}}
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="flex-grow-0 py-3 px-4 border-top">
-          <div class="input-group">
-            <form [formGroup]="formChat" (ngSubmit)="chatbox()">
+          <form [formGroup]="formChat" (ngSubmit)="chatbox()">
+            <div class="input-group">
               <input type="text" class="form-control" formControlName="msg" placeholder="Nhập tin nhắn">
+              <small style="color: red" class="text-danger col-sm-10"
+                     *ngIf="formChat.get('msg')?.hasError('required') && formChat.get('msg')?.touched">
+                Vui lòng nhập tin nhắn
+              </small>
               <button type="submit" class="btn btn-primary">Gửi</button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

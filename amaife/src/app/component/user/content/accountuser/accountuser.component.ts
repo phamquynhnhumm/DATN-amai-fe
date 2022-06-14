@@ -6,7 +6,6 @@ import {UserService} from "../../../../service/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {finalize} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {RegistrationService} from "../../../../service/registration.service";
 
 @Component({
   selector: 'app-accountuser',
@@ -59,7 +58,6 @@ export class AccountuserComponent implements OnInit {
         );
       }
     )
-
   }
 
   selectFile(event: any) {
