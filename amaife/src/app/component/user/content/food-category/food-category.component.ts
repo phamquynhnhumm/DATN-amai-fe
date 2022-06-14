@@ -25,6 +25,7 @@ export class FoodCategoryComponent implements OnInit {
   eStatusCart = EStatusCart;
   id !: number;
   foodCategory !: FoodCategory;
+
   constructor(private foodService: FoodService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -68,7 +69,7 @@ export class FoodCategoryComponent implements OnInit {
           this.foodList = data;
         },
         (error) => {
-          this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
+          this.foodService.findAllFoodByFoodCategory_IdUSer(this.activatedRoute.snapshot.params['id']).subscribe(
             data => {
               this.p = 1;
               this.foodList = data;
@@ -92,7 +93,7 @@ export class FoodCategoryComponent implements OnInit {
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
         this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
-        location.replace("/category/" + this.foodCategory.id );
+        location.replace("/category/" + this.foodCategory.id);
       },
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Chat} from "../model/chat/Chat";
+import {Material} from "../model/food/Material";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class ChatboxService {
   readonly URL_CHATBOX = "http://localhost:8080/api/chat/send"
   readonly URL_TEST = "http://localhost:8080/api/chat/test"
   readonly URL_FINDCREATEBY = "http://localhost:8080/api/chat"
+  readonly URL_CHATCACCEL = "http://localhost:8080/api/chat/cancel"
+  readonly URL_CHATDELETE = "http://localhost:8080/api/chat/delete"
 
   constructor(private httpClient: HttpClient) {
   }
@@ -31,5 +34,14 @@ export class ChatboxService {
 
   findUserName(createBy: string): Observable<Array<Chat>> {
     return this.httpClient.get<Array<Chat>>(this.URL_FINDCREATEBY + "/" + createBy);
+  }
+
+
+  updateChat(chat: Object): Observable<Chat> {
+    return this.httpClient.put<Chat>(this.URL_CHATCACCEL, chat);
+  }
+
+  deleteByIdChat(id: number): Observable<Chat> {
+    return this.httpClient.delete<Chat>(this.URL_CHATDELETE + "/" + id);
   }
 }

@@ -15,7 +15,7 @@ import {DetailfooduserComponent} from './content/detailfooduser/detailfooduser.c
 import {ShopingcartComponent} from './content/shopingcart/shopingcart.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
-import {GridModule} from "@coreui/angular";
+import {DropdownModule, GridModule} from "@coreui/angular";
 import {ChangepassComponent} from './content/changepass/changepass.component';
 import {OrderDetailUserComponent} from './content/order-detail-user/order-detail-user.component';
 import {HistoryOrderUserComponent} from './content/history-order-user/history-order-user.component';
@@ -69,25 +69,26 @@ export function rootLoaderFactory(http: HttpClient) {
         ForgotpasswordComponent,
         ChatbotComponent
     ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    NgxPaginationModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    GridModule,
-    FormsModule,
-    NgxPayPalModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: rootLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
-    MatDialogModule
-  ]
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        NgxPaginationModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        GridModule,
+        FormsModule,
+        NgxPayPalModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: rootLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+        MatDialogModule,
+        DropdownModule
+    ]
 })
 export class UserModule {
 }

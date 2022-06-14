@@ -6,6 +6,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {Chat} from "../../../../model/chat/Chat";
 import {UserService} from "../../../../service/user.service";
 import {Users} from "../../../../model/user/Users";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-chatbot',
@@ -16,11 +17,13 @@ export class ChatbotComponent implements OnInit {
   chatList !: Array<Chat>
   chat !: Chat
   user!: Users;
+  chatFs: boolean = false;
 
   constructor(private chatService: ChatboxService,
               private snackBar: MatSnackBar,
               public auth: AuthService,
               public userService: UserService,
+              private router: Router
   ) {
   }
 
@@ -50,7 +53,6 @@ export class ChatbotComponent implements OnInit {
       this.chatService.chatbot(this.formChat.value).subscribe(
         (data) => {
           this.chat = data;
-          window.location.reload()
         }, error => {
           this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạn!", "OK", {
             duration: 3000,
@@ -64,5 +66,17 @@ export class ChatbotComponent implements OnInit {
         panelClass: ['mat-toolbar', 'mat-warn']
       });
     }
+  }
+
+  Chat() {
+    this.chatFs = true;
+  }
+
+  NoChat() {
+    this.chatFs = false;
+  }
+
+  reload() {
+    window.location.reload()
   }
 }

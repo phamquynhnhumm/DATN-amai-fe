@@ -103,14 +103,16 @@
             <h2 translate>settings.cuachinhban</h2>
           </div>
           <form [formGroup]="formCLass" (ngSubmit)="onSubmit()">
-            <input type="text" placeholder="Họ và tên" formControlName="name">
+            <span style="  visibility: hidden;" translate #hovaten>settings.hovaten</span>
+            <input type="text" [placeholder]="hovaten.textContent" formControlName="name">
             <small class="text-danger col-sm-10"
                    *ngIf="formCLass.get('name')?.hasError('required') && formCLass.get('name')?.touched" translate>settings.validatenamehome
             </small>
             <small class="text-danger col-sm-10 validate "
                    *ngIf="formCLass.get('name')?.hasError('minlength') || formCLass.get('name')?.hasError('maxlength') && formCLass.get('name')?.touched"
                    translate>settings.validatenamehome2 </small>
-            <input type="text" placeholder="Số điện thoại" formControlName="phone">
+            <span style="  visibility: hidden;" translate #phone>settings.sodienthoai</span>
+            <input type="text" translate [placeholder]="phone.textContent" formControlName="phone">
             <small class="text-danger col-sm-10"
                    *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched" translate>settings.validatephonehome
             </small>
@@ -118,7 +120,8 @@
                    *ngIf="formCLass.get('phone')?.hasError('minlength') || formCLass.get('phone')?.hasError('maxlength') && formCLass.get('phone')?.touched"
                    translate>settings.validatephonehome2
             </small>
-            <input type="text" placeholder="Nhập yêu cầu của bạn" formControlName="content">
+            <span style="  visibility: hidden;" translate #content>settings.noidung</span>
+            <input type="text" translate [placeholder]="content.textContent" formControlName="content">
             <small class="text-danger col-sm-10"
                    *ngIf="formCLass.get('content')?.hasError('required') && formCLass.get('content')?.touched"
                    translate>settings.validatecontenthome
