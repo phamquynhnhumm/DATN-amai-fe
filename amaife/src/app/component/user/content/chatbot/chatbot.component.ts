@@ -13,8 +13,8 @@ import {Users} from "../../../../model/user/Users";
   styleUrls: ['./chatbot.component.scss']
 })
 export class ChatbotComponent implements OnInit {
-  rep!: string;
   chatList !: Array<Chat>
+  chat !: Chat
   user!: Users;
 
   constructor(private chatService: ChatboxService,
@@ -29,10 +29,6 @@ export class ChatbotComponent implements OnInit {
     this.chatService.findUserName(this.auth.getUsername()).subscribe(
       (data) => {
         this.chatList = data
-        console.log(this.chatList)
-      },
-      error => {
-        console.log("chưa có data")
       }
     )
     // @ts-ignore
@@ -46,28 +42,27 @@ export class ChatbotComponent implements OnInit {
   formChat = new FormGroup(
     {
       msg: new FormControl("", Validators.required),
+      msgchatbot: new FormControl("ChatBot"),
     })
 
   chatbox() {
     if (this.formChat.valid) {
-      this.chatService.chatbot(this.formChat.value.msg).subscribe(
+      this.chatService.chatbot(this.formChat.value).subscribe(
         (data) => {
-          this.rep = data;
-          console.log(this.rep);
+          this.chat = data;
+          window.location.reload()
         }, error => {
-          this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạns!", "OK", {
+          this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạn!", "OK", {
             duration: 3000,
             panelClass: ['mat-toolbar', 'mat-warn']
           });
         }
       )
     } else {
-      this.snackBar.open("Chat  thất bại!", "OK", {
+      this.snackBar.open("Vui lòng nhập nội dung tin nhắn!", "OK", {
         duration: 3000,
         panelClass: ['mat-toolbar', 'mat-warn']
       });
     }
   }
-
-
 }

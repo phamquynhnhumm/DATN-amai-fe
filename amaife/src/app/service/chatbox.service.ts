@@ -19,12 +19,14 @@ export class ChatboxService {
     {"No-Auth": "True"}
   );
 
-  chatbot(msg: string): Observable<string> {
-    return this.httpClient.get<string>(this.URL_CHATBOX + "/" + msg);
+  chatbot(chat: Chat): Observable<Chat> {
+    return this.httpClient.post<Chat>(this.URL_CHATBOX, chat);
   }
 
-  test(msg: string): Observable<string> {
-    return this.httpClient.get<string>(this.URL_TEST + "/" + msg);
+  test(msg: string): Observable<String> {
+    return this.httpClient.get<String>(this.URL_TEST, {
+      params: new HttpParams().set('msg', msg),
+    });
   }
 
   findUserName(createBy: string): Observable<Array<Chat>> {
