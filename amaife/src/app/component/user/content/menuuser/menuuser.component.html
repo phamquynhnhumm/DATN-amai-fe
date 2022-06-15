@@ -28,8 +28,10 @@
                 <mat-option *ngFor="let searchs of searchSubject"
                             (onSelectionChange)="onCheckboxChangeFood($event,searchs)">{{searchs.valueOf()}}</mat-option>
               </mat-select>
-              <input type="text" placeholder="Tìm kiếm" formControlName="search" #search>
+              <input type="text" translate [placeholder]="chonthuoctinh.textContent" formControlName="search" #search>
               <button type="submit" (click)="searchFood(search.value)"><i class="fa fa-search"></i></button>
+              <span style=" visibility: hidden;" translate #chonthuoctinh>settings.timkiem</span>
+
             </form>
             <small class="form-text text-muted text-danger"
                    *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched" translate>settings.validatesearch</small>
@@ -61,7 +63,7 @@
             </div>
           </div>
           <div class="product__item__text">
-            <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
+            <h6><a style="text-decoration: none">{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
               <a style="text-decoration: none" (click)="createCartShoping(foods)" translate>settings.themvaogiohang</a>
@@ -69,6 +71,7 @@
           </div>
         </div>
       </div>
+      
       <pagination-controls class="text-right text" (pageChange)="p = $event"
                            previousLabel="Trước"
                            nextLabel="Sau"

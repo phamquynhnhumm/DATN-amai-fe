@@ -9,12 +9,15 @@
                 <div class="side-bar">
                   <nav class="side-menu">
                     <ul class="nav">
-                      <li><a style="text-decoration: none" routerLink="/user" translate><span class="fa fa-user"></span> settings.thongtincanhan</a></li>
+                      <li><a style="text-decoration: none" routerLink="/user" translate><span class="fa fa-user"></span>
+                        settings.thongtincanhan</a></li>
                       <li class="active"><a style="text-decoration: none" translate routerLink="/changePass"><span
                         class="fa fa-cog"></span> settings.doimatkhau</a></li>
-                      <li><a style="text-decoration: none" routerLink="/oder" translate><span class="fa fa-credit-card"></span>
+                      <li><a style="text-decoration: none" routerLink="/oder" translate><span
+                        class="fa fa-credit-card"></span>
                         settings.donhanguser</a></li>
-                      <li><a style="text-decoration: none" routerLink="/history" translate><span class="fa fa-envelope"></span>
+                      <li><a style="text-decoration: none" routerLink="/history" translate><span
+                        class="fa fa-envelope"></span>
                         settings.lsdonhang</a>
                       </li>
                     </ul>
@@ -39,33 +42,41 @@
           <br>
           <form [formGroup]="formForgotPassword">
             <div *ngIf="isGetOtp; else elseGetOtp" class="input-group">
-              <input formControlName="userName" type="text" placeholder="Tên đăng nhập" class="form-control">
+              <input formControlName="userName" type="text" translate [placeholder]="tendangnhap.textContent"
+                     class="form-control">
+              <span style=" visibility: hidden;" translate #tendangnhap>settings.tendangnhap</span>
             </div>
             <ng-template #elseGetOtp>
-              <input formControlName="userName" type="text" placeholder="Tên đăng nhập" class="form-control" readonly>
+              <span style=" visibility: hidden;" translate #tendangnhaps>settings.tendangnhap</span>
+              <input formControlName="userName" type="text" translate [placeholder]="tendangnhaps.textContent"
+                     class="form-control" readonly>
             </ng-template>
             <br>
             <div *ngIf="isInputOtp">
-              <input formControlName="otp" #otp type="text" placeholder="Nhập mã OTP (6 ký tự)" class="form-control"
+              <span style=" visibility: hidden;" translate #nhanmaotps>settings.nhanmaotps</span>
+              <input formControlName="otp" #otp type="text" translate [placeholder]="nhanmaotps.textContent"
+                     class="form-control"
                      maxlength="6">
               <br>
               <div id="inline">
+                <span style=" visibility: hidden;" translate #matkhaumoia>settings.matkhaumoi</span>
+
                 <input [type]="fieldTextType ? 'text' : 'password'" formControlName="newPassword"
                        #newPassword
-                       placeholder="Nhập mật khẩu mới"
-                       class="form-control">
+                       translate [placeholder]="matkhaumoia.textContent" class="form-control">
               </div>
               <br>
             </div>
             <div>
-              <button class="btn btn-light" routerLink="/home"   translate> settings.huy</button>
+              <button class="btn btn-light" routerLink="/home" translate> settings.huy</button>
               <label *ngIf="isGetOtp">
                 <button class="btn btn-warning" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
-                        style="margin-left: 50px;"   translate> settings.layma
+                        style="margin-left: 50px;" translate> settings.layma
                 </button>
               </label>
               <label *ngIf="isInputOtp">
-                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;"   translate> settings.xacnhan
+                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;" translate>
+                  settings.xacnhan
                 </button>
               </label>
             </div>

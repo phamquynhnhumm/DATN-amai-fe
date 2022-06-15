@@ -27,7 +27,9 @@
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p translate>settings.nguoinhan <span>*</span></p>
-                    <input type="text" placeholder="Nhập tên người nhận" formControlName="fullName">
+                    <input type="text" translate [placeholder]="nhaptennguoinhans.textContent"
+                           formControlName="fullName">
+                    <span style=" visibility: hidden;" translate #nhaptennguoinhans>settings.nhaptennguoinhan</span>
                     <small class="text-danger col-sm-10"
                            *ngIf="formOrder.get('fullName')?.hasError('required') && formOrder.get('fullName')?.touched"
                            translate>settings.validatenguoinhan
@@ -41,7 +43,9 @@
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p translate>settings.sdtfooter<span>*</span></p>
-                    <input type="text" placeholder="Nhập số điện thoại" formControlName="phone">
+                    <input type="text"  translate [placeholder]="nhapsdts.textContent" formControlName="phone">
+                    <span style=" visibility: hidden;" translate #nhapsdts>settings.nhapsdt</span>
+
                     <small class="text-danger col-sm-10"
                            *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched"
                            translate>settings.validatesdt
@@ -57,7 +61,10 @@
               <div class="checkout__input">
                 <p translate>settings.diachi <span>*</span></p>
                 <span style="color: #FFC107;font-size: small" translate>settings.luuydiachi </span>
-                <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" formControlName="address">
+                <input type="text" translate [placeholder]="nhapdiachis.textContent" class="checkout__input__add"
+                       formControlName="address">
+                <span style=" visibility: hidden;" translate #nhapdiachis>settings.nhapdaichi</span>
+
                 <small class="text-danger col-sm-10"
                        *ngIf="formOrder.get('address')?.hasError('required') && formOrder.get('address')?.touched"
                        translate>settings.validatediachi

@@ -18,8 +18,8 @@ export class FooterUserComponent implements OnInit {
     this.shopService.findAllShopCustomer().subscribe(
       data => {
         this.shop = data;
+        console.log(this.shop)
       }
     )
   }
-
 }

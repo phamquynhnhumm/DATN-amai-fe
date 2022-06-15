@@ -147,10 +147,14 @@
     "banvaoday": "Bấm vào đây",
     "thoat": "Thoát",
     "noidung": "Nội dung muốn được tư vấn",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
+    "chonthuoctinh": "Chọn thuộc tính",
+    "timkiem": "Tìm kiếm",
+    "nhanmaotps": "Nhập mã OTP (6 ký tự)",
+    "nhapdaichi": "Nhập địa chỉ",
+    "nhaptennguoinhan": "Nhập tên người nhận",
+    "nhapsdt": "Nhập Số điện thoại",
+    "truoc" : "Trước",
+    "sau": "Sau",
     "taikhoan": "Tất cả"
   }
 }

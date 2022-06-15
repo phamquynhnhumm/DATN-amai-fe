@@ -147,6 +147,14 @@
     "banvaoday": "ここをクリック",
     "thoat": "逃げる",
     "noidung": "コンテンツを参考にしたい",
+    "chonthuoctinh": "プロパティを選択",
+    "timkiem": "検索",
+    "nhanmaotps": "otpコードを入力してください（6文字）",
+    "nhapdaichi": "住所を入力してください",
+    "nhaptennguoinhan": "受信者の名前を入力してください\n",
+    "nhapsdt": "電話番号を入力してください",
+    "truoc": "先に",
+    "sau": "後",
     "taikhoan": "すべての"
   }
 }
