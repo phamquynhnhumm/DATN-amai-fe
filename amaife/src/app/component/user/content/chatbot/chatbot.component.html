@@ -109,7 +109,6 @@
               <input type="text" class="form-control" formControlName="msg" placeholder="Nhập tin nhắn">
               <small style="color: red" class="text-danger col-sm-10"
                      *ngIf="formChat.get('msg')?.hasError('required') && formChat.get('msg')?.touched">
-                Vui lòng nhập tin nhắn
               </small>
               <button type="submit" class="btn btn-primary" (click)="reload()">Gửi</button>
             </div>
