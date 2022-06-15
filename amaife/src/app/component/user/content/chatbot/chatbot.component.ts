@@ -23,7 +23,8 @@ export class ChatbotComponent implements OnInit {
               private snackBar: MatSnackBar,
               public auth: AuthService,
               public userService: UserService,
-              private router: Router
+              private router: Router,
+              private matSnackBar: MatSnackBar
   ) {
   }
 
@@ -78,5 +79,28 @@ export class ChatbotComponent implements OnInit {
 
   reload() {
     window.location.reload()
+  }
+
+  delete(id: number) {
+    this.chatService.deleteByIdChat(id).subscribe(
+      data => {
+        console.log(data)
+      }, error => {
+        this.matSnackBar.open("Xóa tin nhắn thất bại!")._dismissAfter(3000)
+      }
+    )
+  }
+
+  recall(id: number) {
+    this.chatService.findbyid(id).subscribe(
+      data => {
+        this.chatService.updateChat(data).subscribe(
+          data => {
+          }, error => {
+            this.matSnackBar.open("Hủy tin nhắn thất bại!")._dismissAfter(3000)
+          }
+        )
+      }
+    )
   }
 }

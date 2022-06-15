@@ -63,6 +63,29 @@
                 <div class="center-text flex-shrink-1  rounded py-2 px-3 ml-3">
                   <i class=" fa fa-ellipsis-h" aria-hidden="true" *ngTemplateOutlet="chatdelete"></i>
                 </div>
+                <ng-template #chatdelete>
+                  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
+                    <button [caret]="false" cDropdownToggle class="py-0"
+                            style="border: 0px solid black;border-color: snow;background-color: snow">
+                      <i class=" fa fa-ellipsis-h" aria-hidden="true"></i>
+                    </button>
+                    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
+                      <li cDropdownHeader>
+                      <li>
+                        <a cDropdownItem (click)="recall(chat.id)">
+                          <i class="fa fa-undo" aria-hidden="true"></i> Thu hồi
+                        </a>
+                      </li>
+                      <li>
+                        <a style="color: red" cDropdownItem (click)="delete(chat.id)">
+                          <i style="color: red" class="fa fa-trash" aria-hidden="true"></i>
+                          <span style="color: red"> Xóa chỉ ở phía tôi</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </c-dropdown>
+                </ng-template>
+
               </div>
               <div class=" chat-message-right mb-4 text-muted small text-nowrap mt-2">{{chat.updateAt}}</div>
               <div class="chat-message-right mb-4">
@@ -96,25 +119,3 @@
     </div>
   </div>
 </div>
-<ng-template #chatdelete>
-  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
-    <button [caret]="false" cDropdownToggle class="py-0"
-            style="border: 0px solid black;border-color: snow;background-color: snow">
-      <i class=" fa fa-ellipsis-h" aria-hidden="true"></i>
-    </button>
-    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
-      <li cDropdownHeader>
-      <li>
-        <a cDropdownItem>
-          <i class="fa fa-undo" aria-hidden="true"></i> Thu hồi
-        </a>
-      </li>
-      <li>
-        <a style="color: red" cDropdownItem>
-          <i style="color: red" class="fa fa-trash" aria-hidden="true"></i>
-          <span style="color: red"> Xóa chỉ ở phía tôi</span>
-        </a>
-      </li>
-    </ul>
-  </c-dropdown>
-</ng-template>
