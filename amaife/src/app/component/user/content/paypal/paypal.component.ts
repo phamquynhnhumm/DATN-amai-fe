@@ -162,4 +162,3 @@ export class PaypalComponent implements OnInit {
     this.route.navigateByUrl("/shoping").then();
   }
 }
-
