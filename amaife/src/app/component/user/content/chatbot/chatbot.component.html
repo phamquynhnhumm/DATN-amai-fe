@@ -106,11 +106,8 @@
         <div class="flex-grow-0 py-3 px-4 border-top">
           <form [formGroup]="formChat" (ngSubmit)="chatbox()">
             <div class="input-group">
-              <input type="text" class="form-control" formControlName="msg" placeholder="Nhập tin nhắn">
-              <small style="color: red" class="text-danger col-sm-10"
-                     *ngIf="formChat.get('msg')?.hasError('required') && formChat.get('msg')?.touched">
-              </small>
-              <button type="submit" class="btn btn-primary">Gửi</button>
+              <input type="text" class="form-control col-sm-9" formControlName="msg" placeholder="Nhập tin nhắn">
+              <button type="submit" class="btn btn-primary col-sm-3">Gửi</button>
             </div>
           </form>
         </div>

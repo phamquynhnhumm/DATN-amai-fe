@@ -53,8 +53,9 @@ export class ChatbotComponent implements OnInit {
     if (this.formChat.valid) {
       this.chatService.chatbot(this.formChat.value).subscribe(
         (data) => {
-          this.ngOnInit();
           this.chat = data;
+          this.ngOnInit();
+          this.formChat.value.msg = "";
         }, error => {
           this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạn!", "OK", {
             duration: 3000,
