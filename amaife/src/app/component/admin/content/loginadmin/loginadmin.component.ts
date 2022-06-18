@@ -85,18 +85,24 @@ export class LoginadminComponent implements OnInit {
       this.loginService.login(this.formLogin.value).subscribe(
         (authoricationResponse) => {
           this.authService.setLocalStorage(authoricationResponse);
-          this.setLoginComplete(authoricationResponse)
+          this.setLoginComplete(authoricationResponse);
+          console.log(authoricationResponse.status)
         },
         (error) => {
           this.isLoginValid = false;
+          console.log(error.error.status)
           switch (error.error.status) { // error.error.status = 404 or 400
             case "Username not exists":
-              this.errorUsername = "Tài khoản hoặc mật khẩu sai";
+              this.errorUsername = "Vui lòng kiểm tra lại tài khoản ";
               this.errorPassword = "";
               break;
             case "Account locked":
               this.errorUsername = "Tài khoản của bạn đã bị khóa";
               this.errorPassword = "";
+              break;
+            case "Wong pasrsword":
+              this.errorUsername = "";
+              this.errorPassword = "Vui lòng kiểm tra lại mật khẩu";
               break;
             default:
               this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
