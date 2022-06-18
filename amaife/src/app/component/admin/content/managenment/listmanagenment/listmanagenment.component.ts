@@ -160,7 +160,7 @@ export class ListmanagenmentComponent implements OnInit {
     this.userService.findByIdUser(user.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(UpdateRoleComponent, {
-          width: '850px',
+          width: '550px',
           height: '400px',
           data: data
         });
@@ -175,7 +175,7 @@ export class ListmanagenmentComponent implements OnInit {
     this.userService.findByIdUser(user.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(DeletemanagenmentComponent, {
-          width: '850px',
+          width: '550px',
           height: '400px',
           data: data
         });

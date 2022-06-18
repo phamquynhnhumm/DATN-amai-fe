@@ -41,7 +41,7 @@ export class HomeuserComponent implements OnInit {
   formCLass = new FormGroup(
     {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern("((09|03|07|08|05)+([0-9]{8})\\b)")]),
       content: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
     }
   )
@@ -69,17 +69,16 @@ export class HomeuserComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
           this.snackBar.open("Đăng ký thành công !")._dismissAfter(3000);
         }, error => {
-          this.snackBar.open("Đăng ký thấy bại !")._dismissAfter(3000);
+          this.snackBar.open("Đăng ký thấy bại! Vui lòng kiểm tra lại thông tin")._dismissAfter(3000);
         }
       )
     } else {
-      this.snackBar.open("Đăng ký thất bại", "OK", {
+      this.snackBar.open("Đăng ký thấy bại! Vui lòng kiểm tra lại thông tin", "OK", {
         duration: 3000,
         panelClass: ['mat-toolbar', 'mat-warn']
       })

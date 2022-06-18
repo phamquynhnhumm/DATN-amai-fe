@@ -116,9 +116,9 @@
             <small class="text-danger col-sm-10"
                    *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched" translate>settings.validatephonehome
             </small>
-            <small class="text-danger col-sm-10 validate "
-                   *ngIf="formCLass.get('phone')?.hasError('minlength') || formCLass.get('phone')?.hasError('maxlength') && formCLass.get('phone')?.touched"
-                   translate>settings.validatephonehome2
+            <small class="form-text text-danger validate"
+                   *ngIf="formCLass.get('phone')?.parent && formCLass.get('phone')?.touched"
+                   translate>settings.validatesdtdinhdang
             </small>
             <span style="  visibility: hidden;" translate #content>settings.noidung</span>
             <input type="text" translate [placeholder]="content.textContent" formControlName="content">
