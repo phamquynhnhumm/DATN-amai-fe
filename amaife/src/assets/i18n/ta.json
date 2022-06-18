@@ -153,10 +153,11 @@
     "nhapdaichi": "Nhập địa chỉ",
     "nhaptennguoinhan": "Nhập tên người nhận",
     "nhapsdt": "Nhập Số điện thoại",
-    "truoc" : "Trước",
+    "truoc": "Trước",
     "sau": "Sau",
     "nhaptaikhoan": "Nhập tài khoản",
     "capnhatgiohang": "Cập nhật giỏ hàng",
+    "nguoitaodon": "Người tạo đơn hàng:",
     "taikhoan": "Tất cả"
   }
 }

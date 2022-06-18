@@ -39,9 +39,6 @@ export class OrderDetailUserComponent implements OnInit {
 
   cancel() {
     this.dialogRef.close();
-    this.snackBar.open("Tắt chi đơn hàng thành công", "OK", {
-      duration: 4000
-    })
   }
 
   detailFood(oderDetail: OrderDetail
