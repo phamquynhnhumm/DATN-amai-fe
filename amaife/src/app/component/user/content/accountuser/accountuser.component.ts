@@ -76,7 +76,7 @@ export class AccountuserComponent implements OnInit {
                     duration: 4000,
                     panelClass: ['mat-toolbar', 'mat-primary']
                   })
-                  window.location.reload();
+                  this.ngOnInit();
                 }
               );
               this.url = "";

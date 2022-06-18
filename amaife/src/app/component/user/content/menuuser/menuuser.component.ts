@@ -108,8 +108,7 @@ export class MenuuserComponent implements OnInit {
       })
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
-        this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
-        location.replace("/menu");
+        this.snackBar.open("Thêm vào giỏ hàng thành công!", "OK")._dismissAfter(3000);
       },
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
@@ -144,7 +143,7 @@ export class MenuuserComponent implements OnInit {
               this.foodList = datafood;
             }
           )
-          this.matSnackBar.open("Sắp xếp theo tên không thành công!")._dismissAfter(3000)
+          this.matSnackBar.open("Sắp xếp theo danh mục không thành công!")._dismissAfter(3000)
         }
       )
     } else if (this.sorts == this.sortSubject[2]) {
@@ -159,7 +158,7 @@ export class MenuuserComponent implements OnInit {
               this.foodList = datafood;
             }
           )
-          this.matSnackBar.open("Sắp xếp theo tên không thành công!")._dismissAfter(3000)
+          this.matSnackBar.open("Sắp xếp theo giá không thành công!")._dismissAfter(3000)
         }
       )
     }

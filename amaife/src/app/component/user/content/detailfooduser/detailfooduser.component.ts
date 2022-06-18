@@ -69,7 +69,7 @@ export class DetailfooduserComponent implements OnInit {
         })
       this.createService.createCartUser(this.formCart.value).subscribe(
         (data) => {
-          this.router.navigateByUrl("/menu").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
+          this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
         },
         error => {
           this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);

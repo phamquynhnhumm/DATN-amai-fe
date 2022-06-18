@@ -53,6 +53,7 @@ export class ChatbotComponent implements OnInit {
     if (this.formChat.valid) {
       this.chatService.chatbot(this.formChat.value).subscribe(
         (data) => {
+          this.ngOnInit();
           this.chat = data;
         }, error => {
           this.snackBar.open("Chúng tôi đang cố gắng liên hệ sớm nhất có thể. Cảm ơn bạn!", "OK", {
@@ -61,11 +62,6 @@ export class ChatbotComponent implements OnInit {
           });
         }
       )
-    } else {
-      this.snackBar.open("Vui lòng nhập nội dung tin nhắn!", "OK", {
-        duration: 3000,
-        panelClass: ['mat-toolbar', 'mat-warn']
-      });
     }
   }
 
@@ -77,14 +73,10 @@ export class ChatbotComponent implements OnInit {
     this.chatFs = false;
   }
 
-  reload() {
-    window.location.reload()
-  }
-
   delete(id: number) {
     this.chatService.deleteByIdChat(id).subscribe(
       data => {
-        console.log(data)
+        this.ngOnInit();
       }, error => {
         this.matSnackBar.open("Xóa tin nhắn thất bại!")._dismissAfter(3000)
       }
@@ -96,6 +88,7 @@ export class ChatbotComponent implements OnInit {
       data => {
         this.chatService.updateChat(data).subscribe(
           data => {
+            this.ngOnInit();
           }, error => {
             this.matSnackBar.open("Hủy tin nhắn thất bại!")._dismissAfter(3000)
           }

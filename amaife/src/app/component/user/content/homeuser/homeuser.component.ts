@@ -60,11 +60,15 @@ export class HomeuserComponent implements OnInit {
       })
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
-        this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
-        location.replace("/home");
+        this.snackBar.open("Thêm vào giỏ hàng thành công! ", "OK", {
+          duration: 4000
+        })
+        this.ngOnInit();
       },
       error => {
-        this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+        this.snackBar.open("Thêm vào giỏ hàng thấy bại ! ", "OK", {
+          duration: 3000
+        })
       });
   }
 
@@ -72,7 +76,7 @@ export class HomeuserComponent implements OnInit {
     if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
-          this.snackBar.open("Đăng ký thành công !")._dismissAfter(3000);
+          this.snackBar.open("Đăng ký thành công !", "OK")._dismissAfter(3000);
         }, error => {
           this.snackBar.open("Đăng ký thấy bại! Vui lòng kiểm tra lại thông tin")._dismissAfter(3000);
         }

@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UserRoutingModule} from './user-routing.module';
-import {MemberComponent} from './content/member/member.component';
-import {LayoutUserComponent} from './content/layout-user/layout-user.component';
 import {FooterUserComponent} from './content/footer-user/footer-user.component';
 import {NavUserComponent} from './content/nav-user/nav-user.component';
 import {HomeuserComponent} from './content/homeuser/homeuser.component';
@@ -31,7 +29,7 @@ import {CancelorderComponent} from './content/cancelorder/cancelorder.component'
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import { ChatbotComponent } from './content/chatbot/chatbot.component';
+import {ChatbotComponent} from './content/chatbot/chatbot.component';
 
 export function rootLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -39,8 +37,6 @@ export function rootLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MemberComponent,
-    LayoutUserComponent,
     FooterUserComponent,
     NavUserComponent,
     HomeuserComponent,
@@ -61,34 +57,34 @@ export function rootLoaderFactory(http: HttpClient) {
     CancelorderComponent,
     ChatbotComponent
   ],
-    exports: [
-        NavUserComponent,
-        FooterUserComponent,
-        HomeuserComponent,
-        SinupUserComponent,
-        ForgotpasswordComponent,
-        ChatbotComponent
-    ],
-    imports: [
-        CommonModule,
-        UserRoutingModule,
-        NgxPaginationModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        GridModule,
-        FormsModule,
-        NgxPayPalModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: rootLoaderFactory,
-                deps: [HttpClient],
-            },
-        }),
-        MatDialogModule,
-        DropdownModule
-    ]
+  exports: [
+    NavUserComponent,
+    FooterUserComponent,
+    HomeuserComponent,
+    SinupUserComponent,
+    ForgotpasswordComponent,
+    ChatbotComponent
+  ],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    NgxPaginationModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    GridModule,
+    FormsModule,
+    NgxPayPalModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: rootLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+    MatDialogModule,
+    DropdownModule
+  ]
 })
 export class UserModule {
 }

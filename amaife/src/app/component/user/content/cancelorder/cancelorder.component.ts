@@ -30,9 +30,10 @@ export class CancelorderComponent implements OnInit {
   CancelOder() {
     this.oder.status = <EStatusOrder>'CANCEL';
     this.orderService.updateOderUser(this.oder).subscribe(data => {
-        this.snackBar.open("Hủy đơn hàng thành công", "OK", {
+      this.snackBar.open("Hủy đơn hàng thành công", "OK", {
           duration: 4000
-        })
+        });
+        this.ngOnInit()
       }
     )
     this.dialogRef.close();

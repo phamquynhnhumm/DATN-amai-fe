@@ -54,7 +54,6 @@ export class ShopingcartComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(() => {
           this.ngOnInit();
-          location.replace("/shoping");
         });
       }
     );
@@ -75,12 +74,8 @@ export class ShopingcartComponent implements OnInit {
     this.cartUpdate.money = quantity * cart.food.price;
     this.cartService.updateCart(this.cartUpdate).subscribe(
       (data) => {
-        this.snackBar.open("Cập nhật số lượng thành công!")._dismissAfter(3000);
-        location.replace("/shoping");
-      },
-      error => {
-        this.snackBar.open("Cập nhật số lượng thấy bại !")._dismissAfter(3000);
-      });
+        this.ngOnInit();
+      })
   }
 
   checkout(totalCart: number) {
