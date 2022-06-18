@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {LoginRequest} from "../model/login/LoginRequest";
 import {Observable} from "rxjs";
-import {TokenDTO} from "../model/login/TokenDTO";
 import {LoginResponse} from "../model/login/LoginResponse";
 
 @Injectable({
@@ -41,13 +40,5 @@ export class LoginService {
       }
     }
     return isMatch;
-  }
-
-  public loginWithFacebook(token: TokenDTO): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN + "/facebook", token, {headers: this.requestHeader})
-  }
-
-  public loginWithGoogle(token: TokenDTO): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>(this.API_LOGIN_ADMIN + "/google", token, {headers: this.requestHeader})
   }
 }

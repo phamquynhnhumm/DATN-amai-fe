@@ -49,9 +49,8 @@ export class LoginadminComponent implements OnInit {
     }
   }
 
-  /* Change default language */
+  //Thay đổi ngôn ngữ mạc định
   changeDefaultLanguages(event: any) {
-    console.log(event.target.value)
     this.translateConfigService.changeLanguage(event.target.value);
   }
 
@@ -86,12 +85,10 @@ export class LoginadminComponent implements OnInit {
         (authoricationResponse) => {
           this.authService.setLocalStorage(authoricationResponse);
           this.setLoginComplete(authoricationResponse);
-          console.log(authoricationResponse.status)
         },
         (error) => {
           this.isLoginValid = false;
-          console.log(error.error.status)
-          switch (error.error.status) { // error.error.status = 404 or 400
+          switch (error.error.status) {
             case "Username not exists":
               this.errorUsername = "Vui lòng kiểm tra lại tài khoản ";
               this.errorPassword = "";

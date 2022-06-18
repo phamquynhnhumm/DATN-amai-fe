@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
-import {NavigationExtras, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderService} from "../../../../service/order.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -9,6 +9,7 @@ import {Food} from "../../../../model/food/Food";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Cart} from "../../../../model/order/Cart";
 import {EStatusCart} from "../../../../model/order/EStatusCart";
+import {getStorage, ref, uploadString} from "@angular/fire/storage";
 
 @Component({
   selector: 'app-paypal',
@@ -19,12 +20,13 @@ export class PaypalComponent implements OnInit {
 
   public payPalConfig?: IPayPalConfig;
   @Input() formOrder!: FormGroup;
-
+  orderQrCode !: Oder;
   @Input() oder!: Oder;
   price1: number = 0.3;
   test!: boolean;
   cartList!: Array<Cart>
   p: number | any;
+  OderQR!: Oder;
   eStatusCart = EStatusCart;
   quantity!: number;
   totalCart !: number;
@@ -81,18 +83,21 @@ export class PaypalComponent implements OnInit {
         layout: 'vertical'
       },
       onClientAuthorization: (data) => {
-        this.formOrder.value.qrcode = "de tim sau";
+        this.formOrder.value.qrcode = "null";
         this.formOrder.value.status = "UNCONFIRMED";
         this.formOrder.value.money = this.totalCart;
         this.formOrder.value.quantity = this.totalQuantityCart;
-        console.log(this.formOrder.value);
         if (this.formOrder.valid) {
+          //Tiép tục thực hiện thêm mới Order
           this.cartService.createOderUser(this.formOrder.value).subscribe(
             (data) => {
+              this.orderQrCode = data;
               this.newOder = data;
               this.formOrderDEtail.value.orders = this.newOder;
               this.formOrderDEtail.value.isDeleted = false;
               for (let i = 0; i < this.cartList.length; i++) {
+                //Chạy vòng for đê5
+                //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
                 this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
                 let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
                   quantity: this.cartList[i].quantity,
@@ -100,19 +105,45 @@ export class PaypalComponent implements OnInit {
                   orders: this.formOrderDEtail.value.orders,
                   isDeleted: this.formOrderDEtail.value.isDeleted,
                 };
-                console.log(<OrderDetail>newOderDetail);
                 this.listOderDetail.push(<OrderDetail>newOderDetail);
               }
               this.cartService.createOderDetailUser(this.listOderDetail).subscribe(
-                (datatickte) => {
-                  console.log("Thêm mới chi tiết món thành công");
-                }
-              )
-              this.route.navigateByUrl("/home").then(() => this.snackBar.open("Đặt món thành công!")._dismissAfter(3000))
-            },
-          );
+                (data) => {
+                  this.OderQR = this.orderQrCode;
+                  this.cartService.createQRCode(this.OderQR).subscribe(
+                    (dataQRcode) => {
+                      const storage = getStorage();
+                      const message4 = dataQRcode.qrcode;
+                      const storageRef = ref(storage, 'some-child');
+                      uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+                        dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
+                        this.cartService.updateQrcode(dataQRcode).subscribe(
+                          (data) => {
+                            this.route.navigateByUrl("/home").then(() =>
+                              this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000))
+                          }, error => {
+                            this.snackBar.open("Đặt món thất bại!", "OK", {
+                              duration: 3000,
+                              panelClass: ['mat-toolbar', 'mat-warn']
+                            })
+                          }
+                        );
+                      });
+                    }
+                    , error => {
+                      this.snackBar.open("Cập nhật mã QR thất bại!", "OK", {
+                        duration: 3000,
+                        panelClass: ['mat-toolbar', 'mat-warn']
+                      })
+                    })
+                })
+            }
+          )
         } else {
-          this.snackBar.open("Đặt món thất bại !")._dismissAfter(3000);
+          this.snackBar.open("Đặt món thất bại! Vui lòng nhập thông tin", "OK", {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-warn']
+          })
         }
       },
       onCancel: (data, actions) => {
@@ -129,7 +160,6 @@ export class PaypalComponent implements OnInit {
 
   checkout() {
     this.route.navigateByUrl("/shoping").then();
-    // window.location.reload();
   }
 }
 

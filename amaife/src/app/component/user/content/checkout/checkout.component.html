@@ -43,14 +43,14 @@
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p translate>settings.sdtfooter<span>*</span></p>
-                    <input type="text"  translate [placeholder]="nhapsdts.textContent" formControlName="phone">
+                    <input type="text" translate [placeholder]="nhapsdts.textContent" formControlName="phone">
                     <span style=" visibility: hidden;" translate #nhapsdts>settings.nhapsdt</span>
                     <small class="text-danger col-sm-10"
                            *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.touched"
                            translate>settings.validatesdt
                     </small>
                     <small class="form-text text-danger validate"
-                           *ngIf="formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.parent && formOrder.get('phone')?.touched"
+                           *ngIf="formOrder.get('phone')?.parent && formOrder.get('phone')?.touched"
                            translate>settings.validatesdtdinhdang
                     </small>
                   </div>

@@ -8,6 +8,7 @@ import {Cart} from "../../../../model/order/Cart";
 import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../../../service/auth.service";
 
 @Component({
   selector: 'app-detailfooduser',
@@ -31,7 +32,8 @@ export class DetailfooduserComponent implements OnInit {
               private createService: OrderService,
               private location: Location,
               private activatedRoute: ActivatedRoute,
-              private snackBar: MatSnackBar
+              private snackBar: MatSnackBar,
+              public auth: AuthService
   ) {
   }
 
@@ -55,20 +57,24 @@ export class DetailfooduserComponent implements OnInit {
   }
 
   createCartShoping(food: Food) {
-    this.formCart = new FormGroup(
-      {
-        quantity: new FormControl(this.quatity, Validators.required),
-        status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
-        food: new FormControl(food, Validators.required),
-        money: new FormControl(food.price * this.quatity, Validators.required),
-      })
-    this.createService.createCartUser(this.formCart.value).subscribe(
-      (data) => {
-        this.router.navigateByUrl("/menu").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
-      },
-      error => {
-        this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
-      })
+    if (this.auth.getRole() == "") {
+      this.router.navigateByUrl("/login");
+    } else {
+      this.formCart = new FormGroup(
+        {
+          quantity: new FormControl(this.quatity, Validators.required),
+          status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
+          food: new FormControl(food, Validators.required),
+          money: new FormControl(food.price * this.quatity, Validators.required),
+        })
+      this.createService.createCartUser(this.formCart.value).subscribe(
+        (data) => {
+          this.router.navigateByUrl("/menu").then(() => this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000));
+        },
+        error => {
+          this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+        })
+    }
   }
 
   quatitycong() {
