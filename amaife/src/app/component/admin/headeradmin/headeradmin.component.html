@@ -37,7 +37,7 @@
 <ng-template #qrcode>
   <c-dropdown alignment="end" variant="nav-item">
     <button (click)="opencamera()" [caret]="false" cDropdownToggle class="py-0"
-            style="border: 0px solid black;border-color: snow;background-color: snow">
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
       <i class="fa fa-qrcode" aria-hidden="true"></i>
     </button>
   </c-dropdown>
@@ -45,7 +45,7 @@
 <ng-template #userDropdown>
   <c-dropdown alignment="end" variant="nav-item">
     <button [caret]="false" cDropdownToggle class="py-0"
-            style="border: 0px solid black;border-color: snow;background-color: snow">
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
       <c-avatar cTextColor="primary" style="border-radius: 50%;" size="md" src="/assets/image/logo.png"
                 status="success"></c-avatar>
     </button>
@@ -62,8 +62,8 @@
       </li>
       <li *ngIf="authService.getRole() == 'ROLE_ADMIN'">
         <a routerLink="/sinupadmin" cDropdownItem>
-          <svg class="me-2" [cIcon]="icons.cilUser"></svg>
-          Thêm mới tài khoản nhân viên
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          Thêm nhân viên
         </a>
       </li>
       <li></li>
@@ -85,7 +85,7 @@
 <ng-template #notify>
   <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
     <button [caret]="false" cDropdownToggle class="py-0"
-            style="border: 0px solid black;border-color: snow;background-color: snow">
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
       <svg [cIcon]="icons.cilBell" size="lg"></svg>
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
@@ -124,7 +124,7 @@
 <ng-template #class>
   <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
     <button [caret]="false" cDropdownToggle class="py-0"
-            style="border: 0px solid black;border-color: snow;background-color: snow">
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
       <svg [cIcon]="icons.cilEnvelopeOpen" size="lg"></svg>
 
     </button>
