@@ -1,5 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {Food} from "../../../../model/food/Food";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {FoodService} from "../../../../service/food.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Oder} from "../../../../model/order/Oder";
 import {EStatusOrder} from "../../../../model/order/EStatusOrder";

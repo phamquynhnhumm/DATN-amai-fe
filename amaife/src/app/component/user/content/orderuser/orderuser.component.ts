@@ -74,6 +74,6 @@ export class OrderuserComponent implements OnInit {
 
   detailFood(oderDetail: OrderDetail
   ) {
-    this.router.navigate(['/detailfood/' + oderDetail.food.id]);
+    this.router.navigate(['/DATN-amai-fe/amaife/detailfood/' + oderDetail.food.id]);
   }
 }

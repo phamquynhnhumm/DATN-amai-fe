@@ -60,7 +60,7 @@ export class ForgotpasswordComponent implements OnInit {
   });
 
   login() {
-    location.replace("/login");
+    location.replace("/DATN-amai-fe/amaife/login");
   }
 
   otp() {

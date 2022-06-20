@@ -58,7 +58,7 @@ export class DetailfooduserComponent implements OnInit {
 
   createCartShoping(food: Food) {
     if (this.auth.getRole() == "") {
-      this.router.navigateByUrl("/DATN-amai-fe/amaife/login");
+      this.router.navigateByUrl("/login");
     } else {
       this.formCart = new FormGroup(
         {

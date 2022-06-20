@@ -130,7 +130,7 @@ export class SinupUserComponent implements OnInit {
                   duration: 3000,
                   panelClass: ['mat-toolbar', 'mat-primary']
                 })
-                location.replace("/login");
+                location.replace("/DATN-amai-fe/amaife/login");
               }, error => {
                 this.matSnackBar.open("Đăng ký tài khoản thất bại", "Đóng", {
                   duration: 3000,
