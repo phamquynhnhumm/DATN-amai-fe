@@ -14,59 +14,59 @@ export class FoodService {
   /**
    * URL Món
    */
-  readonly URL_FOOD = "http://localhost:8080/api/admin/food";
-  readonly URL_Matrerail = "http://localhost:8080/api/admin/fooddetail/findByIdFood";
-  readonly URL_FOOD_FINFDISDELETE = "http://localhost:8080/api/admin/food/all";
-  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORY = "http://localhost:8080/api/admin/food/allFood";
-  readonly URL_FOOD_UNDELETE = "http://localhost:8080/api/admin/food/undelete";
-  readonly URL_FOOD_DELETE = "http://localhost:8080/api/admin/food/delete";
-  readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/admin/food/findByFoodcategoryId";
-  readonly URL_FOOD_SEARCH = "http://localhost:8080/api/admin/food/search";
-  readonly URL_FOOD_SEARCH_MATERIALID = "http://localhost:8080/api/admin/food/searchfindBymaterial";
+  readonly URL_FOOD = "https://salty-cove-09707.herokuapp.com/api/admin/food";
+  readonly URL_Matrerail = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail/findByIdFood";
+  readonly URL_FOOD_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/food/all";
+  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORY = "https://salty-cove-09707.herokuapp.com/api/admin/food/allFood";
+  readonly URL_FOOD_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/food/undelete";
+  readonly URL_FOOD_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/food/delete";
+  readonly URL_FOOD_FINDBYFOODCATEGORY_ID = "https://salty-cove-09707.herokuapp.com/api/admin/food/findByFoodcategoryId";
+  readonly URL_FOOD_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/food/search";
+  readonly URL_FOOD_SEARCH_MATERIALID = "https://salty-cove-09707.herokuapp.com/api/admin/food/searchfindBymaterial";
 
   /**
    * URL danh mục
    */
-  readonly URL_FOODCATEGORY = "http://localhost:8080/api/admin/foodcategory";
-  readonly URL_FOODCATEGORY_SEARCH = "http://localhost:8080/api/admin/foodcategory/search";
-  readonly URL_FOODCATEGORY_DELETE = "http://localhost:8080/api/admin/foodcategory/delete";
-  readonly URL_FOODCATEGORY_UNDELETE = "http://localhost:8080/api/admin/foodcategory/undelete";
-  readonly URL_FOODCATEGOR_FINFDISDELETE = "http://localhost:8080/api/admin/foodcategory/all";
+  readonly URL_FOODCATEGORY = "https://salty-cove-09707.herokuapp.com/api/admin/foodcategory";
+  readonly URL_FOODCATEGORY_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/foodcategory/search";
+  readonly URL_FOODCATEGORY_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/foodcategory/delete";
+  readonly URL_FOODCATEGORY_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/foodcategory/undelete";
+  readonly URL_FOODCATEGOR_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/foodcategory/all";
 
   /**
    *URL chi tiết món
    */
-  readonly URL_FOODDETAIL = "http://localhost:8080/api/admin/fooddetail";
-  readonly URL_FOODDETAIL_SEARCH = "http://localhost:8080/api/admin/fooddetail/search";
-  readonly URL_FOODDETAIL_DELETE = "http://localhost:8080/api/admin/fooddetail/delete";
-  readonly URL_FOODDETAIL_UNDELETE = "http://localhost:8080/api/admin/fooddetail/undelete";
-  readonly URL_FOODDETAIL_FINFDISDELETE = "http://localhost:8080/api/admin/fooddetail/all";
+  readonly URL_FOODDETAIL = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail";
+  readonly URL_FOODDETAIL_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail/search";
+  readonly URL_FOODDETAIL_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail/delete";
+  readonly URL_FOODDETAIL_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail/undelete";
+  readonly URL_FOODDETAIL_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/fooddetail/all";
 
   /**
    * URL nguyên liệu
    */
-  readonly URL_MATERIAL = "http://localhost:8080/api/admin/material";
-  readonly URL_MATERIAL_FINFDISDELETE = "http://localhost:8080/api/admin/material/all";
-  readonly URL_MATERIAL_UNDELETE = "http://localhost:8080/api/admin/material/undelete";
-  readonly URL_MATERIAL_DELETE = "http://localhost:8080/api/admin/material/delete";
-  readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "http://localhost:8080/api/admin/material/findBySupplierId";
-  readonly URL_MATERIAL_SEARCH = "http://localhost:8080/api/admin/material/search";
+  readonly URL_MATERIAL = "https://salty-cove-09707.herokuapp.com/api/admin/material";
+  readonly URL_MATERIAL_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/material/all";
+  readonly URL_MATERIAL_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/material/undelete";
+  readonly URL_MATERIAL_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/material/delete";
+  readonly URL_MATERIAL_FINDBYSUPPLIER_ID = "https://salty-cove-09707.herokuapp.com/api/admin/material/findBySupplierId";
+  readonly URL_MATERIAL_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/material/search";
 
 
   /**
    * URL Food cho người dùng
    */
-  readonly URL_FOODUSER_FINFDISDELETE = "http://localhost:8080/api/food/all";
-  readonly URL_FOODUSER_IDCATEGORY = "http://localhost:8080/api/food/allFood";
-  readonly URL_FOODUSER = "http://localhost:8080/api/food";
-  readonly URL_FOODUSER_SEARCH = "http://localhost:8080/api/food/search";
-  readonly URL_FOODUSER_SEARCHNAME = "http://localhost:8080/api/food/oderByName";
-  readonly URL_FOODUSER_SEARCHCATEGORY = "http://localhost:8080/api/food/oderByFoodCategory";
-  readonly URL_FOODUSER_SEARCHPRICE = "http://localhost:8080/api/food/oderByPrice";
-  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER = "http://localhost:8080/api/food/allFood";
-  readonly URL_FOODCATEGOR_FINFDISDELETEUSER = "http://localhost:8080/api/food/foodcategoryall";
-  readonly URL_FOOD_FINDBYFOODCATEGORY_IDUSER = "http://localhost:8080/api/food/findByFoodcategoryId";
-  readonly URL_FOODCATEGORYUSER = "http://localhost:8080/api/food/foodcategory";
+  readonly URL_FOODUSER_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/food/all";
+  readonly URL_FOODUSER_IDCATEGORY = "https://salty-cove-09707.herokuapp.com/api/food/allFood";
+  readonly URL_FOODUSER = "https://salty-cove-09707.herokuapp.com/api/food";
+  readonly URL_FOODUSER_SEARCH = "https://salty-cove-09707.herokuapp.com/api/food/search";
+  readonly URL_FOODUSER_SEARCHNAME = "https://salty-cove-09707.herokuapp.com/api/food/oderByName";
+  readonly URL_FOODUSER_SEARCHCATEGORY = "https://salty-cove-09707.herokuapp.com/api/food/oderByFoodCategory";
+  readonly URL_FOODUSER_SEARCHPRICE = "https://salty-cove-09707.herokuapp.com/api/food/oderByPrice";
+  readonly URL_FOOD_FINFDISDELETANDFOODCATEGORYUSER = "https://salty-cove-09707.herokuapp.com/api/food/allFood";
+  readonly URL_FOODCATEGOR_FINFDISDELETEUSER = "https://salty-cove-09707.herokuapp.com/api/food/foodcategoryall";
+  readonly URL_FOOD_FINDBYFOODCATEGORY_IDUSER = "https://salty-cove-09707.herokuapp.com/api/food/findByFoodcategoryId";
+  readonly URL_FOODCATEGORYUSER = "https://salty-cove-09707.herokuapp.com/api/food/foodcategory";
 
   constructor(private httpClient: HttpClient) {
   }
