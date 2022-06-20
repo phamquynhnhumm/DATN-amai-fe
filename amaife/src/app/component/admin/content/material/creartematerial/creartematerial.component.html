@@ -1,0 +1,104 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="1">
+  </c-col>
+  <c-col xs="9">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="color: white">THÊM MỚI NGUYÊN LIỆU</strong></h1>
+      </c-card-header>
+      <c-card-body><br>
+        <form cForm class="row g-3" [formGroup]="formMaterial" (ngSubmit)="onSubmit()">
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Tên nguyên liệu</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên nguyên liệu">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('name')?.hasError('required') && formMaterial.get('name')?.touched">
+                <p>Tên nguyên liệu không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Nhà cung cấp</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <mat-select class="custom-select form-control" formControlName="supplierList"
+                          placeholder="Chọn nhà cung cấp ">
+                <mat-option *ngFor="let supplier of suppliers"
+                            [value]="supplier">{{supplier.name}}</mat-option>
+              </mat-select>
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('supplierList')?.hasError('required') && formMaterial.get('supplierList')?.touched">
+                <p>Nhà cung cấp không được để trống</p>
+              </small>
+
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Đơn vị tính</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('unit')?.hasError('required') && formMaterial.get('unit')?.touched">
+                <p>Đơn vị không được để trống</p></small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Giá nhập</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá nhập">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('price')?.hasError('required') && formMaterial.get('price')?.touched">
+                <p>Giá nhập không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Số lượng</strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="number" class="form-control" formControlName="quantity" placeholder="Nhập số lượng">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('quantity')?.hasError('required') && formMaterial.get('quantity')?.touched">
+                <p>Số lượng nhập không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-row>
+            <c-col [md]="2">
+              <label class="col-sm-12 col-form-label"><strong>Khối lượng </strong></label>
+            </c-col>
+            <c-col [md]="8">
+              <input type="number" class="form-control" formControlName="importKg"
+                     placeholder="Nhập khối lượng của một nguyên liệu">
+              <small class="text-danger col-sm-10"
+                     *ngIf="formMaterial.get('importKg')?.hasError('required') && formMaterial.get('importKg')?.touched">
+                <p>Khối lượng nhập vào không được để trống</p>
+              </small>
+            </c-col>
+          </c-row>
+          <br><br><br>
+          <c-col [xs]="12" style="text-align:center">
+            <button routerLink="/material" type="button" class="btn btn-dark mb-2">Hủy</button>
+            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
+          </c-col>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="1">
+  </c-col>
+</c-row>

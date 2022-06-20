@@ -1,0 +1,18 @@
+<div style="color: white;text-align:center" xmlns="http://www.w3.org/1999/html"><h1 mat-dialog-title><strong translate>
+  settings.xoamonkhoigiohang </strong></h1></div>
+<hr>
+<div mat-dialog-content>
+  <h3><strong style="display: inline-block;" translate> settings.bancochacchanmuonxoakhonog </strong> <strong
+    style="display: inline-block;"> {{cart.food.name}} </strong>
+  </h3>
+  <h4 style="color: #FFC107" translate> settings.luuyneuxoacartkhoigiohang</h4>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <button mat-dialog-close class="btn btn-light col-sm-9" (click)="cancal()" translate> settings.huy</button>
+  </div>
+  <div class="col-sm-2">
+    <button mat-button (click)="deleteCart()" class="btn btn-danger" translate> settings.xoa
+    </button>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div style="  background: #f08632;">
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header__top__inner">
+            <div class="header__top__left">
+              <ul>
+                <li translate>settings.ngonngu
+                  <ul>
+                    <li (click)="changeDefaultLanguage('en')">Japan</li>
+                    <li (click)="changeDefaultLanguage('ta')" >VieNam</li>
+                  </ul>
+                </li>
+                <li><a *ngIf="! isLoggedIn()" (click)="login()" translate>settings.login</a>
+                  <a *ngIf="isLoggedIn()" (click)="logout()" translate>settings.logput</a></li>
+              </ul>
+            </div>
+            <div class="header__logo">
+              <a href="/"><img src="assets/image/logo3.png" height="70%" width="70%" alt=""></a>
+            </div>
+            <div class="header__top__right">
+              <div class="header__top__right__links">
+                <a href="#"><img
+                  src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/heart.png?alt=media&token=d34c7afc-624e-4a90-8f01-281ee80b99f6"
+                  alt=""></a>
+              </div>
+              <div class="header__top__right__cart" routerLink="/shoping">
+                <a><img
+                  src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/cart.png?alt=media&token=59bda640-9591-41ce-8261-3eece1fe29e2"
+                  alt=""> <span>{{totalQuantityCart}}</span></a>
+                <div class="cart__price" translate>settings.giohang <span>{{totalCart | currency :'VND'}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+  </div>
+  <div class="container">
+    <div>
+      <div class="col-lg-12">
+        <nav class="header__menu mobile-menu">
+          <ul>
+            <li class="{{navHome}}"><a (click)="navHomeFunction()" style="text-decoration: none" routerLink="/home"
+                                       translate>settings.trangchu</a></li>
+            <li class="{{navFood}}"><a style="text-decoration: none" (click)="navFoodFunction()" routerLink="/menu"
+                                       translate>settings.cuahang</a>
+              <ul class="dropdown">
+                <li><a style="text-decoration: none" routerLink="/menu" translate>settings.tatca </a></li>
+                <div *ngIf="foodcategory != null">
+                  <div *ngFor="let category of foodcategory">
+                    <li>
+                      <a style="text-decoration: none" (click)="reload(category.id)"
+                      >{{category.name}}</a>
+                    </li>
+                  </div>
+                </div>
+              </ul>
+            </li>
+            <li class="{{navAccount}}"><a routerLink="/user" (click)="navAccountFunction()"
+                                          style="text-decoration: none" translate>settings.taikhoan</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="col-lg-12">
+  <h1><strong>THÔNG TIN NHÂN VIÊN</strong></h1>
+  <br><br>
+  <div class="row">
+    <div class="col">
+      <div class="profile_lable"> Họ và tên</div>
+      <input class="profile-input" value="{{user.fullName}}" readonly>
+    </div>
+    <div class="col">
+      <div class="profile_lable"> Email</div>
+      <input class="profile-input" value="{{user.email}}" readonly>
+    </div>
+    <div class="col">
+      <div class="profile_lable">Số điện thoại</div>
+      <input class="profile-input" value="{{user.phone}}" readonly>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="profile_lable"> Địa chỉ</div>
+      <input class="profile-input" value="{{user.address}}" readonly>
+    </div>
+    <div class="col">
+      <div class="profile_lable"> Tên tài khoản</div>
+      <input class="profile-input" value="{{user.account.userName}}" readonly>
+    </div>
+    <div class="col">
+      <div class="profile_lable">Thời gian tạo tài khoản</div>
+      <input class="profile-input" value="{{user.createAt}}" readonly>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <button class=" col-sm-32 btn  btn-outline-warning" (click)="cancel()">Thoát</button>
+  </div>
+</div>

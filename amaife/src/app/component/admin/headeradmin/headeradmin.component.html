@@ -1,0 +1,161 @@
+<ng-container>
+  <c-container [fluid]="true">
+    <button
+      toggle="visible"
+      cHeaderToggler
+      [cSidebarToggle]="sidebarId"
+      class="ps-1"
+    >
+      <svg [cIcon]="icons.cilMenu"
+           size="lg"
+      ></svg>
+    </button>
+    <c-header-nav class="d-none d-lg-flex me-auto">
+    </c-header-nav>
+    <c-header-nav class="ms-3">
+      <ng-container *ngTemplateOutlet="qrcode"></ng-container>
+    </c-header-nav>
+    <c-header-nav class="d-none d-lg-flex">
+      <c-nav-item>
+        <a cNavLink>
+          <ng-container *ngTemplateOutlet="notify"></ng-container>
+        </a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink>
+          <ng-container *ngTemplateOutlet="class"></ng-container>
+        </a>
+      </c-nav-item>
+    </c-header-nav>
+    <c-header-nav class="ms-3">
+      <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+    </c-header-nav>
+  </c-container>
+  <c-header-divider></c-header-divider>
+</ng-container>
+
+<ng-template #qrcode>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button (click)="opencamera()" [caret]="false" cDropdownToggle class="py-0"
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
+      <i class="fa fa-qrcode" aria-hidden="true"></i>
+    </button>
+  </c-dropdown>
+</ng-template>
+<ng-template #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button [caret]="false" cDropdownToggle class="py-0"
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
+      <c-avatar cTextColor="primary" style="border-radius: 50%;" size="md" src="/assets/image/logo.png"
+                status="success"></c-avatar>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+      <li>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Tài khoản {{authService.getUsername()}} </h6>
+      </li>
+      <li></li>
+      <li>
+        <a routerLink="/account" cDropdownItem>
+          <svg class="me-2" [cIcon]="icons.cilUser"></svg>
+          Tài Khoản
+        </a>
+      </li>
+      <li *ngIf="authService.getRole() == 'ROLE_ADMIN'">
+        <a routerLink="/sinupadmin" cDropdownItem>
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          Thêm nhân viên
+        </a>
+      </li>
+      <li></li>
+      <li>
+        <a *ngIf="! isLoggedIn()" (click)="login()" cDropdownItem>
+          <svg class="me-2" [cIcon]="icons.cilSettings"></svg>
+          Đăng Nhập
+        </a>
+        <a *ngIf="isLoggedIn()" (click)="logout()" cDropdownItem>
+          <i class="cid-account-logout"></i>
+          <svg class="me-2" [cIcon]="icons.cilSettings"></svg>
+          Đăng Xuất
+        </a>
+      </li>
+      <li></li>
+    </ul>
+  </c-dropdown>
+</ng-template>
+<ng-template #notify>
+  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
+    <button [caret]="false" cDropdownToggle class="py-0"
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
+      <svg [cIcon]="icons.cilBell" size="lg"></svg>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
+      <li cDropdownHeader>
+        <h2 class="fw-semibold py-2" style="text-align: center">Đơn mới</h2>
+        <div *ngIf="oderList != null" style="height: 560px ;overflow-y: scroll">
+          <div class="card-body  card notification-card  notification-invitation"
+               *ngFor="let order of oderList" style="scroll-behavior: smooth;">
+            <table>
+              <tr>
+                <td style="width:70%">
+                  <div (click)="detail(order)"><img
+                    src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=3ce4b069-332d-4dde-949a-a94645772f48"
+                    style="width: 25%;height: 25%">Khách
+                    hàng {{order.account.userName}} <br><b> Mã :
+                      {{order.id}}</b> Thời gian : {{order.createAt}}
+                  </div>
+                </td>
+                <td style="width:30%">
+                  <br>
+                  <a (click)="confirm(order)" class="btn dismiss-notification" style="background: #FF7851">Xác
+                    nhận</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="oderList == null">
+          <p>Chưa có đơn hàng mới</p>
+        </div>
+        <br>
+      </li>
+    </ul>
+  </c-dropdown>
+</ng-template>
+<ng-template #class>
+  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
+    <button [caret]="false" cDropdownToggle class="py-0"
+            style="border: 0px solid black;border-color: snow;background-color: snow;background: white">
+      <svg [cIcon]="icons.cilEnvelopeOpen" size="lg"></svg>
+
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
+      <li cDropdownHeader>
+        <h2 class="fw-semibold py-2" style="text-align: center">Đăng ký tự làm món</h2>
+        <div *ngIf="registration != null" style="height: 560px ;overflow-y: scroll">
+          <div class="card-body  w-auto card notification-card  notification-invitation"
+               *ngFor="let registrations of registration" style="scroll-behavior: smooth;">
+            <table>
+              <tr>
+                <td style="width:70%">
+                  <div (click)="detailregistrations(registrations)"><b>Họ
+                    tên:</b>{{registrations.name}} <br><b> Mã :
+                    {{registrations.id}}</b> Số điện thoại : {{registrations.phone}}
+                  </div>
+                </td>
+                <td style="width:30%">
+                  <br>
+                  <a (click)="confirmregistrations(registrations)" class="btn dismiss-notification"
+                     style="background: #FF7851">Xác nhận liên hệ</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="registration == null">
+          <p>Chưa có khách hàng đăng ký</p>
+        </div>
+        <br>
+      </li>
+    </ul>
+  </c-dropdown>
+</ng-template>

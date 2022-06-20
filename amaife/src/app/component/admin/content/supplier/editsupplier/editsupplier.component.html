@@ -1,0 +1,67 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Chỉnh
+  sửa nhà cung
+  cấp</strong>
+</h1></div>
+<hr>
+<div mat-dialog-content>
+  <form [formGroup]="formSupplier" (ngSubmit)="onSubmit()" cForm class="row g-3">
+    <c-col [md]="12">
+      <label cLabel>Tên danh mục {{supplier.name}}</label>
+      <input cFormControl type="text" class="form-control" name="name" formControlName="name">
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('name')?.hasError('minlength') && formSupplier.get('name')?.touched">
+        nhà cung cấp phải lớn hơn 2 ký tự
+      </small>
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('name')?.hasError('required') && formSupplier.get('name')?.touched">
+        Tên nhà cung cấp không được để trống
+      </small>
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('name')?.hasError('maxlength') && formSupplier.get('name')?.touched">
+        Tên nhà cung cấp phải nhỏ hơn 255 ký tự</small>
+    </c-col>
+    <c-col [md]="12">
+      <label cLabel>Email</label>
+      <input cFormControl type="text" class="form-control" name="email" formControlName="email">
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('email')?.hasError('required') && formSupplier.get('email')?.touched">
+        Email không được để trống
+      </small>
+      <small class="form-text text-danger validate"
+             *ngIf="formSupplier.get('email')?.hasError('email')  && formSupplier.get('email')?.dirty">
+        Không đúng định dạng email
+      </small>
+    </c-col>
+    <c-col [md]="12">
+      <label cLabel>Số điện thoại</label>
+      <input cFormControl type="text" class="form-control" formControlName="phone">
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.touched">
+        Số điện thoại không được để trống
+      </small>
+      <small class="form-text text-danger validate"
+             *ngIf="formSupplier.get('phone')?.hasError('required') && formSupplier.get('phone')?.parent && formSupplier.get('phone')?.touched">
+        Số điện thoại không đúng định dạng
+      </small>
+    </c-col>
+    <c-col [md]="12">
+      <label cLabel>Địa chỉ</label>
+      <input cFormControl type="text" class="form-control" formControlName="address">
+      <small class="text-danger col-sm-10"
+             *ngIf="formSupplier.get('address')?.hasError('required') && formSupplier.get('address')?.touched">
+        Địa chỉ không được để trống
+      </small>
+    </c-col>
+    <br>
+    <c-col [md]="12">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" ngModel formControlName="isDeleted" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Xóa nhà cung cấp</label>
+      </div>
+    </c-col>
+    <c-col [md]="12">
+      <button mat-button (click)="cencal()">Thoát</button>
+      <button type="submit" class="btn btn-warning">Lưu</button>
+    </c-col>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Chi Tiết Nguyên
+  Liệu</strong>
+</h1></div>
+<hr>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label"> <strong>Tên nguyên liệu </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.name}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Đơn vị tính </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.unit}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Số lượng</strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.quantity}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Giá nhập </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.price}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Khối lượng </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.importKg}} (kg)</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Khối lượng còn lại </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.remainingKg}} (kg)</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong> Nhà cung cấp </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext"
+       (click)="openDetailSuppkier(material.supplierList)"> {{material.supplierList.name}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"> <strong>Danh sách món</strong></label>
+  <div class="col-sm-3">
+    <mat-select *ngIf="foods !=null " class="form-control-plaintext " placeholder="Danh sách món">
+      <mat-option (click)="openDetailFood(food)" *ngFor="let food of foods">{{food.name}}</mat-option>
+    </mat-select>
+    <div *ngIf="foods ==null " class="form-control-plaintext">
+      <p>"Không tồn tại món"</p>
+    </div>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Tài khoản thêm </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.createdBy.userName}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Thời gian thêm</strong> </label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.createAt}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Tài khoản cập nhật </strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.updatedBy.userName}}</p>
+  </div>
+  <label class="col-sm-3 col-form-label"><strong>Thời gian cập nhật</strong></label>
+  <div class="col-sm-3">
+    <p readonly class="form-control-plaintext">{{material.updateAt}}</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button mat-button (click)="deleteMaterial()">Thoát</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>

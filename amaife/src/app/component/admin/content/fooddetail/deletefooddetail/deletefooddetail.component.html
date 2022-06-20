@@ -1,0 +1,13 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title ><strong style="color: white">Xóa Nguyên liệu của món </strong></h1></div>
+<hr>
+<div mat-dialog-content>
+  <h3><strong>Bạn có chắc chắn muốn xóa nguyên liệu của món {{fooddetail.food.name}} không?</strong></h3>
+</div>
+<div mat-dialog-actions>
+  <div class="col-sm-3"></div>
+  <button mat-dialog-close class="btn btn-light col-sm-2">Hủy</button>
+  <div class="col-sm-1"></div>
+  <button mat-button (click)="deletefooddetail()" class="btn btn-danger">
+    Xóa
+  </button>
+</div>

@@ -1,0 +1,82 @@
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2 translate>settings.mon</h2>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a style="text-decoration: none" href="/" translate>settings.trangchu</a>
+          <span translate>settings.cuahang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="shopmenu spanmenu">
+  <div class="container">
+    <div class="shop__optionmenu">
+      <div class="row">
+        <div class="col-lg-7 col-md-7">
+          <div class="shop__optionmenu__search">
+            <form [formGroup]="searchForm">
+              <mat-select placeholder="{{searchss}} " class="form-select-lg "
+                          style="border: none;font-size: 16px;width: 25%; font-family: inherit;line-height:44px;position:relative">
+                <mat-option *ngFor="let searchs of searchSubject"
+                            (onSelectionChange)="onCheckboxChangeFood($event,searchs)">{{searchs.valueOf()}}</mat-option>
+              </mat-select>
+              <input type="text" translate [placeholder]="chonthuoctinh.textContent" formControlName="search" #search>
+              <button type="submit" (click)="searchFood(search.value)"><i class="fa fa-search"></i></button>
+              <span style=" visibility: hidden;" translate #chonthuoctinh>settings.timkiem</span>
+
+            </form>
+            <small class="form-text text-muted text-danger"
+                   *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched" translate>settings.validatesearch</small>
+
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+          <div class="shop__optionmenu__right">
+            <form [formGroup]="SortForm">
+              <mat-select placeholder="{{sorts}}" class="form-select-lg"
+                          style="border: none;font-size: 16px;background:#f5f5f5; width: 40%; font-family: inherit;line-height:44px;position:relative;display: inline-block">
+                <mat-option *ngFor="let sort of sortSubject"
+                            (onSelectionChange)="onCheckboxChangeSort($event,sort)"
+                            (click)="SortFood()">{{sort.valueOf()}}</mat-option>
+              </mat-select>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="foodList != null">
+      <div class="col-lg-3 col-md-6 col-sm-6"
+           *ngFor="let foods of foodList | paginate :{itemsPerPage:12,currentPage : p}">
+        <div class="product__item">
+          <div class="product__item__pic" (click)="detailFood(foods)">
+            <img style="background: #e5e5e6" src="{{foods.image}}">
+            <div class="product__label">
+              <span [routerLink]="'detailfood' + [foods.id]">{{foods.name }}</span>
+            </div>
+          </div>
+          <div class="product__item__text">
+            <h6><a style="text-decoration: none">{{foods.foodCategory.name}}</a></h6>
+            <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
+            <div class="cart_add">
+              <a style="text-decoration: none" (click)="createCartShoping(foods)" translate>settings.themvaogiohang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </div>
+  </div>
+</section>

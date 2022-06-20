@@ -1,0 +1,29 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Cập
+  nhật quyền người dùng</strong>
+</h1></div>
+<hr>
+<div mat-dialog-content>
+  <form [formGroup]="formUser" (ngSubmit)="onSubmit()" cForm class="row g-3">
+    <c-col [md]="12">
+      <label cLabel>Quyền của tài khoản {{users.account.role}}</label>
+      <mat-select class="custom-select form-control" formControlName="role">
+        <mat-option *ngFor="let role of eRole" [value]="role">
+          <p readonly class="form-control-plaintext" *ngIf="role == 'ROLE_ADMIN' ">Quyền ADMIN</p>
+          <p readonly class="form-control-plaintext" *ngIf="role == 'ROLE_MANAGEMENT'">Quyền Nhân Viên</p>
+          <p readonly class="form-control-plaintext" *ngIf=" role== 'ROLE_CUSTOMER'">Quyền Khách Hàng</p>
+        </mat-option>
+      </mat-select>
+    </c-col>
+    <br>
+    <c-col [md]="12">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" ngModel formControlName="isDeleted" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Xóa tài khoản người dùng</label>
+      </div>
+    </c-col>
+    <c-col [md]="12">
+      <button mat-button (click)="cencal()">Thoát</button>
+      <button type="submit" class="btn btn-warning">Lưu</button>
+    </c-col>
+  </form>
+</div>

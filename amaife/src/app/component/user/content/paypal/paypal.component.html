@@ -1,0 +1,18 @@
+<div style="text-align: center" class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6" *ngIf="!test"><h2><br><br> <strong> QUÝ KHÁCH VUI LÒNG CHỌN PHƯƠNG
+    THỨC THANH TOÁN</strong>
+  </h2>
+    <br><br>
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="continue__btn">
+        <a style="text-decoration: none" (click)="checkout()">Quay lại trang thanh toán</a>
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+  <div class="col-sm-3"></div>
+</div>
+

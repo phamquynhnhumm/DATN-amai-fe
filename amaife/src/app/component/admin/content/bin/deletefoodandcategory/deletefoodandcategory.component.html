@@ -1,0 +1,398 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="1">
+  </c-col>
+  <c-col xs="4">
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteFoodCategory()">Danh mục món đã xóa</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteFood()">Món đã xóa</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteCustomer()">Khách hàng đã xóa</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteSupplier()">Nhà cung cấp đã xóa</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteOrder()">Đơn hàng đã xóa</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary" (click)="nameDeleteMaterial()">Nguyên liệu đã xóa</button>
+    <img src="assets/bin1.png" style="width: 80%">
+  </c-col>
+  <!--  bảng các danh mục món đã xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'foodcategory'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH DANH MỤC ĐÃ BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchunFoodCategory(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên danh mục</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="foodCategoryList != null">
+          <tr class="even pointer"
+              *ngFor="let foodcategory of foodCategoryList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{foodcategory.id}}</td>
+            <td (click)="openDetailFoodCategory(foodcategory)">{{foodcategory.name}}</td>
+            <td>
+              <a (click)="openUnDeleteFoodCategory(foodcategory)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="foodCategoryList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có danh mục món đã bị xóa </strong>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <!--  bảng các món đã xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'food'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH MÓN BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchFood(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên món</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="foodList != null">
+          <tr class="even pointer"
+              *ngFor="let food of foodList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{food.id}}</td>
+            <td (click)="openDetailFood(food)">{{food.name}}</td>
+            <td>
+              <a (click)="openUnDeleteFood(food)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="foodList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có món đã bị xóa</strong></td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <!--  Bảng các tài khoản khách hàng đã xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'customer'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH KHÁCH HÀNG BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchFood(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tài Khoản Khách Hàng</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="userList != null">
+          <tr class="even pointer"
+              *ngFor="let user of userList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{user.id}}</td>
+            <td (click)="openDetailUser(user)">{{user.account.userName}}</td>
+            <td>
+              <a (click)="openUnDeleteUser(user)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="userList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có tài khoản khách hàng đã bị
+              xóa</strong></td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <!--  Bảng các nhà cung cấp đã bị xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'supplier'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH NHÀ CUNG CẤP BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchSupplier(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên nhà cung cấp</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="supplierList != null">
+          <tr class="even pointer"
+              *ngFor="let supplier of supplierList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{supplier.id}}</td>
+            <td (click)="openDetailSupplier(supplier)">{{supplier.name}}</td>
+            <td>
+              <a (click)="openUnDeleteSupplier(supplier)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="supplierList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có nhà cung cấp đã bị xóa</strong>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <!--  Bảng các nguyên liệu đã bị xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'material'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH NGUYÊN LIỆU CẤP BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchMaterial(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên nguyên liệu</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="materialList != null">
+          <tr class="even pointer"
+              *ngFor="let material of materialList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{material.id}}</td>
+            <td (click)="openDetailMaterial(material)">{{material.name}}</td>
+            <td>
+              <a (click)="openUnDeleteMaterial(material)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="materialList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có nguyên liệu đã bị xóa</strong>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <!--  Bảng các đơn hàng đã bị xóa-->
+  <c-col xs="6" *ngIf="namedDelete == 'order'">
+    <c-card class="mb-4">
+      <c-card-header style="background: #435d7d;color: white;text-align:center"><br>
+        <h1><strong style="margin: 0 auto;">DANH SÁCH ĐƠN HÀNG BỊ XÓA</strong></h1>
+      </c-card-header>
+      <c-card-body>
+        <div class="title_right">
+          <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-left top_search">
+            <form [formGroup]="searchForm">
+              <div class="input-group">
+                <input type="search" class="form-control rounded" formControlName="search"
+                       placeholder="Tìm kiếm ..."
+                       #search>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="button"
+                        (click)="searchOder(search.value)"> Tìm kiếm
+                </button>
+              </div>
+              <small class="form-text text-muted text-danger"
+                     *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100
+                ký tự!</small>
+            </form>
+          </div>
+          <br>
+        </div>
+        <!--        <table datatable [dtOptions]="dtOptions" class="row-border hover">-->
+        <table class="table table-striped able-bordered jambo_table bulk_action">
+          <thead>
+          <tr>
+            <td>ID</td>
+            <th>Tên khách hàng</th>
+            <th>Hoàn tác</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="oderList != null">
+          <tr class="even pointer"
+              *ngFor="let oder of oderList | paginate :{itemsPerPage:5 ,currentPage : p}">
+            <td>{{oder.id}}</td>
+            <td (click)="openDetailOder(oder)">{{oder.fullName}}</td>
+            <td>
+              <a (click)="openUnDeleteOder(oder)" style=" color: #F44336;" class="delete"
+                 data-toggle="modal">
+                <svg [cIcon]="icons.cilLoopCircular" size="xl" title="List Icon"></svg>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+          <tbody *ngIf="oderList == null">
+          <tr>
+            <td colspan="7" style="text-align: center; color: crimson"><strong>Không có nguyên liệu đã bị xóa</strong>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </c-card-body>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </c-card>
+  </c-col>
+  <c-col xs="1">
+  </c-col>
+</c-row>

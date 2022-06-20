@@ -1,0 +1,68 @@
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-3 h-80">
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
+      <div class="row d-flex justify-content-center align-items-center h-80">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 ">
+              <h1 class="mb-5 text-center" style="font-family: Georgia;font-weight: bolder" translate>
+                settings.dangnhaplogin </h1>
+              <select class="text-uppercase form-select form-select-sm" aria-label=".form-select-sm example"
+                      (click)="changeDefaultLanguages($event)">
+                <option translate>settings.ngonngu</option>
+                <option value="ta">vietnam</option>
+                <option value="en">japan</option>
+              </select>
+              <br>
+              <div class="form-outline mb-4">
+                <label class="form-label" style="text-align: right" translate>settings.tendangnhap</label>
+                <input class="form-control form-control-lg" type="text" formControlName="userName" #elementUsername
+                       translate [placeholder]="nhaptaikhoan.textContent">
+                <span style=" visibility: hidden;" translate #nhaptaikhoan>settings.nhaptaikhoan</span>
+                <div
+                  *ngIf="formLogin.get('userName')?.hasError('required') && (formLogin.get('userName')?.touched || isLoginValid) ; then thenUsername else elseUsername"></div>
+                <ng-template #thenUsername>
+                  <small style="color: red" translate>settings.validatetendangnhap</small>
+                </ng-template>
+                <ng-template #elseUsername>
+                  <small *ngIf="errorUsername ; else elseErrorUsername" style="color: red">{{errorUsername}}</small>
+                  <ng-template #elseErrorUsername><small style="color: white">.</small></ng-template>
+                </ng-template>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" translate>settings.matkhau</label>
+                <input type="password" class="form-control form-control-lg" formControlName="password" #elementPassword
+                       translate [placeholder]="nhapmatkhau.textContent" placeholder="Nhập mật khẩu"
+                >
+                <span style=" visibility: hidden;" translate #nhapmatkhau>settings.matkhau</span>
+
+                <div
+                  *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.touched || isLoginValid) ; then thenPassword else elsePassword"></div>
+                <ng-template #thenPassword>
+                  <small style="color: red" translate>settings.validatematkhau</small>
+                </ng-template>
+                <ng-template #elsePassword>
+                  <small *ngIf="errorPassword ; else elseErrorPassord" style="color: red">{{errorPassword}}</small>
+                  <ng-template #elseErrorPassord><small style="color: white">.</small></ng-template>
+                </ng-template>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-lg " type="submit" style="width: 70%;color: white;background-color: royalblue"
+                        translate>settings.truycap
+                </button>
+              </div>
+              <hr class="my-4">
+              <div style="text-align: center">
+                <p class="cursor-pointer forgot-password" (click)="forgotPassword()" translate>settings.quenmatkhau</p>
+                <p class="text-center text-muted mt-5 mb-0" translate>settings.chuacotaikhoan<a
+                  (click)="sinup()"
+                  class="fw-bold text-body"><u translate>settings.dangkylogin
+                </u></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

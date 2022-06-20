@@ -1,0 +1,76 @@
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2 translate>settings.giohang</h2>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a style="text-decoration: none" href="./index.html" translate>settings.trangchu</a>
+          <span translate>settings.giohang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="shopping-cart spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="shopping__cart__table">
+          <table>
+            <thead>
+            <tr>
+              <th colspan="5" translate>settings.sanpham</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="cartList !=  null">
+            <tr *ngFor="let cart of cartList">
+              <td class="product__cart__item">
+                <img src="{{cart.food.image}}" width="40%" height="40%" alt="">
+              </td>
+              <td class="product__cart__item">
+                <div class="product__cart__item__text">
+                  <h6>{{cart.food.name}}</h6>
+                  <h5>{{cart.food.price | currency: 'VND'}}</h5>
+                </div>
+              </td>
+              <td class="quantity__item">
+                <div class="quantity">
+                  <div class="pro-qtycart">
+                    <input style="color: black;" type="number" min="1" max="51" value="{{cart.quantity}}"
+                           [(ngModel)]="cart.quantity" (change)="total(cart, cart.quantity)">
+                  </div>
+                </div>
+              </td>
+              <td class="cart__price">{{cart.food.price * cart.quantity | currency: 'VND'}}
+              </td>
+              <td class="cart__close"><span class="icon_close" (click)="deleteCart(cart)">x</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="continue__btn">
+              <a style="text-decoration: none" routerLink="/menu" translate>settings.quaylaicuahang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <br><br>
+        <div class="cart__total">
+          <h6 translate>settings.tonggiohang</h6>
+          <ul>
+            <li translate>settings.tongtien <span>{{totalCart | currency :'VND'}}</span></li>
+          </ul>
+          <a style="text-decoration: none" (click)="checkout(totalCart)" class="primary-btn" translate>settings.tienhanhthanhtoan
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

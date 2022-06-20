@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"><br><br><br>
+      <div>
+        <div class="container">
+          <div class="view-account">
+            <section class="module">
+              <div class="module-inner">
+                <div class="side-bar">
+                  <nav class="side-menu">
+                    <ul class="nav">
+                      <li><a style="text-decoration: none" routerLink="/user" translate><span class="fa fa-user"></span>
+                        settings.thongtincanhan</a></li>
+                      <li class="active"><a style="text-decoration: none" translate routerLink="/changePass"><span
+                        class="fa fa-cog"></span> settings.doimatkhau</a></li>
+                      <li><a style="text-decoration: none" routerLink="/oder" translate><span
+                        class="fa fa-credit-card"></span>
+                        settings.donhanguser</a></li>
+                      <li><a style="text-decoration: none" routerLink="/history" translate><span
+                        class="fa fa-envelope"></span>
+                        settings.lsdonhang</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 gedf-main">
+      <br>
+      <div class="img"
+           style="background-image: linear-gradient(150deg, rgba(63, 174, 255, .3)15%, rgba(63, 174, 255, .3)70%, rgba(63, 174, 255, .3)94%), url('assets/image/slibar3.png');height: 250px;background-size: cover;"></div>
+      <div class="card social-prof">
+        <div class="card-body">
+          <div class="wrapper">
+            <img src="{{user.image}}" alt="ảnh đại diện" class="user-profile">
+            <h3>{{authService.getFullName()}}</h3>
+          </div>
+          <br>
+          <form [formGroup]="formForgotPassword">
+            <div *ngIf="isGetOtp; else elseGetOtp" class="input-group">
+              <input formControlName="userName" type="text" translate [placeholder]="tendangnhap.textContent"
+                     class="form-control">
+              <span style=" visibility: hidden;" translate #tendangnhap>settings.tendangnhap</span>
+            </div>
+            <ng-template #elseGetOtp>
+              <span style=" visibility: hidden;" translate #tendangnhaps>settings.tendangnhap</span>
+              <input formControlName="userName" type="text" translate [placeholder]="tendangnhaps.textContent"
+                     class="form-control" readonly>
+            </ng-template>
+            <br>
+            <div *ngIf="isInputOtp">
+              <span style=" visibility: hidden;" translate #nhanmaotps>settings.nhanmaotps</span>
+              <input formControlName="otp" #otp type="text" translate [placeholder]="nhanmaotps.textContent"
+                     class="form-control"
+                     maxlength="6">
+              <br>
+              <div id="inline">
+                <span style=" visibility: hidden;" translate #matkhaumoia>settings.matkhaumoi</span>
+
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="newPassword"
+                       #newPassword
+                       translate [placeholder]="matkhaumoia.textContent" class="form-control">
+              </div>
+              <br>
+            </div>
+            <div>
+              <button class="btn btn-light" routerLink="/home" translate> settings.huy</button>
+              <label *ngIf="isGetOtp">
+                <button class="btn btn-warning" (click)="sendOtp(formForgotPassword.get('userName')?.value)"
+                        style="margin-left: 50px;" translate> settings.layma
+                </button>
+              </label>
+              <label *ngIf="isInputOtp">
+                <button class="btn btn-warning" (click)="changePassword()" style="margin-left: 50px;" translate>
+                  settings.xacnhan
+                </button>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

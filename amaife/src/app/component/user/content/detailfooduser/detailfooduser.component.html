@@ -1,0 +1,110 @@
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2 translate>settings.chitietmon</h2>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a style="text-decoration: none" routerLink="/home" translate>settings.trangchu</a>
+          <span translate>settings.chitietmon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="product-details spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="product__details__img">
+          <img class="big_img" src="{{food.image}}" alt="ảnh món">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="product__details__text">
+          <div class="product__label">{{food.foodCategory.name}}</div>
+          <br>
+          <br>
+          <h1 class="text-uppercase">{{food.name}}</h1>
+          <h5>{{food.price | currency :'VND'}}</h5>
+          <ul>
+            <li style="display: inline-block" translate>settings.mamondetail </li>
+            <li style="display: inline-block"> {{food.id}}</li><br>
+            <li style="display: inline-block" translate>settings.danhmucdetail</li>
+            <li style="display: inline-block"> {{food.foodCategory.name}}</li>
+          </ul>
+          <div class="product__details__option">
+            <div class="quantity">
+              <div class="pro-qty">
+                <span style="color:#000;" class="dec qtybtn" (click)="quatitytru()">-</span>
+                <input style="color: black" type="number" min="1" max="51" value="{{quatity}}" [(ngModel)]="quatity">
+                <span style="color:#000;" class="inc qtybtn" (click)="quatitycong()">+</span>
+              </div>
+            </div>
+            <a style="text-decoration: none" class="btn primary-btn" (click)="createCartShoping(food)" translate>settings.themvaogiohangdetail </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product__details__tab">
+      <div class="col-lg-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" translate>settings.mieutadetail</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabs-1" role="tabpanel">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                <p>
+                  {{food.content}} !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="related-products spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title">
+          <h2 translate>settings.sptuongtudetail </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="foodList != null">
+      <div class="col-lg-3 col-md-6 col-sm-6"
+           *ngFor="let food of foodList | paginate :{itemsPerPage:4,currentPage : p}">
+        <div class="product__item">
+          <div class="product__item__pic " (click)="detailFood(food)">
+            <img style="background: #e5e5e6" src="{{food.image}}">
+            <div class="product__label">
+              <span>{{food.name}}</span>
+            </div>
+          </div>
+          <div class="product__item__text">
+            <h6><a style="text-decoration: none">{{food.foodCategory.name}}</a></h6>
+            <div class="product__item__price">{{food.price | currency :'VND'}}</div>
+            <div class="cart_add">
+              <a style="text-decoration: none" (click)="createCartShoping(food)" translate>settings.themvaogiohang </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pagination-controls class="text-right text" (pageChange)="p = $event"
+                           previousLabel="Trước"
+                           nextLabel="Sau"
+                           [autoHide]="true">
+      </pagination-controls>
+    </div>
+  </div>
+</section>
+

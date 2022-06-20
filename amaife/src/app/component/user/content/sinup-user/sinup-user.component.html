@@ -1,0 +1,118 @@
+<section class="vh-100 bg-image" *ngIf="sinup"
+         style="background-color: #508bfc;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" translate>settings.dangkysinups </h2>
+              <select class="text-uppercase form-select form-select-sm" aria-label=".form-select-sm example"
+                      (click)="changeDefaultLanguages($event)">
+                <option translate>settings.ngonngu</option>
+                <option value="ta">vietnam</option>
+                <option value="en">japan</option>
+              </select>
+              <br>
+              <form [formGroup]="formSinUp" (ngSubmit)="otp()">
+                <div class="form-outline mb-4">
+                  <label class="form-label" translate>settings.hovaten</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="fullName"/>
+                  <small style="color: red" class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('fullName')?.hasError('required') && formSinUp.get('fullName')?.touched"
+                         translate>settings.validatehovaten
+                  </small>
+                </div>
+                <div class="form-outline mb-4"><label class="form-label" translate>settings.email</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="email"/>
+                  <small style="color: red" class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('email')?.hasError('required') && formSinUp.get('email')?.touched"
+                         translate>settings.validateemail
+                  </small>
+                  <small class="form-text text-danger validate"
+                         *ngIf="formSinUp.get('email')?.hasError('email')  && formSinUp.get('email')?.dirty" translate>settings.validateemaildinhdang
+                  </small>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" translate>settings.sodienthoai </label>
+                  <input type="text" class="form-control form-control-lg" formControlName="phone"/>
+                  <small style="color: red" class="text-danger col-sm-10"
+                         *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.touched"
+                         translate>settings.validatesdt
+                  </small>
+                  <small class="form-text text-danger validate"
+                         *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.parent && formSinUp.get('phone')?.touched"
+                         translate>settings.validatesdtdinhdang
+                  </small>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" style="width: 70%;color: white;background-color: royalblue"
+                          class="btn btn-lg " translate>settings.dangkysinup
+                  </button>
+                </div>
+                <p class="text-center text-muted mt-5 mb-0" translate>settings.dacotaikhoan
+                  <a (click)="login()" class="fw-bold text-body"><u translate>settings.dangnhapsinup
+                  </u></a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vh-100 bg-image" *ngIf="!sinup"
+         style="background: #1da1f2">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" translate>settings.xacnhanmaotp </h2>
+              <form [formGroup]="formCreateAccount" (ngSubmit)="sinups()">
+                <select class="text-uppercase form-select form-select-sm" aria-label=".form-select-sm example"
+                        (click)="changeDefaultLanguages($event)">
+                  <option translate>settings.ngonngu</option>
+                  <option value="ta">vietnam</option>
+                  <option value="en">japan</option>
+                </select>
+                <div class="form-outline mb-4">
+                  <label class="form-label" translate>settings.maotp</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="otp"/>
+                  <small style="color: red" class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('otp')?.hasError('required') && formCreateAccount.get('otp')?.touched"
+                         translate>settings.validatemaotp
+                  </small>
+                </div>
+                <div class="form-outline mb-4"><label class="form-label" for="form3Example3cg" translate>settings.tendangnhap </label>
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg"
+                         formControlName="userName"/>
+                  <small style="color: red" class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('userName')?.hasError('required') && formCreateAccount.get('userName')?.touched"
+                         translate>settings.validatetendangnhap</small>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg" translate>settings.matkhau </label>
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                         formControlName="password"/>
+                  <small class="text-danger col-sm-10"
+                         *ngIf="formCreateAccount.get('password')?.hasError('required') && formCreateAccount.get('password')?.touched"
+                         translate>settings.validatematkhau</small>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" style="width: 70%;color: white;background-color: royalblue" class="btn btn-lg "
+                          translate>settings.dangkysinup
+                  </button>
+                </div>
+                <p class="text-center text-muted mt-5 mb-0" (click)="sendotp()" translate>settings.guilaimaotp </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

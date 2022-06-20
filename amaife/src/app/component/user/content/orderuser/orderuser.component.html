@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"><br><br><br>
+      <div>
+        <div class="container">
+          <div class="view-account">
+            <section class="module">
+              <div class="module-inner">
+                <div class="side-bar">
+                  <nav class="side-menu">
+                    <ul class="nav">
+                      <li><a style="text-decoration: none" routerLink="/user" translate><span class="fa fa-user"></span>
+                        settings.thongtincanhan</a>
+                      </li>
+                      <li><a style="text-decoration: none" routerLink="/changePass" translate><span
+                        class="fa fa-cog"></span> settings.doimatkhau </a></li>
+                      <li class="active"><a style="text-decoration: none" routerLink="/oder" translate><span
+                        class="fa fa-credit-card" translate></span> settings.donhanguser</a></li>
+                      <li><a style="text-decoration: none" routerLink="/history" translate><span
+                        class="fa fa-envelope"></span>settings.lsdonhang</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 gedf-main" *ngIf="orderList != null ">
+      <br>
+      <div class="container padding-bottom-3x mb-1"
+           *ngFor="let oder of orderList">
+        <br>
+        <div *ngIf="oder.status != eStatusOrder.CANCEL.valueOf() && oder.status != eStatusOrder.RECEIVED.valueOf()">
+          <div class="card mb-3">
+            <div class="p-4 text-center text-white text-lg bg-faded rounded-top"><span
+              class="text-uppercase label-color-1"
+              style="color: black;display: inline-block" translate> settings.lichtheodoidonhang  </span><span
+              class="text-medium"
+              style="display: inline-block; color:black;" translate> settings.madonhang </span><span
+              style="display: inline-block; color:black">{{oder.id}}</span>
+            </div>
+            <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
+              <div class="w-100 text-center py-1 px-2"><span
+                class="text-medium" translate> settings.nguoixacnhan </span> {{oder.account.userName}}
+              </div>
+              <div class="w-100 text-center py-1 px-2"><span class="text-medium" translate> settings.trangthai
+              <i *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf() "
+                 translate> settings.choxacnhan </i>
+              <i *ngIf="oder.status == eStatusOrder.CONFIRMED.valueOf() "
+                 translate> settings.dangchebien </i>
+              <i *ngIf="oder.status == eStatusOrder.TRANSPORT.valueOf() " translate> settings.dangvanchuyen </i>
+              <i *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() " translate> settings.danhan </i>
+              <i *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() " translate> settings.dahuy </i></span>
+              </div>
+              <div class="w-100 text-center py-1 px-2"><span class="text-medium"
+                                                             translate> settings.thoigiandat</span> {{oder.createAt}}
+              </div>
+            </div>
+            <div class="card-body">
+              <div
+                class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.choxacnhan </h4>
+                </div>
+                <div
+                  *ngIf="oder.status ==eStatusOrder.CONFIRMED.valueOf() || oder.status ==eStatusOrder.TRANSPORT.valueOf()"
+                  class="step completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.cholay </h4>
+                </div>
+                <div
+                  *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf()"
+                  class="step">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.cholay </h4>
+                </div>
+                <div
+                  *ngIf="oder.status ==eStatusOrder.TRANSPORT.valueOf() || oder.status ==eStatusOrder.RECEIVED.valueOf()"
+                  class="step completed">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.danggiao </h4>
+                </div>
+                <div *ngIf="oder.status !=eStatusOrder.TRANSPORT.valueOf()" class="step">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.danggiao </h4>
+                </div>
+                <div class="step ">
+                  <div class="step-icon-wrap">
+                    <div class="step-icon"><i class="fa fa-home" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <h4 class="step-title" translate> settings.dagiao </h4>
+                </div>
+                <div class="step">
+                  <div class="completed">
+                    <div class="step-icon-wrap">
+                      <div class="step-icon"><i class="fa fa-trash" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <h4 class="step-title" translate> settings.dahuy </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center">
+            <div class="custom-control custom-checkbox mr-3">
+              <div class="text-left text-sm-right"><a class="btn btn-outline-dark btn-rounded btn-sm"
+                                                      data-toggle="modal"
+                                                      (click)="openCancelOrder(oder)"
+                                                      *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf()"
+                                                      translate> settings.huydonhang </a></div>
+            </div>
+            <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm"
+                                                    data-toggle="modal" data-target="#orderDetails"
+                                                    (click)="openDetailOrder(oder)" translate>
+              settings.xemchitietdonhang</a>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <br><br> <br><br><br><br> <br><br>
+    <br><br> <br><br><br><br> <br><br>
+    <div class="col-lg-9 gedf-main" *ngIf="orderList == null">
+      <p translate> settings.donhangrong</p>
+    </div>
+  </div>
+</div>
+
+
+

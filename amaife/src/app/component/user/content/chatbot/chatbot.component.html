@@ -1,0 +1,125 @@
+<img class="container  absolute p-0 bottomright " style="position:fixed;height: 60px;width: 60px"
+     src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/chat.png?alt=media&token=439624a1-330d-4dbc-a443-8bccb810ec84"
+     alt="Nhắn tin" *ngIf="!chatFs" (click)="Chat()">
+<div class="container absolute p-0 bottomright " style="position:fixed;" *ngIf="chatFs">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-12 col-lg-12 col-xl-12">
+        <div class="py-2 px-4 border-bottom d-none d-lg-block">
+          <div class="d-flex align-items-center py-1">
+            <div class="position-relative">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=d63e50b2-b08a-4f74-b24f-b5ecc1448125"
+                class="rounded-circle mr-1"
+                alt="Chris Wood" width="40" height="40">
+            </div>
+            <div class="flex-grow-1 pl-3">
+              <strong> Tiệm trà sữa AMAI</strong>
+            </div>
+            <div>
+              <button class="btn  btn-lg mr-1 px-3 d-none d-md-inline" (click)="NoChat()">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- BOX -->
+        <div class="position-relative">
+          <div class="chat-messages p-4" style="overflow: scroll; height: 100%;" #scrollMe
+               [scrollTop]="scrollMe.scrollHeight">
+            <div class="chat-message-right mb-4">
+              <div>
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=d63e50b2-b08a-4f74-b24f-b5ecc1448125"
+                  class="rounded-circle mr-1"
+                  alt="Chris Wood" width="40" height="40">
+              </div>
+              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+                <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
+                Chào mừng bạn đến với AMAI
+              </div>
+            </div>
+            <div class="chat-message-right mb-4">
+              <div>
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=d63e50b2-b08a-4f74-b24f-b5ecc1448125"
+                  class="rounded-circle mr-1"
+                  alt="Chris Wood" width="40" height="40">
+              </div>
+              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+                <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
+                Hân hạnh được chào đón bạn
+              </div>
+            </div>
+            <!-- MESSAGES LIST -->
+            <div *ngIf="chatList != null">
+              <div *ngFor="let chat of chatList">
+                <div class=" chat-message-left mb-4 text-muted small text-nowrap mt-2">{{chat.createAt}}</div>
+                <div class="chat-message-left pb-4">
+                  <div>
+                    <img src="{{user.image}}" class="rounded-circle mr-1"
+                         alt="{{auth.getUsername()}}" width="40" height="40">
+                  </div>
+                  <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                    <div class="font-weight-bold mb-1"><small style="color: #3a591d;">{{auth.getUsername()}}</small>
+                    </div>
+                    <p> {{chat.msg}}</p>
+                  </div>
+                  <div class="center-text flex-shrink-1  rounded py-2 px-3 ml-3">
+                    <i class=" fa fa-ellipsis-h" aria-hidden="true" *ngTemplateOutlet="chatdelete"></i>
+                  </div>
+                  <ng-template #chatdelete>
+                    <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
+                      <button [caret]="false" cDropdownToggle class="py-0"
+                              style="border: 0px solid black;border-color: snow;background-color: snow">
+                        <i class=" fa fa-ellipsis-h" aria-hidden="true"></i>
+                      </button>
+                      <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
+                        <li cDropdownHeader>
+                        <li>
+                          <a cDropdownItem (click)="recall(chat.id)">
+                            <i class="fa fa-undo" aria-hidden="true"></i> Thu hồi phía bạn
+                          </a>
+                        </li>
+                        <li>
+                          <a style="color: red" cDropdownItem (click)="delete(chat.id)">
+                            <i style="color: red" class="fa fa-trash" aria-hidden="true"></i>
+                            <span style="color: red"> Xóa tin nhắn</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </c-dropdown>
+                  </ng-template>
+                </div>
+                <div class=" chat-message-right mb-4 text-muted small text-nowrap mt-2">{{chat.updateAt}}</div>
+                <div class="chat-message-right mb-4">
+                  <div>
+                    <img
+                      src="https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/logoamin.png?alt=media&token=d63e50b2-b08a-4f74-b24f-b5ecc1448125"
+                      class="rounded-circle mr-1"
+                      alt="Chris Wood" width="40" height="40">
+                  </div>
+                  <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+                    <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
+                    {{chat.msgchatbot}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-grow-0 py-3 px-4 border-top">
+          <form [formGroup]="formChat" (ngSubmit)="chatbox()">
+            <div class="input-group">
+              <input #inputMsg type="text" class="form-control col-sm-9" formControlName="msg"
+                     placeholder="Nhập tin nhắn">
+              <button type="submit" class="btn btn-primary col-sm-3"
+                      (click)="inputMsg.value=''">Gửi
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
