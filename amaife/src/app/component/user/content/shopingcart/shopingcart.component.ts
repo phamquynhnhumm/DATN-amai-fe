@@ -84,7 +84,7 @@ export class ShopingcartComponent implements OnInit {
         panelClass: ['mat-toolbar', 'mat-warn']
       })
     } else {
-      location.replace("/checkout");
+      location.replace("/DATN-amai-fe/amaife/checkout/");
     }
   }
 }
