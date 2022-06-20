@@ -18,6 +18,6 @@ export class OpencameraComponent implements OnInit {
   allowedFormats = [BarcodeFormat.QR_CODE];
 
   scanQR($event: string) {
-    this.route.navigateByUrl("/orderqrcode/" + $event)
+    this.route.navigateByUrl("/DATN-amai-fe/amaife/orderqrcode/" + $event)
   }
 }

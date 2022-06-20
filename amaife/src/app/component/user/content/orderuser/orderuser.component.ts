@@ -66,7 +66,8 @@ export class OrderuserComponent implements OnInit {
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
-          this.ngOnInit();
+          // this.ngOnInit();
+          this.router.navigate(['/DATN-amai-fe/amaife/oder']);
         });
       }
     )

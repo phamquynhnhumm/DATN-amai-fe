@@ -27,6 +27,7 @@ export class OrderService {
    */
   readonly URL_ORDER_FINFDISDELETE_USER = "https://salty-cove-09707.herokuapp.com/api/order/userName";
   readonly URL_ORDERUSER = "https://salty-cove-09707.herokuapp.com/api/order";
+  readonly URL_ORDERUSERCACEL = "https://salty-cove-09707.herokuapp.com/api/order/cancel";
   readonly URL_ORDERDETAILUSER = "https://salty-cove-09707.herokuapp.com/api/order/detail";
   readonly URL_CREATEORDERUSER = "https://salty-cove-09707.herokuapp.com/api/order/createOder";
 
@@ -144,6 +145,9 @@ export class OrderService {
 
   updateOderUser(order: Object): Observable<Oder> {
     return this.httpClient.put<Oder>(this.URL_ORDERUSER, order);
+  }
+  cancelOderUser(order: Object): Observable<Oder> {
+    return this.httpClient.put<Oder>(this.URL_ORDERUSERCACEL, order);
   }
 
   /**

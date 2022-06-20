@@ -60,7 +60,7 @@ export class HeaderadminComponent extends HeaderComponent {
 
   public logout() {
     this.authService.clear();
-    location.replace("/login");
+    location.replace("/DATN-amai-fe/amaife/login");
   }
 
   confirm(order: Oder) {
@@ -102,10 +102,10 @@ export class HeaderadminComponent extends HeaderComponent {
   }
 
   login() {
-    location.replace("/login");
+    location.replace("/DATN-amai-fe/amaife/login");
   }
 
   opencamera() {
-    location.replace("/opencamera");
+    location.replace("/DATN-amai-fe/amaife/opencamera");
   }
 }
