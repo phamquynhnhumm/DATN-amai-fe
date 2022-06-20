@@ -13,12 +13,11 @@ import {Router} from "@angular/router";
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.scss']
 })
-export class ChatbotComponent implements OnInit, AfterViewChecked {
+export class ChatbotComponent implements OnInit {
   chatList !: Array<Chat>
   chat !: Chat
   user!: Users;
   chatFs: boolean = false;
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
 
   constructor(private chatService: ChatboxService,
               private snackBar: MatSnackBar,
@@ -31,6 +30,7 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
+    this.scrollToBottom();
 
     // @ts-ignore
     this.chatService.findUserName(this.auth.getUsername()).subscribe(
@@ -45,11 +45,6 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
         this.user = dataUser;
       }
     );
-    this.scrollToBottom();
-  }
-
-  ngAfterViewChecked() {
-    this.scrollToBottom();
   }
 
   public scrollToBottom() {
