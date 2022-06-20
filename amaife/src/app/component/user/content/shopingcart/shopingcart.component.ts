@@ -6,7 +6,6 @@ import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {isElementScrolledOutsideView} from "@angular/cdk/overlay/position/scroll-clip";
 
 @Component({
   selector: 'app-shopingcart',

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ChatboxService} from "../../../../service/chatbox.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -13,34 +13,48 @@ import {Router} from "@angular/router";
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.scss']
 })
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, AfterViewChecked {
   chatList !: Array<Chat>
   chat !: Chat
   user!: Users;
   chatFs: boolean = false;
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
 
   constructor(private chatService: ChatboxService,
               private snackBar: MatSnackBar,
               public auth: AuthService,
               public userService: UserService,
               private router: Router,
-              private matSnackBar: MatSnackBar
+              private matSnackBar: MatSnackBar,
+              private _el: ElementRef
   ) {
   }
 
   ngOnInit(): void {
+
     // @ts-ignore
     this.chatService.findUserName(this.auth.getUsername()).subscribe(
       (data) => {
         this.chatList = data
       }
-    )
+    );
+
     // @ts-ignore
     this.userService.findByIdUser(this.auth.getIdUser()).subscribe(
       dataUser => {
         this.user = dataUser;
       }
-    )
+    );
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  public scrollToBottom() {
+    const el: HTMLDivElement = this._el.nativeElement;
+    el.scrollTop = Math.max(0, el.scrollHeight - el.offsetHeight);
   }
 
   formChat = new FormGroup(

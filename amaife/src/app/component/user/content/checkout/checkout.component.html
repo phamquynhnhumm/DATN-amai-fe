@@ -118,6 +118,29 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
+                <div class="checkout__input__checkbox">
+                  <label translate>settings.chuyekhoan
+                    <input type="radio" name="paypal" formControlName="payments" value="TRANSFER">
+                    <p *ngTemplateOutlet="transref"> Thông tin chuyển khoản </p>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <ng-template #transref>
+                  <c-dropdown alignment="end" variant="nav-item" class="scroll-behavior: auto">
+                    <button [caret]="false" cDropdownToggle class="py-0"
+                            style="border: 0px solid;background:#fdf3ea ;color: black">
+                      <small> - Thông tin chuyển khoản -</small>
+                    </button>
+                    <ul style="border: 0px solid;background:#fdf3ea ;color: black" cDropdownMenu
+                        class="pt-0 pr-5 col-12 w-auto">
+                      <p>Vui lòng chuyển khoản trước khi ấn "Đặt hàng" </p>
+                      <li cDropdownHeader>
+                        <p>Tên ngân hàng: ACB Sơn trà</p>
+                        <p>Tài khoản thụ hưởng: 12365456</p>
+                        <p>Người thị hưởng: Phạm Thị Quỳnh Như</p>
+                    </ul>
+                  </c-dropdown>
+                </ng-template>
                 <button type="submit" class="site-btn" translate>settings.dathang</button>
               </div>
             </div>

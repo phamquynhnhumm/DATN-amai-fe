@@ -6,6 +6,9 @@ export enum EPayments {
   /**
    * Thanh toán
    */
-  Cash
+  CASH,
+  NO,
+
+  TRANSFER
 }
 
