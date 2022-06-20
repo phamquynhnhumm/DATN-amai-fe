@@ -111,8 +111,11 @@
         <div class="flex-grow-0 py-3 px-4 border-top">
           <form [formGroup]="formChat" (ngSubmit)="chatbox()">
             <div class="input-group">
-              <input type="text" class="form-control col-sm-9" formControlName="msg" placeholder="Nhập tin nhắn">
-              <button type="submit" class="btn btn-primary col-sm-3">Gửi</button>
+              <input #inputMsg type="text" class="form-control col-sm-9" formControlName="msg"
+                     placeholder="Nhập tin nhắn">
+              <button type="submit" class="btn btn-primary col-sm-3"
+                      (click)="inputMsg.value=''">Gửi
+              </button>
             </div>
           </form>
         </div>
