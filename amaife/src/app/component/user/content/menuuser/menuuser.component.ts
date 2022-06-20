@@ -52,7 +52,7 @@ export class MenuuserComponent implements OnInit {
   });
 
   detailFood(foods: Food) {
-    this.router.navigate(['/detailfood/' + foods.id]);
+    this.router.navigate(['/DATN-amai-fe/amaife/detailfood/' + foods.id]);
   }
 
   onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {

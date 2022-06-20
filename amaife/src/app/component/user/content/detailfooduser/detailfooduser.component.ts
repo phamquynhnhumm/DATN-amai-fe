@@ -53,12 +53,12 @@ export class DetailfooduserComponent implements OnInit {
   }
 
   detailFood(foods: Food) {
-    location.replace("/detailfood/" + foods.id)
+    location.replace("/DATN-amai-fe/amaife/detailfood/" + foods.id)
   }
 
   createCartShoping(food: Food) {
     if (this.auth.getRole() == "") {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/DATN-amai-fe/amaife/login");
     } else {
       this.formCart = new FormGroup(
         {

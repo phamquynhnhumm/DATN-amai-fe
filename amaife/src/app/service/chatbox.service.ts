@@ -8,12 +8,12 @@ import {Chat} from "../model/chat/Chat";
 })
 export class ChatboxService {
 
-  readonly URL_CHATBOX = "http://localhost:8080/api/chat/send"
-  readonly URL_TEST = "http://localhost:8080/api/chat/test"
-  readonly URL_FINDCREATEBY = "http://localhost:8080/api/chat"
-  readonly URL_CHATCACCEL = "http://localhost:8080/api/chat/cancel"
-  readonly URL_CHATDELETE = "http://localhost:8080/api/chat/delete"
-  readonly URL_FINDBYID = "http://localhost:8080/api/chat/findbyid"
+  readonly URL_CHATBOX = "https://salty-cove-09707.herokuapp.com/api/chat/send"
+  readonly URL_TEST = "https://salty-cove-09707.herokuapp.com/api/chat/test"
+  readonly URL_FINDCREATEBY = "https://salty-cove-09707.herokuapp.com/api/chat"
+  readonly URL_CHATCACCEL = "https://salty-cove-09707.herokuapp.com/api/chat/cancel"
+  readonly URL_CHATDELETE = "https://salty-cove-09707.herokuapp.com/api/chat/delete"
+  readonly URL_FINDBYID = "https://salty-cove-09707.herokuapp.com/api/chat/findbyid"
 
   constructor(private httpClient: HttpClient) {
   }

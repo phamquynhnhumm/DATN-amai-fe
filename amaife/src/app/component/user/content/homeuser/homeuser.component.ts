@@ -47,7 +47,7 @@ export class HomeuserComponent implements OnInit {
   )
 
   detailFood(foods: Food) {
-    this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
+    this.router.navigate(['/DATN-amai-fe/amaife/detailfood/' + foods.foodCategory.id]);
   }
 
   createCartShoping(foods: Food) {

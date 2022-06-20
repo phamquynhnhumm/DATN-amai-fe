@@ -9,7 +9,7 @@ import {LoginResponse} from "../model/login/LoginResponse";
   providedIn: 'root'
 })
 export class LoginService {
-  readonly API_LOGIN_ADMIN = "http://localhost:8080/api/login"
+  readonly API_LOGIN_ADMIN = "https://salty-cove-09707.herokuapp.com/api/login"
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}
   );

@@ -11,12 +11,12 @@ export class SupplierService {
   /**
    * URL nhà cung cấp
    */
-  readonly URL_SUPPLIER = "http://localhost:8080/api/admin/supplier";
-  readonly URL_SUPPLIER_FINFDISDELETE = "http://localhost:8080/api/admin/supplier/all";
-  readonly URL_SUPPLIER_UNDELETE = "http://localhost:8080/api/admin/supplier/undelete";
-  readonly URL_SUPPLIER_DELETE = "http://localhost:8080/api/admin/supplier/delete";
-  readonly URL_SUPPLIER_FINDBYFOODCATEGORY_ID = "http://localhost:8080/api/supplier/admin/findByFoodcategoryId";
-  readonly URL_SUPPLIER_SEARCH = "http://localhost:8080/api/admin/supplier/search";
+  readonly URL_SUPPLIER = "https://salty-cove-09707.herokuapp.com/api/admin/supplier";
+  readonly URL_SUPPLIER_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/supplier/all";
+  readonly URL_SUPPLIER_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/supplier/undelete";
+  readonly URL_SUPPLIER_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/supplier/delete";
+  readonly URL_SUPPLIER_FINDBYFOODCATEGORY_ID = "https://salty-cove-09707.herokuapp.com/api/supplier/admin/findByFoodcategoryId";
+  readonly URL_SUPPLIER_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/supplier/search";
 
   constructor(private httpClient: HttpClient) {
   }

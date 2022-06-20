@@ -13,43 +13,43 @@ export class OrderService {
   /**
    * URL đơn hàng ADmin
    */
-  readonly URL_ORDER = "http://localhost:8080/api/admin/order";
-  readonly URL_ORDER_CONFIRM = "http://localhost:8080/api/admin/order/confirm";
-  readonly URL_ORDER_FINFDISDELETE = "http://localhost:8080/api/admin/order/all";
-  readonly URL_ORDER_STATUS = "http://localhost:8080/api/admin/order/status";
-  readonly URL_ORDER_UNDELETE = "http://localhost:8080/api/admin/order/undelete";
-  readonly URL_ORDER_DELETE = "http://localhost:8080/api/admin/order/delete";
-  readonly URL_ORDER_FINDBYACOUNT_NAME = "http://localhost:8080/api/admin/order/findBySupplierId";
-  readonly URL_ORDER_SEARCH = "http://localhost:8080/api/admin/order/search";
+  readonly URL_ORDER = "https://salty-cove-09707.herokuapp.com/api/admin/order";
+  readonly URL_ORDER_CONFIRM = "https://salty-cove-09707.herokuapp.com/api/admin/order/confirm";
+  readonly URL_ORDER_FINFDISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/order/all";
+  readonly URL_ORDER_STATUS = "https://salty-cove-09707.herokuapp.com/api/admin/order/status";
+  readonly URL_ORDER_UNDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/order/undelete";
+  readonly URL_ORDER_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/order/delete";
+  readonly URL_ORDER_FINDBYACOUNT_NAME = "https://salty-cove-09707.herokuapp.com/api/admin/order/findBySupplierId";
+  readonly URL_ORDER_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/order/search";
 
   /**
    * URL đơn hàng cho khách hàng
    */
-  readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
-  readonly URL_ORDERUSER = "http://localhost:8080/api/order";
-  readonly URL_ORDERDETAILUSER = "http://localhost:8080/api/order/detail";
-  readonly URL_CREATEORDERUSER = "http://localhost:8080/api/order/createOder";
+  readonly URL_ORDER_FINFDISDELETE_USER = "https://salty-cove-09707.herokuapp.com/api/order/userName";
+  readonly URL_ORDERUSER = "https://salty-cove-09707.herokuapp.com/api/order";
+  readonly URL_ORDERDETAILUSER = "https://salty-cove-09707.herokuapp.com/api/order/detail";
+  readonly URL_CREATEORDERUSER = "https://salty-cove-09707.herokuapp.com/api/order/createOder";
 
   /**
    * URL giỏ hàng
    */
-  readonly URL_CARTRUSER = "http://localhost:8080/api/cart";
-  readonly URL_CARTRUSER_TOTALMONEY = "http://localhost:8080/api/cart/totalMoney";
-  readonly URL_CARTRUSER_QUANTITY = "http://localhost:8080/api/cart/totalQuantity";
-  readonly URL_CARTRUSER_DELETE = "http://localhost:8080/api/cart/delete";
-  readonly URL_CARTRUSER_CANCEL = "http://localhost:8080/api/cart/cancel";
+  readonly URL_CARTRUSER = "https://salty-cove-09707.herokuapp.com/api/cart";
+  readonly URL_CARTRUSER_TOTALMONEY = "https://salty-cove-09707.herokuapp.com/api/cart/totalMoney";
+  readonly URL_CARTRUSER_QUANTITY = "https://salty-cove-09707.herokuapp.com/api/cart/totalQuantity";
+  readonly URL_CARTRUSER_DELETE = "https://salty-cove-09707.herokuapp.com/api/cart/delete";
+  readonly URL_CARTRUSER_CANCEL = "https://salty-cove-09707.herokuapp.com/api/cart/cancel";
 
   /**
    * URL chi tiết đơn hàng phía User
    */
-  readonly URL_ODERDETAIL_CREATE = "http://localhost:8080/api/order/createDetailOder";
-  readonly URL_CREATEQRCODE = "http://localhost:8080/api/order/generateQRCode";
+  readonly URL_ODERDETAIL_CREATE = "https://salty-cove-09707.herokuapp.com/api/order/createDetailOder";
+  readonly URL_CREATEQRCODE = "https://salty-cove-09707.herokuapp.com/api/order/generateQRCode";
 
 
   /**
    * URL chi tiết đơn hàng phía Admin
    */
-  readonly OrderDetail = "http://localhost:8080/api/admin/orderdetail/detail";
+  readonly OrderDetail = "https://salty-cove-09707.herokuapp.com/api/admin/orderdetail/detail";
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}

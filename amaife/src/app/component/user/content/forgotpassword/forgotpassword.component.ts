@@ -112,7 +112,7 @@ export class ForgotpasswordComponent implements OnInit {
               duration: 3000,
               panelClass: ['mat-toolbar', 'mat-primary']
             })
-            location.replace("/login");
+            location.replace("/DATN-amai-fe/amaife/login");
           } else if (data == null) {
             this.matSnackBar.open("Hệ thống đang bảo trì", "Đóng", {
               duration: 3000,

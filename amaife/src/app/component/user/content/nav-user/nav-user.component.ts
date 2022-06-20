@@ -3,8 +3,6 @@ import {AuthService} from "../../../../service/auth.service";
 import {OrderService} from "../../../../service/order.service";
 import {FoodService} from "../../../../service/food.service";
 import {FoodCategory} from "../../../../model/food/FoodCategory";
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Shop} from "../../../../model/shop/Shop";
 import {ShopService} from "../../../../service/shop.service";
 import {TranslateConfigService} from "../../../../service/translate-config.service";
@@ -73,7 +71,7 @@ export class NavUserComponent implements OnInit {
 
   logout() {
     this.authService.clear();
-    location.replace("/login");
+    location.replace("/DATN-amai-fe/amaife/login");
   }
 
   navHomeFunction() {
@@ -111,11 +109,11 @@ export class NavUserComponent implements OnInit {
   }
 
   reload(id: number) {
-    location.replace("/category/" + id);
+    location.replace("/DATN-amai-fe/amaife/category/" + id);
   }
 
   login() {
-    location.replace("/login");
+    location.replace("/DATN-amai-fe/amaife/login");
   }
 
   /* Change default language */

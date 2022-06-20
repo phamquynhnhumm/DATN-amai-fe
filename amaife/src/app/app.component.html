@@ -6,18 +6,18 @@
 </div>
 
 <div
-  *ngIf="authService.getRole() == null && href != 'http://localhost:4200/login' && href !='http://localhost:4200/sinup' && href !='http://localhost:4200/otp' && href !='http://localhost:4200/forgot' ">
+  *ngIf="authService.getRole() == null && href != 'https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/login' && href !='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/sinup' && href !='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/otp' && href !='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/forgot' ">
   <app-nav-user></app-nav-user>
   <router-outlet></router-outlet>
   <app-footer-user></app-footer-user>
 </div>
-<div *ngIf="href =='http://localhost:4200/login'">
+<div *ngIf="href =='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/login'">
   <app-loginadmin></app-loginadmin>
 </div>
-<div *ngIf="href =='http://localhost:4200/sinup'">
+<div *ngIf="href =='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/sinup'">
   <app-sinup-user></app-sinup-user>
 </div>
-<div *ngIf="href =='http://localhost:4200/forgot'">
+<div *ngIf="href =='https://phamquynhnhumm.github.io/DATN-amai-fe/amaife/forgot'">
   <app-forgotpassword></app-forgotpassword>
 </div>
 <c-sidebar *ngIf="authService.getRole() == 'ROLE_ADMIN' || authService.getRole()=='ROLE_MANAGEMENT' "

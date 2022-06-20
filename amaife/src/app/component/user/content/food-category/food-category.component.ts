@@ -55,7 +55,7 @@ export class FoodCategoryComponent implements OnInit {
   });
 
   detailFood(foods: Food) {
-    this.router.navigate(['/detailfood/' + foods.id]);
+    this.router.navigate(['/DATN-amai-fe/amaife/detailfood/' + foods.id]);
   }
 
   onCheckboxChangeFood($event: MatOptionSelectionChange<string>, searchs: string) {
@@ -93,7 +93,7 @@ export class FoodCategoryComponent implements OnInit {
     this.createService.createCartUser(this.formCart.value).subscribe(
       (data) => {
         this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
-        location.replace("/category/" + this.foodCategory.id);
+        location.replace("/DATN-amai-fe/amaife/category/" + this.foodCategory.id);
       },
       error => {
         this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);

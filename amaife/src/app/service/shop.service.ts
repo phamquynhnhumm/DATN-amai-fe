@@ -11,8 +11,8 @@ export class ShopService {
   /**
    * URL nhà cung cấp
    */
-  readonly URL_SHOP = "http://localhost:8080/api/admin/shop";
-  readonly URL_SHOP_CUSTOMER = "http://localhost:8080/api/shop";
+  readonly URL_SHOP = "https://salty-cove-09707.herokuapp.com/api/admin/shop";
+  readonly URL_SHOP_CUSTOMER = "https://salty-cove-09707.herokuapp.com/api/shop";
 
   requestHeader = new HttpHeaders(
     {"No-Auth": "True"}

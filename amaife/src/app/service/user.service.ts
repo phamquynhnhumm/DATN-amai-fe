@@ -4,10 +4,6 @@ import {Observable} from "rxjs";
 import {Users} from "../model/user/Users";
 import {ForgotPassword} from "../model/user/ForgotPassword";
 import {AccountSinup} from "../model/user/AccountSinup";
-import {ERole} from "../model/user/ERole";
-import {Oder} from "../model/order/Oder";
-import {Food} from "../model/food/Food";
-import {NewPassword} from "../model/user/NewPassword";
 import {Account} from "../model/user/Account";
 
 @Injectable({
@@ -17,25 +13,25 @@ export class UserService {
   /**
    * URL phía ADmin
    */
-  readonly URL_USER = "http://localhost:8080/api/admin/user/findByRole"
-  readonly URL_UN_USER = "http://localhost:8080/api/admin/user/undelete"
-  readonly URL_USER_SEARCH = "http://localhost:8080/api/admin/user/search"
-  readonly URL_FindById = "http://localhost:8080/api/admin/user"
-  readonly API_USER_FINDALLNPOTEMAIL_ADMIN = "http://localhost:8080/api/admin/user/findallnotemail"
-  readonly URL_FindById_DELETE = "http://localhost:8080/api/admin/user/delete"
+  readonly URL_USER = "https://salty-cove-09707.herokuapp.com/api/admin/user/findByRole"
+  readonly URL_UN_USER = "https://salty-cove-09707.herokuapp.com/api/admin/user/undelete"
+  readonly URL_USER_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/user/search"
+  readonly URL_FindById = "https://salty-cove-09707.herokuapp.com/api/admin/user"
+  readonly API_USER_FINDALLNPOTEMAIL_ADMIN = "https://salty-cove-09707.herokuapp.com/api/admin/user/findallnotemail"
+  readonly URL_FindById_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/user/delete"
 
   /**
    * URL phía người dùng
    */
-  readonly API_USER_Pass = "http://localhost:8080/api/users"
-  readonly API_USER_FINDALLNPOTEMAIL = "http://localhost:8080/api/users/findallnotemail"
-  readonly API_USER_Pass_ADMIN = "http://localhost:8080/api/admin/user"
+  readonly API_USER_Pass = "https://salty-cove-09707.herokuapp.com/api/users"
+  readonly API_USER_FINDALLNPOTEMAIL = "https://salty-cove-09707.herokuapp.com/api/users/findallnotemail"
+  readonly API_USER_Pass_ADMIN = "https://salty-cove-09707.herokuapp.com/api/admin/user"
 
   /**
    * URL đang ký tài khoản nhân viên
    */
-  readonly API_USER_LISTUSER = "http://localhost:8080/api/admin/user/userlist"
-  readonly API_USER_SINUP = "http://localhost:8080/api/admin/user"
+  readonly API_USER_LISTUSER = "https://salty-cove-09707.herokuapp.com/api/admin/user/userlist"
+  readonly API_USER_SINUP = "https://salty-cove-09707.herokuapp.com/api/admin/user"
 
 
   requestHeader = new HttpHeaders(

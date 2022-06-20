@@ -10,7 +10,6 @@ import {Oder} from "../../../../model/order/Oder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {getStorage, ref, uploadString} from "@angular/fire/storage";
 
 @Component({
@@ -97,7 +96,7 @@ export class CheckoutComponent implements OnInit {
     if (this.formOrder.value.payments == 'PAYPAL') {
       if (this.formOrder.valid) {
         this.apppayapl = true;
-        this.route.navigateByUrl("/paypal").then();
+        this.route.navigateByUrl("/DATN-amai-fe/amaife/paypal").then();
       }
     } else if (this.formOrder.value.payments == 'CASH') {
       this.formOrder.value.qrcode = "null";
@@ -136,7 +135,7 @@ export class CheckoutComponent implements OnInit {
                       dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
                       this.cartService.updateQrcode(dataQRcode).subscribe(
                         (data) => {
-                          this.route.navigateByUrl("/home").then(() =>
+                          this.route.navigateByUrl("/DATN-amai-fe/amaife/home").then(() =>
                             this.snackBar.open("Vui lòng kiểm tra mail về thông tin đơn hàng đã đặt!")._dismissAfter(3000))
                         }, error => {
                           this.snackBar.open("Đặt món thất bại!", "OK", {
@@ -218,7 +217,7 @@ export class CheckoutComponent implements OnInit {
               })
           }
         )
-        this.route.navigateByUrl("/home").then(() =>
+        this.route.navigateByUrl("/DATN-amai-fe/amaife/home").then(() =>
           this.snackBar.open(" Đặt món thành công!. Quý khách đến của hàng an toàn nhé! Chúng tôi sẽ chuẩn bị món ngon cho bạn")._dismissAfter(3000));
       } else {
         this.snackBar.open("Đặt món thất bại ! Vui lòng nhập thông tin", "OK", {

@@ -43,7 +43,7 @@ export class LoginadminComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.getToken() !== null) {
-      this.router.navigate(['/login']).then(
+      this.router.navigate(['/DATN-amai-fe/amaife/login']).then(
         () => window.location.reload()
       )
     }
@@ -62,19 +62,19 @@ export class LoginadminComponent implements OnInit {
     const role = loginResponse.user.account.role;
     switch (role) {
       case "ROLE_MANAGEMENT":
-        this.router.navigate(['/admin']);
-        location.replace("/admin");
+        this.router.navigate(['/DATN-amai-fe/amaife/admin']);
+        location.replace("/DATN-amai-fe/amaife/admin");
         break;
       case "ROLE_CUSTOMER":
         this.router.navigate(['/home']);
-        location.replace("/home");
+        location.replace("/DATN-amai-fe/amaife/home");
         break;
       case "ROLE_ADMIN":
-        this.router.navigate(['/admin']);
-        location.replace("/admin");
+        this.router.navigate(['/DATN-amai-fe/amaife/admin']);
+        location.replace("/DATN-amai-fe/amaife/admin");
         break;
       default:
-        this.router.navigate(['/login'])
+        this.router.navigate(['/DATN-amai-fe/amaife/login'])
         window.location.reload();
     }
   }
@@ -115,11 +115,11 @@ export class LoginadminComponent implements OnInit {
   }
 
   sinup() {
-    location.replace("/sinup")
+    location.replace("/DATN-amai-fe/amaife/sinup")
   }
 
   forgotPassword() {
-    location.replace("/forgot")
+    location.replace("/DATN-amai-fe/amaife/forgot")
   }
 
 }

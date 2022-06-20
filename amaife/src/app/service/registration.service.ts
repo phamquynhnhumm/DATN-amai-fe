@@ -20,16 +20,16 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) {
   }
 
-  readonly URL_CLASS_STATUS = "http://localhost:8080/api/admin/class/status";
-  readonly URL_CLASS_ADMIN = "http://localhost:8080/api/admin/class";
-  readonly URL_CLASS_ADMIN_SEARCH = "http://localhost:8080/api/admin/class/search";
-  readonly URL_CLASS_ADMIN_DELETE = "http://localhost:8080/api/admin/class/delete";
-  readonly URL_CLASS_FINALLBYISDELETE = "http://localhost:8080/api/admin/class/all";
+  readonly URL_CLASS_STATUS = "https://salty-cove-09707.herokuapp.com/api/admin/class/status";
+  readonly URL_CLASS_ADMIN = "https://salty-cove-09707.herokuapp.com/api/admin/class";
+  readonly URL_CLASS_ADMIN_SEARCH = "https://salty-cove-09707.herokuapp.com/api/admin/class/search";
+  readonly URL_CLASS_ADMIN_DELETE = "https://salty-cove-09707.herokuapp.com/api/admin/class/delete";
+  readonly URL_CLASS_FINALLBYISDELETE = "https://salty-cove-09707.herokuapp.com/api/admin/class/all";
 
-  readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
-  readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
-  readonly API_USER_LISTUSER = "http://localhost:8080/api/sinup/userlist"
-  readonly API_USER_Pass = "http://localhost:8080/api/forgot"
+  readonly URL_CLASS = "https://salty-cove-09707.herokuapp.com/api/sinup/create";
+  readonly API_USER_SINUP = "https://salty-cove-09707.herokuapp.com/api/sinup"
+  readonly API_USER_LISTUSER = "https://salty-cove-09707.herokuapp.com/api/sinup/userlist"
+  readonly API_USER_Pass = "https://salty-cove-09707.herokuapp.com/api/forgot"
 
 
   /**
