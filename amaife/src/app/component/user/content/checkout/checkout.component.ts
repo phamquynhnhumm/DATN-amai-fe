@@ -10,7 +10,7 @@ import {Oder} from "../../../../model/order/Oder";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Food} from "../../../../model/food/Food";
 import {Router} from "@angular/router";
-import { getStorage, ref, uploadString } from "firebase/storage";
+import {getStorage, ref, uploadString} from "firebase/storage";
 
 @Component({
   selector: 'app-checkout',
@@ -128,13 +128,10 @@ export class CheckoutComponent implements OnInit {
                 this.OderQR = this.orderQrCode;
                 this.cartService.createQRCode(this.OderQR).subscribe(
                   (dataQRcode) => {
-                    console.log(dataQRcode);
                     const storage = getStorage();
                     const message4 = dataQRcode.qrcode;
-                    console.log(message4);
                     const storageRef = ref(storage, 'some-child');
                     uploadString(storageRef, message4, 'data_url').then((snapshot) => {
-                      console.log(snapshot);
                       dataQRcode.qrcode = "https://firebasestorage.googleapis.com/v0/b/amai-d208b.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media&token=38860683-4d62-4df1-99e0-452de2997840";
                       this.cartService.updateQrcode(dataQRcode).subscribe(
                         (data) => {

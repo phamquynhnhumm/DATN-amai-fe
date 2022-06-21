@@ -66,15 +66,23 @@ export class ShopingcartComponent implements OnInit {
    * @param quantity
    */
   total(cart: Cart, quantity: number) {
-    console.log(quantity);
-    console.log(cart);
-    this.cartUpdate = cart;
-    this.cartUpdate.quantity = quantity;
-    this.cartUpdate.money = quantity * cart.food.price;
-    this.cartService.updateCart(this.cartUpdate).subscribe(
-      (data) => {
-        this.ngOnInit();
-      })
+    if (quantity < 51) {
+      this.cartUpdate = cart;
+      this.cartUpdate.quantity = quantity;
+      this.cartUpdate.money = quantity * cart.food.price;
+      this.cartService.updateCart(this.cartUpdate).subscribe(
+        (data) => {
+          this.ngOnInit();
+        })
+    } else {
+      this.cartUpdate = cart;
+      this.cartUpdate.quantity = 51;
+      this.cartUpdate.money = 51 * cart.food.price;
+      this.cartService.updateCart(this.cartUpdate).subscribe(
+        (data) => {
+          this.ngOnInit();
+        })
+    }
   }
 
   checkout(totalCart: number) {
