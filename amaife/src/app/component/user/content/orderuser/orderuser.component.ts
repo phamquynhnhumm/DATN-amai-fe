@@ -38,6 +38,7 @@ export class OrderuserComponent implements OnInit {
       dataorder => {
         this.p = 1;
         this.orderList = dataorder;
+        console.log(dataorder)
       }
     );
   }
