@@ -57,23 +57,45 @@ export class DetailfooduserComponent implements OnInit {
   }
 
   createCartShoping(food: Food) {
-    if (this.auth.getRole() == "") {
-      this.router.navigateByUrl("/login");
+    if (this.quatity > 51) {
+      this.quatity = 51;
+      if (this.auth.getRole() == "") {
+        this.router.navigateByUrl("/login");
+      } else {
+        this.formCart = new FormGroup(
+          {
+            quantity: new FormControl(this.quatity, Validators.required),
+            status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
+            food: new FormControl(food, Validators.required),
+            money: new FormControl(food.price * this.quatity, Validators.required),
+          })
+        this.createService.createCartUser(this.formCart.value).subscribe(
+          (data) => {
+            this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
+          },
+          error => {
+            this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+          })
+      }
     } else {
-      this.formCart = new FormGroup(
-        {
-          quantity: new FormControl(this.quatity, Validators.required),
-          status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
-          food: new FormControl(food, Validators.required),
-          money: new FormControl(food.price * this.quatity, Validators.required),
-        })
-      this.createService.createCartUser(this.formCart.value).subscribe(
-        (data) => {
-          this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
-        },
-        error => {
-          this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
-        })
+      if (this.auth.getRole() == "") {
+        this.router.navigateByUrl("/login");
+      } else {
+        this.formCart = new FormGroup(
+          {
+            quantity: new FormControl(this.quatity, Validators.required),
+            status: new FormControl(this.eStatusCart.INSGOPPING, Validators.required),
+            food: new FormControl(food, Validators.required),
+            money: new FormControl(food.price * this.quatity, Validators.required),
+          })
+        this.createService.createCartUser(this.formCart.value).subscribe(
+          (data) => {
+            this.snackBar.open("Thêm vào giỏ hàng thành công!")._dismissAfter(3000);
+          },
+          error => {
+            this.snackBar.open("Thêm vào giỏ hàng thấy bại !")._dismissAfter(3000);
+          })
+      }
     }
   }
 

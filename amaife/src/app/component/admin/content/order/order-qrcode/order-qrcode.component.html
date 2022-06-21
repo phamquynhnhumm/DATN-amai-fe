@@ -56,8 +56,8 @@
               <p readonly class="form-control-plaintext" *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã
                 hủy</p>
             </div>
-            <label class="col-sm-5 col-form-label"> <strong>Chi tiết món trong đơn hàng</strong></label>
-            <div class="col-sm-7">
+            <label class="col-sm-8 col-form-label"> <strong>Chi tiết món trong đơn hàng</strong></label>
+            <div class="col-sm-12">
               <mat-select *ngIf="orderDetailList !=null " class="form-control-plaintext " placeholder="Danh sách món">
                 <mat-option (click)="openDetailFood(orderDetai)"
                             *ngFor="let orderDetai of orderDetailList">Tên món:{{orderDetai.food.name}}
