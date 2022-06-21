@@ -17,10 +17,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {RouterModule} from "@angular/router";
 import {NgxPayPalModule} from "ngx-paypal";
-import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {ZXingScannerModule} from "@zxing/ngx-scanner";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 @NgModule({
   declarations: [
