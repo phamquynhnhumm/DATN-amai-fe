@@ -4,6 +4,7 @@ import {UserService} from "../../../../service/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Users} from "../../../../model/user/Users";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-changepass',
@@ -21,7 +22,8 @@ export class ChangepassComponent implements OnInit {
 
   constructor(private userService: UserService,
               public authService: AuthService,
-              private matSnackBar: MatSnackBar
+              private matSnackBar: MatSnackBar,
+              private route: Router,
   ) {
   }
 
@@ -97,10 +99,11 @@ export class ChangepassComponent implements OnInit {
       this.userService.forgotPassword(this.formForgotPassword.value).subscribe(
         (data) => {
           if (data) {
-            this.matSnackBar.open("Đã đổi mật khẩu thành công", "Đóng", {
-              duration: 3000,
-              panelClass: ['mat-toolbar', 'mat-primary']
-            })
+            this.route.navigateByUrl("/user").then(() =>
+              this.matSnackBar.open("Đã đổi mật khẩu thành công", "Đóng", {
+                duration: 3000,
+                panelClass: ['mat-toolbar', 'mat-primary']
+              }))
           } else if (data == null) {
             this.matSnackBar.open("Hệ thống đang bảo trì", "Đóng", {
               duration: 3000,
