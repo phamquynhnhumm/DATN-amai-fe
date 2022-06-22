@@ -13,6 +13,7 @@ import {RegistrationService} from "../../../service/registration.service";
 import {EStatuasHandle} from "../../../model/class/EStatuasHandle";
 import {Router} from "@angular/router";
 import {ConfirmClassComponent} from "../content/class/confirm-class/confirm-class.component";
+import {DetailClassComponent} from "../content/class/detail-class/detail-class.component";
 
 @Component({
   selector: 'app-headeradmin',
@@ -97,9 +98,9 @@ export class HeaderadminComponent extends HeaderComponent {
   detailregistrations(registrations: Registration) {
     this.registrationService.finByID(registrations.id).subscribe(
       data => {
-        const dialogRef = this.dialog.open(DetailorderComponent, {
-          width: '800px',
-          height: '580px',
+        const dialogRef = this.dialog.open(DetailClassComponent, {
+          width: '500px',
+          height: '380px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
@@ -113,8 +114,8 @@ export class HeaderadminComponent extends HeaderComponent {
     this.registrationService.finByID(registrations.id).subscribe(
       data => {
         const dialogRef = this.dialog.open(ConfirmClassComponent, {
-          width: '600px',
-          height: '450px',
+          width: '500px',
+          height: '350px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

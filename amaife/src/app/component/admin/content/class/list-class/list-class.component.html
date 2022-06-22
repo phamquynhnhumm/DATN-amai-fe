@@ -54,7 +54,7 @@
           <tbody *ngIf="registrationList != null">
           <tr class="even pointer"
               *ngFor="let registration  of registrationList | paginate :{itemsPerPage:5,currentPage : p}">
-            <td>{{registration.name}}</td>
+            <td (click)="detailregistrations(registration)">{{registration.name}}</td>
             <td>{{registration.phone}}</td>
             <td>{{registration.content}}</td>
             <td>{{registration.createAt}}</td>

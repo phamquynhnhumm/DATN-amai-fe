@@ -9,6 +9,7 @@ import {MatOptionSelectionChange} from "@angular/material/core";
 import {FormBuilder, Validators} from "@angular/forms";
 import {EStatuasHandle} from "../../../../../model/class/EStatuasHandle";
 import {UpdateClassComponent} from "../update-class/update-class.component";
+import {DetailClassComponent} from "../detail-class/detail-class.component";
 
 @Component({
   selector: 'app-list-class',
@@ -73,6 +74,20 @@ export class ListClassComponent implements OnInit {
           this.ngOnInit();
         });
       })
+  }
+  detailregistrations(registrations: Registration) {
+    this.registrationService.finByID(registrations.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailClassComponent, {
+          width: '500px',
+          height: '380px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 
   openDeleteregistration(registration: Registration) {

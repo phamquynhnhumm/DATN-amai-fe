@@ -87,6 +87,7 @@ import {OpencameraComponent} from './content/opencamera/opencamera.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {rootLoaderFactory} from "../user/user.module";
 import { ConfirmClassComponent } from './content/class/confirm-class/confirm-class.component';
+import { DetailClassComponent } from './content/class/detail-class/detail-class.component';
 
 
 @NgModule({
@@ -149,7 +150,8 @@ import { ConfirmClassComponent } from './content/class/confirm-class/confirm-cla
     SinupAdminComponent,
     OrderQrcodeComponent,
     OpencameraComponent,
-    ConfirmClassComponent
+    ConfirmClassComponent,
+    DetailClassComponent
   ],
   exports: [
     LayoutComponent,
