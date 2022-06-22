@@ -1,6 +1,5 @@
 import {EGender} from "./EGender";
 import {Account} from "./Account";
-import {EProvider} from "./EProvider";
 
 export interface Users {
   id: string;

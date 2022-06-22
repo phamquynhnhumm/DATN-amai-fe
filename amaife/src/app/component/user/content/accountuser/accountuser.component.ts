@@ -59,6 +59,7 @@ export class AccountuserComponent implements OnInit {
       }
     )
   }
+  
 
   selectFile(event: any) {
     const path = new Date().toString();
