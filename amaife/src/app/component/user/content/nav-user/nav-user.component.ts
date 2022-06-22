@@ -4,7 +4,6 @@ import {OrderService} from "../../../../service/order.service";
 import {FoodService} from "../../../../service/food.service";
 import {FoodCategory} from "../../../../model/food/FoodCategory";
 import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Shop} from "../../../../model/shop/Shop";
 import {ShopService} from "../../../../service/shop.service";
 import {TranslateConfigService} from "../../../../service/translate-config.service";
@@ -29,6 +28,7 @@ export class NavUserComponent implements OnInit {
   constructor(public authService: AuthService, private shopService: ShopService,
               public foodcategoryService: FoodService,
               public auth: AuthService,
+              private router: Router,
               public cartService: OrderService,
               private translateConfigService: TranslateConfigService
   ) {
@@ -102,16 +102,8 @@ export class NavUserComponent implements OnInit {
 
   }
 
-  navContenFunction() {
-    this.navConten = "active";
-    this.navHome = "";
-    this.navFood = "";
-    this.navService = "";
-    this.navAccount = "";
-  }
-
   reload(id: number) {
-    location.replace("/category/" + id);
+    this.router.navigate(['/category/' + id]);
   }
 
   login() {

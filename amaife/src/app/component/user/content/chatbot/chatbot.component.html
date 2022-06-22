@@ -14,7 +14,7 @@
                 alt="Chris Wood" width="40" height="40">
             </div>
             <div class="flex-grow-1 pl-3">
-              <strong> Tiệm trà sữa AMAI</strong>
+              <strong translate>settings.tiemtrasuaamai </strong>
             </div>
             <div>
               <button class="btn  btn-lg mr-1 px-3 d-none d-md-inline" (click)="NoChat()">
@@ -34,9 +34,9 @@
                   class="rounded-circle mr-1"
                   alt="Chris Wood" width="40" height="40">
               </div>
-              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3" translate>
                 <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
-                Chào mừng bạn đến với AMAI
+                settings.chaomung
               </div>
             </div>
             <div class="chat-message-right mb-4">
@@ -46,9 +46,9 @@
                   class="rounded-circle mr-1"
                   alt="Chris Wood" width="40" height="40">
               </div>
-              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
+              <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3" translate>
                 <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
-                Hân hạnh được chào đón bạn
+                settings.hanhanh
               </div>
             </div>
             <!-- MESSAGES LIST -->
@@ -77,14 +77,14 @@
                       <ul cDropdownMenu class="pt-0 pr-5 col-12 w-auto">
                         <li cDropdownHeader>
                         <li>
-                          <a cDropdownItem (click)="recall(chat.id)">
-                            <i class="fa fa-undo" aria-hidden="true"></i> Thu hồi phía bạn
+                          <a cDropdownItem (click)="recall(chat.id)" translate>
+                            <i class="fa fa-undo" aria-hidden="true"></i> settings.thuhoi
                           </a>
                         </li>
                         <li>
                           <a style="color: red" cDropdownItem (click)="delete(chat.id)">
                             <i style="color: red" class="fa fa-trash" aria-hidden="true"></i>
-                            <span style="color: red"> Xóa tin nhắn</span>
+                            <span style="color: red" translate> settings.xoatinnhan</span>
                           </a>
                         </li>
                       </ul>
@@ -100,7 +100,8 @@
                       alt="Chris Wood" width="40" height="40">
                   </div>
                   <div class="flex-shrink-1 bg-warning rounded py-2 px-3 mr-3">
-                    <div class="font-weight-bold mb-1"><small style="color: #3a591d;">Tiệm trà sữa AMAI</small></div>
+                    <div class="font-weight-bold mb-1"><small style=" color: #3a591d;" translate>
+                      settings.tiemtrasuaamai</small></div>
                     {{chat.msgchatbot}}
                   </div>
                 </div>
