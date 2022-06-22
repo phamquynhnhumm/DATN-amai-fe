@@ -8,6 +8,7 @@ import {Users} from "../model/user/Users";
 import {EStatuasHandle} from "../model/class/EStatuasHandle";
 import {ForgotPassword} from "../model/user/ForgotPassword";
 import {NewPassword} from "../model/user/NewPassword";
+import {Oder} from "../model/order/Oder";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class RegistrationService {
   readonly URL_CLASS_ADMIN_SEARCH = "http://localhost:8080/api/admin/class/search";
   readonly URL_CLASS_ADMIN_DELETE = "http://localhost:8080/api/admin/class/delete";
   readonly URL_CLASS_FINALLBYISDELETE = "http://localhost:8080/api/admin/class/all";
+  readonly URL_CLASS_CONFIRM = "http://localhost:8080/api/admin/class/confirm";
 
   readonly URL_CLASS = "http://localhost:8080/api/sinup/create";
   readonly API_USER_SINUP = "http://localhost:8080/api/sinup"
@@ -104,5 +106,12 @@ export class RegistrationService {
    */
   public finAllUser(): Observable<Array<Users>> {
     return this.httpClient.get<Array<Users>>(this.API_USER_LISTUSER, {headers: this.requestHeader});
+  }
+
+  /**
+   * Xác nhận đã liên hệ khách hàng tự làm món
+   */
+  confirmCLass(registration: Object): Observable<Registration> {
+    return this.httpClient.put<Registration>(this.URL_CLASS_CONFIRM, registration);
   }
 }

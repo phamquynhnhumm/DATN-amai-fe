@@ -12,6 +12,7 @@ import {Registration} from "../../../model/class/Registration";
 import {RegistrationService} from "../../../service/registration.service";
 import {EStatuasHandle} from "../../../model/class/EStatuasHandle";
 import {Router} from "@angular/router";
+import {ConfirmClassComponent} from "../content/class/confirm-class/confirm-class.component";
 
 @Component({
   selector: 'app-headeradmin',
@@ -94,11 +95,33 @@ export class HeaderadminComponent extends HeaderComponent {
   }
 
   detailregistrations(registrations: Registration) {
-
+    this.registrationService.finByID(registrations.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DetailorderComponent, {
+          width: '800px',
+          height: '580px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 
   confirmregistrations(registrations: Registration) {
-
+    this.registrationService.finByID(registrations.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(ConfirmClassComponent, {
+          width: '600px',
+          height: '450px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
   }
 
   login() {

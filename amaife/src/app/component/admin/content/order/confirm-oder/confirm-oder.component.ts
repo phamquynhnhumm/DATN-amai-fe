@@ -24,7 +24,7 @@ export class ConfirmOderComponent implements OnInit {
     this.oder = this.data;
   }
 
-  deleteMaterial() {
+  confirmOder() {
     this.oderService.confirmOder(this.oder).subscribe(() => {
       this.dialogRef.close();
       this.snackBar.open("Xác nhận đơn hàng thành công!!! ", "OK", {

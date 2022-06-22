@@ -86,6 +86,7 @@ import {OrderQrcodeComponent} from './content/order/order-qrcode/order-qrcode.co
 import {OpencameraComponent} from './content/opencamera/opencamera.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {rootLoaderFactory} from "../user/user.module";
+import { ConfirmClassComponent } from './content/class/confirm-class/confirm-class.component';
 
 
 @NgModule({
@@ -147,7 +148,8 @@ import {rootLoaderFactory} from "../user/user.module";
     ListShopComponent,
     SinupAdminComponent,
     OrderQrcodeComponent,
-    OpencameraComponent
+    OpencameraComponent,
+    ConfirmClassComponent
   ],
   exports: [
     LayoutComponent,
