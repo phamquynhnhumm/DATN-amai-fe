@@ -50,9 +50,7 @@
             <th>Tên nguyên liệu</th>
             <th>Nhà cung cấp</th>
             <th>Giá nhập</th>
-            <th>Khối lượng còn lại</th>
             <th>Số lượng nhập</th>
-            <th>Đơn vị tính</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
@@ -63,9 +61,7 @@
             <td (click)="openDetailMaterial(material)">{{material.name}}</td>
             <td (click)="openDetailSuppkier(material.supplierList)">{{material.supplierList.name}}</td>
             <td>{{material.price |currency:'VND'}} </td>
-            <td>{{material.remainingKg}}</td>
             <td>{{material.quantity}}</td>
-            <td>{{material.unit}}</td>
             <td>
               <a (click)="openEditMaterial(material)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

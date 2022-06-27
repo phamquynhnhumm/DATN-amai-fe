@@ -59,6 +59,17 @@ export const navItems: INavData[] = [
       {
         name: 'Món',
         url: '/food'
+      }
+    ]
+  },
+  {
+    name: 'QUẢN LÝ KHO',
+    iconComponent: {name: 'cil-star'},
+    url: '/icons',
+    children: [
+      {
+        name: 'Nguyên liệu',
+        url: '/material'
       },
       {
         name: 'Nguyên liệu món',
@@ -66,29 +77,6 @@ export const navItems: INavData[] = [
       }
     ]
   },
-  // {
-  //   name: 'QUẢN LÝ KHO',
-  //   iconComponent: {name: 'cil-star'},
-  //   url: '/icons',
-  //   children: [
-  //     {
-  //       name: 'Phiếu nhập',
-  //       url: '/icons/coreui-icons',
-  //       // badge: {
-  //       //   color: 'success',
-  //       //   text: 'FREE'
-  //       // }
-  //     },
-  //     {
-  //       name: 'Nguyên liệu',
-  //       url: '/material'
-  //     },
-  //     {
-  //       name: 'Nhập nguyên liệu',
-  //       url: '/icons/brands'
-  //     }
-  //   ]
-  // },
   // {
   //   name: 'THỐNG KÊ',
   //   url: '/notifications',

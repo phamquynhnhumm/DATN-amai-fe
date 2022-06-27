@@ -50,7 +50,7 @@
                            translate>settings.validatesdt
                     </small>
                     <small class="form-text text-danger validate"
-                           *ngIf="formOrder.get('phone')?.parent && formOrder.get('phone')?.touched"
+                           *ngIf=" formOrder.get('phone')?.hasError('required') && formOrder.get('phone')?.parent && formOrder.get('phone')?.touched"
                            translate>settings.validatesdtdinhdang
                     </small>
                   </div>

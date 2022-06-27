@@ -68,12 +68,9 @@ export class EditmaterialComponent implements OnInit {
     }
     if (this.formMaterial.valid) {
       this.material.name = this.formMaterial.value.name;
-      this.material.unit = this.formMaterial.value.unit;
       this.material.price = this.formMaterial.value.price;
-      this.material.importKg = this.formMaterial.value.importKg;
       this.material.quantity = this.formMaterial.value.quantity;
       this.material.supplierList = this.formMaterial.value.supplierList;
-      this.material.remainingKg = this.formMaterial.value.importKg;
 
       if (!this.bolen) {
         this.material.isDeleted = this.formMaterial.value.isDeleted;

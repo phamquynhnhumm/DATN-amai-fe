@@ -110,7 +110,7 @@
                    *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.touched" translate>settings.validatephonehome
             </small>
             <small class="form-text text-danger validate"
-                   *ngIf="formCLass.get('phone')?.parent && formCLass.get('phone')?.touched"
+                   *ngIf="formCLass.get('phone')?.hasError('required') && formCLass.get('phone')?.parent && formCLass.get('phone')?.touched"
                    translate>settings.validatesdtdinhdang
             </small>
             <span style="  visibility: hidden;" translate #content>settings.noidung</span>

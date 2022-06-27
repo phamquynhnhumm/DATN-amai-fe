@@ -9,10 +9,7 @@ export interface Material {
   updateAt: Date;
   isDeleted: boolean;
   supplierList: Supplier;
-  unit: string;
   quantity: number;
   price: number;
   name: string;
-  importKg: number;
-  remainingKg: number
 }

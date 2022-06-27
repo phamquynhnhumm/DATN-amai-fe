@@ -63,7 +63,7 @@ export class OrderuserComponent implements OnInit {
       data => {
         const dialogRef = this.dialog.open(CancelorderComponent, {
           width: '450px',
-          height: '580px',
+          height: '300px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {
