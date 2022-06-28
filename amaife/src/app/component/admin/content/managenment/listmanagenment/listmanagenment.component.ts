@@ -7,11 +7,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {Food} from "../../../../../model/food/Food";
 import {MatOptionSelectionChange} from "@angular/material/core";
-import {DetailcustomerComponent} from "../../customer/detailcustomer/detailcustomer.component";
 import {LidetailmanagenmentComponent} from "../lidetailmanagenment/lidetailmanagenment.component";
 import {AuthService} from "../../../../../service/auth.service";
 import {UpdateRoleComponent} from "../update-role/update-role.component";
 import {DeletemanagenmentComponent} from "../deletemanagenment/deletemanagenment.component";
+import {EnablecustommerComponent} from "../../customer/enablecustommer/enablecustommer.component";
 
 @Component({
   selector: 'app-listmanagenment',
@@ -170,7 +170,20 @@ export class ListmanagenmentComponent implements OnInit {
       }
     );
   }
-
+  enable(user: Users) {
+    this.userService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(EnablecustommerComponent, {
+          width: '550px',
+          height: '400px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    );
+  }
   deltemangenment(user: Users) {
     this.userService.findByIdUser(user.id).subscribe(
       data => {

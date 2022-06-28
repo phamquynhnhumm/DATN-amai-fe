@@ -20,7 +20,6 @@ import {HistoryOrderUserComponent} from './content/history-order-user/history-or
 import {DeleteCartComponent} from './content/delete-cart/delete-cart.component';
 import {CheckoutComponent} from './content/checkout/checkout.component';
 import {FoodCategoryComponent} from './content/food-category/food-category.component';
-import {PaypalComponent} from './content/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 import {MatDialogModule} from "@angular/material/dialog";
 import {SinupUserComponent} from './content/sinup-user/sinup-user.component';
@@ -51,7 +50,6 @@ export function rootLoaderFactory(http: HttpClient) {
     DeleteCartComponent,
     CheckoutComponent,
     FoodCategoryComponent,
-    PaypalComponent,
     SinupUserComponent,
     ForgotpasswordComponent,
     CancelorderComponent,

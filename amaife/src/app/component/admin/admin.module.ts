@@ -88,6 +88,8 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {rootLoaderFactory} from "../user/user.module";
 import { ConfirmClassComponent } from './content/class/confirm-class/confirm-class.component';
 import { DetailClassComponent } from './content/class/detail-class/detail-class.component';
+import { DeletecustomerComponent } from './content/customer/deletecustomer/deletecustomer.component';
+import { EnablecustommerComponent } from './content/customer/enablecustommer/enablecustommer.component';
 
 
 @NgModule({
@@ -151,7 +153,9 @@ import { DetailClassComponent } from './content/class/detail-class/detail-class.
     OrderQrcodeComponent,
     OpencameraComponent,
     ConfirmClassComponent,
-    DetailClassComponent
+    DetailClassComponent,
+    DeletecustomerComponent,
+    EnablecustommerComponent
   ],
   exports: [
     LayoutComponent,

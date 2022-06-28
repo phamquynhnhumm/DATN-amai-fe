@@ -9,6 +9,7 @@ import {FoodService} from "../../../../../service/food.service";
 import {DetailfoodComponent} from "../../food/detailfood/detailfood.component";
 import {ActivatedRoute} from "@angular/router";
 import {UpdateorderComponent} from "../updateorder/updateorder.component";
+import {EPayments} from "../../../../../model/order/EPayments";
 
 @Component({
   selector: 'app-order-qrcode',
@@ -21,6 +22,7 @@ export class OrderQrcodeComponent implements OnInit {
   eStatusOrder = EStatusOrder;
   orderDetailList !: Array<OrderDetail>
   idOrder !: number;
+  epaypal = EPayments;
 
   constructor(private oderService: OrderService,
               private snackBar: MatSnackBar,

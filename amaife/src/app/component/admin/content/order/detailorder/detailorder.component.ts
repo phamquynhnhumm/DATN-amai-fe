@@ -7,6 +7,7 @@ import {EStatusOrder} from "../../../../../model/order/EStatusOrder";
 import {OrderDetail} from "../../../../../model/order/OrderDetail";
 import {DetailfoodComponent} from "../../food/detailfood/detailfood.component";
 import {FoodService} from "../../../../../service/food.service";
+import {EPayments} from "../../../../../model/order/EPayments";
 
 @Component({
   selector: 'app-detailorder',
@@ -18,7 +19,7 @@ export class DetailorderComponent implements OnInit {
   oder!: Oder;
   eStatusOrder = EStatusOrder;
   orderDetailList !: Array<OrderDetail>
-
+  epaypal = EPayments;
   constructor(private dialogRef: MatDialogRef<DetailorderComponent>,
               private oderService: OrderService,
               @Inject(MAT_DIALOG_DATA) public data: any,

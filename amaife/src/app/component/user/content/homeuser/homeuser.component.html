@@ -64,11 +64,11 @@
           <div class="product__item__pic" (click)="detailFood(foods)">
             <img style="background: #e5e5e6" src="{{foods.image}}">
             <div class="product__label">
-              <span [routerLink]="'detailfood' + [foods.id]">{{foods.name}}</span>
+              <span>{{foods.name}}</span>
             </div>
           </div>
           <div class="product__item__text">
-            <h6><a style="text-decoration: none" href="#">{{foods.foodCategory.name}}</a></h6>
+            <h6><a style="text-decoration: none" >{{foods.foodCategory.name}}</a></h6>
             <div class="product__item__price">{{foods.price | currency :'VND'}}</div>
             <div class="cart_add">
               <a style="text-decoration: none" (click)="createCartShoping(foods)" translate>settings.themvaogiohang</a>

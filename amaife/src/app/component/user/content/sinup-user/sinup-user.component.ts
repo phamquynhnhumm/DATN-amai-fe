@@ -99,6 +99,11 @@ export class SinupUserComponent implements OnInit {
             });
           }
         )
+      } else {
+        this.matSnackBar.open("Vui lòng nhập đầy đủ thông tin đăng ký !", "Ok", {
+          duration: 3000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
       }
     }
   }
@@ -146,7 +151,10 @@ export class SinupUserComponent implements OnInit {
           }
         )
       } else {
-        this.matSnackBar.open("Tạo mới tài khoản thấy bại !")._dismissAfter(3000);
+        this.matSnackBar.open("Vui lòng nhập đầy đủ thông tin đăng ký !", "Ok", {
+          duration: 3000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        })
       }
     }
   }

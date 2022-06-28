@@ -47,7 +47,7 @@ export class HomeuserComponent implements OnInit {
   )
 
   detailFood(foods: Food) {
-    this.router.navigate(['/detailfood/' + foods.foodCategory.id]);
+    this.router.navigate(['/detailfood/' + foods.id]);
   }
 
   createCartShoping(foods: Food) {
@@ -76,7 +76,10 @@ export class HomeuserComponent implements OnInit {
     if (this.formCLass.valid) {
       this.registrationService.createRegistration(this.formCLass.value).subscribe(
         data => {
-          this.snackBar.open("Đăng ký thành công !", "OK")._dismissAfter(3000);
+          this.snackBar.open("Đăng ký thành công !", "OK", {
+            duration: 10000,
+            panelClass: ['mat-toolbar', 'mat-primary']
+          })
         }, error => {
           this.snackBar.open("Đăng ký thấy bại! Vui lòng kiểm tra lại thông tin")._dismissAfter(3000);
         }

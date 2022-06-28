@@ -11,7 +11,6 @@ import {OrderuserComponent} from "./content/orderuser/orderuser.component";
 import {HistoryOrderUserComponent} from "./content/history-order-user/history-order-user.component";
 import {CheckoutComponent} from "./content/checkout/checkout.component";
 import {FoodCategoryComponent} from "./content/food-category/food-category.component";
-import {PaypalComponent} from "./content/paypal/paypal.component";
 import {SinupUserComponent} from "./content/sinup-user/sinup-user.component";
 import {ForgotpasswordComponent} from "./content/forgotpassword/forgotpassword.component";
 import {ChatbotComponent} from "./content/chatbot/chatbot.component";
@@ -59,10 +58,6 @@ const routes: Routes = [
   },
   {
     path: "shoping", component: ShopingcartComponent,
-    canActivate: [AuthGuard],
-    data: {role: ['ROLE_CUSTOMER']}
-  }, {
-    path: "paypal", component: PaypalComponent,
     canActivate: [AuthGuard],
     data: {role: ['ROLE_CUSTOMER']}
   },

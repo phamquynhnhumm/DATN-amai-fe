@@ -33,6 +33,7 @@ export class EditfoodComponent implements OnInit {
     this.foodService.findAllFoodCategoryIsdelete(false).subscribe(
       data => {
         this.foodcategory = data;
+
       }
     )
     this.food = this.data;
@@ -42,7 +43,7 @@ export class EditfoodComponent implements OnInit {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
         unit: new FormControl(this.data.unit, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
         price: new FormControl(this.data.price, [Validators.required, Validators.min(1000), Validators.max(1000000)]),
-        content: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+        content: new FormControl(this.data.content, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         status: new FormControl(this.data.status, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         foodCategory: new FormControl(this.data.foodCategory, Validators.required),
         orderDetailList: new FormArray([]),

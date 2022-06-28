@@ -39,18 +39,6 @@
           <br><br><br>
           <c-row>
             <c-col [md]="3">
-              <label class="col-sm-12 col-form-label"><strong>Đơn vị tính</strong></label>
-            </c-col>
-            <c-col [md]="8">
-              <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formMaterial.get('unit')?.hasError('required') && formMaterial.get('unit')?.touched">
-                <p>Đơn vị không được để trống</p></small>
-            </c-col>
-          </c-row>
-          <br><br><br>
-          <c-row>
-            <c-col [md]="3">
               <label class="col-sm-12 col-form-label"><strong>Giá nhập</strong></label>
             </c-col>
             <c-col [md]="9">
@@ -75,23 +63,10 @@
             </c-col>
           </c-row>
           <br><br><br>
-          <c-row>
-            <c-col [md]="3">
-              <label class="col-sm-12 col-form-label"><strong>Khối lượng </strong></label>
-            </c-col>
-            <c-col [md]="9">
-              <input type="number" class="form-control" formControlName="importKg"
-                     placeholder="Nhập khối lượng của một nguyên liệu">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formMaterial.get('importKg')?.hasError('required') && formMaterial.get('importKg')?.touched">
-                <p>Khối lượng nhập vào không được để trống</p>
-              </small>
-            </c-col>
-          </c-row>
           <br><br>
           <c-col [xs]="12" style="text-align:center">
             <button mat-button (click)="cencal()">Thoát</button>
-            <button type="submit" class="btn btn-primary mb-2">Thêm</button>
+            <button type="submit" class="btn btn-primary mb-2">Cập nhật</button>
           </c-col>
         </form>
       </c-card-body>

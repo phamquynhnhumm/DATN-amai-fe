@@ -24,7 +24,7 @@ export class EditmaterialComponent implements OnInit {
     private snackBar: MatSnackBar,
     private materialService: FoodService,
     private supplierService: SupplierService
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -38,12 +38,9 @@ export class EditmaterialComponent implements OnInit {
     this.formMaterial = new FormGroup(
       {
         name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-        unit: new FormControl(this.data.unit, [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
         price: new FormControl(this.data.price, [Validators.required, Validators.min(0)]),
         quantity: new FormControl(this.data.quantity, [Validators.required, Validators.min(0)]),
-        importKg: new FormControl(this.data.importKg, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
         supplierList: new FormControl(this.data.supplierList, Validators.required),
-        remainingKg: new FormControl(this.data.remainingKg),
       })
   }
 

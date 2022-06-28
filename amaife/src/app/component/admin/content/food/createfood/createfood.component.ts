@@ -10,8 +10,6 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {OrderService} from "../../../../../service/order.service";
 import {Oder} from "../../../../../model/order/Oder";
-import {fileURLToPath} from "url";
-import {getStorage, ref, uploadString} from "@angular/fire/storage";
 
 @Component({
   selector: 'app-createfood',

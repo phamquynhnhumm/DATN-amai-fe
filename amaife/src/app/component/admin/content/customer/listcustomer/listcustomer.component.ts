@@ -8,6 +8,9 @@ import {MatOptionSelectionChange} from "@angular/material/core";
 import {DetailcustomerComponent} from "../detailcustomer/detailcustomer.component";
 import {Users} from "../../../../../model/user/Users";
 import {UserService} from "../../../../../service/user.service";
+import {DeletemanagenmentComponent} from "../../managenment/deletemanagenment/deletemanagenment.component";
+import {DeletecustomerComponent} from "../deletecustomer/deletecustomer.component";
+import {EnablecustommerComponent} from "../enablecustommer/enablecustommer.component";
 
 @Component({
   selector: 'app-listcustomer',
@@ -149,4 +152,35 @@ export class ListcustomerComponent implements OnInit {
       );
     }
   }
+
+  enable(user: Users) {
+    this.userService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(EnablecustommerComponent, {
+          width: '550px',
+          height: '400px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    );
+  }
+
+  deltecustomer(user: Users) {
+    this.userService.findByIdUser(user.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(DeletecustomerComponent, {
+          width: '550px',
+          height: '400px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    );
+  }
 }
+

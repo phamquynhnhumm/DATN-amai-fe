@@ -23,6 +23,7 @@ export class UserService {
   readonly URL_FindById = "http://localhost:8080/api/admin/user"
   readonly API_USER_FINDALLNPOTEMAIL_ADMIN = "http://localhost:8080/api/admin/user/findallnotemail"
   readonly URL_FindById_DELETE = "http://localhost:8080/api/admin/user/delete"
+  readonly URL_FindById_DENABLE = "http://localhost:8080/api/admin/user/enable"
 
   /**
    * URL phía người dùng
@@ -59,6 +60,9 @@ export class UserService {
 
   public deleteUser(id: string): Observable<Users> {
     return this.httpClient.delete<Users>(this.URL_FindById_DELETE + "/" + id);
+  }
+  public enableUser(id: string, users: Object): Observable<Users> {
+    return this.httpClient.put<Users>(this.URL_FindById_DENABLE + "/" + id, users);
   }
 
   public generateOtp(userName: string): Observable<Boolean> {

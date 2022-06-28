@@ -14,9 +14,9 @@
             </c-col>
             <c-col [md]="8">
               <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên nguyên liệu">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formMaterial.get('name')?.hasError('required') && formMaterial.get('name')?.touched">
-                <p>Tên nguyên liệu không được để trống</p>
+                Tên nguyên liệu không được để trống
               </small>
             </c-col>
           </c-row>
@@ -31,23 +31,11 @@
                 <mat-option *ngFor="let supplier of suppliers"
                             [value]="supplier">{{supplier.name}}</mat-option>
               </mat-select>
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formMaterial.get('supplierList')?.hasError('required') && formMaterial.get('supplierList')?.touched">
-                <p>Nhà cung cấp không được để trống</p>
+                Nhà cung cấp không được để trống
               </small>
 
-            </c-col>
-          </c-row>
-          <br><br><br>
-          <c-row>
-            <c-col [md]="2">
-              <label class="col-sm-12 col-form-label"><strong>Đơn vị tính</strong></label>
-            </c-col>
-            <c-col [md]="8">
-              <input type="text" class="form-control" formControlName="unit" placeholder="Nhập đơn vị tính">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formMaterial.get('unit')?.hasError('required') && formMaterial.get('unit')?.touched">
-                <p>Đơn vị không được để trống</p></small>
             </c-col>
           </c-row>
           <br><br><br>
@@ -57,9 +45,17 @@
             </c-col>
             <c-col [md]="8">
               <input type="number" class="form-control" formControlName="price" placeholder="Nhập giá nhập">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formMaterial.get('price')?.hasError('required') && formMaterial.get('price')?.touched">
-                <p>Giá nhập không được để trống</p>
+                Giá bán không được để trống và phải là số
+              </small>
+              <small class="form-text text-danger validate"
+                     *ngIf="formMaterial.get('price')?.hasError('min')  && formMaterial.get('price')?.dirty">
+                Giá bán phải lớn hơn hoặc bằng 1.000đ
+              </small>
+              <small class="form-text text-danger validate"
+                     *ngIf="formMaterial.get('price')?.hasError('max')  && formMaterial.get('price')?.dirty">
+                Giá bán phải nhỏ hơn 1.000.000đ
               </small>
             </c-col>
           </c-row>
@@ -70,26 +66,14 @@
             </c-col>
             <c-col [md]="8">
               <input type="number" class="form-control" formControlName="quantity" placeholder="Nhập số lượng">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formMaterial.get('quantity')?.hasError('required') && formMaterial.get('quantity')?.touched">
-                <p>Số lượng nhập không được để trống</p>
+                Số lượng nhập không được để trống
               </small>
             </c-col>
           </c-row>
           <br><br><br>
-          <c-row>
-            <c-col [md]="2">
-              <label class="col-sm-12 col-form-label"><strong>Khối lượng </strong></label>
-            </c-col>
-            <c-col [md]="8">
-              <input type="number" class="form-control" formControlName="importKg"
-                     placeholder="Nhập khối lượng của một nguyên liệu">
-              <small class="text-danger col-sm-10"
-                     *ngIf="formMaterial.get('importKg')?.hasError('required') && formMaterial.get('importKg')?.touched">
-                <p>Khối lượng nhập vào không được để trống</p>
-              </small>
-            </c-col>
-          </c-row>
+
           <br><br><br>
           <c-col [xs]="12" style="text-align:center">
             <button routerLink="/material" type="button" class="btn btn-dark mb-2">Hủy</button>

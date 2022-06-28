@@ -41,9 +41,13 @@
                          translate>settings.validatesdt
                   </small>
                   <small class="form-text text-danger validate"
-                         *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.parent && formSinUp.get('phone')?.touched"
+                         *ngIf="formSinUp.get('phone')?.touched && formSinUp.get('phone')?.parent"
                          translate>settings.validatesdtdinhdang
                   </small>
+<!--                  <small class="form-text text-danger validate"-->
+<!--                         *ngIf="formSinUp.get('phone')?.hasError('required') && formSinUp.get('phone')?.parent && formSinUp.get('phone')?.touched"-->
+<!--                         translate>settings.validatesdtdinhdang-->
+<!--                  </small>-->
 
                 </div>
                 <div class="d-flex justify-content-center">

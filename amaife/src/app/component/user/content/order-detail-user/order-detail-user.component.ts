@@ -6,6 +6,7 @@ import {OrderService} from "../../../../service/order.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {Router} from "@angular/router";
+import {EPayments} from "../../../../model/order/EPayments";
 
 @Component({
   selector: 'app-order-detail-user',
@@ -18,6 +19,7 @@ export class OrderDetailUserComponent implements OnInit {
   eStatusOrder = EStatusOrder;
   orderDetailList !: Array<OrderDetail>
   href !: String;
+  epaypal=  EPayments;
 
   constructor(private dialogRef: MatDialogRef<OrderDetailUserComponent>,
               private oderService: OrderService,

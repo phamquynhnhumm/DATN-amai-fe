@@ -1,0 +1,39 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Chi
+  tiết thông tin khách hàng đăng ký tự làm món</strong>
+</h1></div>
+<hr>
+<div mat-dialog-content>
+  <c-col [md]="12">
+    <div class="form-check form-switch">
+      <label class="form-check-label">Họ tên : {{registration.name}}</label>
+    </div>
+  </c-col>
+  <c-col [md]="12">
+    <div class="form-check form-switch">
+      <label class="form-check-label" style="display: inline">Trạng thái liên hệ:
+        <p style="display: inline" readonly class="form-control-plaintext"
+           *ngIf="registration.handle== eStatuasHandle.NOTCONTACTED.valueOf() ">Chưa liên hệ</p>
+        <p style="display: inline" readonly class="form-control-plaintext"
+           *ngIf="registration.handle == eStatuasHandle.CONTACTED.valueOf() ">Đã
+          liên hệ</p></label>
+    </div>
+  </c-col>
+  <c-col [md]="12">
+    <div class="form-check form-switch">
+      <label class="form-check-label">Nội dung mong muốn : {{registration.content}}</label>
+    </div>
+  </c-col>
+  <c-col [md]="12">
+    <div class="form-check form-switch">
+      <label class="form-check-label"> Số điện thoại : {{registration.phone}}</label>
+    </div>
+  </c-col>
+  <c-col [md]="12">
+    <div class="form-check form-switch">
+      <label class="form-check-label">Thời gian đăng ký : {{registration.createAt}}</label>
+    </div>
+  </c-col>
+  <c-col [md]="6" style="text-align: center;">
+    <button mat-button (click)="cancel()">Thoát</button>
+  </c-col>
+</div>

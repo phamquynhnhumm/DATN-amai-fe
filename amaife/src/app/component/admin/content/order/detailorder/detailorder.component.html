@@ -25,6 +25,12 @@
       <div class="col-sm-7">
         <p readonly class="form-control-plaintext">{{oder.quantity}}</p>
       </div>
+      <label class="col-sm-5 col-form-label"> <strong>Hình thức thanh toán</strong></label>
+      <div class="col-sm-7">
+        <input class="profile-input form-control-plaintext"  value="Đến cửa hàng" *ngIf="oder.payments == epaypal.NO.valueOf()" readonly>
+        <input class="profile-input form-control-plaintext"  value="Thanh toán khi nhận hàng" *ngIf="oder.payments == epaypal.CASH.valueOf()" readonly>
+        <input class="profile-input form-control-plaintext"  value="Chuyển khoản" *ngIf="oder.payments == epaypal.TRANSFER.valueOf()" readonly>
+      </div>
       <label class="col-sm-5 col-form-label"> <strong>Tổng tiền </strong></label>
       <div class="col-sm-7">
         <p readonly class="form-control-plaintext">{{oder.money | currency:'VND'}}</p>

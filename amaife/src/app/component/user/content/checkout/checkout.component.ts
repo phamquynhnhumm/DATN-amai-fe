@@ -93,12 +93,7 @@ export class CheckoutComponent implements OnInit {
   listOderDetail: OrderDetail[] = [];
 
   onSubmit() {
-    if (this.formOrder.value.payments == 'PAYPAL') {
-      if (this.formOrder.valid) {
-        this.apppayapl = true;
-        this.route.navigateByUrl("/paypal").then();
-      }
-    } else if (this.formOrder.value.payments == 'CASH') {
+   if (this.formOrder.value.payments == 'CASH') {
       this.formOrder.value.qrcode = "null";
       this.formOrder.value.status = "UNCONFIRMED";
       this.formOrder.value.money = this.totalCart;

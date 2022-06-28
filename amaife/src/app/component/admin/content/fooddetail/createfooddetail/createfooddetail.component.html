@@ -15,11 +15,11 @@
             <c-col [md]="8">
               <mat-select class="custom-select form-control" formControlName="food" placeholder="Chọn món">
                 <mat-option *ngFor="let food of foodList"
-                            [value]="food">{{food.name}} {{food.id}}</mat-option>
+                            [value]="food">{{food.name}}{{food.id}}</mat-option>
               </mat-select>
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formFoodDetail.get('food')?.hasError('required') && formFoodDetail.get('food')?.touched">
-                <p>Món không được để trống</p>
+                Món không được để trống
               </small>
             </c-col>
           </c-row>
@@ -33,9 +33,9 @@
                 <mat-option *ngFor="let material of materialList"
                             [value]="material">{{material.name}} {{material.id}}</mat-option>
               </mat-select>
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formFoodDetail.get('material')?.hasError('required') && formFoodDetail.get('material')?.touched">
-                <p>Nguyên liệu không được để trống</p>
+                Nguyên liệu không được để trống
               </small>
             </c-col>
           </c-row>
@@ -47,9 +47,9 @@
             </c-col>
             <c-col [md]="8">
               <input type="text" class="form-control" formControlName="kg" placeholder="Nhập khối lượng sử dụng">
-              <small class="text-danger col-sm-10"
+              <small class="text-danger col-sm-10 validate"
                      *ngIf="formFoodDetail.get('kg')?.hasError('required') && formFoodDetail.get('kg')?.touched">
-                <p>Khối lượng không được để trống</p></small>
+                Khối lượng không được để trống</small>
             </c-col>
           </c-row>
           <c-col [xs]="12" style="text-align:center">

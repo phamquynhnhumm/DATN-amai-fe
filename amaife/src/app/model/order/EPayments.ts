@@ -1,14 +1,16 @@
 export enum EPayments {
-  /**
-   * giỏ hàng
-   */
-  PAYPAL,
-  /**
-   * Thanh toán
-   */
-  CASH,
-  NO,
 
-  TRANSFER
+  /**
+   * Thanh toán khi nhận hàng
+   */
+  CASH='CASH',
+  /**
+   * Đến tại cửa hàng
+   */
+  NO='NO',
+
+  /**
+   * Chuyển khoản
+   */
+  TRANSFER ='TRANSFER'
 }
-

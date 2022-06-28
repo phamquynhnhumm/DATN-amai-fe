@@ -35,19 +35,15 @@ export class CreartematerialComponent implements OnInit {
   formMaterial = new FormGroup(
     {
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      unit: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(15)]),
-      price: new FormControl('', [Validators.required, Validators.min(0)]),
+      price: new FormControl('', [Validators.required, Validators.min(1000), Validators.max(1000000)]),
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
-      importKg: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       supplierList: new FormControl('', Validators.required),
-      remainingKg: new FormControl(''),
     }
   )
 
   onSubmit() {
     console.log(this.formMaterial.value);
     if (this.formMaterial.valid) {
-      this.formMaterial.value.remainingKg = this.formMaterial.value.importKg;
       console.log(this.formMaterial.value)
       this.materialService.createMaterial(this.formMaterial.value).subscribe(
         (data) => {

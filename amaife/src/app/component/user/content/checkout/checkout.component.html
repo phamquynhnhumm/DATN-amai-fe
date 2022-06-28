@@ -107,12 +107,6 @@
                   </label>
                 </div>
                 <div class="checkout__input__checkbox">
-                  <label translate>settings.thanhtoanpaypal
-                    <input type="radio" name="paypal" formControlName="payments" value="PAYPAL">
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="checkout__input__checkbox">
                   <label translate>settings.thanhtoantaicuahang
                     <input type="radio" name="paypal" formControlName="payments" value="NO">
                     <span class="checkmark"></span>
@@ -150,4 +144,3 @@
     </div>
   </section>
 </div>
-<app-paypal *ngIf="apppayapl" [formOrder]="formOrder"></app-paypal>
