@@ -19,4 +19,5 @@ export interface Oder {
   money: number;
   quantity: number;
   payments: EPayments;
+  pay: boolean;
 }

@@ -131,6 +131,13 @@
                                                       *ngIf="oder.status == eStatusOrder.UNCONFIRMED.valueOf()"
                                                       translate> settings.huydonhang </a></div>
             </div>
+            <div class="custom-control custom-checkbox mr-3">
+              <div class="text-left text-sm-right"><a class="btn btn-outline-primary btn-rounded btn-sm"
+                                                      data-toggle="modal"
+                                                      (click)="openUpdateaddressOrder(oder)"
+                                                      *ngIf="oder.status !== eStatusOrder.TRANSPORT.valueOf()"
+                                                      translate> settings.capnhatvitri </a></div>
+            </div>
             <div class="text-left text-sm-right"><a class="btn btn-outline-warning btn-rounded btn-sm"
                                                     data-toggle="modal" data-target="#orderDetails"
                                                     (click)="openDetailOrder(oder)" translate>

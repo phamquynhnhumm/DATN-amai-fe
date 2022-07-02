@@ -9,6 +9,7 @@ import {OrderDetailUserComponent} from "../order-detail-user/order-detail-user.c
 import {OrderDetail} from "../../../../model/order/OrderDetail";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CancelorderComponent} from "../cancelorder/cancelorder.component";
+import {UpdateOrderAddressComponent} from "../update-order-address/update-order-address.component";
 
 @Component({
   selector: 'app-orderuser',
@@ -49,6 +50,21 @@ export class OrderuserComponent implements OnInit {
         const dialogRef = this.dialog.open(OrderDetailUserComponent, {
           width: '900px',
           height: '680px',
+          data: data
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    )
+  }
+
+  openUpdateaddressOrder(oder: Oder) {
+    this.orderService.findByIdOderUser(oder.id).subscribe(
+      data => {
+        const dialogRef = this.dialog.open(UpdateOrderAddressComponent, {
+          width: '450px',
+          height: '300px',
           data: data
         });
         dialogRef.afterClosed().subscribe(() => {

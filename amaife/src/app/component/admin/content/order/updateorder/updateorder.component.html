@@ -1,11 +1,12 @@
-<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong  style="color: white" >Cập nhật trạng thái đơn
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Cập
+  nhật trạng thái đơn
   hàng</strong>
 </h1></div>
 <hr>
 <div mat-dialog-content>
   <form [formGroup]="formFoodOder" (ngSubmit)="onSubmit()" cForm class="row g-3">
     <c-col [md]="12">
-      <label cLabel>Trạng thái đơn hàng {{oder.fullName}}</label>
+      <label cLabel>Trạng thái đơn hàng {{oder.id}}</label>
       <mat-select class="custom-select form-control" formControlName="status">
         <mat-option *ngFor="let eStatus of eStatusOrder" [value]="eStatus">
           <p readonly class="form-control-plaintext" *ngIf="eStatus == 'UNCONFIRMED' ">Chờ xác nhận</p>
@@ -17,7 +18,20 @@
       </mat-select>
       <small class="text-danger col-sm-10"
              *ngIf="formFoodOder.get('status')?.hasError('required') && formFoodOder.get('status')?.touched">
-        <p>Trạng thái không được trể trống</p>
+        <p>Trạng thái không được để trống</p>
+      </small>
+    </c-col>
+    <c-col [md]="12">
+      <label cLabel>Trạng thái thanh toán </label>
+      <mat-select class="custom-select form-control" formControlName="pay">
+        <mat-option *ngFor="let epay of pays" [value]="epay">
+          <p readonly class="form-control-plaintext" *ngIf="epay == 'true' ">Đã thanh toán</p>
+          <p readonly class="form-control-plaintext" *ngIf="epay == 'false'">Chưa thanh toán</p>
+        </mat-option>
+      </mat-select>
+      <small class="text-danger col-sm-10"
+             *ngIf="formFoodOder.get('pay')?.hasError('required') && formFoodOder.get('pay')?.touched">
+        <p>Trạng thái thanh toán không được để trống</p>
       </small>
     </c-col>
     <br>

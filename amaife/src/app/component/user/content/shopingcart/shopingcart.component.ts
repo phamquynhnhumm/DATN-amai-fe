@@ -6,6 +6,7 @@ import {EStatusCart} from "../../../../model/order/EStatusCart";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCartComponent} from "../delete-cart/delete-cart.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopingcart',
@@ -24,6 +25,7 @@ export class ShopingcartComponent implements OnInit {
   constructor(public auth: AuthService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
+              private router: Router,
               public cartService: OrderService) {
   }
 
@@ -92,7 +94,7 @@ export class ShopingcartComponent implements OnInit {
         panelClass: ['mat-toolbar', 'mat-warn']
       })
     } else {
-      location.replace("/checkout");
+      this.router.navigate(['/checkout']);
     }
   }
 }

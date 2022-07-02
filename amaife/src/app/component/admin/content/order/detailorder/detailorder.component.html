@@ -84,6 +84,11 @@
       <div class="col-sm-7">
         <p readonly class="form-control-plaintext" value="email@example.com">{{oder.updateAt}}</p>
       </div>
+      <label class="col-sm-5 col-form-label"><strong>Trạng thái thanh toán</strong></label>
+      <div class="col-sm-7">
+        <p  readonly class="form-control-plaintext" *ngIf="oder.pay==true">Đã thanh toán</p>
+        <p readonly class="form-control-plaintext" *ngIf="oder.pay==false">Chưa thanh toán</p>
+      </div>
       <div class="col-sm-12">
         <img src="{{oder.qrcode}}" alt="Mã QRCode" style="width: 60%;height: 70%;">
       </div>

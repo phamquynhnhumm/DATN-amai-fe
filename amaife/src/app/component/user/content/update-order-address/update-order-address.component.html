@@ -1,0 +1,23 @@
+<div style="background: #435d7d;color: white;text-align:center"><h1 mat-dialog-title><strong style="color: white">Cập
+  nhập địa chỉ hoặc chỗ ngồi</strong>
+</h1></div>
+<hr>
+<div mat-dialog-content>
+  <form [formGroup]="formFoodOder" (ngSubmit)="onSubmit()" cForm class="row g-3">
+    <c-col [md]="12">
+      <label cLabel>Đơn hàng khách hàng: {{oder.fullName}}</label><br>
+      <input type="text" translate [placeholder]="nhapdiachis.textContent" class="custom-select form-control"
+             formControlName="address">
+      <span style=" visibility: hidden;" translate #nhapdiachis>settings.nhapdaichi</span>
+      <small class="text-danger col-sm-10"
+             *ngIf="formFoodOder.get('address')?.hasError('required') && formFoodOder.get('address')?.touched">
+        Vị trí vui lòng không để trống
+      </small>
+    </c-col>
+    <br>
+    <c-col [md]="12">
+      <button class="btn btn-outline-dark" mat-button (click)="cencal()">Thoát</button>
+      <button type="submit" class="btn btn-warning">Lưu</button>
+    </c-col>
+  </form>
+</div>

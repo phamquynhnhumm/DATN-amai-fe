@@ -191,6 +191,11 @@
                     <div class="profile_lable" translate> settings.sodienthoai</div>
                     <input class="profile-input" value="{{oder.phone}}" readonly>
                   </div>
+                  <div class="col">
+                    <div class="profile_lable" translate> settings.trangthaithanhtoan</div>
+                    <input class="profile-input" *ngIf="oder.pay == true" value="Đã thanh toán" readonly>
+                    <input class="profile-input" *ngIf="oder.pay == false" value="Chưa thanh toán" readonly>
+                  </div>
                 </div>
                 <br>
                 <div class="row">
@@ -200,9 +205,12 @@
                   </div>
                   <div class="col">
                     <div class="profile_lable" translate> settings.hinhthucthanhtoan</div>
-                    <input class="profile-input"  value="Đến cửa hàng" *ngIf="oder.payments == epaypal.NO.valueOf()" readonly>
-                    <input class="profile-input"  value="Thanh toán khi nhận hàng" *ngIf="oder.payments == epaypal.CASH.valueOf()" readonly>
-                    <input class="profile-input"  value="Chuyển khoản" *ngIf="oder.payments == epaypal.TRANSFER.valueOf()" readonly>
+                    <input class="profile-input" value="Thanh toán tài quầy"
+                           *ngIf="oder.payments == epaypal.NO.valueOf()" readonly>
+                    <input class="profile-input" value="Thanh toán khi nhận hàng"
+                           *ngIf="oder.payments == epaypal.CASH.valueOf()" readonly>
+                    <input class="profile-input" value="Chuyển khoản"
+                           *ngIf="oder.payments == epaypal.TRANSFER.valueOf()" readonly>
                   </div>
                   <div class="col">
                     <div class="profile_lable" translate> settings.soluong</div>

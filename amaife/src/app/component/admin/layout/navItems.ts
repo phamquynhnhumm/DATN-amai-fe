@@ -70,11 +70,12 @@ export const navItems: INavData[] = [
       {
         name: 'Nguyên liệu',
         url: '/material'
-      },
-      {
-        name: 'Nguyên liệu món',
-        url: '/fooddetail'
       }
+      // ,
+      // {
+      //   name: 'Nguyên liệu món',
+      //   url: '/fooddetail'
+      // }
     ]
   },
   // {

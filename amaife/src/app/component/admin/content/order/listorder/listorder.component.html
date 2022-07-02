@@ -49,14 +49,14 @@
             <th>Tài khoản đặt</th>
             <th>Trạng thái món</th>
             <th>Tổng tiền</th>
-            <th>Số lượng</th>
+            <th>Trạng thái thanh toán</th>
             <th>Sửa / Xóa</th>
           </tr>
           </thead>
           <tbody *ngIf="orderList != null">
           <tr class="even pointer"
               *ngFor="let oder of orderList | paginate :{itemsPerPage:5,currentPage : p}">
-            <td (click)="openDetailOrder(oder)">Chi tiết đơn hàng mã : {{oder.id}} </td>
+            <td (click)="openDetailOrder(oder)">Đơn hàng : {{oder.id}} </td>
             <td>{{oder.fullName}}</td>
             <td>{{oder.address}}</td>
             <td>{{oder.phone}}</td>
@@ -67,7 +67,8 @@
             <td *ngIf="oder.status == eStatusOrder.RECEIVED.valueOf() ">Đã nhận</td>
             <td *ngIf="oder.status == eStatusOrder.CANCEL.valueOf() ">Đã hủy</td>
             <td>{{oder.money |currency:'VND'}} </td>
-            <td>{{oder.quantity}}</td>
+            <td *ngIf="oder.pay==true">Đã thanh toán</td>
+            <td *ngIf="oder.pay==false">Chưa thanh toán</td>
             <td>
               <a (click)="openEditOder(oder)" style="  color: #FFC107;" data-toggle="modal"><i
                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

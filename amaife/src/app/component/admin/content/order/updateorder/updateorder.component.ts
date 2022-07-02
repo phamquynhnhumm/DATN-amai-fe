@@ -15,6 +15,7 @@ export class UpdateorderComponent implements OnInit {
 
   oder!: Oder;
   eStatusOrder = ['UNCONFIRMED', 'CONFIRMED', 'TRANSPORT', 'RECEIVED', 'CANCEL']
+  pays = ['true', 'false']
 
   constructor(
     private dialogRef: MatDialogRef<UpdateorderComponent>,
@@ -29,7 +30,8 @@ export class UpdateorderComponent implements OnInit {
     this.oder = this.data;
     this.formFoodOder = new FormGroup(
       {
-        status: new FormControl(this.data.status, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+        status: new FormControl(this.data.status, Validators.required),
+        pay: new FormControl(this.data.pay, Validators.required),
         isDeleted: new FormControl(this.data.isDeleted),
       }
     );
@@ -57,6 +59,7 @@ export class UpdateorderComponent implements OnInit {
     if (this.formFoodOder.valid) {
       console.log(this.formFoodOder.value)
       this.oder.status = this.formFoodOder.value.status;
+      this.oder.pay = this.formFoodOder.value.pay;
       if (!this.bolen) {
         this.oder.isDeleted = this.formFoodOder.value.isDeleted;
         this.oderService.updateOder(this.oder).subscribe(data => {

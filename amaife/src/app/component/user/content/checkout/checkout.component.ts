@@ -37,6 +37,13 @@ export class CheckoutComponent implements OnInit {
   selectedFile: File | any;
   urlqrcode !: string;
   orderQrCode !: Oder;
+  hinhthuc: number = 1;
+  seats: Array<string> = ["Bàn Số 1", "Bàn Số 2", "Bàn Số 3", "Bàn Số 4", "Bàn Số 5", "Bàn Số 6", "Bàn Số 7", "Bàn Số 8",
+    "Bàn Số 9", "Bàn Số 10", "Bàn Số 11", "Bàn Số 12", "Bàn Số 13", "Bàn Số 14", "Bàn Số 15", "Bàn Số 16", "Bàn số 17", "Bàn số 18", "Bàn số 19", "Bàn số 20"]
+  bg1: string = "bgmau";
+  bg2: string = "bg";
+  bg3: string = "bg";
+  dadattruoc: string = "Đặt trước"
 
   constructor(public auth: AuthService,
               private dialog: MatDialog,
@@ -93,7 +100,7 @@ export class CheckoutComponent implements OnInit {
   listOderDetail: OrderDetail[] = [];
 
   onSubmit() {
-   if (this.formOrder.value.payments == 'CASH') {
+    if (this.formOrder.value.payments == 'CASH') {
       this.formOrder.value.qrcode = "null";
       this.formOrder.value.status = "UNCONFIRMED";
       this.formOrder.value.money = this.totalCart;
@@ -298,5 +305,26 @@ export class CheckoutComponent implements OnInit {
           }
         )
     }
+  }
+
+  gioahangtannoi() {
+    this.bg1 = "bgmau";
+    this.bg2 = "bg";
+    this.bg3 = "bg";
+    this.hinhthuc = 1;
+  }
+
+  datoicuahang() {
+    this.bg1 = "bg";
+    this.bg2 = "bgmau";
+    this.bg3 = "bg";
+    this.hinhthuc = 2;
+  }
+
+  dattruoc() {
+    this.bg1 = "bg";
+    this.bg2 = "bg";
+    this.bg3 = "bgmau";
+    this.hinhthuc = 3;
   }
 }

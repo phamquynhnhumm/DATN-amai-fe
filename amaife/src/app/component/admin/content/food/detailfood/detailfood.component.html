@@ -22,15 +22,16 @@
         <p readonly class="form-control-plaintext" *ngIf="food.status == eStatusFood.OUTSTOCK.valueOf() ">Đã hết</p>
         <p readonly class="form-control-plaintext" *ngIf="food.status == eStatusFood.INSTOCK.valueOf() ">Còn món</p>
       </div>
-      <label class="col-sm-5 col-form-label"> <strong>Nguyên liệu pha chế </strong></label>
-      <div class="col-sm-7">
-        <mat-select *ngIf="foodDetail !=null " class="form-control-plaintext " placeholder="Danh sách món">
-          <mat-option (click)="openDetailMaterail(foodDetail)" *ngFor="let foodDetail of foodDetail">{{foodDetail.material.name}}</mat-option>
-        </mat-select>
-        <div *ngIf="foodDetail ==null " class="form-control-plaintext">
-          <p>"Không tồn tại món"</p>
-        </div>
-      </div>
+<!--
+   <label class="col-sm-5 col-form-label"> <strong>Nguyên liệu pha chế </strong></label>-->
+<!--      <div class="col-sm-7">-->
+<!--        <mat-select *ngIf="foodDetail !=null " class="form-control-plaintext " placeholder="Danh sách món">-->
+<!--          <mat-option (click)="openDetailMaterail(foodDetail)" *ngFor="let foodDetail of foodDetail">{{foodDetail.material.name}}</mat-option>-->
+<!--        </mat-select>-->
+<!--        <div *ngIf="foodDetail ==null " class="form-control-plaintext">-->
+<!--          <p>"Không tồn tại món"</p>-->
+<!--        </div>-->
+<!--      </div>-->
       <label class="col-sm-5 col-form-label"><strong>Tài khoản thêm </strong></label>
       <div class="col-sm-7">
         <p readonly class="form-control-plaintext" >{{food.createdBy.userName}}</p>

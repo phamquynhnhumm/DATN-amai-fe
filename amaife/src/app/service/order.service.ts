@@ -27,6 +27,7 @@ export class OrderService {
    */
   readonly URL_ORDER_FINFDISDELETE_USER = "http://localhost:8080/api/order/userName";
   readonly URL_ORDERUSER = "http://localhost:8080/api/order";
+  readonly URL_ORDERADDRESS = "http://localhost:8080/api/order/address";
   readonly URL_ORDERDETAILUSER = "http://localhost:8080/api/order/detail";
   readonly URL_CREATEORDERUSER = "http://localhost:8080/api/order/createOder";
 
@@ -187,6 +188,12 @@ export class OrderService {
     return this.httpClient.put<Cart>(this.URL_CARTRUSER, cart);
   }
 
+  /**
+   * Cập nhật địa chỉ đơn hàng
+   */
+  updateOderAddress(order: Object): Observable<Oder> {
+    return this.httpClient.put<Oder>(this.URL_ORDERADDRESS, order);
+  }
 
   /**
    * Thêm đồng thời nhiều chi tiết món cùng một lúc
