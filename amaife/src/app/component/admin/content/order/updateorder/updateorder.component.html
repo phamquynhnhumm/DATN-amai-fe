@@ -24,9 +24,9 @@
     <c-col [md]="12">
       <label cLabel>Trạng thái thanh toán </label>
       <mat-select class="custom-select form-control" formControlName="pay">
-        <mat-option *ngFor="let epay of pays" [value]="epay">
-          <p readonly class="form-control-plaintext" *ngIf="epay == 'true' ">Đã thanh toán</p>
-          <p readonly class="form-control-plaintext" *ngIf="epay == 'false'">Chưa thanh toán</p>
+        <mat-option *ngFor="let pay of pays" [value]="pay">
+          <p readonly class="form-control-plaintext" *ngIf="pay === 'true' ">Đã thanh toán</p>
+          <p readonly class="form-control-plaintext" *ngIf="pay === 'false'">Chưa thanh toán</p>
         </mat-option>
       </mat-select>
       <small class="text-danger col-sm-10"

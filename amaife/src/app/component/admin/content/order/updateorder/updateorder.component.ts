@@ -31,7 +31,7 @@ export class UpdateorderComponent implements OnInit {
     this.formFoodOder = new FormGroup(
       {
         status: new FormControl(this.data.status, Validators.required),
-        pay: new FormControl(this.data.pay, Validators.required),
+        pay: new FormControl(this.oder.pay, Validators.required),
         isDeleted: new FormControl(this.data.isDeleted),
       }
     );
