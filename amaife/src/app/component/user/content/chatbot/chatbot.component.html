@@ -113,12 +113,13 @@
           <form [formGroup]="formChat" (ngSubmit)="chatbox()">
             <div class="input-group">
               <input #inputMsg type="text" class="form-control col-sm-9" formControlName="msg"
-                     placeholder="Nhập tin nhắn">
+                     [placeholder]="nhaptinnhan.textContent">
               <button type="submit" class="btn btn-primary col-sm-3"
-                      (click)="inputMsg.value=''">Gửi
+                      (click)="inputMsg.value=''" translate>settings.gui
               </button>
             </div>
           </form>
+          <span style=" visibility: hidden;" translate #nhaptinnhan>settings.nhaptinnhan</span>
         </div>
       </div>
     </div>
