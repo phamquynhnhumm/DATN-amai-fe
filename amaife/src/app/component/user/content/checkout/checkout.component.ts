@@ -95,6 +95,7 @@ export class CheckoutComponent implements OnInit {
       orders: new FormControl('', [Validators.required, Validators.min(0)]),
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
       food: new FormControl('', [Validators.required, Validators.min(0)]),
+      price: new FormControl('', [Validators.required, Validators.min(0)]),
     }
   )
   listOderDetail: OrderDetail[] = [];
@@ -117,11 +118,12 @@ export class CheckoutComponent implements OnInit {
               //Chạy vòng for đê5
               //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
               this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
-              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food; price:any} = {
                 quantity: this.cartList[i].quantity,
                 food: this.cartList[i].food,
                 orders: this.formOrderDEtail.value.orders,
                 isDeleted: this.formOrderDEtail.value.isDeleted,
+                price: this.cartList[i].food.price,
               };
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
@@ -180,11 +182,12 @@ export class CheckoutComponent implements OnInit {
               //Chạy vòng for đê5
               //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
               this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
-              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food;price: any } = {
                 quantity: this.cartList[i].quantity,
                 food: this.cartList[i].food,
                 orders: this.formOrderDEtail.value.orders,
                 isDeleted: this.formOrderDEtail.value.isDeleted,
+                price: this.cartList[i].food.price,
               };
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }
@@ -244,11 +247,12 @@ export class CheckoutComponent implements OnInit {
               //Chạy vòng for đê5
               //khi đã đặt hàng thành công thì thực hiện xóa món khỏi gio hàng
               this.cartService.cancelByIdCart(this.cartList[i].id).subscribe();
-              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food } = {
+              let newOderDetail: { quantity: any; isDeleted: any; orders: any; food: Food;price: any } = {
                 quantity: this.cartList[i].quantity,
                 food: this.cartList[i].food,
                 orders: this.formOrderDEtail.value.orders,
                 isDeleted: this.formOrderDEtail.value.isDeleted,
+                price : this.cartList[i].food.price,
               };
               this.listOderDetail.push(<OrderDetail>newOderDetail);
             }

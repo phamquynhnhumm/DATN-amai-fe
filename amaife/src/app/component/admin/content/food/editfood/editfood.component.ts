@@ -7,6 +7,7 @@ import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {finalize} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {data} from "jquery";
 
 @Component({
   selector: 'app-editfood',
@@ -37,6 +38,7 @@ export class EditfoodComponent implements OnInit {
       }
     )
     this.food = this.data;
+    console.log(this.food)
 
     this.formFood = new FormGroup(
       {
@@ -48,15 +50,12 @@ export class EditfoodComponent implements OnInit {
         foodCategory: new FormControl(this.data.foodCategory, Validators.required),
         orderDetailList: new FormArray([]),
         foodDetailList: new FormArray([]),
-        image: new FormControl('',Validators.required),
+        image: new FormControl(this.data.image, Validators.required),
       }
     )
   }
 
-  bolen: boolean = false;
-
   cencal() {
-    this.bolen = true;
     this.dialogRef.close();
     this.snackBar.open("Hủy cập nhật món", "OK", {
       duration: 4000
@@ -64,14 +63,6 @@ export class EditfoodComponent implements OnInit {
   }
 
   onSubmit() {
-    /**
-     * Trách trường hợp isDelete null
-     */
-    if (this.formFood.value.isDeleted) {
-      this.formFood.value.isDeleted = true;
-    } else {
-      this.formFood.value.isDeleted = false;
-    }
     if (this.formFood.valid) {
       this.food.name = this.formFood.value.name;
       this.food.unit = this.formFood.value.unit;
@@ -86,17 +77,15 @@ export class EditfoodComponent implements OnInit {
       if (this.formFood.value.image != "") {
         this.food.image = this.url;
       }
-      if (!this.bolen) {
-        this.food.isDeleted = this.formFood.value.isDeleted;
-        this.foodService.updateFood(this.food).subscribe(data => {
-            this.dialogRef.close();
-            this.snackBar.open("Cập nhật món thành công", "OK", {
-              duration: 4000
-            });
-            this.ngOnInit();
-          }
-        )
-      }
+      this.food.isDeleted = this.formFood.value.isDeleted;
+      this.foodService.updateFood(this.food).subscribe(data => {
+          this.dialogRef.close();
+          this.snackBar.open("Cập nhật món thành công", "OK", {
+            duration: 4000
+          });
+          this.ngOnInit();
+        }
+      )
     } else {
       this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
     }
@@ -110,7 +99,6 @@ export class EditfoodComponent implements OnInit {
         this.angularFireStorage.ref(path).getDownloadURL().subscribe(
           (data) => {
             this.url = data;
-            console.log(this.url)
           }
         )
       })

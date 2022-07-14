@@ -51,7 +51,7 @@
         <mat-select *ngIf="orderDetailList !=null " class="form-control-plaintext " placeholder="Danh sách món">
           <mat-option (click)="openDetailFood(orderDetai)"
                       *ngFor="let orderDetai of orderDetailList">Tên món:{{orderDetai.food.name}}
-            SL: {{orderDetai.quantity}} Giá : {{orderDetai.food.price}}</mat-option>
+            SL: {{orderDetai.quantity}} Giá : {{orderDetai.price}}</mat-option>
         </mat-select>
         <div *ngIf="orderDetailList ==null " class="form-control-plaintext">
           <p>"Không tồn tại món"</p>

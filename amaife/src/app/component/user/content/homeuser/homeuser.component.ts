@@ -30,7 +30,7 @@ export class HomeuserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.foodService.findAllFoodIsdelete_User(false).subscribe(
+    this.foodService.findAllFoodIsdeleteAndFoodCategoryUer(false, false).subscribe(
       datafood => {
         this.p = 1;
         this.foodList = datafood;

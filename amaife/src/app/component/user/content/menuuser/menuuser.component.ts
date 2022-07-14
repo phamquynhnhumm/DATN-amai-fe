@@ -39,6 +39,7 @@ export class MenuuserComponent implements OnInit {
       datafood => {
         this.p = 1;
         this.foodList = datafood;
+        console.log(this.foodList)
       }
     )
   }
