@@ -94,7 +94,6 @@ export class ListComponent implements OnInit {
     }
     if (!this.email) {
       if (this.formUser.valid) {
-        console.log(this.formUser.value);
         this.user = this.formUser.value;
         this.userService.updateUser(this.user).subscribe(
           () => {

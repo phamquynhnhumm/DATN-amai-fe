@@ -7,7 +7,6 @@ import {Food} from "../../../../../model/food/Food";
 import {FoodCategory} from "../../../../../model/food/FoodCategory";
 import {finalize} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {data} from "jquery";
 
 @Component({
   selector: 'app-editfood',
@@ -21,6 +20,8 @@ export class EditfoodComponent implements OnInit {
   formFood!: FormGroup;
   url: string = "";
   selectedFile: File | any;
+  upload!: boolean;
+  imagelink !: String
 
   constructor(
     private dialogRef: MatDialogRef<EditfoodComponent>,
@@ -38,7 +39,7 @@ export class EditfoodComponent implements OnInit {
       }
     )
     this.food = this.data;
-    console.log(this.food)
+    this.imagelink = this.data.image;
 
     this.formFood = new FormGroup(
       {
@@ -63,35 +64,57 @@ export class EditfoodComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.formFood.valid) {
-      this.food.name = this.formFood.value.name;
-      this.food.unit = this.formFood.value.unit;
-      this.food.content = this.formFood.value.content;
-      this.food.price = this.formFood.value.price;
-      this.food.status = this.formFood.value.status;
-      this.food.foodCategory = this.formFood.value.foodCategory;
-      this.food.foodDetailList = this.formFood.value.foodDetailList;
-      /**
-       * Trường họpe nếu cập nhât ảnh thì lấy ảnh mới còn ko thì lấy ảnh cũ ( tránh trường hợp ko cập nhật ảnh nhưng submit kiếm image bị null
-       */
-      if (this.formFood.value.image != "") {
+    if (this.upload == false) {
+      this.formFood.value.image = this.url;
+      if (this.formFood.valid) {
+        this.food.name = this.formFood.value.name;
+        this.food.unit = this.formFood.value.unit;
+        this.food.content = this.formFood.value.content;
+        this.food.price = this.formFood.value.price;
+        this.food.status = this.formFood.value.status;
+        this.food.foodCategory = this.formFood.value.foodCategory;
+        this.food.foodDetailList = this.formFood.value.foodDetailList;
         this.food.image = this.url;
+        this.foodService.updateFood(this.food).subscribe(data => {
+            this.dialogRef.close();
+            this.snackBar.open("Cập nhật món thành công", "OK", {
+              duration: 4000
+            });
+            this.ngOnInit();
+          }
+        )
+      } else {
+        this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
       }
-      this.food.isDeleted = this.formFood.value.isDeleted;
-      this.foodService.updateFood(this.food).subscribe(data => {
-          this.dialogRef.close();
-          this.snackBar.open("Cập nhật món thành công", "OK", {
-            duration: 4000
-          });
-          this.ngOnInit();
-        }
-      )
-    } else {
-      this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
+    }
+
+    else  {
+      this.formFood.value.image = this.imagelink;
+      if (this.formFood.valid) {
+        this.food.name = this.formFood.value.name;
+        this.food.unit = this.formFood.value.unit;
+        this.food.content = this.formFood.value.content;
+        this.food.price = this.formFood.value.price;
+        this.food.status = this.formFood.value.status;
+        this.food.foodCategory = this.formFood.value.foodCategory;
+        this.food.foodDetailList = this.formFood.value.foodDetailList;
+        this.food.image = this.formFood.value.image;
+        this.foodService.updateFood(this.food).subscribe(data => {
+            this.dialogRef.close();
+            this.snackBar.open("Cập nhật món thành công", "OK", {
+              duration: 4000
+            });
+            this.ngOnInit();
+          }
+        )
+      } else {
+        this.snackBar.open("Cập nhật thấy bại !")._dismissAfter(3000);
+      }
     }
   }
 
   selectFile(event: any) {
+    this.upload = false;
     const path = new Date().toString();
     this.selectedFile = event.target.files[0];
     this.angularFireStorage.upload(path, this.selectedFile).snapshotChanges().pipe(
